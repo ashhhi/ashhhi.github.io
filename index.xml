@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ash‘s life</title>
+    <link>https://ashhhi.github.io/</link>
+    <description>Recent content on Ash‘s life</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <managingEditor>shijunshen424@gmail.com (SHI Junshen (ASH))</managingEditor>
+    <webMaster>shijunshen424@gmail.com (SHI Junshen (ASH))</webMaster>
+    <lastBuildDate>Mon, 05 Feb 2024 17:05:34 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>First</title>
+      <link>https://ashhhi.github.io/post/first/</link>
+      <pubDate>Mon, 05 Feb 2024 17:05:34 +0800</pubDate><author>shijunshen424@gmail.com (SHI Junshen (ASH))</author>
+      <guid>https://ashhhi.github.io/post/first/</guid>
+      <description>Hi!!!</description>
+    </item>
+  </channel>
+</rss>
