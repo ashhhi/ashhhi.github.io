@@ -11,10 +11,24 @@
     <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>记录</title>
-      <link>https://ashhhi.github.io/tags/%E8%AE%B0%E5%BD%95/</link>
+      <title>乐队</title>
+      <link>https://ashhhi.github.io/tags/%E4%B9%90%E9%98%9F/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (SHI Junshen (ASH))</author>
-      <guid>https://ashhhi.github.io/tags/%E8%AE%B0%E5%BD%95/</guid>
+      <guid>https://ashhhi.github.io/tags/%E4%B9%90%E9%98%9F/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Docker</title>
+      <link>https://ashhhi.github.io/tags/docker/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (SHI Junshen (ASH))</author>
+      <guid>https://ashhhi.github.io/tags/docker/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>前端</title>
+      <link>https://ashhhi.github.io/tags/%E5%89%8D%E7%AB%AF/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (SHI Junshen (ASH))</author>
+      <guid>https://ashhhi.github.io/tags/%E5%89%8D%E7%AB%AF/</guid>
       <description></description>
     </item>
   </channel>

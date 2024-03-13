@@ -22,8 +22,28 @@
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/%E8%AE%B0%E5%BD%95/</loc>
+    <loc>https://ashhhi.github.io/tags/%E4%B9%90%E9%98%9F/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://ashhhi.github.io/tags/docker/</loc>
+    <lastmod>2023-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://ashhhi.github.io/journals/grafana_prometheus/</loc>
+    <lastmod>2023-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://ashhhi.github.io/journals/</loc>
+    <lastmod>2023-02-28T00:00:00+00:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url><url>
+    <loc>https://ashhhi.github.io/tags/%E5%89%8D%E7%AB%AF/</loc>
+    <lastmod>2023-02-28T00:00:00+00:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
@@ -32,10 +52,6 @@
     <priority>0.5</priority>
   </url><url>
     <loc>https://ashhhi.github.io/categories/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
-  </url><url>
-    <loc>https://ashhhi.github.io/journals/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url><url>
