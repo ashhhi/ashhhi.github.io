@@ -6,14 +6,14 @@
     <description>Recent content in note on Ash</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 04 Mar 2018 16:01:23 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 28 Feb 2023 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/zh-cn/tag/note/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>筆記 2</title>
-      <link>https://ashhhi.github.io/zh-cn/2018/03/04/%E7%AD%86%E8%A8%98-2/</link>
-      <pubDate>Sun, 04 Mar 2018 16:01:23 +0800</pubDate>
-      <guid>https://ashhhi.github.io/zh-cn/2018/03/04/%E7%AD%86%E8%A8%98-2/</guid>
-      <description>這是一個簡單的筆記。</description>
+      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</title>
+      <link>https://ashhhi.github.io/zh-cn/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/</guid>
+      <description>Docker 配置 Prometheus+Alertmanager+Grafana+Mysql Prometheus 1、下载镜像包： docker pull prom/prometheus 2、配置 Prometheus mkdir /opt/prometheus cd /opt/prometheus/ vim prometheus.yml #opt是linux中存放第三方软件的文件夹 内容如下： global: scrape_interval: 60s evaluation_interval: 60s scrape_configs: - job_name: prometheus static_configs: - targets: [&amp;#39;localhost:9090&amp;#39;] labels: instance: prometheus</description>
     </item>
   </channel>
 </rss>

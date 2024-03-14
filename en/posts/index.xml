@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Ash</title>
+    <link>https://ashhhi.github.io/en/posts/</link>
+    <description>Recent content in Posts on Ash</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>“明天是复杂的漫游”</title>
+      <link>https://ashhhi.github.io/en/2024/03/13/%E6%98%8E%E5%A4%A9%E6%98%AF%E5%A4%8D%E6%9D%82%E7%9A%84%E6%BC%AB%E6%B8%B8/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/2024/03/13/%E6%98%8E%E5%A4%A9%E6%98%AF%E5%A4%8D%E6%9D%82%E7%9A%84%E6%BC%AB%E6%B8%B8/</guid>
+      <description>“明天是复杂的漫游”，在微博和微信上，以及这篇 Blog 的 Title，我都写了这句话，源自万青的「采石」。 记得是 2014 年的时候吧，我还是在初三，并且从达</description>
+    </item>
+    <item>
+      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</title>
+      <link>https://ashhhi.github.io/en/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/</guid>
+      <description>Docker 配置 Prometheus+Alertmanager+Grafana+Mysql Prometheus 1、下载镜像包： docker pull prom/prometheus 2、配置 Prometheus mkdir /opt/prometheus cd /opt/prometheus/ vim prometheus.yml #opt是linux中存放第三方软件的文件夹 内容如下： global: scrape_interval: 60s evaluation_interval: 60s scrape_configs: - job_name: prometheus static_configs: - targets: [&amp;#39;localhost:9090&amp;#39;] labels: instance: prometheus</description>
+    </item>
+  </channel>
+</rss>
