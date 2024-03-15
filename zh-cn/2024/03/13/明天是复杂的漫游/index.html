@@ -49,7 +49,7 @@
 </head>
 <body>
   
-  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ashhhi.github.io/zh-cn/2024/03/13/%E6%98%8E%E5%A4%A9%E6%98%AF%E5%A4%8D%E6%9D%82%E7%9A%84%E6%BC%AB%E6%B8%B8/header.jpg'); background-position: center; background-size: cover; ">
+  <div class="header-container" style="background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('https://ashhhi.github.io/images/background.jpg'); background-position: center; background-size: cover;">
   <div class="container">
   <nav class="header-nav navbar navbar-expand-md navbar-dark light-dark">
     <div class="header-logo navbar-brand">
@@ -107,16 +107,29 @@
   </nav>
 </div>
 
+
+
 <div class="container header-wrapper">
   <div class="row">
     <div class="col-lg-12">
       <div class="header-content">
         <h1 class="header-title">“明天是复杂的漫游”</h1>
         <p class="header-date">作者：
-          SHI Junshen (Ash) /
+          SHI Junshen (Ash) |
         
-        2024-03-13
-          / 分类：
+        2024-03-13|<script async src="/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <span id="busuanzi_container_site_pv">
+    浏览量 <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  |
+        <span class="post-date">共1313字</span>，阅读约<span class="more-meta"> 3 分钟</span>
+          
+          | 分类：
           <a href="https://ashhhi.github.io/zh-cn/category/life/">Life</a>
         </p>
         
@@ -145,7 +158,8 @@
   <main>
 <div class="container content">
   <article>
-  <p>“明天是复杂的漫游”，在微博和微信上，以及这篇 Blog 的 Title，我都写了这句话，源自万青的「采石」。</p>
+  <p><img src="header.jpg" alt="">
+“明天是复杂的漫游”，在微博和微信上，以及这篇 Blog 的 Title，我都写了这句话，源自万青的「采石」。</p>
 <h2 id="初识">初识</h2>
 <p>记得是 2014 年的时候吧，我还是在初三，并且从达州刚转学到重庆，第一次开始接触大量的国内乐队，我也不知道为什么好像之前都只听过 Beyond 哈哈。最开始是因为在网易云看到了一个奇怪的歌名吧，「杀死那个石家庄人」，点进去一听，确实好听，尾段的吉他 Solo 给当时正处于想要学习电吉他欲望的巅峰的我一个猛烈的冲击，也因此成了这支乐队的“死忠粉”，哦不，是这首歌的“死忠粉”。还记得当时我还在全民 k 歌上翻唱了这首歌，还有朋友评论说：“你也听过这个啊！”。</p>
 <p>但是对于其他歌曲像「秦皇岛」、「大石碎胸口」等，我基本因为名字没感觉而懒得点开进去，因为在同一个时期，我也迷上了对我影响最深的枪花（Guns n‘ Roses），正在没日没夜地听他们的每一张专辑。</p>
@@ -276,8 +290,36 @@
             ></small
           ><br />
           <small>
-            NJUST, CS</br>CityU of Hong Kong, EE, MIT</br>  &copy; Ash 2024
+            NJUST, CS</br>CityU of Hong Kong, EE, MIT</br>  &copy; Ash 2024</br>
           </small>
+          <span id="sitetime"></span> 
+          <script language=javascript>
+              function siteTime(){
+                  window.setTimeout("siteTime()", 1000);
+                  var seconds = 1000;
+                  var minutes = seconds * 60;
+                  var hours = minutes * 60;
+                  var days = hours * 24;
+                  var years = days * 365;
+                  var today = new Date();
+                  var todayYear = today.getFullYear();
+                  var todayMonth = today.getMonth()+1;
+                  var todayDate = today.getDate();
+                  var todayHour = today.getHours();
+                  var todayMinute = today.getMinutes();
+                  var todaySecond = today.getSeconds();
+                  var t1 = Date.UTC(2024,3,13,0,0,0);  
+                  var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+                  var diff = t2-t1;
+                  var diffYears = Math.floor(diff/years);
+                  var diffDays = Math.floor((diff/days)-diffYears*365);
+                  var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+                  var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+                  var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+                  document.getElementById("sitetime").innerHTML="<small>"+"建站 "+diffYears+" y "+diffDays+" d "+diffHours+" h "+diffMinutes+" m "+diffSeconds+" s"+"</small>"; 
+              }
+              siteTime();
+          </script>
           
         </p>
       </div>

@@ -107,16 +107,29 @@
   </nav>
 </div>
 
+
+
 <div class="container header-wrapper">
   <div class="row">
     <div class="col-lg-12">
       <div class="header-content">
         <h1 class="header-title">Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</h1>
         <p class="header-date">By
-          SHI Junshen (Ash) /
+          SHI Junshen (Ash) |
         
-        2023-02-28
-          / In categories
+        2023-02-28|<script async src="/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <span id="busuanzi_container_site_pv">
+    浏览量 <span id="busuanzi_value_site_pv"></span>
+  </span>
+
+  |
+        <span class="post-date">共1796字</span>，阅读约<span class="more-meta"> 4 分钟</span>
+          
+          | In categories
           <a href="https://ashhhi.github.io/en/category/note/">Note</a>
         </p>
         
@@ -548,8 +561,36 @@ match_re 可以用正则表达式匹配</p>
             ></small
           ><br />
           <small>
-            NJUST, CS</br>CityU of Hong Kong, EE, MIT</br>  &copy; Ash 2024
+            NJUST, CS</br>CityU of Hong Kong, EE, MIT</br>  &copy; Ash 2024</br>
           </small>
+          <span id="sitetime"></span> 
+          <script language=javascript>
+              function siteTime(){
+                  window.setTimeout("siteTime()", 1000);
+                  var seconds = 1000;
+                  var minutes = seconds * 60;
+                  var hours = minutes * 60;
+                  var days = hours * 24;
+                  var years = days * 365;
+                  var today = new Date();
+                  var todayYear = today.getFullYear();
+                  var todayMonth = today.getMonth()+1;
+                  var todayDate = today.getDate();
+                  var todayHour = today.getHours();
+                  var todayMinute = today.getMinutes();
+                  var todaySecond = today.getSeconds();
+                  var t1 = Date.UTC(2024,3,13,0,0,0);  
+                  var t2 = Date.UTC(todayYear,todayMonth,todayDate,todayHour,todayMinute,todaySecond);
+                  var diff = t2-t1;
+                  var diffYears = Math.floor(diff/years);
+                  var diffDays = Math.floor((diff/days)-diffYears*365);
+                  var diffHours = Math.floor((diff-(diffYears*365+diffDays)*days)/hours);
+                  var diffMinutes = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours)/minutes);
+                  var diffSeconds = Math.floor((diff-(diffYears*365+diffDays)*days-diffHours*hours-diffMinutes*minutes)/seconds);
+                  document.getElementById("sitetime").innerHTML="<small>"+"建站 "+diffYears+" y "+diffDays+" d "+diffHours+" h "+diffMinutes+" m "+diffSeconds+" s"+"</small>"; 
+              }
+              siteTime();
+          </script>
           
         </p>
       </div>
