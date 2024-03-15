@@ -19,7 +19,7 @@
   href="https://ashhhi.github.io/en/2024/03/13/%E6%98%8E%E5%A4%A9%E6%98%AF%E5%A4%8D%E6%9D%82%E7%9A%84%E6%BC%AB%E6%B8%B8/"
   hreflang="en"
 />
-
+<link rel="icon" href="https://ashhhi.github.io/images/favicon.ico" />
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -43,7 +43,7 @@
 <meta itemprop="description" content="“明天是复杂的漫游”，在微博和微信上，以及这篇 Blog 的 Title，我都写了这句话，源自万青的「采石」。 记得是 2014 年的时候吧，我还是在初三，并且从达"><meta itemprop="datePublished" content="2024-03-13T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-03-13T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1307">
-<meta itemprop="keywords" content="life," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="“明天是复杂的漫游”"/>
+<meta itemprop="keywords" content="乐队," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="“明天是复杂的漫游”"/>
 <meta name="twitter:description" content="“明天是复杂的漫游”，在微博和微信上，以及这篇 Blog 的 Title，我都写了这句话，源自万青的「采石」。 记得是 2014 年的时候吧，我还是在初三，并且从达"/>
 </head>
 <body>
@@ -124,7 +124,7 @@
           <div class="clearfix"></div>
           <p class="float-right header-tags">
               <i class="fas fa-tags" aria-hidden="true"></i>
-              <a href="https://ashhhi.github.io/zh-cn/tag/life/">life</a>
+              <a href="https://ashhhi.github.io/zh-cn/tag/%E4%B9%90%E9%98%9F/">乐队</a>
           </p>
         
         <div class="clearfix"></div>
@@ -255,6 +255,22 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+  if ($('#load_disqus').length) {
+    $(window).scroll(function() {
+      if ($('#load_disqus').length) {
+        var elementTop = $('#load_disqus').offset().top;
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        if (viewportTop < elementTop && elementTop < viewportBottom) {
+          load_disqus();
+        }
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>

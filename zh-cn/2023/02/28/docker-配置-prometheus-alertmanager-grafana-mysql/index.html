@@ -19,7 +19,7 @@
   href="https://ashhhi.github.io/en/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/"
   hreflang="en"
 />
-
+<link rel="icon" href="https://ashhhi.github.io/images/favicon.ico" />
 <link
   rel="stylesheet"
   href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
@@ -43,7 +43,7 @@
 <meta itemprop="description" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql Prometheus 1、下载镜像包： docker pull prom/prometheus 2、配置 Prometheus mkdir /opt/prometheus cd /opt/prometheus/ vim prometheus.yml #opt是linux中存放第三方软件的文件夹 内容如下： global: scrape_interval: 60s evaluation_interval: 60s scrape_configs: - job_name: prometheus static_configs: - targets: [&#39;localhost:9090&#39;] labels: instance: prometheus"><meta itemprop="datePublished" content="2023-02-28T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2023-02-28T00:00:00+00:00" />
 <meta itemprop="wordCount" content="1796">
-<meta itemprop="keywords" content="note," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql"/>
+<meta itemprop="keywords" content="Docker,前端," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql"/>
 <meta name="twitter:description" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql Prometheus 1、下载镜像包： docker pull prom/prometheus 2、配置 Prometheus mkdir /opt/prometheus cd /opt/prometheus/ vim prometheus.yml #opt是linux中存放第三方软件的文件夹 内容如下： global: scrape_interval: 60s evaluation_interval: 60s scrape_configs: - job_name: prometheus static_configs: - targets: [&#39;localhost:9090&#39;] labels: instance: prometheus"/>
 </head>
 <body>
@@ -124,7 +124,8 @@
           <div class="clearfix"></div>
           <p class="float-right header-tags">
               <i class="fas fa-tags" aria-hidden="true"></i>
-              <a href="https://ashhhi.github.io/zh-cn/tag/note/">note</a>
+              <a href="https://ashhhi.github.io/zh-cn/tag/docker/">Docker</a>, 
+                <a href="https://ashhhi.github.io/zh-cn/tag/%E5%89%8D%E7%AB%AF/">前端</a>
           </p>
         
         <div class="clearfix"></div>
@@ -531,6 +532,22 @@ match_re 可以用正则表达式匹配</p>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<script>
+$(document).ready(function() {
+  if ($('#load_disqus').length) {
+    $(window).scroll(function() {
+      if ($('#load_disqus').length) {
+        var elementTop = $('#load_disqus').offset().top;
+        var viewportTop = $(window).scrollTop();
+        var viewportBottom = viewportTop + $(window).height();
+        if (viewportTop < elementTop && elementTop < viewportBottom) {
+          load_disqus();
+        }
+      }
+    });
+  }
+});
+</script>
 
 </body>
 </html>
