@@ -9,6 +9,55 @@
   </url>
   
   <url>
+    <loc>https://ashhhi.github.io/zh-cn/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/categories/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tag/git/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/2024/03/17/git%E7%AC%94%E8%AE%B0/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/category/note/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/posts/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tags/</loc>
+    <lastmod>2024-03-17T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
     <loc>https://ashhhi.github.io/zh-cn/2024/03/13/%E6%98%8E%E5%A4%A9%E6%98%AF%E5%A4%8D%E6%9D%82%E7%9A%84%E6%BC%AB%E6%B8%B8/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
@@ -16,35 +65,7 @@
   </url>
   
   <url>
-    <loc>https://ashhhi.github.io/zh-cn/</loc>
-    <lastmod>2024-03-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/categories/</loc>
-    <lastmod>2024-03-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ashhhi.github.io/zh-cn/category/life/</loc>
-    <lastmod>2024-03-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/posts/</loc>
-    <lastmod>2024-03-13T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/tags/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -72,21 +93,8 @@
   </url>
   
   <url>
-    <loc>https://ashhhi.github.io/zh-cn/category/note/</loc>
-    <lastmod>2023-02-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
     <loc>https://ashhhi.github.io/zh-cn/tag/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2023-02-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/1/01/01/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
