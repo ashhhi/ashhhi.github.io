@@ -10,11 +10,11 @@
     <lastBuildDate>Sun, 17 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/en/tag/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Git笔记</title>
-      <link>https://ashhhi.github.io/en/2024/03/17/git%E7%AC%94%E8%AE%B0/</link>
+      <title>Git 命令行记录</title>
+      <link>https://ashhhi.github.io/en/2024/03/17/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%B0%E5%BD%95/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/2024/03/17/git%E7%AC%94%E8%AE%B0/</guid>
-      <description>Git 笔记 清除git缓存，使修改后的gitignore生效 git rm -r --cached . git add . git commit -m &amp;#39;update .gitignore&amp;#39; 查看commit记录 git log 查看所有 git show 查看最新的commit git</description>
+      <guid>https://ashhhi.github.io/en/2024/03/17/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%B0%E5%BD%95/</guid>
+      <description>Git 记录 清除git缓存，使修改后的gitignore生效 git rm -r --cached . git add . git commit -m &amp;#39;update .gitignore&amp;#39; 查看commit记录 git log 查看所有 git show 查看最新的commit git</description>
     </item>
   </channel>
 </rss>

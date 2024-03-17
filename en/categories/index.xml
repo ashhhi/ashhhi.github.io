@@ -10,17 +10,17 @@
     <lastBuildDate>Sun, 17 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Life</title>
+      <link>https://ashhhi.github.io/en/category/life/</link>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/category/life/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>Note</title>
       <link>https://ashhhi.github.io/en/category/note/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://ashhhi.github.io/en/category/note/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Life</title>
-      <link>https://ashhhi.github.io/en/category/life/</link>
-      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/category/life/</guid>
       <description></description>
     </item>
   </channel>
