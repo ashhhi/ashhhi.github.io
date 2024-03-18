@@ -33,7 +33,7 @@
   integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
   crossorigin="anonymous"
 />
-<link rel="stylesheet" href="https://ashhhi.github.io/css/den.css">  <link rel="stylesheet" href="https://ashhhi.github.io/css/share.min.css">   <meta property="og:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
+<link rel="stylesheet" href="https://ashhhi.github.io/css/den.css">   <meta property="og:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
 <meta property="og:description" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql Prometheus 1、下载镜像包： docker pull prom/prometheus 2、配置 Prometheus mkdir /opt/prometheus cd /opt/prometheus/ vim prometheus.yml #opt是linux中存放第三方软件的文件夹 内容如下： global: scrape_interval: 60s evaluation_interval: 60s scrape_configs: - job_name: prometheus static_configs: - targets: [&#39;localhost:9090&#39;] labels: instance: prometheus" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://ashhhi.github.io/zh-cn/2023/02/28/docker-%E9%85%8D%E7%BD%AE-prometheus-alertmanager-grafana-mysql/" /><meta property="article:section" content="posts" />
@@ -471,23 +471,26 @@ match_re 可以用正则表达式匹配</p>
 </div>
     
   
-  <div class="ultterances-comment">
-  <div>
-    <div class="comment-underline"></div>
-  </div>
-  <comments>
-    <script
-      src="https://utteranc.es/client.js"
-      repo="ashhhi/hugoblogtalks"
-      issue-term="pathname"
-      theme="github-light"
-      crossorigin="anonymous"
-      async
-    ></script>
-  </comments>
-  <div></div>
-</div>
+  
 
+
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="ashhhi/ashhhi.github.io"
+        data-repo-id="R_kgDOLOH9Gg"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLOH9Gs4CeDBG"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
 </div>
 
   </main><div class="footer gradient-2">
