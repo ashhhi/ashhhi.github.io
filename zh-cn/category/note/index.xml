@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Sun, 17 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/zh-cn/category/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>git rebase 和 git merge的区别</title>
+      <link>https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
+      <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/</guid>
+      <description>git rebase 和 git merge的区别 merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟</description>
+    </item>
     <item>
       <title>Git 命令行记录</title>
       <link>https://ashhhi.github.io/zh-cn/2024/03/17/git-%E5%91%BD%E4%BB%A4%E8%A1%8C%E8%AE%B0%E5%BD%95/</link>

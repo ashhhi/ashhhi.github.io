@@ -3,21 +3,21 @@
 <head>
   <meta name="generator" content="Hugo 0.122.0" />
   <meta charset="utf-8">
-  <title>ABOUT · Ash</title><meta
+  <title>git rebase 和 git merge的区别 · Ash</title><meta
   name="viewport"
   content="width=device-width, initial-scale=1, shrink-to-fit=no"
 />
-<meta name="description" content="你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&amp;hellip; 本科计算机专" />
+<meta name="description" content="git rebase 和 git merge的区别 merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟" />
  <meta
   name="keywords"
   content="Hugo, theme, den"
 />
 
 
-<link rel="canonical" href="https://ashhhi.github.io/en/about/" />
+<link rel="canonical" href="https://ashhhi.github.io/en/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/" />
 <link
   rel="alternate"
-  href="https://ashhhi.github.io/zh-cn/about/"
+  href="https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/"
   hreflang="zh-cn"
 />
 <link rel="icon" href="https://ashhhi.github.io/images/favicon.ico" />
@@ -33,19 +33,19 @@
   integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
   crossorigin="anonymous"
 />
-<link rel="stylesheet" href="https://ashhhi.github.io/css/den.css">  <link rel="stylesheet" href="https://ashhhi.github.io/css/share.min.css">   <meta property="og:title" content="ABOUT" />
-<meta property="og:description" content="你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&hellip; 本科计算机专" />
+<link rel="stylesheet" href="https://ashhhi.github.io/css/den.css">  <link rel="stylesheet" href="https://ashhhi.github.io/css/share.min.css">   <meta property="og:title" content="git rebase 和 git merge的区别" />
+<meta property="og:description" content="git rebase 和 git merge的区别 merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://ashhhi.github.io/en/about/" /><meta property="article:section" content="" />
-<meta property="article:published_time" content="2024-03-13T00:00:00+00:00" />
+<meta property="og:url" content="https://ashhhi.github.io/en/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-03-18T00:00:00+00:00" />
 <meta property="article:modified_time" content="2024-03-18T00:00:00+00:00" />
 
-<meta itemprop="name" content="ABOUT">
-<meta itemprop="description" content="你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&hellip; 本科计算机专"><meta itemprop="datePublished" content="2024-03-13T00:00:00+00:00" />
+<meta itemprop="name" content="git rebase 和 git merge的区别">
+<meta itemprop="description" content="git rebase 和 git merge的区别 merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟"><meta itemprop="datePublished" content="2024-03-18T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2024-03-18T00:00:00+00:00" />
-<meta itemprop="wordCount" content="263">
-<meta itemprop="keywords" content="" /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="ABOUT"/>
-<meta name="twitter:description" content="你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&hellip; 本科计算机专"/>
+<meta itemprop="wordCount" content="743">
+<meta itemprop="keywords" content="Git," /><meta name="twitter:card" content="summary"/><meta name="twitter:title" content="git rebase 和 git merge的区别"/>
+<meta name="twitter:description" content="git rebase 和 git merge的区别 merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟"/>
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
   <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
@@ -112,19 +112,47 @@
   </nav>
 </div>
 
+
+
 <div class="container header-wrapper">
   <div class="row">
     <div class="col-lg-12">
       <div class="header-content">
-        <h1 class="header-title text-uppercase">
-          ABOUT
-        </h1>
+        <h1 class="header-title">git rebase 和 git merge的区别</h1>
+        <p class="header-date">By
+          SHI Junshen (Ash) |
+        
+        2024-03-18|
+        <script async src="/js/busuanzi.pure.mini.js"></script>
+
+
+
+
+  <span>
+    浏览量<span id="busuanzi_value_page_pv"></span>
+  </span>
+
+  |
+        
+        <span class="post-date">共743字</span>，阅读约<span class="more-meta"> 2 分钟</span>
+          
+          | In categories
+          <a href="https://ashhhi.github.io/en/category/note/">Note</a>
+        </p>
+        
         <div class="header-underline"></div>
+        
+          <div class="clearfix"></div>
+          <p class="float-right header-tags">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <a href="https://ashhhi.github.io/en/tag/git/">Git</a>
+          </p>
+        
         <div class="clearfix"></div>
 <p class="float-right translations">
     <i class="fas fa-language" aria-hidden="true"></i>
     Translations: 
-    <a href="https://ashhhi.github.io/zh-cn/about/">ZH-CN</a>
+    <a href="https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/">ZH-CN</a>
 </p>
 
 
@@ -136,28 +164,82 @@
   </div>
   <main>
 <div class="container content">
-  <p>你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&hellip;</p>
-<p>本科计算机专业，目前硕士就读于香港城市大学 EE，感兴趣的方向是人工智能，物联网，区块链方面。</p>
-<p>同时我是一位极其懒惰的吉他手，爱听各种类型的摇滚乐，但唯一偶像和精神支柱为 Slash，网站下方有我的联系方式以及视频 Channel，随缘更新弹琴 or 演出视频，有兴趣的可以关注一下！
-<img src="image.png" alt="Guitar"></p>
-<h2 id="最近在忙">🧑‍💻最近在忙</h2>
+  <article>
+  <h1 id="git-rebase-和-git-merge的区别">git rebase 和 git merge的区别</h1>
+<p>merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟的代码历史. 下面我们分别说说 merge 和 rebase 的具体操作</p>
+<h2 id="rebase">rebase</h2>
+<p>假设你有两个分支，一个master主分支，一个从master分离出来的feature分支，如下所示</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   feature 分支
+</span></span><span class="line"><span class="cl">     /
+</span></span><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D   master 分支
+</span></span></code></pre></div><p>当使用 merge 的时候，比如在feature分支上使用 &ldquo;git rebase master&rdquo;, git 会先找到两个分支的最近公共祖先，在这里也就是B，然后对比feature分支相比于B的历次commit，也就是E和F，提取相应的修改并存为临时文件，再将header指向master分支的最后一次提交，也就是D，以此作为新的基底将之前存起来的的临时文件按顺序应用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D &lt;- E‘ &lt;- F’  feature 分支
+</span></span></code></pre></div><p>也可以理解成 rebase 是直接将以B的作为基底切换到了以D作为基底，并提交了两个内容相同的commit（E和F），但实际上E和F已经不再是以前的E和F，变成了E‘和F’，他们是在master分支commit C和D之后再进行的提交，因此实际上 rebase 操作是丢弃了一些原有的commit（E和F），而新提交一些内容一样但实际上不同的commit（E‘和F’）</p>
+<p>使用 rebase 可以使得代码历史简介有线性，例如这次操作的历史变为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 最上面是最新的</span>
+</span></span><span class="line"><span class="cl">* 74199ce <span class="o">(</span>HEAD -&gt; master, feature<span class="o">)</span> commit F
+</span></span><span class="line"><span class="cl">* e7c7111 commit E
+</span></span><span class="line"><span class="cl">* d9623b0 commit D
+</span></span><span class="line"><span class="cl">* 73deeed commit C
+</span></span><span class="line"><span class="cl">* c50221f commit B
+</span></span><span class="line"><span class="cl">* ef13725 commit A
+</span></span></code></pre></div><h2 id="merge">merge</h2>
+<p>以同样的例子举例，使用merge操作生成的代码历史显得比较复杂</p>
 <ul>
-<li><a href="https://github.com/ashhhi/Smart-Farm">Crop Coverage and Height Detection Based on Deep Learning</a></li>
-<li><a href="https://github.com/ashhhi/MWM">Music with Movements</a></li>
-<li>玩无畏契约</li>
+<li>切换到 feature 分支： git checkout feature。</li>
+<li>合并 master 分支的更新： git merge master。</li>
 </ul>
-<h2 id="最近在看">👓最近在看</h2>
-<ul>
-<li><a href="https://gimy.ai/vod/155289.html">无耻之徒 第四季</a></li>
-<li><a href="https://liquipedia.net/valorant/VCT/2024/Stage_1/Masters">Valorant马德里大师赛</a></li>
-</ul>
-<h2 id="最近在听">🎧最近在听</h2>
-<ul>
-<li><a href="https://open.spotify.com/artist/7bu3H8JO7d0UbMoVzbo70s?si=cc456907784b4200">The Cure</a></li>
-<li><a href="https://open.spotify.com/artist/0SIXZXJCAhNU8sxK0qm7hn?si=344278c6588b4a58">孙燕姿</a></li>
-<li><a href="https://open.spotify.com/artist/2dXI8YsDDZSD3HgoNUvilF?si=49f8ea2a7ac34518">Sylvain Luc</a></li>
-<li><a href="https://open.spotify.com/artist/27mRThsZ9K1BYmz0rioxwp?si=8058605073d147f2">Chucho Valdes</a></li>
-</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">*   875906b Merge branch <span class="s1">&#39;master&#39;</span> into feature
+</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="se">\ </span> 
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> 5b05585 commit F
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> f5b0fc0 commit E
+</span></span><span class="line"><span class="cl">* * d017dff commit D
+</span></span><span class="line"><span class="cl">* * 9df916f commit C
+</span></span><span class="line"><span class="cl"><span class="p">|</span>/  
+</span></span><span class="line"><span class="cl">* cb932a6 commit B
+</span></span><span class="line"><span class="cl">* sd8fd7f commit A
+</span></span></code></pre></div><p>也就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   
+</span></span><span class="line"><span class="cl">     /           <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>A &lt;- B &lt;-  C  &lt;-  D 
+</span></span></code></pre></div><p>可以看到 merge 会形成一个新的节点，之前的两个分支提交都分开显示，而 rebase 不会生成新的节点，是将两个分支融合成一个线性操作.</p>
+
+  <div style="display: flex; justify-content: flex-end;"><span style="font-style: italic; color: grey; ">最后编辑于: 2024-03-18</span></div></article>
+
+  
+  
+    
+    <div class="author-card">
+  <div class="underline"></div>
+  <div class="author-box">
+    <div class="author-image"><a href="https://ashhhi.github.io"
+        ><img src="/images/ash-author.jpg" alt="SHI Junshen (Ash)"
+      /></a></div>
+    <div class="author-content">
+      <p class="author-title">Author</p>
+      <p class="author-name">SHI Junshen (Ash)</p>
+      <p class="author-desc">Developer/Gamer/Guitar Player</p>
+    </div>
+  </div>
+</div>
+    
+  
+  <div class="ultterances-comment">
+  <div>
+    <div class="comment-underline"></div>
+  </div>
+  <comments>
+    <script
+      src="https://utteranc.es/client.js"
+      repo="ashhhi/hugoblogtalks"
+      issue-term="pathname"
+      theme="github-light"
+      crossorigin="anonymous"
+      async
+    ></script>
+  </comments>
+  <div></div>
+</div>
 
 </div>
 
