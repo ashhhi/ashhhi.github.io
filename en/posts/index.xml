@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 13 Apr 2024 00:00:00 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/en/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>振作起来吧</title>
+      <link>https://ashhhi.github.io/en/2024/04/13/%E6%8C%AF%E4%BD%9C%E8%B5%B7%E6%9D%A5%E5%90%A7/</link>
+      <pubDate>Sat, 13 Apr 2024 00:00:00 +0800</pubDate>
+      <guid>https://ashhhi.github.io/en/2024/04/13/%E6%8C%AF%E4%BD%9C%E8%B5%B7%E6%9D%A5%E5%90%A7/</guid>
+      <description>在床上躺了将近三个小时后，我终于还是坐起来想写一点东西，关于最近的生活和一些情绪。 朋友 现在是早上六点钟，一晚上都没睡觉，其实也是三点才上的床</description>
+    </item>
     <item>
       <title>git rebase 和 git merge的区别</title>
       <link>https://ashhhi.github.io/en/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/</link>
@@ -24,10 +31,10 @@
       <description>Git 记录 清除git缓存，使修改后的gitignore生效 git rm -r --cached . git add . git commit -m &amp;#39;update .gitignore&amp;#39; 查看commit记录 git log 查看所有 git show 查看最新的commit git</description>
     </item>
     <item>
-      <title>周记：登狮子山顶俯瞰九龙，与乐队朋友的爵士Conference，EDG惜败Gen.G</title>
-      <link>https://ashhhi.github.io/en/2024/03/17/%E5%91%A8%E8%AE%B0%E7%99%BB%E7%8B%AE%E5%AD%90%E5%B1%B1%E9%A1%B6%E4%BF%AF%E7%9E%B0%E4%B9%9D%E9%BE%99%E4%B8%8E%E4%B9%90%E9%98%9F%E6%9C%8B%E5%8F%8B%E7%9A%84%E7%88%B5%E5%A3%ABconferenceedg%E6%83%9C%E8%B4%A5gen.g/</link>
+      <title>记：登狮子山顶俯瞰九龙，与乐队朋友的爵士Conference，EDG惜败Gen.G</title>
+      <link>https://ashhhi.github.io/en/2024/03/17/%E8%AE%B0%E7%99%BB%E7%8B%AE%E5%AD%90%E5%B1%B1%E9%A1%B6%E4%BF%AF%E7%9E%B0%E4%B9%9D%E9%BE%99%E4%B8%8E%E4%B9%90%E9%98%9F%E6%9C%8B%E5%8F%8B%E7%9A%84%E7%88%B5%E5%A3%ABconferenceedg%E6%83%9C%E8%B4%A5gen.g/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/2024/03/17/%E5%91%A8%E8%AE%B0%E7%99%BB%E7%8B%AE%E5%AD%90%E5%B1%B1%E9%A1%B6%E4%BF%AF%E7%9E%B0%E4%B9%9D%E9%BE%99%E4%B8%8E%E4%B9%90%E9%98%9F%E6%9C%8B%E5%8F%8B%E7%9A%84%E7%88%B5%E5%A3%ABconferenceedg%E6%83%9C%E8%B4%A5gen.g/</guid>
+      <guid>https://ashhhi.github.io/en/2024/03/17/%E8%AE%B0%E7%99%BB%E7%8B%AE%E5%AD%90%E5%B1%B1%E9%A1%B6%E4%BF%AF%E7%9E%B0%E4%B9%9D%E9%BE%99%E4%B8%8E%E4%B9%90%E9%98%9F%E6%9C%8B%E5%8F%8B%E7%9A%84%E7%88%B5%E5%A3%ABconferenceedg%E6%83%9C%E8%B4%A5gen.g/</guid>
       <description>爬山 距离上一次远足已经过去了好久好久，前两次一次是去鹤咀，一次是去麦理浩径第二段，这一次我们去了狮子山。 其实最开始是阿培提出来的，我公司的一</description>
     </item>
     <item>
