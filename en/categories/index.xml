@@ -7,20 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Sat, 13 Apr 2024 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Life</title>
-      <link>https://ashhhi.github.io/en/category/life/</link>
-      <pubDate>Sat, 13 Apr 2024 00:00:00 +0800</pubDate>
-      <guid>https://ashhhi.github.io/en/category/life/</guid>
-      <description></description>
-    </item>
     <item>
       <title>Note</title>
       <link>https://ashhhi.github.io/en/category/note/</link>
-      <pubDate>Mon, 18 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
       <guid>https://ashhhi.github.io/en/category/note/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Life</title>
+      <link>https://ashhhi.github.io/en/category/life/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/category/life/</guid>
       <description></description>
     </item>
   </channel>

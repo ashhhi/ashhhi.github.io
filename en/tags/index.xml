@@ -7,13 +7,27 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Sat, 13 Apr 2024 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>情绪</title>
-      <link>https://ashhhi.github.io/en/tag/%E6%83%85%E7%BB%AA/</link>
-      <pubDate>Sat, 13 Apr 2024 00:00:00 +0800</pubDate>
-      <guid>https://ashhhi.github.io/en/tag/%E6%83%85%E7%BB%AA/</guid>
+      <title>图像处理</title>
+      <link>https://ashhhi.github.io/en/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>深度学习</title>
+      <link>https://ashhhi.github.io/en/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>踩坑</title>
+      <link>https://ashhhi.github.io/en/tag/%E8%B8%A9%E5%9D%91/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/en/tag/%E8%B8%A9%E5%9D%91/</guid>
       <description></description>
     </item>
     <item>
@@ -24,37 +38,9 @@
       <description></description>
     </item>
     <item>
-      <title>游戏</title>
-      <link>https://ashhhi.github.io/en/tag/%E6%B8%B8%E6%88%8F/</link>
-      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/tag/%E6%B8%B8%E6%88%8F/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>聚会</title>
-      <link>https://ashhhi.github.io/en/tag/%E8%81%9A%E4%BC%9A/</link>
-      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/tag/%E8%81%9A%E4%BC%9A/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>记</title>
-      <link>https://ashhhi.github.io/en/tag/%E8%AE%B0/</link>
-      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/tag/%E8%AE%B0/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>远足</title>
-      <link>https://ashhhi.github.io/en/tag/%E8%BF%9C%E8%B6%B3/</link>
-      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
-      <guid>https://ashhhi.github.io/en/tag/%E8%BF%9C%E8%B6%B3/</guid>
-      <description></description>
-    </item>
-    <item>
       <title>音乐</title>
       <link>https://ashhhi.github.io/en/tag/%E9%9F%B3%E4%B9%90/</link>
-      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
       <guid>https://ashhhi.github.io/en/tag/%E9%9F%B3%E4%B9%90/</guid>
       <description></description>
     </item>
