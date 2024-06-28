@@ -7,8 +7,29 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/zh-cn/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>踩坑</title>
+      <link>https://ashhhi.github.io/zh-cn/tag/%E8%B8%A9%E5%9D%91/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/tag/%E8%B8%A9%E5%9D%91/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>深度学习</title>
+      <link>https://ashhhi.github.io/zh-cn/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>图像处理</title>
+      <link>https://ashhhi.github.io/zh-cn/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Git</title>
       <link>https://ashhhi.github.io/zh-cn/tag/git/</link>

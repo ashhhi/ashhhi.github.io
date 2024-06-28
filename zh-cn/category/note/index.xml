@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <copyright>Ash</copyright>
-    <lastBuildDate>Mon, 18 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 28 Jun 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/zh-cn/category/note/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图像分割中Loss不断增加</title>
+      <link>https://ashhhi.github.io/zh-cn/2024/06/28/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E4%B8%ADloss%E4%B8%8D%E6%96%AD%E5%A2%9E%E5%8A%A0/</link>
+      <pubDate>Fri, 28 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://ashhhi.github.io/zh-cn/2024/06/28/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E4%B8%ADloss%E4%B8%8D%E6%96%AD%E5%A2%9E%E5%8A%A0/</guid>
+      <description>今天在修改Smart Farm项目代码之后，开始训练一个新的模型的时候，出现了以下这种情况， loss值不断往上飙。 Epoch 4: saving model to Model_save/NewNet.h5 184/184 [==============================] - 37s 203ms/step - loss: 5.3932</description>
+    </item>
     <item>
       <title>git rebase 和 git merge的区别</title>
       <link>https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/</link>

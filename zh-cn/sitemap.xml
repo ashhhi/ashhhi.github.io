@@ -10,14 +10,63 @@
   
   <url>
     <loc>https://ashhhi.github.io/zh-cn/</loc>
-    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
   
   <url>
     <loc>https://ashhhi.github.io/zh-cn/categories/</loc>
-    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/category/note/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/posts/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tags/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tag/%E8%B8%A9%E5%9D%91/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tag/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/tag/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  
+  <url>
+    <loc>https://ashhhi.github.io/zh-cn/2024/06/28/%E5%9B%BE%E5%83%8F%E5%88%86%E5%89%B2%E4%B8%ADloss%E4%B8%8D%E6%96%AD%E5%A2%9E%E5%8A%A0/</loc>
+    <lastmod>2024-06-28T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -31,27 +80,6 @@
   
   <url>
     <loc>https://ashhhi.github.io/zh-cn/2024/03/18/git-rebase-%E5%92%8C-git-merge%E7%9A%84%E5%8C%BA%E5%88%AB/</loc>
-    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/category/note/</loc>
-    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/posts/</loc>
-    <lastmod>2024-03-18T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/tags/</loc>
     <lastmod>2024-03-18T00:00:00+00:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
@@ -102,12 +130,6 @@
   <url>
     <loc>https://ashhhi.github.io/zh-cn/tag/%E5%89%8D%E7%AB%AF/</loc>
     <lastmod>2023-02-28T00:00:00+00:00</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.5</priority>
-  </url>
-  
-  <url>
-    <loc>https://ashhhi.github.io/zh-cn/1/01/01/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
