@@ -12,7 +12,7 @@
  
 
 
-      <title>【深度学习01】如何用DETR官方代码训练自己的数据集 - </title>
+      <title>【深度学习01】如何用DETR官方代码训练自己的数据集 - Ashhhi</title>
 
   <meta name="description" content="DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
@@ -270,13 +270,42 @@
 
     
 <div class="container" role="main">
+  
   <div class="row">
+    
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-代码结构">1. 代码结构</a></li>
+    <li><a href="#2-构建自己的数据集">2. 构建自己的数据集</a>
+      <ul>
+        <li><a href="#21-roboflow标注">2.1 Roboflow标注</a></li>
+        <li><a href="#22-自定义dataset类pytorch">2.2 自定义Dataset类（PyTorch）</a></li>
+        <li><a href="#23-数据增强部分">2.3 数据增强部分</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-开始训练">3. 开始训练</a>
+      <ul>
+        <li><a href="#31-模型参数设置">3.1 模型参数设置</a></li>
+        <li><a href="#32-加载预训练权重然后微调">3.2 加载预训练权重然后微调</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-可视化测试结果">4. 可视化测试结果</a></li>
+    <li><a href="#5-总结">5. 总结</a></li>
+  </ul>
+</nav> 
+        
+      
+
+
       <article role="main" class="blog-post">
         <p>DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：</p>
 <p>​
-论文地址：<a href="https://arxiv.org/abs/2005.12872">https://arxiv.org/abs/2005.12872</a>
-Github地址：<a href="https://github.com/facebookresearch/detr">https://github.com/facebookresearch/detr</a></p>
+论文地址：<a href="https://arxiv.org/abs/2005.12872">https://arxiv.org/abs/2005.12872</a></p>
+<p>Github地址：<a href="https://github.com/facebookresearch/detr">https://github.com/facebookresearch/detr</a></p>
 <p>关于模型原理网上已经有各个大佬的讲解了，这里放上我觉得讲的最清晰的：
 <a href="https://blog.csdn.net/baidu_36913330/article/details/120495817">深度学习之目标检测（十一）&ndash;DETR详解</a></p>
 <hr>
@@ -296,7 +325,7 @@ Github地址：<a href="https://github.com/facebookresearch/detr">https://github
 </ul>
 <h1 id="2-构建自己的数据集">2. 构建自己的数据集</h1>
 <p>COCO数据集可以直接采用官方的实现方法，在Github里也有对应的Tutorial，这里我们讲一下如何使用自己的数据集进行训练。</p>
-<h2 id="31-roboflow标注">3.1 Roboflow标注</h2>
+<h2 id="21-roboflow标注">2.1 Roboflow标注</h2>
 <p>首先是数据标注部分，我采用的是<a href="https://roboflow.com/">Roboflow</a>平台进行标注，标注完成后选择导出格式为COCO数据集格式，选择“Download zip to computer”，然后在自己电脑上进行压缩，我们可以得到这样格式的文件，分了train，valid，test文件夹，每个文件夹下存储了对应的图片还有一个json文件，json文件里包含了所有标签的信息。
 <img src="/img/detr_dataset.png" alt=""></p>
 <h2 id="22-自定义dataset类pytorch">2.2 自定义Dataset类（PyTorch）</h2>
@@ -598,61 +627,6 @@ Github地址：<a href="https://github.com/facebookresearch/detr">https://github
           </div>
         
 
-        
-            <hr/>
-            <section id="social-share">
-              <div class="list-inline footer-links">
-                
-
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
-      
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f&amp;text=%e3%80%90%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a001%e3%80%91%e5%a6%82%e4%bd%95%e7%94%a8DETR%e5%ae%98%e6%96%b9%e4%bb%a3%e7%a0%81%e8%ae%ad%e7%bb%83%e8%87%aa%e5%b7%b1%e7%9a%84%e6%95%b0%e6%8d%ae%e9%9b%86&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f&amp;title=%e3%80%90%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a001%e3%80%91%e5%a6%82%e4%bd%95%e7%94%a8DETR%e5%ae%98%e6%96%b9%e4%bb%a3%e7%a0%81%e8%ae%ad%e7%bb%83%e8%87%aa%e5%b7%b1%e7%9a%84%e6%95%b0%e6%8d%ae%e9%9b%86" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f&amp;title=%e3%80%90%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a001%e3%80%91%e5%a6%82%e4%bd%95%e7%94%a8DETR%e5%ae%98%e6%96%b9%e4%bb%a3%e7%a0%81%e8%ae%ad%e7%bb%83%e8%87%aa%e5%b7%b1%e7%9a%84%e6%95%b0%e6%8d%ae%e9%9b%86" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f&amp;title=%e3%80%90%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a001%e3%80%91%e5%a6%82%e4%bd%95%e7%94%a8DETR%e5%ae%98%e6%96%b9%e4%bb%a3%e7%a0%81%e8%ae%ad%e7%bb%83%e8%87%aa%e5%b7%b1%e7%9a%84%e6%95%b0%e6%8d%ae%e9%9b%86" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-09-06-detr%2f&amp;description=%e3%80%90%e6%b7%b1%e5%ba%a6%e5%ad%a6%e4%b9%a001%e3%80%91%e5%a6%82%e4%bd%95%e7%94%a8DETR%e5%ae%98%e6%96%b9%e4%bb%a3%e7%a0%81%e8%ae%ad%e7%bb%83%e8%87%aa%e5%b7%b1%e7%9a%84%e6%95%b0%e6%8d%ae%e9%9b%86" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-  
-
-              </div>
-            </section>
         
 
         

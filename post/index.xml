@@ -25,7 +25,7 @@
       <description>&lt;p&gt;记录一些Git常用指令和原理解释&lt;/p&gt;</description>
     </item>
     <item>
-      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</title>
+      <title>Docker 配置监控管理系统</title>
       <link>https://ashhhi.github.io/post/2024-02-28-grafana/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
       <guid>https://ashhhi.github.io/post/2024-02-28-grafana/</guid>

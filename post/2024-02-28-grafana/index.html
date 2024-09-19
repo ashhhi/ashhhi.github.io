@@ -12,7 +12,7 @@
  
 
 
-      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql - </title>
+      <title>Docker 配置监控管理系统 - Ashhhi</title>
 
   <meta name="description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
@@ -51,7 +51,7 @@
         "position": 3,
         "item": {
           "@id": "https:\/\/ashhhi.github.io\/post\/2024-02-28-grafana\/",
-          "name": "Docker 配置 prometheus alertmanager grafana mysql"
+          "name": "Docker 配置监控管理系统"
         }
     }]
 }
@@ -62,10 +62,10 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "Docker 配置 Prometheus\u002bAlertmanager\u002bGrafana\u002bMysql",
+  "headline": "Docker 配置监控管理系统",
   "description" : "本文讲解了使用 Docker 配置 Prometheus\u002bAlertmanager\u002bGrafana\u002bMysql\n",
   "inLanguage" : "en",
-  "wordCount":  689 ,
+  "wordCount":  686 ,
   "datePublished" : "2023-02-28T00:00:00\u002b00:00",
   "dateModified" : "2023-02-28T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
@@ -85,14 +85,14 @@
 </script>
 
 
-<meta property="og:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
+<meta property="og:title" content="Docker 配置监控管理系统" />
 <meta property="og:description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
 <meta property="og:url" content="https://ashhhi.github.io/post/2024-02-28-grafana/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi" />
 
-  <meta name="twitter:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
+  <meta name="twitter:title" content="Docker 配置监控管理系统" />
   <meta name="twitter:description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -233,7 +233,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</h1>
+                <h1>Docker 配置监控管理系统</h1>
               
               
               
@@ -247,7 +247,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;689&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;686&nbsp;words
   
   
     
@@ -270,11 +270,46 @@
 
     
 <div class="container" role="main">
+  
   <div class="row">
+    
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#prometheus">Prometheus</a></li>
+        <li><a href="#alertmanager">AlertManager</a>
+          <ul>
+            <li><a href="#环境配置及运行">环境配置及运行</a></li>
+          </ul>
+        </li>
+        <li><a href="#grafana">Grafana</a>
+          <ul>
+            <li><a href="#移植">移植</a></li>
+          </ul>
+        </li>
+        <li><a href="#mysql">Mysql</a>
+          <ul>
+            <li><a href="#安装和配置">安装和配置</a></li>
+            <li><a href="#复制-mysql本地到虚拟机">复制 mysql（本地到虚拟机）</a></li>
+            <li><a href="#遇到的问题">遇到的问题</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#docker-遇到的问题">Docker 遇到的问题</a></li>
+  </ul>
+</nav> 
+        
+      
+
+
       <article role="main" class="blog-post">
         <p>本文讲解了使用 Docker 配置 Prometheus+Alertmanager+Grafana+Mysql</p>
-<h1 id="docker-配置-prometheusalertmanagergrafanamysql">Docker 配置 Prometheus+Alertmanager+Grafana+Mysql</h1>
 <h2 id="prometheus">Prometheus</h2>
 <p>1、下载镜像包：</p>
 <div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull prom/prometheus
@@ -569,61 +604,6 @@ match_re 可以用正则表达式匹配</p>
           </div>
         
 
-        
-            <hr/>
-            <section id="social-share">
-              <div class="list-inline footer-links">
-                
-
-<div class="share-box" aria-hidden="true">
-    <ul class="share">
-      
-      <li>
-        <a href="//twitter.com/share?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;text=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql&amp;via=" target="_blank" title="Share on Twitter">
-          <i class="fab fa-twitter"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f" target="_blank" title="Share on Facebook">
-          <i class="fab fa-facebook"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//reddit.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on Reddit">
-          <i class="fab fa-reddit"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on LinkedIn">
-          <i class="fab fa-linkedin"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on StumbleUpon">
-          <i class="fab fa-stumbleupon"></i>
-        </a>
-      </li>
-  
-      
-      <li>
-        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;description=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on Pinterest">
-          <i class="fab fa-pinterest"></i>
-        </a>
-      </li>
-    </ul>
-  </div>
-  
-
-              </div>
-            </section>
         
 
         
