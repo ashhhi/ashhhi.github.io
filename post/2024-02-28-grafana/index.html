@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql - </title>
+
+  <meta name="description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
+  <meta name="author" content="Ashhhi"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Ashhhi",
+    
+    "url": "https:\/\/ashhhi.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/ashhhi.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/post\/2024-02-28-grafana\/",
+          "name": "Docker 配置 prometheus alertmanager grafana mysql"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "Docker 配置 Prometheus\u002bAlertmanager\u002bGrafana\u002bMysql",
+  "description" : "本文讲解了使用 Docker 配置 Prometheus\u002bAlertmanager\u002bGrafana\u002bMysql\n",
+  "inLanguage" : "en",
+  "wordCount":  689 ,
+  "datePublished" : "2023-02-28T00:00:00\u002b00:00",
+  "dateModified" : "2023-02-28T00:00:00\u002b00:00",
+  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+  "keywords" : [ "计算机通用技术" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-02-28-grafana\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/ashhhi.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
+<meta property="og:description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
+<meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+<meta property="og:url" content="https://ashhhi.github.io/post/2024-02-28-grafana/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ashhhi" />
+
+  <meta name="twitter:title" content="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql" />
+  <meta name="twitter:description" content="本文讲解了使用 Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">
+  <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://ashhhi.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.134.2">
+  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Ashhhi" href="https://ashhhi.github.io/">
+            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 28, 2023
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;689&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Ashhhi
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>本文讲解了使用 Docker 配置 Prometheus+Alertmanager+Grafana+Mysql</p>
+<h1 id="docker-配置-prometheusalertmanagergrafanamysql">Docker 配置 Prometheus+Alertmanager+Grafana+Mysql</h1>
+<h2 id="prometheus">Prometheus</h2>
+<p>1、下载镜像包：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull prom/prometheus
+</span></span></code></pre></div><p>2、配置 Prometheus</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /opt/prometheus
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> /opt/prometheus/
+</span></span><span class="line"><span class="cl">vim prometheus.yml
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1">#opt是linux中存放第三方软件的文件夹</span>
+</span></span></code></pre></div><p>内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">global:
+</span></span><span class="line"><span class="cl">  scrape_interval:     60s
+</span></span><span class="line"><span class="cl">  evaluation_interval: 60s
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">scrape_configs:
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  - job_name: prometheus
+</span></span><span class="line"><span class="cl">    static_configs:
+</span></span><span class="line"><span class="cl">      - targets: <span class="o">[</span><span class="s1">&#39;localhost:9090&#39;</span><span class="o">]</span>
+</span></span><span class="line"><span class="cl">        labels:
+</span></span><span class="line"><span class="cl">          instance: prometheus
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">  - job_name: Data
+</span></span><span class="line"><span class="cl">    static_configs:
+</span></span><span class="line"><span class="cl">      - targets: <span class="o">[</span><span class="s1">&#39;192.168.37.184:5000&#39;</span><span class="o">]</span>	<span class="c1">#python中对应的端口号是5000，所以从主机5000端口接收数据</span>
+</span></span><span class="line"><span class="cl">        labels:
+</span></span><span class="line"><span class="cl">          instance: Data
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">alerting:
+</span></span><span class="line"><span class="cl">  alertmanagers:
+</span></span><span class="line"><span class="cl">    - static_configs:
+</span></span><span class="line"><span class="cl">      - targets: <span class="o">[</span><span class="s1">&#39;172.17.0.1:9093&#39;</span><span class="o">]</span>	<span class="c1">#这里的ip是docker的ip地址，也可以改为宿主机的ip地址，但对应暴露的端口号也要改变</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">rule_files:
+</span></span><span class="line"><span class="cl">  - rules.yml
+</span></span></code></pre></div><p>3、配置 rules.yml，即 alert 的规则</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /opt/prometheus/rules.yml
+</span></span></code></pre></div><p>内容如下：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">groups</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l">server-alarm</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;内存告警&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l">(1 - (node_memory_MemAvailable_bytes / (node_memory_MemTotal_bytes))) * 100 &gt; 80</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l">1m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l">warning</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: 检测到 高内存 使用率！&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: 内存使用率在 80% 以上 (当前使用值为:{{ $value }})&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;CPU告警&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l">(1 - avg(irate(node_cpu_seconds_total{mode=&#34;idle&#34;}[2m])) by(instance)) * 100 &gt; 80</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l">1m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l">warning</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: 检测到 高CPU 使用率！&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: CPU使用率在 80% 以上 (当前使用值为:{{ $value }})&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;磁盘告警&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="m">100</span><span class="w"> </span>- <span class="l">(node_filesystem_free_bytes{fstype=~&#34;tmpfs|ext4&#34;} / node_filesystem_size_bytes{fstype=~&#34;tmpfs|ext4&#34;} * 100) &gt; 5</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l">1m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l">warning</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: 检测到 高磁盘 使用率！&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{$labels.instance}}: 磁盘使用率在 80% 以上 (当前使用值为:{{ $value }})&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">alert</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;InstanceUp&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">expr</span><span class="p">:</span><span class="w"> </span><span class="l">up == 1</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">for</span><span class="p">:</span><span class="w"> </span><span class="l">1m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">labels</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="l">warning</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">annotations</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">summary</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ $labels.instance }}&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">          </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;{{ $labels.instance }} of job {{ $labels.job }} has been up for more than 1 minutes.&#34;</span><span class="w">
+</span></span></span></code></pre></div><p>4、网络准备</p>
+<p>因为需要在本地运行两个容器，且两个容器需要互相能否访问，所以这里创建一个 network。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker network create prom
+</span></span></code></pre></div><p>查看：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="o">[</span>root@centos01 ~<span class="o">]</span><span class="c1"># docker network ls</span>
+</span></span><span class="line"><span class="cl">NETWORK ID     NAME      DRIVER    SCOPE
+</span></span><span class="line"><span class="cl">086bf47d28da   bridge    bridge    <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">19357bf4da6f   host      host      <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">14df82a9ab10   none      null      <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">e09f984b92bc   prom      bridge    <span class="nb">local</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="o">[</span>root@centos01 ~<span class="o">]</span><span class="c1"># docker inspect e09f984b92bc</span>
+</span></span><span class="line"><span class="cl"><span class="o">[</span>
+</span></span><span class="line"><span class="cl">    <span class="o">{</span>
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Name&#34;</span>: <span class="s2">&#34;prom&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Id&#34;</span>: <span class="s2">&#34;e09f984b92bc77fcaa9b5c6b1090938dde918f739b5eb67a18e56eb1f8c4eead&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Created&#34;</span>: <span class="s2">&#34;2022-07-13T15:02:27.09181599+08:00&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Scope&#34;</span>: <span class="s2">&#34;local&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;bridge&#34;</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;EnableIPv6&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;IPAM&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Driver&#34;</span>: <span class="s2">&#34;default&#34;</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Config&#34;</span>: <span class="o">[</span>
+</span></span><span class="line"><span class="cl">                <span class="o">{</span>
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Subnet&#34;</span>: <span class="s2">&#34;172.18.0.0/16&#34;</span>,
+</span></span><span class="line"><span class="cl">                    <span class="s2">&#34;Gateway&#34;</span>: <span class="s2">&#34;172.18.0.1&#34;</span>
+</span></span><span class="line"><span class="cl">                <span class="o">}</span>
+</span></span><span class="line"><span class="cl">            <span class="o">]</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Internal&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Attachable&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Ingress&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigFrom&#34;</span>: <span class="o">{</span>
+</span></span><span class="line"><span class="cl">            <span class="s2">&#34;Network&#34;</span>: <span class="s2">&#34;&#34;</span>
+</span></span><span class="line"><span class="cl">        <span class="o">}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;ConfigOnly&#34;</span>: false,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Containers&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Options&#34;</span>: <span class="o">{}</span>,
+</span></span><span class="line"><span class="cl">        <span class="s2">&#34;Labels&#34;</span>: <span class="o">{}</span>
+</span></span><span class="line"><span class="cl">    <span class="o">}</span>
+</span></span><span class="line"><span class="cl"><span class="o">]</span>
+</span></span></code></pre></div><p>5、启动 Prometheus</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run  -d --name prometheus --restart<span class="o">=</span>always -p 9090:9090 -v /opt/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml -v  /opt/prometheus/rules.yml:/etc/prometheus/rules.yml  prom/prometheus
+</span></span></code></pre></div><h2 id="alertmanager">AlertManager</h2>
+<h3 id="环境配置及运行">环境配置及运行</h3>
+<p>1、准备镜像</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull prom/alertmanager
+</span></span></code></pre></div><p>2、Alertmanager 配置：</p>
+<ul>
+<li>先用 docker 将其运行起来</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run -d --name alertmanager --network prom -p 9093:9093 prom/alertmanager
+</span></span></code></pre></div><ul>
+<li>再将容器中的的 alertmanager 文件夹复制到宿主机内的/opt/alertmanager 中</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker cp alertmanager:/etc/alertmanager /opt/alertmanager
+</span></span></code></pre></div><ul>
+<li>修改 alertmanager.yml 配置文件</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">vim /opt/alertmanager/alertmanager.yml
+</span></span></code></pre></div><p>如下：
+<a href="https://blog.csdn.net/yuezhilangniao/article/details/119766157">alertmanager 配置详解</a>
+match_re 可以用正则表达式匹配</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-yaml" data-lang="yaml"><span class="line"><span class="cl"><span class="nt">global</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">resolve_timeout</span><span class="p">:</span><span class="w"> </span><span class="l">5m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">smtp_smarthost</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;xxxx&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">smtp_from</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;xxxx&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">smtp_auth_username</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;xxxx&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">smtp_auth_password</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;xxxx&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">smtp_require_tls</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">route</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">group_by</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;IP&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;alertname&#34;</span><span class="p">]</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">group_wait</span><span class="p">:</span><span class="w"> </span><span class="l">20s</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">group_interval</span><span class="p">:</span><span class="w"> </span><span class="l">5m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">repeat_interval</span><span class="p">:</span><span class="w"> </span><span class="l">30m</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l">Test</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span><span class="nt">routes</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">IP</span><span class="p">:</span><span class="w"> </span><span class="l">xxxx|xxxx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l">Tom</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">IP</span><span class="p">:</span><span class="w"> </span><span class="l">xxxx|xxxx|xxxx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l">Corey</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">IP</span><span class="p">:</span><span class="w"> </span><span class="l">xxxx</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l">Ash</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span>- <span class="nt">match_re</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">system_name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;.*Kirk.*&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">receiver</span><span class="p">:</span><span class="w"> </span><span class="l">Kirk</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">receivers</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Tom&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;123@qq.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Corey&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;222@qq.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Ash&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;333@qq.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;Kirk&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">email_configs</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span>- <span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;444@qq.com&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">        </span><span class="nt">send_resolved</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w"></span><span class="nt">inhibit_rules</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">  </span>- <span class="nt">source_match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;critical&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">target_match</span><span class="p">:</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">      </span><span class="nt">severity</span><span class="p">:</span><span class="w"> </span><span class="s2">&#34;warning&#34;</span><span class="w">
+</span></span></span><span class="line"><span class="cl"><span class="w">    </span><span class="nt">equal</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&#34;alertname&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;dev&#34;</span><span class="p">,</span><span class="w"> </span><span class="s2">&#34;instance&#34;</span><span class="p">]</span><span class="w">
+</span></span></span></code></pre></div><ul>
+<li>把宿主机的文件夹挂载到容器上，再运行，这样修改宿主机的 yml 文件就能容器内文件也对应改变</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run -itd --name alertmanager -p 9093:9093 -v /opt/alertmanager:/etc/alertmanager prom/alertmanager
+</span></span></code></pre></div><h2 id="grafana">Grafana</h2>
+<p>1、拉取镜像</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull grafana/grafana
+</span></span></code></pre></div><p>新建空文件夹 grafana-storage，用来存储数据</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mkdir /opt/grafana-storage
+</span></span></code></pre></div><p>2、添加权限</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">chmod <span class="m">777</span> -R /opt/grafana-storage
+</span></span></code></pre></div><p>3、启动 grafana</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run -d --name grafana --restart<span class="o">=</span>always -p 521:3000 --name<span class="o">=</span>grafana -v /opt/grafana-storage:/var/lib/grafana grafana/grafana
+</span></span></code></pre></div><p>4、访问 url：</p>
+<p>http://ip:521/</p>
+<p>5、登陆</p>
+<p>默认的用户密码都是：admin</p>
+<h3 id="移植">移植</h3>
+<p>将/var/lib/grafana 下的：</p>
+<ul>
+<li>plugins 文件夹</li>
+<li>grafana.db 文件</li>
+</ul>
+<p>复制到新的 grafana 上面就行</p>
+<h2 id="mysql">Mysql</h2>
+<h3 id="安装和配置">安装和配置</h3>
+<p>1、安装 mysql</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker pull mysql
+</span></span></code></pre></div><p>2、创建必要的文件夹</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="nb">cd</span> /opt <span class="c1"># 我的软件都安装在/opt目录下。</span>
+</span></span><span class="line"><span class="cl">mkdir mysql_docker
+</span></span><span class="line"><span class="cl"><span class="nb">cd</span> mysql_docker/
+</span></span><span class="line"><span class="cl"><span class="nb">echo</span> <span class="nv">$PWD</span> <span class="c1"># 当前位置的绝对路径</span>
+</span></span></code></pre></div><p>3、启动 mysql 容器</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker run --name mysqlserver --restart<span class="o">=</span>always --privileged<span class="o">=</span><span class="nb">true</span> -v <span class="nv">$PWD</span>/conf:/etc/mysql/conf.d -v <span class="nv">$PWD</span>/logs:/logs -v <span class="nv">$PWD</span>/data:/var/lib/mysql -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span><span class="m">123456</span> -d -i -p 3306:3306 mysql:latest
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl"><span class="c1"># $PWD是当前位置的绝对路径，所以必须在2中创建的文件夹下执行该命令</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># --privileged=true：在docker run中加入 --privileged=true 给容器加上特定权限</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># --name mysqlserver :指定容器的名字为mysqlserver</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -v $PWD/conf:/etc/mysql/conf.d：将主机当前目录下的 conf/my.cnf 挂载到容器的 /etc/mysql/my.cnf。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -v $PWD/data:/var/lib/mysql ：将主机当前目录下的data目录挂载到容器的 /var/lib/mysql 。</span>
+</span></span><span class="line"><span class="cl"><span class="c1"># -e MYSQL_ROOT_PASSWORD=123456：初始化 root 用户的密码。</span>
+</span></span></code></pre></div><p>4、测试 mysql 登录</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">docker <span class="nb">exec</span> -it mysqlserver /bin/bash <span class="c1"># 也可以把容器名&#34;mysqlserver&#34;改为容器id</span>
+</span></span><span class="line"><span class="cl">mysql -uroot -p
+</span></span><span class="line"><span class="cl"><span class="c1">#设置了初始化密码是123456</span>
+</span></span></code></pre></div><p>5、测试远程连接</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --add-port<span class="o">=</span>3306/tcp --permanent <span class="c1"># 开放3306端口</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --reload <span class="c1"># 配置立即生效</span>
+</span></span><span class="line"><span class="cl">firewall-cmd --zone<span class="o">=</span>public --list-ports
+</span></span></code></pre></div><h3 id="复制-mysql本地到虚拟机">复制 mysql（本地到虚拟机）</h3>
+<p>1、在虚拟机创建一个数据库用来导入（最好数据库名字与本机中的相同）</p>
+<p>2、从虚拟机登录本地 mysql</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql -uroot -p -h192.168.37.184 -P3306	<span class="c1">#这一步是进入mysql的，可以不做，直接到第三步</span>
+</span></span></code></pre></div><p>3、备份本地数据库到虚拟机</p>
+<p><strong>以下都是在虚拟机 mysql 命令行执行，不在登录后的&quot;mysql&gt;&ldquo;中执行</strong></p>
+<ul>
+<li>导出：连接本地 mysql，导出数据库</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysqldump -h192.168.37.184 -P3306 -uroot -proot monitor &gt; bak.sql<span class="p">;</span>
+</span></span><span class="line"><span class="cl"><span class="c1">#格式：mysqldump -h链接ip -P(大写)端口 -u用户名 -p密码 数据库名&gt;d:XX.sql(路径)</span>
+</span></span></code></pre></div><ul>
+<li>导入：导入到虚拟机 mysql</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">mysql -uroot -ppassword monitor &lt;bak.sql
+</span></span></code></pre></div><p><strong>注意：-p 可以放在最后，因为密码显式输入会报 warning</strong></p>
+<h3 id="遇到的问题">遇到的问题</h3>
+<ul>
+<li>Host * is not allowed to connect to this MySQL server（多次登陆失败）</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1">#在要访问的那个远程mysql中执行以下命令</span>
+</span></span><span class="line"><span class="cl">mysql -u root -p
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt;use mysql<span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt;update user <span class="nb">set</span> <span class="nv">host</span> <span class="o">=</span><span class="s1">&#39;%&#39;</span>where <span class="nv">user</span> <span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">;</span>
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">mysql&gt;flush privileges<span class="p">;</span>
+</span></span></code></pre></div><h1 id="docker-遇到的问题">Docker 遇到的问题</h1>
+<ul>
+<li>Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">service docker restart
+</span></span></code></pre></div><ul>
+<li>Prometheus 时间不同步</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">ntpdate ntp.aliyun.com
+</span></span></code></pre></div>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://ashhhi.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">计算机通用技术</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;text=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;title=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-02-28-grafana%2f&amp;description=Docker%20%e9%85%8d%e7%bd%ae%20Prometheus%2bAlertmanager%2bGrafana%2bMysql" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/2024-03-17-git-basic/">Git技术</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+          
+            <li class="next">
+              <a href="https://ashhhi.github.io/post/2024-03-17-git-basic/" data-toggle="tooltip" data-placement="top" title="Git技术">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+		
+		  <a href="mailto:shijunshen424@gmail.com" title="Email me">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://github.com/ashhhi" title="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://telegram.me/ashsjs424" title="Telegram">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Ashhhi
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2024
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://ashhhi.github.io/">Ashhhi</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://ashhhi.github.io/js/main.js"></script>
+<script src="https://ashhhi.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://ashhhi.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

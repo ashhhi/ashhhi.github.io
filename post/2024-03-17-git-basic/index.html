@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>Git技术 - </title>
+
+  <meta name="description" content="记录一些Git常用指令和原理解释">
+  <meta name="author" content="Ashhhi"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Ashhhi",
+    
+    "url": "https:\/\/ashhhi.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/ashhhi.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/post\/2024-03-17-git-basic\/",
+          "name": "Git技术"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "Git技术",
+  "description" : "记录一些Git常用指令和原理解释\n",
+  "inLanguage" : "en",
+  "wordCount":  196 ,
+  "datePublished" : "2024-03-17T00:00:00\u002b00:00",
+  "dateModified" : "2024-03-17T00:00:00\u002b00:00",
+  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+  "keywords" : [ "计算机通用技术" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-03-17-git-basic\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/ashhhi.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="Git技术" />
+<meta property="og:description" content="记录一些Git常用指令和原理解释">
+<meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+<meta property="og:url" content="https://ashhhi.github.io/post/2024-03-17-git-basic/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ashhhi" />
+
+  <meta name="twitter:title" content="Git技术" />
+  <meta name="twitter:description" content="记录一些Git常用指令和原理解释">
+  <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link href='https://ashhhi.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.134.2">
+  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Ashhhi" href="https://ashhhi.github.io/">
+            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Git技术</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 17, 2024
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;196&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Ashhhi
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      <article role="main" class="blog-post">
+        <p>记录一些Git常用指令和原理解释</p>
+<h1 id="git-记录">Git 记录</h1>
+<h2 id="清除git缓存使修改后的gitignore生效">清除git缓存，使修改后的gitignore生效</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git rm -r --cached .
+</span></span><span class="line"><span class="cl">git add .
+</span></span><span class="line"><span class="cl">git commit -m <span class="s1">&#39;update .gitignore&#39;</span>
+</span></span></code></pre></div><h2 id="查看commit记录">查看commit记录</h2>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git log 查看所有
+</span></span><span class="line"><span class="cl">git show 查看最新的commit  
+</span></span><span class="line"><span class="cl">git show commitId 查看指定commit hashID的所有修改 
+</span></span><span class="line"><span class="cl">git show commitId fileName 查看某次commit中具体某个文件的修改
+</span></span></code></pre></div><h1 id="git-rebase-和-git-merge的区别">git rebase 和 git merge的区别</h1>
+<p>merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟的代码历史. 下面我们分别说说 merge 和 rebase 的具体操作</p>
+<h2 id="rebase">rebase</h2>
+<p>假设你有两个分支，一个master主分支，一个从master分离出来的feature分支，如下所示</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   feature 分支
+</span></span><span class="line"><span class="cl">     /
+</span></span><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D   master 分支
+</span></span></code></pre></div><p>当使用 merge 的时候，比如在feature分支上使用 &ldquo;git rebase master&rdquo;, git 会先找到两个分支的最近公共祖先，在这里也就是B，然后对比feature分支相比于B的历次commit，也就是E和F，提取相应的修改并存为临时文件，再将header指向master分支的最后一次提交，也就是D，以此作为新的基底将之前存起来的的临时文件按顺序应用</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D &lt;- E‘ &lt;- F’  feature 分支
+</span></span></code></pre></div><p>也可以理解成 rebase 是直接将以B的作为基底切换到了以D作为基底，并提交了两个内容相同的commit（E和F），但实际上E和F已经不再是以前的E和F，变成了E‘和F’，他们是在master分支commit C和D之后再进行的提交，因此实际上 rebase 操作是丢弃了一些原有的commit（E和F），而新提交一些内容一样但实际上不同的commit（E‘和F’）</p>
+<p>使用 rebase 可以使得代码历史简介有线性，例如这次操作的历史变为：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 最上面是最新的</span>
+</span></span><span class="line"><span class="cl">* 74199ce <span class="o">(</span>HEAD -&gt; master, feature<span class="o">)</span> commit F
+</span></span><span class="line"><span class="cl">* e7c7111 commit E
+</span></span><span class="line"><span class="cl">* d9623b0 commit D
+</span></span><span class="line"><span class="cl">* 73deeed commit C
+</span></span><span class="line"><span class="cl">* c50221f commit B
+</span></span><span class="line"><span class="cl">* ef13725 commit A
+</span></span></code></pre></div><h2 id="merge">merge</h2>
+<p>以同样的例子举例，使用merge操作生成的代码历史显得比较复杂</p>
+<ul>
+<li>切换到 feature 分支： git checkout feature。</li>
+<li>合并 master 分支的更新： git merge master。</li>
+</ul>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">*   875906b Merge branch <span class="s1">&#39;master&#39;</span> into feature
+</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="se">\ </span> 
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> 5b05585 commit F
+</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> f5b0fc0 commit E
+</span></span><span class="line"><span class="cl">* * d017dff commit D
+</span></span><span class="line"><span class="cl">* * 9df916f commit C
+</span></span><span class="line"><span class="cl"><span class="p">|</span>/  
+</span></span><span class="line"><span class="cl">* cb932a6 commit B
+</span></span><span class="line"><span class="cl">* sd8fd7f commit A
+</span></span></code></pre></div><p>也就是</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   
+</span></span><span class="line"><span class="cl">     /           <span class="se">\
+</span></span></span><span class="line"><span class="cl"><span class="se"></span>A &lt;- B &lt;-  C  &lt;-  D 
+</span></span></code></pre></div><p>可以看到 merge 会形成一个新的节点，之前的两个分支提交都分开显示，而 rebase 不会生成新的节点，是将两个分支融合成一个线性操作.</p>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://ashhhi.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/">计算机通用技术</a>&nbsp;
+            
+          </div>
+        
+
+        
+            <hr/>
+            <section id="social-share">
+              <div class="list-inline footer-links">
+                
+
+<div class="share-box" aria-hidden="true">
+    <ul class="share">
+      
+      <li>
+        <a href="//twitter.com/share?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f&amp;text=Git%e6%8a%80%e6%9c%af&amp;via=" target="_blank" title="Share on Twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f" target="_blank" title="Share on Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//reddit.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f&amp;title=Git%e6%8a%80%e6%9c%af" target="_blank" title="Share on Reddit">
+          <i class="fab fa-reddit"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f&amp;title=Git%e6%8a%80%e6%9c%af" target="_blank" title="Share on LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f&amp;title=Git%e6%8a%80%e6%9c%af" target="_blank" title="Share on StumbleUpon">
+          <i class="fab fa-stumbleupon"></i>
+        </a>
+      </li>
+  
+      
+      <li>
+        <a href="//www.pinterest.com/pin/create/button/?url=https%3a%2f%2fashhhi.github.io%2fpost%2f2024-03-17-git-basic%2f&amp;description=Git%e6%8a%80%e6%9c%af" target="_blank" title="Share on Pinterest">
+          <i class="fab fa-pinterest"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+  
+
+              </div>
+            </section>
+        
+
+        
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/post/2024-02-28-grafana/">Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</a></li>
+                
+              </ul>
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://ashhhi.github.io/post/2024-02-28-grafana/" data-toggle="tooltip" data-placement="top" title="Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql">&larr; Previous Post</a>
+            </li>
+          
+          
+            <li class="next">
+              <a href="https://ashhhi.github.io/post/2024-09-06-detr/" data-toggle="tooltip" data-placement="top" title="【深度学习01】如何用DETR官方代码训练自己的数据集">Next Post &rarr;</a>
+            </li>
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+		
+		  <a href="mailto:shijunshen424@gmail.com" title="Email me">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://github.com/ashhhi" title="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://telegram.me/ashsjs424" title="Telegram">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Ashhhi
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2024
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://ashhhi.github.io/">Ashhhi</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://ashhhi.github.io/js/main.js"></script>
+<script src="https://ashhhi.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://ashhhi.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

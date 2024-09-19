@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Ashhhi</title>
+    <link>https://ashhhi.github.io/tags/</link>
+    <description>Recent content in Tags on Ashhhi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
+    <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
+    <lastBuildDate>Fri, 06 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>图像处理</title>
+      <link>https://ashhhi.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+      <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>深度学习</title>
+      <link>https://ashhhi.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>计算机通用技术</title>
+      <link>https://ashhhi.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/</link>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

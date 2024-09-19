@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ashhhi</title>
+    <link>https://ashhhi.github.io/</link>
+    <description>Recent content on Ashhhi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
+    <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
+    <lastBuildDate>Fri, 06 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【深度学习01】如何用DETR官方代码训练自己的数据集</title>
+      <link>https://ashhhi.github.io/post/2024-09-06-detr/</link>
+      <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/post/2024-09-06-detr/</guid>
+      <description>&lt;p&gt;DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Git技术</title>
+      <link>https://ashhhi.github.io/post/2024-03-17-git-basic/</link>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/post/2024-03-17-git-basic/</guid>
+      <description>&lt;p&gt;记录一些Git常用指令和原理解释&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>About me</title>
+      <link>https://ashhhi.github.io/page/about/</link>
+      <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/page/about/</guid>
+      <description>&lt;p&gt;你好 👋，这里是 Ash 的 Blog，这里仅用来记录生活和学习笔记，从小到大文笔不好，想坚持写点东西已经对我是巨大的挑战了&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;本科计算机专业，目前硕士就读于香港城市大学 EE，感兴趣的方向是人工智能，物联网，区块链方面。&lt;/p&gt;&#xA;&lt;p&gt;同时我是一位极其懒惰的吉他手，爱听各种类型的摇滚乐，但唯一偶像和精神支柱为 Slash，网站下方有我的联系方式以及视频 Channel，随缘更新弹琴 or 演出视频，有兴趣的可以关注一下！&lt;/p&gt;&#xA;&lt;!-- raw HTML omitted --&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://ashhhi.github.io/img/guitar.png&#34; alt=&#34;Guitar&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在忙&#34;&gt;🧑‍💻最近在忙&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/ashhhi/Smart-Farm&#34;&gt;Crop Coverage and Height Detection Based on Deep Learning&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/ashhhi/MWM&#34;&gt;Music with Movements&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;最近在看&#34;&gt;👓最近在看&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.xiaobaotv.app/vod/play/69443-1-1.html&#34;&gt;无耻之徒 第五季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;最近在听&#34;&gt;🎧最近在听&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;英语播客&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;最近在玩&#34;&gt;🎮最近在玩&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;无畏契约&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Docker 配置 Prometheus&#43;Alertmanager&#43;Grafana&#43;Mysql</title>
+      <link>https://ashhhi.github.io/post/2024-02-28-grafana/</link>
+      <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/post/2024-02-28-grafana/</guid>
+      <description>&lt;p&gt;本文讲解了使用 Docker 配置 Prometheus+Alertmanager+Grafana+Mysql&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
