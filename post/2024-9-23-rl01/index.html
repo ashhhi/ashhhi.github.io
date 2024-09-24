@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+ 
+
+
+      <title>【强化学习01】笔记：从基本概念到贝尔曼公式 - Ashhhi</title>
+
+  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+  <meta name="author" content="Ashhhi"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "Ashhhi",
+    
+    "url": "https:\/\/ashhhi.github.io\/"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/ashhhi.github.io\/"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/post\/2024-9-23-rl01\/",
+          "name": "【强化学习01】笔记：从基本概念到贝尔曼公式"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "【强化学习01】笔记：从基本概念到贝尔曼公式",
+  "description" : "本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。\n",
+  "inLanguage" : "en",
+  "wordCount":  1699 ,
+  "datePublished" : "2024-09-23T00:00:00\u002b00:00",
+  "dateModified" : "2024-09-23T00:00:00\u002b00:00",
+  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+  "keywords" : [ "强化学习" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-9-23-rl01\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/ashhhi.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+
+<meta property="og:title" content="【强化学习01】笔记：从基本概念到贝尔曼公式" />
+<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+<meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+<meta property="og:url" content="https://ashhhi.github.io/post/2024-9-23-rl01/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Ashhhi" />
+
+  <meta name="twitter:title" content="【强化学习01】笔记：从基本概念到贝尔曼公式" />
+  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+  <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <link
+  rel="icon"
+  type="image/svg+xml"
+  href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥔</text></svg>"
+/>
+  <meta name="generator" content="Hugo 0.134.2">
+  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Blog" href="/">Blog</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="Tags" href="/tags">Tags</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="CV" href="/page/cv/">CV</a>
+            </li>
+          
+        
+          
+            <li>
+              <a title="About" href="/page/about/">About</a>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+      <div class="avatar-container">
+        <div class="avatar-img-border">
+          <a title="Ashhhi" href="https://ashhhi.github.io/">
+            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi" />
+           
+          </a>
+        </div>
+      </div>
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+
+  <header class="header-section ">
+    
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>【强化学习01】笔记：从基本概念到贝尔曼公式</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on September 23, 2024
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1699&nbsp;words
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Ashhhi
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row">
+    
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-介绍">1. 介绍</a></li>
+    <li><a href="#2-术语概念介绍">2. 术语/概念介绍</a>
+      <ul>
+        <li><a href="#21-马尔可夫决策过程">2.1 马尔可夫决策过程</a></li>
+      </ul>
+    </li>
+    <li><a href="#3-bellman">3. Bellman</a></li>
+  </ul>
+</nav> 
+        
+      
+
+
+      <article role="main" class="blog-post">
+        <p>本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。</p>
+<p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
+<hr>
+<h1 id="1-介绍">1. 介绍</h1>
+<p>机器学习（Machine Learning, ML）分为监督学习，非监督学习，以及半监督学习，其中非监督学习里又包含有自监督学习，除去这些以外，强化学习（Reinforcement Learning, RL）也作为机器学习的一种，但是其重点在于学习策略而非结果。</p>
+<p>举个种菜的例子，一般的机器学习都是正向地预测目标，比如这里水，CO2，营养液，风扇速率等各种变量构成了机器学习中的参数，我们需要训练模型，使其通过这些参数去预测出一个最终可能的产量或者重量等结果。但是，对于强化学习来说，它的目标在于如何去找到一个最佳的策略（什么时候加水？加多少水？风扇什么时候开？），使其产量达到最高，因此我们可以说强化学习不是预测结果，而是要去指导每一个阶段的动作。</p>
+<p>目前RL应用于很多领域，包括但不限于：</p>
+<ul>
+<li>游戏</li>
+<li>自动驾驶</li>
+<li>股票金融</li>
+<li>能源管控</li>
+</ul>
+<h1 id="2-术语概念介绍">2. 术语/概念介绍</h1>
+<p>强化学习中有几个核心概念，分别是智能体（agent），状态（state），行为（action），策略（policy），奖励（reward）。比较书面的解释为：</p>
+<ul>
+<li>智能体：是指能够感知环境并采取行动以实现特定目标的代理体。它通过感知环境中的变化（如通过传感器或数据输入），根据自身学习到的知识和算法进行判断和决策，进而执行动作以影响环境或达到预定的目标。</li>
+<li>状态：描述了智能体在当前环境的一个状态，环境基本上代表了这个情境里里所有的参数。</li>
+<li>行为：智能体可以采取的行为。</li>
+<li>策略：告诉智能体在哪个阶段采取什么样的行为。</li>
+<li>奖励：在智能体采取某一个行为之后，会获得奖励，也可以叫做环境给予的反馈。</li>
+</ul>
+<p>拿最经典的网格游戏为例，如图，机器人会在其中一个网格，最终目标是找到一条最优路径去到Target space，其中有障碍物Forbidden。那么这里的最优路径也就是我们要寻找的<code>策略</code>，机器人便是<code>智能体</code>，它每一个时刻所处的格子为他的<code>状态</code>，然后在不同的状态下它可以选择不同的上下左右四种<code>行为</code>，这样就描述了一个完整的任务。</p>
+<p>但是强化学习的过程学习的是什么东西呢？我们都知道在机器学习中，存在一个loss函数，描述了预测值到真实值之间的距离，我们的目标就是使其减少或者是尽可能收敛。但在强化学习中，采用了另一种方式来指导模型自我迭代，那就是<code>奖励</code>，智能体每做一次行为之后都会得到奖励，如果这个奖励是负数的话也可以被叫做惩罚，强化学习的目标就是最大化所获得的奖励。</p>
+<p>除此以外，还有返回（Return）和马尔可夫决策过程（Markov decision processes, MDP），<code>返回</code>指的是一条路径上所获得的奖励之和，<code>马尔可夫决策过程</code>单开一章详细解释。</p>
+<h2 id="21-马尔可夫决策过程">2.1 马尔可夫决策过程</h2>
+<p><code>以下统一用MDP表示</code></p>
+<p>MDP是一种正式的方式去表示上述描述的所有内容，是离散时间随机控制过程，它提供了一个<code>数学框架</code>：</p>
+<ul>
+<li>集合（Sets）
+<ul>
+<li>状态空间（State space），写作\(\mathcal{S}\)。</li>
+<li>行为空间（Action space），写作\(\mathcal{A}(s)\)，\(s \in \mathcal{S}\)，因为行为与当前状态相关。</li>
+<li>奖励集（Reward set），写作\(\mathcal{R}(s,a)\), 奖励与当前状态和所选行为相关。</li>
+</ul>
+</li>
+<li>模型（Model）
+<ul>
+<li>状态转移概率（State transmission probality）：从一个状态s经过某个行为a转移到另一个状态s&rsquo;的概率\( p(s^&rsquo;|s,a)\) ，其中\( \sum_{s^&rsquo; \in \mathcal{S}}p(s^&rsquo;|s,a) = 1\)。</li>
+<li>奖励概率（Reward probability）：在状态s时，当我们选择行为a，所能获得奖励r的概率为\(p(r|s,a)\)，对于每一个状态和动作都有\(\sum_{r \in \mathcal{R}(s,a)}p(r|s,a)=1\)</li>
+</ul>
+</li>
+<li>策略（Policy）：在状态s中选择某个行为a的概率为\(\pi (a|s)\), 对于每一个状态都有\(\sum_{a \in \mathcal{A}(s)} \pi (a|s)=1\)</li>
+<li>马尔可夫特性（Markov property）：其实就是无记忆性，任何时刻可能采取的行为与之前的所有行为都无关，只与当下有关，记住就行。具体的数学表达式为：
+$$
+p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(s_{t+1}|s_t,a_t)
+$$
+$$
+p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(r_{t+1}|s_t,a_t)
+$$</li>
+</ul>
+<h1 id="3-bellman">3. Bellman</h1>
+
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://ashhhi.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://ashhhi.github.io/post/2024-09-06-detr/" data-toggle="tooltip" data-placement="top" title="【深度学习01】如何用DETR官方代码训练自己的数据集">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+        
+
+        <script src="https://giscus.app/client.js"
+        data-repo="ashhhi/hugoblogtalks"
+        data-repo-id="R_kgDOLgjUJw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLgjUJ84CimSM"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+        </script>
+      
+
+    </div>
+  </div>
+</div>
+
+      <footer>
+  <div class="container">
+    
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+		
+		  <a href="mailto:shijunshen424@gmail.com" title="Email me">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fas fa-envelope fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://github.com/ashhhi" title="GitHub">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://open.spotify.com/user/31qjiuhfme47s27qrx6366ruvmjq" title="Spotify">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-spotify fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+		
+		  <a href="https://telegram.me/ashsjs424" title="Telegram">
+		
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-telegram fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              Ashhhi
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2024
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://ashhhi.github.io/">Ashhhi</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.134.2</a> powered &nbsp;&bull;&nbsp; Theme <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adapted from <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.js" integrity="sha384-G0zcxDFp5LWZtDuRMnBkk3EphCK1lhEf4UEyEM693ka574TZGwo4IWwS6QLzM/2t" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+<script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+
+<script src="https://ashhhi.github.io/js/main.js"></script>
+<script src="https://ashhhi.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://ashhhi.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
