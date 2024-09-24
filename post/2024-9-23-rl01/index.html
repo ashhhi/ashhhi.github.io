@@ -12,9 +12,9 @@
  
 
 
-      <title>【强化学习01】笔记：从基本概念到贝尔曼公式 - Ashhhi</title>
+      <title>【强化学习01】笔记：从基本概念到马尔可夫决策 - Ashhhi</title>
 
-  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -51,7 +51,7 @@
         "position": 3,
         "item": {
           "@id": "https:\/\/ashhhi.github.io\/post\/2024-9-23-rl01\/",
-          "name": "【强化学习01】笔记：从基本概念到贝尔曼公式"
+          "name": "【强化学习01】笔记：从基本概念到马尔可夫决策"
         }
     }]
 }
@@ -62,10 +62,10 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "【强化学习01】笔记：从基本概念到贝尔曼公式",
-  "description" : "本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。\n",
+  "headline": "【强化学习01】笔记：从基本概念到马尔可夫决策",
+  "description" : "本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。\n",
   "inLanguage" : "en",
-  "wordCount":  1699 ,
+  "wordCount":  1678 ,
   "datePublished" : "2024-09-23T00:00:00\u002b00:00",
   "dateModified" : "2024-09-23T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
@@ -85,15 +85,15 @@
 </script>
 
 
-<meta property="og:title" content="【强化学习01】笔记：从基本概念到贝尔曼公式" />
-<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+<meta property="og:title" content="【强化学习01】笔记：从基本概念到马尔可夫决策" />
+<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
 <meta property="og:url" content="https://ashhhi.github.io/post/2024-9-23-rl01/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi" />
 
-  <meta name="twitter:title" content="【强化学习01】笔记：从基本概念到贝尔曼公式" />
-  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。">
+  <meta name="twitter:title" content="【强化学习01】笔记：从基本概念到马尔可夫决策" />
+  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -244,7 +244,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>【强化学习01】笔记：从基本概念到贝尔曼公式</h1>
+                <h1>【强化学习01】笔记：从基本概念到马尔可夫决策</h1>
               
               
               
@@ -258,7 +258,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1699&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1678&nbsp;words
   
   
     
@@ -290,13 +290,13 @@
         
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#1-介绍">1. 介绍</a></li>
-    <li><a href="#2-术语概念介绍">2. 术语/概念介绍</a>
+    <li><a href="#强化学习">强化学习</a></li>
+    <li><a href="#术语概念介绍">术语/概念介绍</a>
       <ul>
-        <li><a href="#21-马尔可夫决策过程">2.1 马尔可夫决策过程</a></li>
+        <li><a href="#核心概念">核心概念</a></li>
+        <li><a href="#马尔可夫决策过程">马尔可夫决策过程</a></li>
       </ul>
     </li>
-    <li><a href="#3-bellman">3. Bellman</a></li>
   </ul>
 </nav> 
         
@@ -304,10 +304,10 @@
 
 
       <article role="main" class="blog-post">
-        <p>本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return以及MDP等等，还有马尔可夫决策过程以及贝尔曼公式等内容。</p>
+        <p>本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。</p>
 <p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
 <hr>
-<h1 id="1-介绍">1. 介绍</h1>
+<h1 id="强化学习">强化学习</h1>
 <p>机器学习（Machine Learning, ML）分为监督学习，非监督学习，以及半监督学习，其中非监督学习里又包含有自监督学习，除去这些以外，强化学习（Reinforcement Learning, RL）也作为机器学习的一种，但是其重点在于学习策略而非结果。</p>
 <p>举个种菜的例子，一般的机器学习都是正向地预测目标，比如这里水，CO2，营养液，风扇速率等各种变量构成了机器学习中的参数，我们需要训练模型，使其通过这些参数去预测出一个最终可能的产量或者重量等结果。但是，对于强化学习来说，它的目标在于如何去找到一个最佳的策略（什么时候加水？加多少水？风扇什么时候开？），使其产量达到最高，因此我们可以说强化学习不是预测结果，而是要去指导每一个阶段的动作。</p>
 <p>目前RL应用于很多领域，包括但不限于：</p>
@@ -317,7 +317,8 @@
 <li>股票金融</li>
 <li>能源管控</li>
 </ul>
-<h1 id="2-术语概念介绍">2. 术语/概念介绍</h1>
+<h1 id="术语概念介绍">术语/概念介绍</h1>
+<h2 id="核心概念">核心概念</h2>
 <p>强化学习中有几个核心概念，分别是智能体（agent），状态（state），行为（action），策略（policy），奖励（reward）。比较书面的解释为：</p>
 <ul>
 <li>智能体：是指能够感知环境并采取行动以实现特定目标的代理体。它通过感知环境中的变化（如通过传感器或数据输入），根据自身学习到的知识和算法进行判断和决策，进而执行动作以影响环境或达到预定的目标。</li>
@@ -329,7 +330,7 @@
 <p>拿最经典的网格游戏为例，如图，机器人会在其中一个网格，最终目标是找到一条最优路径去到Target space，其中有障碍物Forbidden。那么这里的最优路径也就是我们要寻找的<code>策略</code>，机器人便是<code>智能体</code>，它每一个时刻所处的格子为他的<code>状态</code>，然后在不同的状态下它可以选择不同的上下左右四种<code>行为</code>，这样就描述了一个完整的任务。</p>
 <p>但是强化学习的过程学习的是什么东西呢？我们都知道在机器学习中，存在一个loss函数，描述了预测值到真实值之间的距离，我们的目标就是使其减少或者是尽可能收敛。但在强化学习中，采用了另一种方式来指导模型自我迭代，那就是<code>奖励</code>，智能体每做一次行为之后都会得到奖励，如果这个奖励是负数的话也可以被叫做惩罚，强化学习的目标就是最大化所获得的奖励。</p>
 <p>除此以外，还有返回（Return）和马尔可夫决策过程（Markov decision processes, MDP），<code>返回</code>指的是一条路径上所获得的奖励之和，<code>马尔可夫决策过程</code>单开一章详细解释。</p>
-<h2 id="21-马尔可夫决策过程">2.1 马尔可夫决策过程</h2>
+<h2 id="马尔可夫决策过程">马尔可夫决策过程</h2>
 <p><code>以下统一用MDP表示</code></p>
 <p>MDP是一种正式的方式去表示上述描述的所有内容，是离散时间随机控制过程，它提供了一个<code>数学框架</code>：</p>
 <ul>
@@ -355,7 +356,6 @@ $$
 p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(r_{t+1}|s_t,a_t)
 $$</li>
 </ul>
-<h1 id="3-bellman">3. Bellman</h1>
 
         
           <div class="blog-tags">
