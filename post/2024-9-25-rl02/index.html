@@ -12,9 +12,9 @@
  
 
 
-      <title>【强化学习01】笔记：从基本概念到马尔可夫决策 - Ashhhi</title>
+      <title>【强化学习02】笔记：贝尔曼方程 - Ashhhi</title>
 
-  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
+  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -50,8 +50,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/ashhhi.github.io\/post\/2024-9-23-rl01\/",
-          "name": "【强化学习01】笔记：从基本概念到马尔可夫决策"
+          "@id": "https:\/\/ashhhi.github.io\/post\/2024-9-25-rl02\/",
+          "name": "【强化学习02】笔记：贝尔曼方程"
         }
     }]
 }
@@ -62,15 +62,15 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "【强化学习01】笔记：从基本概念到马尔可夫决策",
-  "description" : "本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。\n",
+  "headline": "【强化学习02】笔记：贝尔曼方程",
+  "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n",
   "inLanguage" : "en",
-  "wordCount":  1678 ,
-  "datePublished" : "2024-09-23T00:00:00\u002b00:00",
-  "dateModified" : "2024-09-23T00:00:00\u002b00:00",
+  "wordCount":  2153 ,
+  "datePublished" : "2024-09-25T00:00:00\u002b00:00",
+  "dateModified" : "2024-09-25T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
   "keywords" : [ "强化学习" ],
-  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-9-23-rl01\/",
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-9-25-rl02\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/ashhhi.github.io\/",
@@ -85,15 +85,15 @@
 </script>
 
 
-<meta property="og:title" content="【强化学习01】笔记：从基本概念到马尔可夫决策" />
-<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
+<meta property="og:title" content="【强化学习02】笔记：贝尔曼方程" />
+<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
-<meta property="og:url" content="https://ashhhi.github.io/post/2024-9-23-rl01/" />
+<meta property="og:url" content="https://ashhhi.github.io/post/2024-9-25-rl02/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi" />
 
-  <meta name="twitter:title" content="【强化学习01】笔记：从基本概念到马尔可夫决策" />
-  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。">
+  <meta name="twitter:title" content="【强化学习02】笔记：贝尔曼方程" />
+  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -244,7 +244,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>【强化学习01】笔记：从基本概念到马尔可夫决策</h1>
+                <h1>【强化学习02】笔记：贝尔曼方程</h1>
               
               
               
@@ -252,13 +252,13 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on September 23, 2024
+  <i class="fas fa-calendar"></i>&nbsp;Posted on September 25, 2024
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1678&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2153&nbsp;words
   
   
     
@@ -290,13 +290,19 @@
         
           <nav id="TableOfContents">
   <ul>
-    <li><a href="#强化学习">强化学习</a></li>
-    <li><a href="#术语概念介绍">术语/概念介绍</a>
+    <li><a href="#return-和-state-value">Return 和 State value</a></li>
+    <li><a href="#贝尔曼方程">贝尔曼方程</a>
       <ul>
-        <li><a href="#核心概念">核心概念</a></li>
-        <li><a href="#马尔可夫决策过程">马尔可夫决策过程</a></li>
+        <li><a href="#简单理解">简单理解</a></li>
+        <li><a href="#复杂形式">复杂形式</a>
+          <ul>
+            <li><a href="#公式推导">公式推导</a></li>
+            <li><a href="#example">Example</a></li>
+          </ul>
+        </li>
       </ul>
     </li>
+    <li><a href="#贝尔曼方程的矩阵化">贝尔曼方程的矩阵化</a></li>
   </ul>
 </nav> 
         
@@ -304,59 +310,130 @@
 
 
       <article role="main" class="blog-post">
-        <p>本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。</p>
+        <p>本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。</p>
 <p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
 <hr>
-<h1 id="强化学习">强化学习</h1>
-<p>机器学习（Machine Learning, ML）分为监督学习，非监督学习，以及半监督学习，其中非监督学习里又包含有自监督学习，除去这些以外，强化学习（Reinforcement Learning, RL）也作为机器学习的一种，但是其重点在于学习策略而非结果。</p>
-<p>举个种菜的例子，一般的机器学习都是正向地预测目标，比如这里水，CO2，营养液，风扇速率等各种变量构成了机器学习中的参数，我们需要训练模型，使其通过这些参数去预测出一个最终可能的产量或者重量等结果。但是，对于强化学习来说，它的目标在于如何去找到一个最佳的策略（什么时候加水？加多少水？风扇什么时候开？），使其产量达到最高，因此我们可以说强化学习不是预测结果，而是要去指导每一个阶段的动作。</p>
-<p>目前RL应用于很多领域，包括但不限于：</p>
-<ul>
-<li>游戏</li>
-<li>自动驾驶</li>
-<li>股票金融</li>
-<li>能源管控</li>
-</ul>
-<h1 id="术语概念介绍">术语/概念介绍</h1>
-<h2 id="核心概念">核心概念</h2>
-<p>强化学习中有几个核心概念，分别是智能体（agent），状态（state），行为（action），策略（policy），奖励（reward）。比较书面的解释为：</p>
-<ul>
-<li>智能体：是指能够感知环境并采取行动以实现特定目标的代理体。它通过感知环境中的变化（如通过传感器或数据输入），根据自身学习到的知识和算法进行判断和决策，进而执行动作以影响环境或达到预定的目标。</li>
-<li>状态：描述了智能体在当前环境的一个状态，环境基本上代表了这个情境里里所有的参数。</li>
-<li>行为：智能体可以采取的行为。</li>
-<li>策略：告诉智能体在哪个阶段采取什么样的行为。</li>
-<li>奖励：在智能体采取某一个行为之后，会获得奖励，也可以叫做环境给予的反馈。</li>
-</ul>
-<p>拿最经典的网格游戏为例，如图，机器人会在其中一个网格，最终目标是找到一条最优路径去到Target space，其中有障碍物Forbidden。那么这里的最优路径也就是我们要寻找的<code>策略</code>，机器人便是<code>智能体</code>，它每一个时刻所处的格子为他的<code>状态</code>，然后在不同的状态下它可以选择不同的上下左右四种<code>行为</code>，这样就描述了一个完整的任务。</p>
-<p><img src="/img/2024-9-23-RL01/1.png" alt=""></p>
-<p>但是强化学习的过程学习的是什么东西呢？我们都知道在机器学习中，存在一个loss函数，描述了预测值到真实值之间的距离，我们的目标就是使其减少或者是尽可能收敛。但在强化学习中，采用了另一种方式来指导模型自我迭代，那就是<code>奖励</code>，智能体每做一次行为之后都会得到奖励，如果这个奖励是负数的话也可以被叫做惩罚，强化学习的目标就是最大化所获得的奖励。</p>
-<p>除此以外，还有返回（Return）和马尔可夫决策过程（Markov decision processes, MDP），<code>返回</code>指的是一条路径上所获得的奖励之和，<code>马尔可夫决策过程</code>单开一章详细解释。</p>
-<h2 id="马尔可夫决策过程">马尔可夫决策过程</h2>
-<p><code>以下统一用MDP表示</code></p>
-<p>MDP是一种正式的方式去表示上述描述的所有内容，是离散时间随机控制过程，它提供了一个<code>数学框架</code>：</p>
-<ul>
-<li>集合（Sets）
-<ul>
-<li>状态空间（State space），写作\(\mathcal{S}\)。</li>
-<li>行为空间（Action space），写作\(\mathcal{A}(s)\)，\(s \in \mathcal{S}\)，因为行为与当前状态相关。</li>
-<li>奖励集（Reward set），写作\(\mathcal{R}(s,a)\), 奖励与当前状态和所选行为相关。</li>
-</ul>
-</li>
-<li>模型（Model）
-<ul>
-<li>状态转移概率（State transmission probality）：从一个状态s经过某个行为a转移到另一个状态s&rsquo;的概率\( p(s^&rsquo;|s,a)\) ，其中\( \sum_{s^&rsquo; \in \mathcal{S}}p(s^&rsquo;|s,a) = 1\)。</li>
-<li>奖励概率（Reward probability）：在状态s时，当我们选择行为a，所能获得奖励r的概率为\(p(r|s,a)\)，对于每一个状态和动作都有\(\sum_{r \in \mathcal{R}(s,a)}p(r|s,a)=1\)</li>
-</ul>
-</li>
-<li>策略（Policy）：在状态s中选择某个行为a的概率为\(\pi (a|s)\), 对于每一个状态都有\(\sum_{a \in \mathcal{A}(s)} \pi (a|s)=1\)</li>
-<li>马尔可夫特性（Markov property）：其实就是无记忆性，任何时刻可能采取的行为与之前的所有行为都无关，只与当下有关，记住就行。具体的数学表达式为：
+<h1 id="return-和-state-value">Return 和 State value</h1>
+<p>如上一章所讲，强化学习就是学习一个好的<code>Policy</code>的过程，那如何量化这个Policy是不是好的呢，于是引出了<code>Reward</code>的概念。但是Reward只能体现智能体在某一个状态下可以做的行为的好坏，而并不能体现出全局的思想，而策略可以看作一系列行为的集合，包括在每一个状态下怎么去行为。上一章还写到了<code>Return</code>的概念，也就是一条路径上所有奖励的和。</p>
+<p>如何计算Return？还是拿网格游戏举例子，如图定义了一个2x2的地图，初始状态是\(s_1\)，我们需要找到一条道路去到\(s_4\)，我们定义黄色的方格为禁区，如果到达禁区，奖励为-1，到达空白区域奖励为0，到达目的地奖励为1。</p>
+<p><img src="/img/2024-9-25-RL02/1.png" alt=""></p>
+<p>我们设定智能体会一直运作下去，到了target space也不停下来。如图定义了三种不同的策略，箭头代表了每一个状态下的行为，那么状态\(s_1\)在前两个策略下的Return为（用\(G\)来表示，利用无穷等比数列的求和公式）：</p>
+<p>$$
+G_1 =
+\begin{cases}
+\begin{align*}
+0 + 1 \cdot \lambda + 1 \cdot \lambda^2 + 1 \cdot \lambda^3 + \ldots &amp;= \frac{\lambda}{1 - \lambda} \\
+-1 + 1 \cdot \lambda + 1 \cdot \lambda^2 + 1 \cdot \lambda^3 + \ldots &amp;= -1 + \frac{\lambda}{1 - \lambda}
+\end{align*}
+\end{cases}, \quad \lambda \in (0,1)
+$$</p>
+<p>Return并不单纯只是路径上所有Reward之和相加，而是加入\(\lambda\)作为权重，目的是为了限制Return不会无休止地膨胀下去，并且我们可以通过控制其大小来控制模型的“远视”或者“近视”，如果\(\lambda\)偏向1，那么模型将会看得更远，如果偏向0，那么权重衰减得将会很快，模型会更看重前面几个状态的抉择。</p>
+<p>但是这是在策略固定的情况下，也就是说我们知道在每一个状态，有且只有一个行为可以选择。</p>
+<p>然而，在真正的学习过程中，策略是不固定的，也就是说每一个状态下都有多个行为可以选择，我们需要求得最优解，即每个状态下走哪一条路的概率最高，于是我们引出了<code>状态值（State value）</code>的概念。很简单，其实状态值就是该状态下可能的所有路径的Return的期望。所以在前两种策略下，\(s_1\)的State value就等于它的Return，而第三种策略下，其状态值为：</p>
+<p>$$
+v_1 = 0.5 * \frac{\lambda}{1-\lambda} + 0.5 * (-1 + \frac{\lambda}{1-\lambda}) = -0.5 + \frac{\lambda}{1-\lambda}
+$$</p>
+<p>通过对比三种策略下\(s_1\)的状态值，我们可以得出第一种是最高的，因此第一种策略是最优策略，直观上我们也可以看出来，因为它避免了智能体进入禁区。因此这也是为什么状态值可以成为量化策略的一个指标。</p>
+<h1 id="贝尔曼方程">贝尔曼方程</h1>
+<h2 id="简单理解">简单理解</h2>
+<p><img src="/img/2024-9-25-RL02/2.png" alt=""></p>
+<p>考虑一个特殊的策略，如图形成了一个循环的策略，那么我们可以求得每一个状态下的状态值为：</p>
+<p>$$
+v_1 = r_1 + \lambda r_2 + \lambda^2 r_3 + &hellip; \\
+v_2 = r_2 + \lambda r_3 + \lambda^2 r_4 + &hellip; \\
+v_3 = r_3 + \lambda r_4 + \lambda^2 r_1 + &hellip; \\
+v_4 = r_4 + \lambda r_1 + \lambda^2 r_2 + &hellip; \\
+$$</p>
+<p>进一步简化可以得到：
 $$
-p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(s_{t+1}|s_t,a_t)
-$$
-$$
-p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(r_{t+1}|s_t,a_t)
-$$</li>
+v_1 = r_1 + \lambda v_2 \\
+v_2 = r_2 + \lambda v_3 \\
+v_3 = r_3 + \lambda v_4 \\
+v_4 = r_4 + \lambda v_1 \\
+$$</p>
+<p>四个方程四个未知数（\(r\)看作是已知的），其实是可以把\(v\)解出来的。这里体现出了自举（bootstrapping）的思想，即从自身求自身的值。当我们把这些式子化作一个线性矩阵方程便会很好理解：</p>
+<p>$$
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}=
+\begin{pmatrix}
+r_1 \\ r_2 \\ r_3 \\ r_4
+\end{pmatrix}+
+\lambda
+\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0  \\ 0 &amp; 0 &amp; 0 &amp; 1  \\ 1 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}
+$$</p>
+<p>化简得\(\vec{v} = \vec{r} + \lambda P \vec{v} \)， 这其实就是<code>贝尔曼方程</code>在这种简单策略下的的简单表达。</p>
+<h2 id="复杂形式">复杂形式</h2>
+<h3 id="公式推导">公式推导</h3>
+<p>还是先理清几个定义，我们假设在状态\(t\)的路径为：</p>
+<p>$$
+S_t \overset{A_t}{\longrightarrow} S_{t+1}, R_{t+1} \overset{A_{t+1}}{\longrightarrow} S_{t+2}, R_{t+2} &hellip;
+$$</p>
+<ul>
+<li>\(S_t\)：每个状态</li>
+<li>\(A_t\)：从\(S_t\)到\(S_{t+1}\)所需采取的行为</li>
+<li>\(R_{t+1}\)：采取行为\(A_t\)到达状态\(S_{t+1}\)所能得到的奖励</li>
 </ul>
+<p>可以得到这条路径的Return为：</p>
+<p>$$
+G_t = R_{t+1} + \lambda R_{t+2} + \lambda^2 R_{t+3}&hellip; = R_{t+1} + \lambda G_{t+1}
+$$</p>
+<p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望：
+$$
+\begin{align*}
+v_\pi(s) &amp;= E[G_t|S_t=s] \\
+&amp;= E[R_{t+1} + \lambda G_{t+1}|S_t=s] \\
+&amp;= E[R_{t+1}|S_t=s] + \lambda E[G_{t+1}|S_t=s]
+\end{align*}
+$$</p>
+<p>这里有两项，我们分别对这两项进行计算，先定义三个集合：</p>
+<ul>
+<li>\(\mathcal{S}\)：所有的状态</li>
+<li>\(\mathcal{R}\)：所有的奖励</li>
+<li>\(\mathcal{A}\)：所有的动作</li>
+</ul>
+<p>首先是第一项：</p>
+<p>$$
+\begin{align*}
+E[R_{t+1}|S_t=s] &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)E[R_{t+1}|S_t=s, A_t=a] \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r
+\end{align*}
+$$</p>
+<p>其中\(\pi(a|s)\)为在策略\(\pi\)下，在状态\(s\)，选择行为\(a\)的概率。</p>
+<p>接着来计算第二项，其中第二步用了马尔可夫决策过程的无记忆性的特征：</p>
+<p>$$
+\begin{align*}
+E[G_{t+1}|S_t=s] &amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_t=s, S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_{t+1}=s&rsquo;]\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s)
+\end{align*}
+$$</p>
+<p>最后把二者合并起来就形成了贝尔曼方程的规范版本：</p>
+<p>$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*}
+$$</p>
+<h3 id="example">Example</h3>
+<p>看起来很复杂，其实只是因为这是一个通用的公式，如果举个简单的例子，就很清晰了。还是拿本章最开始的第一个那个例子来说，假设我们选择第一个策略，来求取它的\(v_\pi(s=1)\)，其实就是\(v_1\)。</p>
+<p>这里策略\(\pi\)规定了只能往下走，那么只有\(\pi(a=down|s=1)=1\)，并且向下走只能到状态\(s_3\)，所以只有\(p[s_3|s_1,a=down]=1\)。因此原式等于：</p>
+<p>$$
+\begin{align*}
+v_1 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]] \\
+&amp;= \sum_{r \in \mathcal{R}}p(r|s_1,a=down)r + \lambda v_\pi(s_3) \\
+&amp;= 0 + \lambda v_\pi(s_3)
+\end{align*}
+$$</p>
+<p>就得到了之前的简单情况下的结果。</p>
+<h1 id="贝尔曼方程的矩阵化">贝尔曼方程的矩阵化</h1>
+<p>TBC&hellip;&hellip;</p>
 
         
           <div class="blog-tags">
@@ -379,7 +456,7 @@ $$</li>
                   <ul>
                 
                 
-                    <li><a href="/post/2024-9-25-rl02/">【强化学习02】笔记：贝尔曼方程</a></li>
+                    <li><a href="/post/2024-9-23-rl01/">【强化学习01】笔记：从基本概念到马尔可夫决策</a></li>
                 
               </ul>
 
@@ -391,13 +468,9 @@ $$</li>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://ashhhi.github.io/post/2024-09-06-detr/" data-toggle="tooltip" data-placement="top" title="【深度学习01】如何用DETR官方代码训练自己的数据集">&larr; Previous Post</a>
+              <a href="https://ashhhi.github.io/post/2024-9-23-rl01/" data-toggle="tooltip" data-placement="top" title="【强化学习01】笔记：从基本概念到马尔可夫决策">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://ashhhi.github.io/post/2024-9-25-rl02/" data-toggle="tooltip" data-placement="top" title="【强化学习02】笔记：贝尔曼方程">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
