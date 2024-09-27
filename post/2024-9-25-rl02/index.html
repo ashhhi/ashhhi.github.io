@@ -65,7 +65,7 @@
   "headline": "【强化学习02】笔记：贝尔曼方程",
   "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n",
   "inLanguage" : "en",
-  "wordCount":  2153 ,
+  "wordCount":  2776 ,
   "datePublished" : "2024-09-25T00:00:00\u002b00:00",
   "dateModified" : "2024-09-25T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
@@ -255,10 +255,10 @@
   <i class="fas fa-calendar"></i>&nbsp;Posted on September 25, 2024
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;5&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2153&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2776&nbsp;words
   
   
     
@@ -300,9 +300,11 @@
             <li><a href="#example">Example</a></li>
           </ul>
         </li>
+        <li><a href="#矩阵化">矩阵化</a></li>
+        <li><a href="#求解">求解</a></li>
       </ul>
     </li>
-    <li><a href="#贝尔曼方程的矩阵化">贝尔曼方程的矩阵化</a></li>
+    <li><a href="#action-value">Action value</a></li>
   </ul>
 </nav> 
         
@@ -365,7 +367,7 @@ r_1 \\ r_2 \\ r_3 \\ r_4
 \end{pmatrix}
 \begin{pmatrix}
 v_1 \\ v_2 \\ v_3 \\ v_4
-\end{pmatrix}
+\end{pmatrix} \tag{1}
 $$</p>
 <p>化简得\(\vec{v} = \vec{r} + \lambda P \vec{v} \)， 这其实就是<code>贝尔曼方程</code>在这种简单策略下的的简单表达。</p>
 <h2 id="复杂形式">复杂形式</h2>
@@ -386,9 +388,9 @@ $$</p>
 <p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望：
 $$
 \begin{align*}
-v_\pi(s) &amp;= E[G_t|S_t=s] \\
-&amp;= E[R_{t+1} + \lambda G_{t+1}|S_t=s] \\
-&amp;= E[R_{t+1}|S_t=s] + \lambda E[G_{t+1}|S_t=s]
+v_\pi(s) &amp;= \mathbb{E}[G_t|S_t=s] \\
+&amp;= \mathbb{E}[R_{t+1} + \lambda G_{t+1}|S_t=s] \\
+&amp;= \mathbb{E}[R_{t+1}|S_t=s] + \lambda \mathbb{E}[G_{t+1}|S_t=s]
 \end{align*}
 $$</p>
 <p>这里有两项，我们分别对这两项进行计算，先定义三个集合：</p>
@@ -400,7 +402,7 @@ $$</p>
 <p>首先是第一项：</p>
 <p>$$
 \begin{align*}
-E[R_{t+1}|S_t=s] &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)E[R_{t+1}|S_t=s, A_t=a] \\
+\mathbb{E}[R_{t+1}|S_t=s] &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)\mathbb{E}[R_{t+1}|S_t=s, A_t=a] \\
 &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r
 \end{align*}
 $$</p>
@@ -408,9 +410,9 @@ $$</p>
 <p>接着来计算第二项，其中第二步用了马尔可夫决策过程的无记忆性的特征：</p>
 <p>$$
 \begin{align*}
-E[G_{t+1}|S_t=s] &amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_t=s, S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
-&amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
-&amp;= \sum_{s&rsquo; \in \mathcal{S}}E[G_{t+1}|S_{t+1}=s&rsquo;]\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+\mathbb{E}[G_{t+1}|S_t=s] &amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_t=s, S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_{t+1}=s&rsquo;]\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
 &amp;= \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s)
 \end{align*}
 $$</p>
@@ -419,7 +421,7 @@ $$</p>
 \begin{align*}
 v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
-\end{align*}
+\end{align*} \tag{2}
 $$</p>
 <h3 id="example">Example</h3>
 <p>看起来很复杂，其实只是因为这是一个通用的公式，如果举个简单的例子，就很清晰了。还是拿本章最开始的第一个那个例子来说，假设我们选择第一个策略，来求取它的\(v_\pi(s=1)\)，其实就是\(v_1\)。</p>
@@ -432,8 +434,50 @@ v_1 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\l
 \end{align*}
 $$</p>
 <p>就得到了之前的简单情况下的结果。</p>
-<h1 id="贝尔曼方程的矩阵化">贝尔曼方程的矩阵化</h1>
-<p>TBC&hellip;&hellip;</p>
+<h2 id="矩阵化">矩阵化</h2>
+<p>以上所写的贝尔曼方程形式都是单状态形式的，因此如果我们有\(n\)个状态的话我们就可以有\(n\)个方程，就可以写成一个矩阵形式，还是先把（2）式括号合并化简为：</p>
+<p>$$
+v_\pi(s) = r_\pi(s) + \lambda \sum_{s&rsquo; \in \mathcal(S)} p_\pi(s&rsquo;|s)v_\pi(s&rsquo;)
+$$</p>
+<p>有\(n\)个这样的式子，因此我们可以写成这种形式，其中i=1，2，3，&hellip;，n。
+$$
+v_\pi(s_i) = r_\pi(s_i) + \lambda \sum_{s_j \in \mathcal(S)} p_\pi(s_j|s_i)v_\pi(s_j)
+$$</p>
+<p>进一步我们可以进一步化简，直接用一个矩阵代替，为什么能这么化简呢？这里可以参考（1）式理解：</p>
+<p>$$
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}=
+\begin{pmatrix}
+r_1 \\ r_2 \\ r_3 \\ r_4
+\end{pmatrix}+
+\lambda
+\begin{pmatrix}
+p_\pi(s_1|s_1) &amp; p_\pi(s_2|s_1) &amp; p_\pi(s_3|s_1) &amp; p_\pi(s_4|s_1) \\
+p_\pi(s_1|s_2) &amp; p_\pi(s_2|s_2) &amp; p_\pi(s_3|s_2) &amp; p_\pi(s_4|s_2) \\
+p_\pi(s_1|s_3) &amp; p_\pi(s_2|s_3) &amp; p_\pi(s_3|s_3) &amp; p_\pi(s_4|s_3) \\
+p_\pi(s_1|s_4) &amp; p_\pi(s_2|s_4) &amp; p_\pi(s_3|s_4) &amp; p_\pi(s_4|s_4)
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}
+$$
+$$
+v_\pi = r_\pi + \lambda P_\pi v_\pi \tag{3}
+$$</p>
+<h2 id="求解">求解</h2>
+<p>通过贝尔曼方程我们可以求解到每一个状态的状态值，通过（3）式我们可以很容易得到:
+$$
+v_\pi = (I-\lambda P)^{-1}r_\pi
+$$
+但是当状态空间足够大，\(P\)矩阵的维度将会非常大，对其求逆会消耗大量的计算资源，因此更常用的求解方式是迭代式算法，该算法会生成一个序列 \(v_0,v_1,v_2,&hellip;,v_n\)，\(v_0\)是一个初始化的值，通过这个随机值我们可以根据（2）式以此计算出后面的状态值。</p>
+<p>迭代式算法有一个重要的特征，也就是当\(n\)趋近于无穷的时候，\(v_{n+1}\)和\(v_n\)基本上相同，其原因这里不做交代</p>
+<h1 id="action-value">Action value</h1>
+<p>很简单，行为值指的就是每一个状态下采取具体的某一个动作能得到的Return：</p>
+<p>$$
+q_\pi(s,a) \dot{=} \mathbb{E}[G_t|S_t=t,A_t=a]
+$$</p>
+<p>通过行为值的比较，我们可以确定该状态下应该选择具体哪一个行为，一个状态下所有的行为值加起来就等于这个状态的状态值。</p>
 
         
           <div class="blog-tags">
