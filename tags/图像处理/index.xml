@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>图像处理 on Ashhhi</title>
-    <link>https://ashhhi.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
-    <description>Recent content in 图像处理 on Ashhhi</description>
+    <title>图像处理 on Ashhhi - 杂记</title>
+    <link>http://localhost:1313/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</link>
+    <description>Recent content in 图像处理 on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
     <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
     <lastBuildDate>Fri, 06 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【深度学习01】如何用DETR官方代码训练自己的数据集</title>
-      <link>https://ashhhi.github.io/post/2024-09-06-detr/</link>
+      <link>http://localhost:1313/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-09-06-detr/</guid>
+      <guid>http://localhost:1313/post/2024-09-06-detr/</guid>
       <description>&lt;p&gt;DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ashhhi.github.io/post/2024-9-25-rl02/</loc>
+    <loc>https://ashhhi.github.io/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/</loc>
+    <loc>https://ashhhi.github.io/post/2024-9-25-rl02/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/post/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/</loc>
+    <loc>https://ashhhi.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://ashhhi.github.io/tags/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/post/2024-9-23-rl01/</loc>
     <lastmod>2024-09-23T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://ashhhi.github.io/tags/computer-vision/</loc>
+    <lastmod>2024-09-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ashhhi.github.io/tags/deep-learning/</loc>
+    <lastmod>2024-09-06T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://ashhhi.github.io/post/2024-09-06-detr/</loc>
     <lastmod>2024-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/%E5%9B%BE%E5%83%8F%E5%A4%84%E7%90%86/</loc>
-    <lastmod>2024-09-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ashhhi.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</loc>
-    <lastmod>2024-09-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ashhhi.github.io/post/2024-03-17-git-basic/</loc>
+    <loc>https://ashhhi.github.io/tags/general-tech/</loc>
     <lastmod>2024-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E9%80%9A%E7%94%A8%E6%8A%80%E6%9C%AF/</loc>
+    <loc>https://ashhhi.github.io/post/2024-03-17-git-basic/</loc>
     <lastmod>2024-03-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/page/about/</loc>

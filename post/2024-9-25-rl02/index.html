@@ -12,14 +12,16 @@
  
 
 
-      <title>【强化学习02】笔记：贝尔曼方程 - Ashhhi</title>
+
+
+      <title>Bellman Function详解 - Ashhhi</title>
 
   <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
-    "name": "Ashhhi",
+    "name": "Ashhhi - 杂记",
     
     "url": "https:\/\/ashhhi.github.io\/"
 }
@@ -51,7 +53,7 @@
         "position": 3,
         "item": {
           "@id": "https:\/\/ashhhi.github.io\/post\/2024-9-25-rl02\/",
-          "name": "【强化学习02】笔记：贝尔曼方程"
+          "name": "Bellman function详解"
         }
     }]
 }
@@ -62,14 +64,14 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "【强化学习02】笔记：贝尔曼方程",
+  "headline": "Bellman Function详解",
   "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n",
   "inLanguage" : "en",
-  "wordCount":  2776 ,
+  "wordCount":  2895 ,
   "datePublished" : "2024-09-25T00:00:00\u002b00:00",
   "dateModified" : "2024-09-25T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
-  "keywords" : [ "强化学习" ],
+  "keywords" : [ "Reinforcement Learning" ],
   "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/post\/2024-9-25-rl02\/",
   "publisher" : {
     "@type": "Organization",
@@ -85,14 +87,14 @@
 </script>
 
 
-<meta property="og:title" content="【强化学习02】笔记：贝尔曼方程" />
+<meta property="og:title" content="Bellman Function详解" />
 <meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
 <meta property="og:url" content="https://ashhhi.github.io/post/2024-9-25-rl02/" />
 <meta property="og:type" content="website" />
-<meta property="og:site_name" content="Ashhhi" />
+<meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="【强化学习02】笔记：贝尔曼方程" />
+  <meta name="twitter:title" content="Bellman Function详解" />
   <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
@@ -103,12 +105,14 @@
   href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥔</text></svg>"
 />
   <meta name="generator" content="Hugo 0.134.2">
-  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi - 杂记"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main-nodark.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
   <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
 
 
   </head>
@@ -122,7 +126,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi</a>
+      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -162,8 +166,8 @@
     
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="Ashhhi" href="https://ashhhi.github.io/">
-            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi" />
+          <a title="Ashhhi - 杂记" href="https://ashhhi.github.io/">
+            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi - 杂记" />
            
           </a>
         </div>
@@ -244,7 +248,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>【强化学习02】笔记：贝尔曼方程</h1>
+                <h1>Bellman Function详解</h1>
               
               
               
@@ -258,7 +262,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2776&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2895&nbsp;words
   
   
     
@@ -383,7 +387,7 @@ $$</p>
 </ul>
 <p>可以得到这条路径的Return为：</p>
 <p>$$
-G_t = R_{t+1} + \lambda R_{t+2} + \lambda^2 R_{t+3}&hellip; = R_{t+1} + \lambda G_{t+1}
+G_t = R_{t+1} + \lambda R_{t+2} + \lambda^2 R_{t+3}&hellip; = R_{t+1} + \lambda G_{t+1} \tag{2}
 $$</p>
 <p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望：
 $$
@@ -421,7 +425,7 @@ $$</p>
 \begin{align*}
 v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
-\end{align*} \tag{2}
+\end{align*} \tag{3}
 $$</p>
 <h3 id="example">Example</h3>
 <p>看起来很复杂，其实只是因为这是一个通用的公式，如果举个简单的例子，就很清晰了。还是拿本章最开始的第一个那个例子来说，假设我们选择第一个策略，来求取它的\(v_\pi(s=1)\)，其实就是\(v_1\)。</p>
@@ -435,7 +439,7 @@ v_1 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\l
 $$</p>
 <p>就得到了之前的简单情况下的结果。</p>
 <h2 id="矩阵化">矩阵化</h2>
-<p>以上所写的贝尔曼方程形式都是单状态形式的，因此如果我们有\(n\)个状态的话我们就可以有\(n\)个方程，就可以写成一个矩阵形式，还是先把（2）式括号合并化简为：</p>
+<p>以上所写的贝尔曼方程形式都是单状态形式的，因此如果我们有\(n\)个状态的话我们就可以有\(n\)个方程，就可以写成一个矩阵形式，还是先把（3）式括号合并化简为：</p>
 <p>$$
 v_\pi(s) = r_\pi(s) + \lambda \sum_{s&rsquo; \in \mathcal(S)} p_\pi(s&rsquo;|s)v_\pi(s&rsquo;)
 $$</p>
@@ -471,19 +475,24 @@ $$
 v_\pi = (I-\lambda P)^{-1}r_\pi
 $$
 但是当状态空间足够大，\(P\)矩阵的维度将会非常大，对其求逆会消耗大量的计算资源，因此更常用的求解方式是迭代式算法，该算法会生成一个序列 \(v_0,v_1,v_2,&hellip;,v_n\)，\(v_0\)是一个初始化的值，通过这个随机值我们可以根据（2）式以此计算出后面的状态值。</p>
-<p>迭代式算法有一个重要的特征，也就是当\(n\)趋近于无穷的时候，\(v_{n+1}\)和\(v_n\)基本上相同，其原因这里不做交代</p>
+<p>迭代式算法有一个重要的特征，也就是当\(n\)趋近于无穷的时候，\(v_{n+1}\)和\(v_n\)基本上相同，其原因这里不做交代。</p>
 <h1 id="action-value">Action value</h1>
 <p>很简单，行为值指的就是每一个状态下采取具体的某一个动作能得到的Return：</p>
 <p>$$
-q_\pi(s,a) \dot{=} \mathbb{E}[G_t|S_t=t,A_t=a]
+q_\pi(s,a) \dot{=} \mathbb{E}[G_t|S_t=t,A_t=a] \tag{4}
 $$</p>
 <p>通过行为值的比较，我们可以确定该状态下应该选择具体哪一个行为，一个状态下所有的行为值加起来就等于这个状态的状态值。</p>
+<p>其实这里的\(q\)也就是Q-learning中Q值，根据Return的定义（2）式，我们（4）式展开可以得到：</p>
+<p>$$
+q_\pi(s,a) \dot{=} \mathbb{E}[r + \lambda G_{t+1}|S_t=t,A_t=a] \tag{5}
+$$</p>
+<p>利用贝尔曼最优方程，当智能体在状态\(s\)执行动作\(a\)后。。。。。。（记得补充贝尔曼最优方程）</p>
 
         
           <div class="blog-tags">
             
               
-              <a href="https://ashhhi.github.io/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习</a>&nbsp;
+              <a href="https://ashhhi.github.io/tags/reinforcement-learning/">Reinforcement Learning</a>&nbsp;
             
           </div>
         
@@ -500,7 +509,7 @@ $$</p>
                   <ul>
                 
                 
-                    <li><a href="/post/2024-9-23-rl01/">【强化学习01】笔记：从基本概念到马尔可夫决策</a></li>
+                    <li><a href="/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
                 
               </ul>
 
@@ -512,7 +521,7 @@ $$</p>
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://ashhhi.github.io/post/2024-9-23-rl01/" data-toggle="tooltip" data-placement="top" title="【强化学习01】笔记：从基本概念到马尔可夫决策">&larr; Previous Post</a>
+              <a href="https://ashhhi.github.io/post/2024-9-23-rl01/" data-toggle="tooltip" data-placement="top" title="强化学习中的基本概念以及马尔可夫决策">&larr; Previous Post</a>
             </li>
           
           
@@ -612,7 +621,7 @@ $$</p>
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://ashhhi.github.io/">Ashhhi</a>
+            <a href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
           
         </p>
         

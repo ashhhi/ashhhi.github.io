@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Ashhhi</title>
+    <title>Posts on Ashhhi - 杂记</title>
     <link>https://ashhhi.github.io/post/</link>
-    <description>Recent content in Posts on Ashhhi</description>
+    <description>Recent content in Posts on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
@@ -11,21 +11,21 @@
     <lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>【强化学习02】笔记：贝尔曼方程</title>
+      <title>Bellman Function详解</title>
       <link>https://ashhhi.github.io/post/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
       <guid>https://ashhhi.github.io/post/2024-9-25-rl02/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>【强化学习01】笔记：从基本概念到马尔可夫决策</title>
+      <title>强化学习中的基本概念以及马尔可夫决策</title>
       <link>https://ashhhi.github.io/post/2024-9-23-rl01/</link>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
       <guid>https://ashhhi.github.io/post/2024-9-23-rl01/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。&lt;/p&gt;</description>
     </item>
     <item>
-      <title>【深度学习01】如何用DETR官方代码训练自己的数据集</title>
+      <title>如何用DETR官方代码训练自己的数据集</title>
       <link>https://ashhhi.github.io/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
       <guid>https://ashhhi.github.io/post/2024-09-06-detr/</guid>
