@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Ashhhi - 杂记</title>
-    <link>https://ashhhi.github.io/page/</link>
+    <link>http://localhost:1313/page/</link>
     <description>Recent content in Pages on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
     <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
     <lastBuildDate>Wed, 13 Mar 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/page/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/page/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>About me</title>
-      <link>https://ashhhi.github.io/page/about/</link>
+      <link>http://localhost:1313/page/about/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/page/about/</guid>
-      <description>&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手以及电子竞技爱好者，这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;Location: 香港，重庆&lt;/code&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;殇学&#34;&gt;📖殇学&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;City University of Hong Kong (CityU)&lt;/strong&gt;&#xA;~ Hong Kong, China&lt;/p&gt;</description>
+      <guid>http://localhost:1313/page/about/</guid>
+      <description>&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手以及电子竞技爱好者，这里主要是一些个人的笔记，生活记录以及分享。Ash&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;Location: 香港，重庆&lt;/code&gt;&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reinforcement Learning on Ashhhi - 杂记</title>
-    <link>https://ashhhi.github.io/tags/reinforcement-learning/</link>
+    <link>http://localhost:1313/tags/reinforcement-learning/</link>
     <description>Recent content in Reinforcement Learning on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
     <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
     <lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bellman Function详解</title>
-      <link>https://ashhhi.github.io/post/2024-9-25-rl02/</link>
+      <link>http://localhost:1313/post/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-9-25-rl02/</guid>
+      <guid>http://localhost:1313/post/2024-9-25-rl02/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。&lt;/p&gt;</description>
     </item>
     <item>
       <title>强化学习中的基本概念以及马尔可夫决策</title>
-      <link>https://ashhhi.github.io/post/2024-9-23-rl01/</link>
+      <link>http://localhost:1313/post/2024-9-23-rl01/</link>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-9-23-rl01/</guid>
+      <guid>http://localhost:1313/post/2024-9-23-rl01/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。&lt;/p&gt;</description>
     </item>
   </channel>

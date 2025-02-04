@@ -2,54 +2,54 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ashhhi - 杂记</title>
-    <link>https://ashhhi.github.io/</link>
+    <link>http://localhost:1313/</link>
     <description>Recent content on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
     <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
     <lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Bellman Function详解</title>
-      <link>https://ashhhi.github.io/post/2024-9-25-rl02/</link>
+      <link>http://localhost:1313/post/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-9-25-rl02/</guid>
+      <guid>http://localhost:1313/post/2024-9-25-rl02/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。&lt;/p&gt;</description>
     </item>
     <item>
       <title>强化学习中的基本概念以及马尔可夫决策</title>
-      <link>https://ashhhi.github.io/post/2024-9-23-rl01/</link>
+      <link>http://localhost:1313/post/2024-9-23-rl01/</link>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-9-23-rl01/</guid>
+      <guid>http://localhost:1313/post/2024-9-23-rl01/</guid>
       <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。&lt;/p&gt;</description>
     </item>
     <item>
       <title>如何用DETR官方代码训练自己的数据集</title>
-      <link>https://ashhhi.github.io/post/2024-09-06-detr/</link>
+      <link>http://localhost:1313/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-09-06-detr/</guid>
+      <guid>http://localhost:1313/post/2024-09-06-detr/</guid>
       <description>&lt;p&gt;DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：&lt;/p&gt;</description>
     </item>
     <item>
       <title>Git技术</title>
-      <link>https://ashhhi.github.io/post/2024-03-17-git-basic/</link>
+      <link>http://localhost:1313/post/2024-03-17-git-basic/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-03-17-git-basic/</guid>
+      <guid>http://localhost:1313/post/2024-03-17-git-basic/</guid>
       <description>&lt;p&gt;记录一些Git常用指令和原理解释&lt;/p&gt;</description>
     </item>
     <item>
       <title>About me</title>
-      <link>https://ashhhi.github.io/page/about/</link>
+      <link>http://localhost:1313/page/about/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/page/about/</guid>
-      <description>&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手以及电子竞技爱好者，这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;Location: 香港，重庆&lt;/code&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;殇学&#34;&gt;📖殇学&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;City University of Hong Kong (CityU)&lt;/strong&gt;&#xA;~ Hong Kong, China&lt;/p&gt;</description>
+      <guid>http://localhost:1313/page/about/</guid>
+      <description>&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手以及电子竞技爱好者，这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;「Ash」的名字来源于一位朋友称呼我为阿史，念快了自然变成了「Ash」。字面意义上看，其有「尘埃、灰烬」的意思，我认为这象征着每个人都是一粒尘土，应当时刻保持谦卑。它还可以译为「白蜡树」，一种在可以被视为强壮、坚固的象征。两种含义合在一起，更有「浴火重生」的感觉，因此我一直沿用至今。&lt;/p&gt;</description>
     </item>
     <item>
       <title>Docker 配置监控管理系统</title>
-      <link>https://ashhhi.github.io/post/2024-02-28-grafana/</link>
+      <link>http://localhost:1313/post/2024-02-28-grafana/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
-      <guid>https://ashhhi.github.io/post/2024-02-28-grafana/</guid>
+      <guid>http://localhost:1313/post/2024-02-28-grafana/</guid>
       <description>&lt;p&gt;本文讲解了使用 Docker 配置 Prometheus+Alertmanager+Grafana+Mysql&lt;/p&gt;</description>
     </item>
   </channel>
