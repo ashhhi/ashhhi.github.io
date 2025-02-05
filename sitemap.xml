@@ -2,48 +2,48 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://ashhhi.github.io/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2024-9-25-rl02/</loc>
+    <loc>https://ashhhi.github.io/post/2024-9-25-rl02/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/</loc>
+    <loc>https://ashhhi.github.io/post/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/reinforcement-learning/</loc>
+    <loc>https://ashhhi.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
+    <loc>https://ashhhi.github.io/tags/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2024-9-23-rl01/</loc>
+    <loc>https://ashhhi.github.io/post/2024-9-23-rl01/</loc>
     <lastmod>2024-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/computer-vision/</loc>
+    <loc>https://ashhhi.github.io/tags/computer-vision/</loc>
     <lastmod>2024-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/deep-learning/</loc>
+    <loc>https://ashhhi.github.io/tags/deep-learning/</loc>
     <lastmod>2024-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2024-09-06-detr/</loc>
+    <loc>https://ashhhi.github.io/post/2024-09-06-detr/</loc>
     <lastmod>2024-09-06T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/general-tech/</loc>
+    <loc>https://ashhhi.github.io/tags/general-tech/</loc>
     <lastmod>2024-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2024-03-17-git-basic/</loc>
+    <loc>https://ashhhi.github.io/post/2024-03-17-git-basic/</loc>
     <lastmod>2024-03-17T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/about/</loc>
+    <loc>https://ashhhi.github.io/page/about/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/page/</loc>
+    <loc>https://ashhhi.github.io/page/</loc>
     <lastmod>2024-03-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/post/2024-02-28-grafana/</loc>
+    <loc>https://ashhhi.github.io/post/2024-02-28-grafana/</loc>
     <lastmod>2023-02-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://ashhhi.github.io/categories/</loc>
   </url>
 </urlset>
