@@ -13,9 +13,9 @@
  
 
 
-      <title>Git技术 - Ashhhi</title>
+      <title>PyTorch中的gather函数详解 - Ashhhi</title>
 
-  <meta name="description" content="记录一些Git常用指令和原理解释">
+  <meta name="description" content="torch.gather函数笔记">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -51,8 +51,8 @@
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/ashhhi.github.io\/tech\/2024-03-17-git-basic\/",
-          "name": "Git技术"
+          "@id": "https:\/\/ashhhi.github.io\/tech\/2025-02-18-gather\/",
+          "name": "Py torch中的gather函数详解"
         }
     }]
 }
@@ -63,15 +63,15 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "Git技术",
-  "description" : "记录一些Git常用指令和原理解释\n",
+  "headline": "PyTorch中的gather函数详解",
+  "description" : "torch.gather函数笔记\n",
   "inLanguage" : "en",
-  "wordCount":  876 ,
-  "datePublished" : "2024-03-17T00:00:00\u002b00:00",
-  "dateModified" : "2024-03-17T00:00:00\u002b00:00",
+  "wordCount":  530 ,
+  "datePublished" : "2025-02-18T00:00:00\u002b00:00",
+  "dateModified" : "2025-02-18T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
-  "keywords" : [ "Git" ],
-  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/tech\/2024-03-17-git-basic\/",
+  "keywords" : [ "Pytorch, Deep Learning" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/tech\/2025-02-18-gather\/",
   "publisher" : {
     "@type": "Organization",
     "name" : "https:\/\/ashhhi.github.io\/",
@@ -86,15 +86,15 @@
 </script>
 
 
-<meta property="og:title" content="Git技术" />
-<meta property="og:description" content="记录一些Git常用指令和原理解释">
+<meta property="og:title" content="PyTorch中的gather函数详解" />
+<meta property="og:description" content="torch.gather函数笔记">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
-<meta property="og:url" content="https://ashhhi.github.io/tech/2024-03-17-git-basic/" />
+<meta property="og:url" content="https://ashhhi.github.io/tech/2025-02-18-gather/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="Git技术" />
-  <meta name="twitter:description" content="记录一些Git常用指令和原理解释">
+  <meta name="twitter:title" content="PyTorch中的gather函数详解" />
+  <meta name="twitter:description" content="torch.gather函数笔记">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -251,7 +251,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>Git技术</h1>
+                <h1>PyTorch中的gather函数详解</h1>
               
               
               
@@ -259,13 +259,13 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on March 17, 2024
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 18, 2025
   
   
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;876&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;530&nbsp;words
   
   
 
@@ -292,81 +292,44 @@
       
       
         
-          <nav id="TableOfContents">
-  <ul>
-    <li><a href="#git-记录">Git 记录</a>
-      <ul>
-        <li><a href="#清除git缓存使修改后的gitignore生效">清除git缓存，使修改后的gitignore生效</a></li>
-        <li><a href="#查看commit记录">查看commit记录</a></li>
-      </ul>
-    </li>
-    <li><a href="#git-rebase-和-git-merge的区别">git rebase 和 git merge的区别</a>
-      <ul>
-        <li><a href="#rebase">rebase</a></li>
-        <li><a href="#merge">merge</a></li>
-      </ul>
-    </li>
-  </ul>
-</nav> 
+          <nav id="TableOfContents"></nav> 
         
       
 
 
       <article role="main" class="blog-post">
-        <p>记录一些Git常用指令和原理解释</p>
-<h1 id="git-记录">Git 记录</h1>
-<h2 id="清除git缓存使修改后的gitignore生效">清除git缓存，使修改后的gitignore生效</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git rm -r --cached .
-</span></span><span class="line"><span class="cl">git add .
-</span></span><span class="line"><span class="cl">git commit -m <span class="s1">&#39;update .gitignore&#39;</span>
-</span></span></code></pre></div><h2 id="查看commit记录">查看commit记录</h2>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">git log 查看所有
-</span></span><span class="line"><span class="cl">git show 查看最新的commit  
-</span></span><span class="line"><span class="cl">git show commitId 查看指定commit hashID的所有修改 
-</span></span><span class="line"><span class="cl">git show commitId fileName 查看某次commit中具体某个文件的修改
-</span></span></code></pre></div><h1 id="git-rebase-和-git-merge的区别">git rebase 和 git merge的区别</h1>
-<p>merge 和 rebase 操作均用于合并分支，但在具体操作上有不同，同时，rebase会给你一套清晰的代码历史，而merge则是乱七八糟的代码历史. 下面我们分别说说 merge 和 rebase 的具体操作</p>
-<h2 id="rebase">rebase</h2>
-<p>假设你有两个分支，一个master主分支，一个从master分离出来的feature分支，如下所示</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   feature 分支
-</span></span><span class="line"><span class="cl">     /
-</span></span><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D   master 分支
-</span></span></code></pre></div><p>当使用 merge 的时候，比如在feature分支上使用 &ldquo;git rebase master&rdquo;, git 会先找到两个分支的最近公共祖先，在这里也就是B，然后对比feature分支相比于B的历次commit，也就是E和F，提取相应的修改并存为临时文件，再将header指向master分支的最后一次提交，也就是D，以此作为新的基底将之前存起来的的临时文件按顺序应用</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">A &lt;- B &lt;- C &lt;- D &lt;- E‘ &lt;- F’  feature 分支
-</span></span></code></pre></div><p>也可以理解成 rebase 是直接将以B的作为基底切换到了以D作为基底，并提交了两个内容相同的commit（E和F），但实际上E和F已经不再是以前的E和F，变成了E‘和F’，他们是在master分支commit C和D之后再进行的提交，因此实际上 rebase 操作是丢弃了一些原有的commit（E和F），而新提交一些内容一样但实际上不同的commit（E‘和F’）</p>
-<p>使用 rebase 可以使得代码历史简介有线性，例如这次操作的历史变为：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl"><span class="c1"># 最上面是最新的</span>
-</span></span><span class="line"><span class="cl">* 74199ce <span class="o">(</span>HEAD -&gt; master, feature<span class="o">)</span> commit F
-</span></span><span class="line"><span class="cl">* e7c7111 commit E
-</span></span><span class="line"><span class="cl">* d9623b0 commit D
-</span></span><span class="line"><span class="cl">* 73deeed commit C
-</span></span><span class="line"><span class="cl">* c50221f commit B
-</span></span><span class="line"><span class="cl">* ef13725 commit A
-</span></span></code></pre></div><h2 id="merge">merge</h2>
-<p>以同样的例子举例，使用merge操作生成的代码历史显得比较复杂</p>
-<ul>
-<li>切换到 feature 分支： git checkout feature。</li>
-<li>合并 master 分支的更新： git merge master。</li>
-</ul>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">*   875906b Merge branch <span class="s1">&#39;master&#39;</span> into feature
-</span></span><span class="line"><span class="cl"><span class="p">|</span><span class="se">\ </span> 
-</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> 5b05585 commit F
-</span></span><span class="line"><span class="cl"><span class="p">|</span> <span class="p">|</span> f5b0fc0 commit E
-</span></span><span class="line"><span class="cl">* * d017dff commit D
-</span></span><span class="line"><span class="cl">* * 9df916f commit C
-</span></span><span class="line"><span class="cl"><span class="p">|</span>/  
-</span></span><span class="line"><span class="cl">* cb932a6 commit B
-</span></span><span class="line"><span class="cl">* sd8fd7f commit A
-</span></span></code></pre></div><p>也就是</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-shell" data-lang="shell"><span class="line"><span class="cl">       &lt;- E &lt;- F   
-</span></span><span class="line"><span class="cl">     /           <span class="se">\
-</span></span></span><span class="line"><span class="cl"><span class="se"></span>A &lt;- B &lt;-  C  &lt;-  D 
-</span></span></code></pre></div><p>可以看到 merge 会形成一个新的节点，之前的两个分支提交都分开显示，而 rebase 不会生成新的节点，是将两个分支融合成一个线性操作.</p>
+        <p>torch.gather函数笔记</p>
+<p>在学习PPO网络代码的时候遇到了这样一句话：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">old_log_probs = torch.log(self.actor(states).gather(1, actions)).detach()
+</span></span></code></pre></div><p>其中gather函数令人费解，官方文档以三维数组解释得也晦涩难懂，是这么写的：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">out[i][j][k] = input[index[i][j][k]][j][k]  # if dim == 0
+</span></span><span class="line"><span class="cl">out[i][j][k] = input[i][index[i][j][k]][k]  # if dim == 1
+</span></span><span class="line"><span class="cl">out[i][j][k] = input[i][j][index[i][j][k]]  # if dim == 2
+</span></span><span class="line"><span class="cl">
+</span></span><span class="line"><span class="cl">Parameters:
+</span></span><span class="line"><span class="cl">    input (Tensor) – the source tensor
+</span></span><span class="line"><span class="cl">    dim (int) – the axis along which to index
+</span></span><span class="line"><span class="cl">    index (LongTensor) – the indices of elements to gather
+</span></span></code></pre></div><hr>
+<p>通过具体计算例子记录一下自己的理解：</p>
+<p>比如，input = [[1, 2], [3, 4]]，index = [[0, 0], [1, 0]]，都是二维数组，如果我使用torch.gather(input, dim=1, index)，那么out就会是对input在第二维度上做以下几个操作：</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">out[0][0] = input[0][index[0][0]] = input[0][0] = 1
+</span></span><span class="line"><span class="cl">out[0][1] = input[0][index[0][1]] = input[0][0] = 1
+</span></span><span class="line"><span class="cl">out[1][0] = input[1][index[1][0]] = input[1][1] = 4
+</span></span><span class="line"><span class="cl">out[1][1] = input[1][index[1][1]] = input[1][0] = 3
+</span></span></code></pre></div><p>所以out=[[1, 1], [4, 3]]。</p>
+<p>其实out的形状只和index的形状有关，而与input没有关系，因为等号右边遍历的是index中的值，如果i, j大于index的范围就会报错。</p>
+<p>回到最开头PPO网络代码中，这里的action是一个形状为[19, 1]的0/1数组，而self.actor(states)得到的是一个形状为[19, 2]的数组，在强化学习中代表的是在动作空间中分别选择两个动作的概率值，有19个step。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">old_log_probs = torch.log(self.actor(states).gather(1, actions)).detach()
+</span></span></code></pre></div><p>通过这条语句，old_log_probs得到的是每一个step中选择的这19个动作分别的概率值。</p>
         
           <div class="blog-tags">
             
               
-              <a href="https://ashhhi.github.io/tags/git/">Git</a>&nbsp;
+              <a href="https://ashhhi.github.io/tags/pytorch/">Pytorch</a>&nbsp;
+            
+              
+              <a href="https://ashhhi.github.io/tags/deep-learning/">Deep Learning</a>&nbsp;
             
           </div>
         
@@ -375,6 +338,17 @@
 
         
           
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/tech/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
+                
+              </ul>
 
           
         
@@ -384,13 +358,9 @@
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://ashhhi.github.io/tech/2024-02-28-grafana/" data-toggle="tooltip" data-placement="top" title="Docker 配置监控管理系统">&larr; Previous Post</a>
+              <a href="https://ashhhi.github.io/tech/2024-9-25-rl02/" data-toggle="tooltip" data-placement="top" title="Bellman Function详解">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://ashhhi.github.io/tech/2024-09-06-detr/" data-toggle="tooltip" data-placement="top" title="如何用DETR官方代码训练自己的数据集">Next Post &rarr;</a>
-            </li>
           
         </ul>
       

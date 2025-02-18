@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Ashhhi - 杂记</title>
+    <link>https://ashhhi.github.io/tags/git/</link>
+    <description>Recent content in Git on Ashhhi - 杂记</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
+    <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
+    <lastBuildDate>Sun, 17 Mar 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git技术</title>
+      <link>https://ashhhi.github.io/tech/2024-03-17-git-basic/</link>
+      <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/tech/2024-03-17-git-basic/</guid>
+      <description>&lt;p&gt;记录一些Git常用指令和原理解释&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
