@@ -66,7 +66,7 @@
   "headline": "Bellman Function详解",
   "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n",
   "inLanguage" : "en",
-  "wordCount":  2895 ,
+  "wordCount":  2867 ,
   "datePublished" : "2024-09-25T00:00:00\u002b00:00",
   "dateModified" : "2024-09-25T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
@@ -265,7 +265,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2895&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2867&nbsp;words
   
   
 
@@ -389,10 +389,10 @@ $$</p>
 <p>$$
 G_t = R_{t+1} + \lambda R_{t+2} + \lambda^2 R_{t+3}&hellip; = R_{t+1} + \lambda G_{t+1} \tag{2}
 $$</p>
-<p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望：
+<p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望，这就是<code>状态值函数</code>，有些地方把V大写：
 $$
 \begin{align*}
-v_\pi(s) &amp;= \mathbb{E}[G_t|S_t=s] \\
+V_\pi(s) = v_\pi(s) &amp;= \mathbb{E}[G_t|S_t=s] \\
 &amp;= \mathbb{E}[R_{t+1} + \lambda G_{t+1}|S_t=s] \\
 &amp;= \mathbb{E}[R_{t+1}|S_t=s] + \lambda \mathbb{E}[G_{t+1}|S_t=s]
 \end{align*}
@@ -477,16 +477,15 @@ $$
 但是当状态空间足够大，\(P\)矩阵的维度将会非常大，对其求逆会消耗大量的计算资源，因此更常用的求解方式是迭代式算法，该算法会生成一个序列 \(v_0,v_1,v_2,&hellip;,v_n\)，\(v_0\)是一个初始化的值，通过这个随机值我们可以根据（2）式以此计算出后面的状态值。</p>
 <p>迭代式算法有一个重要的特征，也就是当\(n\)趋近于无穷的时候，\(v_{n+1}\)和\(v_n\)基本上相同，其原因这里不做交代。</p>
 <h1 id="action-value">Action value</h1>
-<p>很简单，行为值指的就是每一个状态下采取具体的某一个动作能得到的Return：</p>
+<p>很简单，行为值指的就是每一个状态下采取具体的某一个动作能得到的Return, 其实也就是Q-learning中大Q值，也叫<code>动作值函数</code>：</p>
 <p>$$
-q_\pi(s,a) \dot{=} \mathbb{E}[G_t|S_t=t,A_t=a] \tag{4}
+Q_\pi(s,a) = q_\pi(s,a) = \mathbb{E}[G_t|S_t=t,A_t=a] \tag{4}
 $$</p>
 <p>通过行为值的比较，我们可以确定该状态下应该选择具体哪一个行为，一个状态下所有的行为值加起来就等于这个状态的状态值。</p>
-<p>其实这里的\(q\)也就是Q-learning中Q值，根据Return的定义（2）式，我们（4）式展开可以得到：</p>
+<p>根据Return的定义（2）式，我们（4）式展开可以得到：</p>
 <p>$$
-q_\pi(s,a) \dot{=} \mathbb{E}[r + \lambda G_{t+1}|S_t=t,A_t=a] \tag{5}
+q_\pi(s,a) = \mathbb{E}[r + \lambda G_{t+1}|S_t=t,A_t=a] \tag{5}
 $$</p>
-<p>利用贝尔曼最优方程，当智能体在状态\(s\)执行动作\(a\)后。。。。。。（记得补充贝尔曼最优方程）</p>
         
           <div class="blog-tags">
             
