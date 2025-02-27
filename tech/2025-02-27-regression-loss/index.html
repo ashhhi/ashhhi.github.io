@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <head>
     
 
   <meta charset="utf-8" />
@@ -13,37 +13,89 @@
  
 
 
-      <title>Math - Ashhhi</title>
+      <title>Regression Loss Function Summary - Ashhhi</title>
 
+  <meta name="description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
     "name": "Ashhhi - 杂记",
     
-    "url": "http:\/\/localhost:1313\/"
+    "url": "https:\/\/ashhhi.github.io\/"
 }
 </script><script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",
   "name": "",
-  "url": "http:\/\/localhost:1313\/"
+  "url": "https:\/\/ashhhi.github.io\/"
   
   
   
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/tech\/2025-02-27-regression-loss\/",
+          "name": "Regression loss function summary"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "Regression Loss Function Summary",
+  "description" : "在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同\n",
+  "inLanguage" : "en",
+  "wordCount":  949 ,
+  "datePublished" : "2025-02-27T00:00:00\u002b00:00",
+  "dateModified" : "2025-02-27T00:00:00\u002b00:00",
+  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+  "keywords" : [ "Deep Learning" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/tech\/2025-02-27-regression-loss\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/ashhhi.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Math" />
-<meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
-<meta property="og:url" content="http://localhost:1313/tags/math/" />
+
+<meta property="og:title" content="Regression Loss Function Summary" />
+<meta property="og:description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
+<meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+<meta property="og:url" content="https://ashhhi.github.io/tech/2025-02-27-regression-loss/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="Math" />
-  <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
+  <meta name="twitter:title" content="Regression Loss Function Summary" />
+  <meta name="twitter:description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
+  <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
   <link
@@ -52,11 +104,11 @@
   href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥔</text></svg>"
 />
   <meta name="generator" content="Hugo 0.134.2">
-  <link rel="alternate" href="http://localhost:1313/index.xml" type="application/rss+xml" title="Ashhhi - 杂记"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi - 杂记"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:1313/css/main-nodark.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main-nodark.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="http://localhost:1313/css/highlight.min.css" /><link rel="stylesheet" href="http://localhost:1313/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
@@ -78,7 +130,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="http://localhost:1313/">Ashhhi - 杂记</a>
+      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -118,8 +170,8 @@
     
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="Ashhhi - 杂记" href="http://localhost:1313/">
-            <img class="avatar-img" src="http://localhost:1313/img/avatar.jpg" alt="Ashhhi - 杂记" />
+          <a title="Ashhhi - 杂记" href="https://ashhhi.github.io/">
+            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi - 杂记" />
            
           </a>
         </div>
@@ -197,14 +249,31 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="tags-heading">
+            <div class="post-heading">
               
-                <h1>Math</h1>
-              
-              
-                <hr class="small">
+                <h1>Regression Loss Function Summary</h1>
               
               
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 27, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;949&nbsp;words
+  
+  
+
+  
+  
+</span>
+
+
               
             </div>
           </div>
@@ -216,64 +285,128 @@
 
 
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#maemse">MAE，MSE</a></li>
+    <li><a href="#huber-loss">Huber Loss</a></li>
+  </ul>
+</nav> 
+        
+      
+
+
+      <article role="main" class="blog-post">
+        <p>在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同</p>
+<h1 id="maemse">MAE，MSE</h1>
+<p>MAE（mean absolute error），即平均绝对值误差，也可以看作L1损失，是一种回归模型的常用损失函数，它计算的是目标值和预测值之差的绝对值之和，公式如下：</p>
+<p>$$
+\text{MAE} = \frac{1}{n}\sum_{i=1}^{n} \left| y_i - y_i^p \right|
+$$</p>
+<p>也就是只衡量了预测值误差的模长而不考虑方向，取值范围也是从0到正无穷。如果考虑模长的话，就变成了MBE，与MAE相比其只少了一个绝对值，但需谨慎使用，因为正负误差可以相互抵消。</p>
+<p>$$
+\text{MBE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - y_i^p)
+$$</p>
+<p>什么是MSE？Mean squared error，也就是均方误差，类似于L2损失，它求的是预测值与真实值之间距离的平方和，计算公式如下：</p>
+<p>$$
+\text{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - y_i^p)^2
+$$</p>
+<p>对比MSE和MAE，可以很轻易地想到，当e&gt;1时 (令e=真实值-预测值)，MSE由于进行了平方操作，它的值会更大，因此MSE对异常点会更加敏感，如果异常点代表很重要的异常情况，并且需要被检测出来，则应选择MSE损失函数。相反，如果异常点是我们不需要的，那么MAE会是个更好的选择。</p>
+<p>MAE有一个严重的问题（特别是对于神经网络），就是更新的梯度始终相同，始终为1或者-1，因此必须要结合着变化的学习率来使用才能获得更好的结果。</p>
+<h1 id="huber-loss">Huber Loss</h1>
+<p>Huber loss在MAE和MSE中做平衡，其公式和图像如下所示:</p>
+<p>$$
+L_\delta(y, f(x)) =
+\begin{cases}
+\frac{1}{2}(y - f(x))^2 &amp; \text{for } |y - f(x)| \leq \delta, \\
+\delta |y - f(x)| - \frac{1}{2} \delta^2 &amp; \text{otherwise.}
+\end{cases}
+$$</p>
+<p><img src="/img/2025-02-27-Regression-Loss/Huber-MAE-MSE.png" alt=""></p>
+<p>可以看出，当\(|e| \leq \delta\)时，(令e=真实值-预测值)，它采用平方误差，当\(|e| &gt; \delta\)时，转换为线性误差。当\(\delta ～ 0\)的时候，Huber会趋向于MAE，当\(\delta ～ ∞\)的时候，Huber又会趋向于MSE。</p>
+<p>Huber损失函数同时具备MSE和MAE这两种损失函数的优点，因为它围绕着最小值会减小梯度，而且相比MSE，它对异常值更具鲁棒性。不过，也存在一个问题，我们可能需要寻找最优的超参数\(\delta\)，比如交叉验证，网格搜索等手段。</p>
+<p>通过计算Huber的导数，可以看出来，当\(|e| &gt; \delta\)时，他的导数都会被clip在\(\delta\)，所以当有一些异常值会严重影响模型效率的话，可以以它为根据去设置\(\delta\)值。</p>
+<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl"># huber 损失
+</span></span><span class="line"><span class="cl">def huber(true, pred, delta):
+</span></span><span class="line"><span class="cl">    loss = np.where(np.abs(true-pred) &lt; delta , 0.5*((true-pred)**2), delta*np.abs(true - pred) - 0.5*(delta**2))
+</span></span><span class="line"><span class="cl">    return np.sum(loss)
+</span></span></code></pre></div>
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://ashhhi.github.io/tags/deep-learning/">Deep Learning</a>&nbsp;
+            
+          </div>
+        
 
         
-        <div class="posts-list">
+
+        
           
-            <article class="post-preview">
-    <a href="http://localhost:1313/tech/draft-jacobianmatrix/">
-        <h2 class="post-title">雅可比 (Jacobian) 矩阵/行列式的理解</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 20, 2025
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;76&nbsp;words
-  
-  
-
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。</p>
-        <a href="http://localhost:1313/tech/draft-jacobianmatrix/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="http://localhost:1313/tags/math/">Math</a>&nbsp;
-         
-    </div>
-    
-
-</article>
+            
           
-        </div>
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/tech/2025-02-18-gather/">PyTorch中的gather函数详解</a></li>
+                
+                    <li><a href="/tech/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
+                
+              </ul>
+
+          
         
-      </div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://ashhhi.github.io/tech/2025-02-18-gather/" data-toggle="tooltip" data-placement="top" title="PyTorch中的gather函数详解">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+      
+        <script src="https://giscus.app/client.js"
+        data-repo="ashhhi/hugoblogtalks"
+        data-repo-id="R_kgDOLgjUJw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLgjUJ84CimSM"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox_light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+        </script>
+      
+
     </div>
   </div>
+</div>
 
       <footer>
   <div class="container">
@@ -336,7 +469,7 @@
 
           
             &nbsp;&bull;&nbsp;
-            <a href="http://localhost:1313/">Ashhhi - 杂记</a>
+            <a href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
           
           
             &nbsp;&bull;&nbsp;
@@ -392,11 +525,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
-<script src="http://localhost:1313/js/main.js"></script>
-<script src="http://localhost:1313/js/highlight.min.js"></script>
+<script src="https://ashhhi.github.io/js/main.js"></script>
+<script src="https://ashhhi.github.io/js/highlight.min.js"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://localhost:1313/js/load-photoswipe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://ashhhi.github.io/js/load-photoswipe.js"></script>
 
 
 

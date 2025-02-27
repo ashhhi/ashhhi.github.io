@@ -13,8 +13,9 @@
  
 
 
-      <title>Math - Ashhhi</title>
+      <title>雅可比 (Jacobian) 矩阵/行列式的理解 - Ashhhi</title>
 
+  <meta name="description" content="简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -35,14 +36,65 @@
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/tech\/draft-jacobianmatrix\/",
+          "name": "雅可比 ( jacobian) 矩阵 行列式的理解"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "雅可比 (Jacobian) 矩阵\/行列式的理解",
+  "description" : "简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。\n",
+  "inLanguage" : "en",
+  "wordCount":  76 ,
+  "datePublished" : "2025-02-20T00:00:00\u002b00:00",
+  "dateModified" : "2025-02-20T00:00:00\u002b00:00",
+  "image" : "http:\/\/localhost:1313\/img\/avatar.jpg",
+  "keywords" : [ "Math" ],
+  "mainEntityOfPage" : "http:\/\/localhost:1313\/tech\/draft-jacobianmatrix\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:1313\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:1313\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Math" />
+
+<meta property="og:title" content="雅可比 (Jacobian) 矩阵/行列式的理解" />
+<meta property="og:description" content="简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。">
 <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
-<meta property="og:url" content="http://localhost:1313/tags/math/" />
+<meta property="og:url" content="http://localhost:1313/tech/draft-jacobianmatrix/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="Math" />
+  <meta name="twitter:title" content="雅可比 (Jacobian) 矩阵/行列式的理解" />
+  <meta name="twitter:description" content="简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。">
   <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -197,42 +249,14 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="tags-heading">
+            <div class="post-heading">
               
-                <h1>Math</h1>
-              
-              
-                <hr class="small">
+                <h1>雅可比 (Jacobian) 矩阵/行列式的理解</h1>
               
               
               
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  
-  </header>
-
-
-    
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-
-        
-        <div class="posts-list">
-          
-            <article class="post-preview">
-    <a href="http://localhost:1313/tech/draft-jacobianmatrix/">
-        <h2 class="post-title">雅可比 (Jacobian) 矩阵/行列式的理解</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
+              
+                <span class="post-meta">
   
   
   <i class="fas fa-calendar"></i>&nbsp;Posted on February 20, 2025
@@ -250,30 +274,94 @@
 </span>
 
 
-    </p>
-    <div class="post-entry">
-        
-        <p>简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。</p>
-        <a href="http://localhost:1313/tech/draft-jacobianmatrix/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="http://localhost:1313/tags/math/">Math</a>&nbsp;
-         
-    </div>
-    
-
-</article>
-          
+              
+            </div>
+          </div>
         </div>
-        
       </div>
     </div>
+  
+  </header>
+
+
+    
+<div class="container" role="main">
+  
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents"></nav> 
+        
+      
+
+
+      <article role="main" class="blog-post">
+        <p>简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。</p>
+<p>Reference:</p>
+<ul>
+<li><a href="https://www.bilibili.com/video/BV1wz411q7WE/?spm_id_from=333.1391.0.0">【快速学懂】雅可比行列式意义以及应用推导</a></li>
+<li><a href="https://www.bilibili.com/video/BV1EDDuYtEZf/?spm_id_from=333.337.search-card.all.click&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">理解导数、积分与雅可比矩阵之间的关系！</a></li>
+</ul>
+<hr>
+        
+          <div class="blog-tags">
+            
+              
+              <a href="http://localhost:1313/tags/math/">Math</a>&nbsp;
+            
+          </div>
+        
+
+        
+
+        
+          
+
+          
+        
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:1313/tech/2025-02-18-gather/" data-toggle="tooltip" data-placement="top" title="PyTorch中的gather函数详解">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+      
+        <script src="https://giscus.app/client.js"
+        data-repo="ashhhi/hugoblogtalks"
+        data-repo-id="R_kgDOLgjUJw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLgjUJ84CimSM"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox_light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+        </script>
+      
+
+    </div>
   </div>
+</div>
 
       <footer>
   <div class="container">

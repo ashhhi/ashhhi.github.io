@@ -15,7 +15,13 @@
 
       <title>Bellman Function详解 - Ashhhi</title>
 
-  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
+  <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
+$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r &#43; \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r&#43;\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*}
+$$">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -64,9 +70,9 @@
     "name" : "Ashhhi"
   },
   "headline": "Bellman Function详解",
-  "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n",
+  "description" : "本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。\n$$ \\begin{align*} v_\\pi(s) \u0026amp;= \\sum_{a \\in \\mathcal{A}} \\pi(a|s) \\sum_{r \\in \\mathcal{R}}p(r|s,a)r \u002b \\lambda \\sum_{s\u0026rsquo; \\in \\mathcal{S}}v_\\pi(s\u0026rsquo;)\\sum_{a \\in \\mathcal{A}} p[s\u0026rsquo;|s,a]\\pi(a|s) \\\\ \u0026amp;= \\sum_{a \\in \\mathcal{A}}\\pi(a|s)[\\sum_{r \\in \\mathcal{R}}p(r|s,a)r\u002b\\lambda \\sum_{s\u0026rsquo; \\in \\mathcal{S}}v_\\pi(s\u0026rsquo;)p[s\u0026rsquo;|s,a]] \\end{align*} $$\n",
   "inLanguage" : "en",
-  "wordCount":  2867 ,
+  "wordCount":  2898 ,
   "datePublished" : "2024-09-25T00:00:00\u002b00:00",
   "dateModified" : "2024-09-25T00:00:00\u002b00:00",
   "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
@@ -87,14 +93,23 @@
 
 
 <meta property="og:title" content="Bellman Function详解" />
-<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
+<meta property="og:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
+$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r &#43; \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r&#43;\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*}
+$$">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
 <meta property="og:url" content="https://ashhhi.github.io/tech/2024-9-25-rl02/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
   <meta name="twitter:title" content="Bellman Function详解" />
-  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。">
+  <meta name="twitter:description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
+$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r &#43; \lambda \sum_{s&rsquo; \in …">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -265,7 +280,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;6&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2867&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;2898&nbsp;words
   
   
 
@@ -317,6 +332,12 @@
 
       <article role="main" class="blog-post">
         <p>本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。</p>
+<p>$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*}
+$$</p>
 <p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
 <hr>
 <h1 id="return-和-state-value">Return 和 State value</h1>

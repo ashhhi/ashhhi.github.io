@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Math on Beautiful Hugo</title>
+    <title>Math on Ashhhi - 杂记</title>
     <link>http://localhost:1313/tags/math/</link>
-    <description>Recent content in Math on Beautiful Hugo</description>
+    <description>Recent content in Math on Ashhhi - 杂记</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <managingEditor>youremail@domain.com (Some Person)</managingEditor>
-    <webMaster>youremail@domain.com (Some Person)</webMaster>
-    <lastBuildDate>Sun, 05 Mar 2017 00:00:00 +0000</lastBuildDate>
+    <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
+    <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
+    <lastBuildDate>Thu, 20 Feb 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/math/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Math Sample</title>
-      <link>http://localhost:1313/post/2017-03-05-math-sample/</link>
-      <pubDate>Sun, 05 Mar 2017 00:00:00 +0000</pubDate><author>youremail@domain.com (Some Person)</author>
-      <guid>http://localhost:1313/post/2017-03-05-math-sample/</guid>
-      <description>&lt;p&gt;KaTeX can be used to generate complex math formulas server-side.&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\phi = \frac{(1+\sqrt{5})}{2} = 1.6180339887\cdots&#xA;$$&lt;/p&gt;&#xA;&lt;p&gt;Additional details can be found on &lt;a href=&#34;https://github.com/KaTeX/KaTeX&#34;&gt;GitHub&lt;/a&gt; or on the &lt;a href=&#34;https://katex.org/&#34;&gt;project homepage&lt;/a&gt;.&lt;/p&gt;</description>
+      <title>雅可比 (Jacobian) 矩阵/行列式的理解</title>
+      <link>http://localhost:1313/tech/draft-jacobianmatrix/</link>
+      <pubDate>Thu, 20 Feb 2025 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>http://localhost:1313/tech/draft-jacobianmatrix/</guid>
+      <description>&lt;p&gt;简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

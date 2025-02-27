@@ -15,7 +15,7 @@
       <link>https://ashhhi.github.io/tech/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
       <guid>https://ashhhi.github.io/tech/2024-9-25-rl02/</guid>
-      <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。&lt;/p&gt;</description>
+      <description>&lt;p&gt;本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{align*}&#xA;v_\pi(s) &amp;amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&amp;rsquo; \in \mathcal{S}}v_\pi(s&amp;rsquo;)\sum_{a \in \mathcal{A}} p[s&amp;rsquo;|s,a]\pi(a|s) \\&#xA;&amp;amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&amp;rsquo; \in \mathcal{S}}v_\pi(s&amp;rsquo;)p[s&amp;rsquo;|s,a]]&#xA;\end{align*}&#xA;$$&lt;/p&gt;</description>
     </item>
     <item>
       <title>强化学习中的基本概念以及马尔可夫决策</title>

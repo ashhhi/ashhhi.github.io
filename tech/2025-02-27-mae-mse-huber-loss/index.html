@@ -13,8 +13,9 @@
  
 
 
-      <title>Math - Ashhhi</title>
+      <title>回归任务损失函数，从MAE到Huber Loss - Ashhhi</title>
 
+  <meta name="description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -35,14 +36,65 @@
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "http:\/\/localhost:1313\/tech\/2025-02-27-mae-mse-huber-loss\/",
+          "name": "回归任务损失函数，从 mae到 huber loss"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "回归任务损失函数，从MAE到Huber Loss",
+  "description" : "在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同\n",
+  "inLanguage" : "en",
+  "wordCount":  580 ,
+  "datePublished" : "2025-02-27T00:00:00\u002b00:00",
+  "dateModified" : "2025-02-27T00:00:00\u002b00:00",
+  "image" : "http:\/\/localhost:1313\/img\/avatar.jpg",
+  "keywords" : [ "Deep Learning" ],
+  "mainEntityOfPage" : "http:\/\/localhost:1313\/tech\/2025-02-27-mae-mse-huber-loss\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "http:\/\/localhost:1313\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "http:\/\/localhost:1313\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Math" />
+
+<meta property="og:title" content="回归任务损失函数，从MAE到Huber Loss" />
+<meta property="og:description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
 <meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
-<meta property="og:url" content="http://localhost:1313/tags/math/" />
+<meta property="og:url" content="http://localhost:1313/tech/2025-02-27-mae-mse-huber-loss/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="Math" />
+  <meta name="twitter:title" content="回归任务损失函数，从MAE到Huber Loss" />
+  <meta name="twitter:description" content="在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同">
   <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -197,14 +249,31 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="tags-heading">
+            <div class="post-heading">
               
-                <h1>Math</h1>
-              
-              
-                <hr class="small">
+                <h1>回归任务损失函数，从MAE到Huber Loss</h1>
               
               
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on February 27, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;580&nbsp;words
+  
+  
+
+  
+  
+</span>
+
+
               
             </div>
           </div>
@@ -216,64 +285,119 @@
 
 
     
-  <div class="container" role="main">
-    <div class="row">
-      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+<div class="container" role="main">
+  
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
+        
+          <nav id="TableOfContents">
+  <ul>
+    <li><a href="#maemse">MAE，MSE</a></li>
+    <li><a href="#huber-loss">Huber Loss</a></li>
+  </ul>
+</nav> 
+        
+      
+
+
+      <article role="main" class="blog-post">
+        <p>在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同</p>
+<h1 id="maemse">MAE，MSE</h1>
+<p>MAE（mean absolute error），即平均绝对值误差，也可以看作L1损失，是一种回归模型的常用损失函数，它计算的是目标值和预测值之差的绝对值之和，公式如下：</p>
+<p>$$
+\text{MAE} = \frac{1}{n}\sum_{i=1}^{n} \left| y_i - y_i^p \right|
+$$</p>
+<p>也就是只衡量了预测值误差的模长而不考虑方向，取值范围也是从0到正无穷。如果考虑模长的话，就变成了MBE，与MAE相比其只少了一个绝对值，但需谨慎使用，因为正负误差可以相互抵消。</p>
+<p>$$
+\text{MBE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - y_i^p)
+$$</p>
+<p>什么是MSE？Mean squared error，也就是均方误差，类似于L2损失，它求的是预测值与真实值之间距离的平方和，计算公式如下：</p>
+<p>$$
+\text{MSE} = \frac{1}{n}\sum_{i=1}^{n} (y_i - y_i^p)^2
+$$</p>
+<p>对比MSE和MAE，可以很轻易地想到，当e&gt;1时 (令e=真实值-预测值)，MSE由于进行了平方操作，它的值会更大，因此MSE对异常点会更加敏感，如果异常点代表很重要的异常情况，并且需要被检测出来，则应选择MSE损失函数。相反，如果异常点是我们不需要的，那么MAE会是个更好的选择。</p>
+<p>MAE有一个严重的问题（特别是对于神经网络），就是更新的梯度始终相同，始终为1或者-1，因此必须要结合着变化的学习率来使用才能获得更好的结果。</p>
+<h1 id="huber-loss">Huber Loss</h1>
+<p>Huber loss在MAE和MSE中做平衡，其公式和图像如下所示:</p>
+<p>$$
+L_\delta(y, f(x)) =
+\begin{cases}
+\frac{1}{2}(y - f(x))^2 &amp; \text{for } |y - f(x)| \leq \delta, \\
+\delta |y - f(x)| - \frac{1}{2} \delta^2 &amp; \text{otherwise.}
+\end{cases}
+$$</p>
+        
+          <div class="blog-tags">
+            
+              
+              <a href="http://localhost:1313/tags/deep-learning/">Deep Learning</a>&nbsp;
+            
+          </div>
+        
 
         
-        <div class="posts-list">
+
+        
           
-            <article class="post-preview">
-    <a href="http://localhost:1313/tech/draft-jacobianmatrix/">
-        <h2 class="post-title">雅可比 (Jacobian) 矩阵/行列式的理解</h2>
-        
-        
-        
-    </a>
-
-    <p class="post-meta">
-        <span class="post-meta">
-  
-  
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 20, 2025
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
-  
-  
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;76&nbsp;words
-  
-  
-
-  
-  
-</span>
-
-
-    </p>
-    <div class="post-entry">
-        
-        <p>简单的定义：雅可比矩阵表示函数f在某个特定点附近最佳线性映射近似的矩阵。</p>
-        <a href="http://localhost:1313/tech/draft-jacobianmatrix/" class="post-read-more">[Read More]</a>
-        
-    </div>
-
-    
-    <div class="blog-tags">
-        
-       
-       <a href="http://localhost:1313/tags/math/">Math</a>&nbsp;
-         
-    </div>
-    
-
-</article>
+            
           
-        </div>
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
+                
+                
+                    <li><a href="/tech/2025-02-18-gather/">PyTorch中的gather函数详解</a></li>
+                
+                    <li><a href="/tech/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
+                
+              </ul>
+
+          
         
-      </div>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="http://localhost:1313/tech/2025-02-18-gather/" data-toggle="tooltip" data-placement="top" title="PyTorch中的gather函数详解">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+      
+        <script src="https://giscus.app/client.js"
+        data-repo="ashhhi/hugoblogtalks"
+        data-repo-id="R_kgDOLgjUJw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLgjUJ84CimSM"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox_light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+        </script>
+      
+
     </div>
   </div>
+</div>
 
       <footer>
   <div class="container">
