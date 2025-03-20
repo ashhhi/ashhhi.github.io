@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Reinforcement Learning on Ashhhi</title>
-    <link>https://ashhhi.github.io/en/tags/reinforcement-learning/</link>
+    <link>ashhhi.life/en/tags/reinforcement-learning/</link>
     <description>Recent Posts in Reinforcement Learning on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:12:43 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/en/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Mar 2025 00:16:27 +0800</lastBuildDate>
+    <atom:link href="ashhhi.life/en/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</title>
-      <link>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</link>
+      <link>ashhhi.life/en/post/2025-03-20-policy-value-iteration/</link>
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</guid>
+      <guid>ashhhi.life/en/post/2025-03-20-policy-value-iteration/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Bellman Function详解</title>
-      <link>https://ashhhi.github.io/en/post/2024-9-25-rl02/</link>
+      <link>ashhhi.life/en/post/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/post/2024-9-25-rl02/</guid>
+      <guid>ashhhi.life/en/post/2024-9-25-rl02/</guid>
       <description></description>
       
     </item>
     <item>
       <title>强化学习中的基本概念以及马尔可夫决策</title>
-      <link>https://ashhhi.github.io/en/post/2024-9-23-rl01/</link>
+      <link>ashhhi.life/en/post/2024-9-23-rl01/</link>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/post/2024-9-23-rl01/</guid>
+      <guid>ashhhi.life/en/post/2024-9-23-rl01/</guid>
       <description></description>
       <enclosure url="/img/2024-9-23-RL01/1.png" length="0" type="image/jpeg" />
     </item>

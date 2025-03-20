@@ -10,15 +10,15 @@
 <meta name="author" content="[Ash]">
 <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。" >
 <meta name="keywords" content="Reinforcement Learning">
-<link rel="canonical" href="https://ashhhi.github.io/en/post/2024-9-23-rl01/">
+<link rel="canonical" href="ashhhi.life/en/post/2024-9-23-rl01/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+<!-- js.html --><script src="ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+        <link rel="stylesheet" href="ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
     <!-- css/inline.html -->
     <style>
          
@@ -39,7 +39,7 @@
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"
         defer></script>
-    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    <script src="ashhhi.life/js/katex.js" defer></script>
     
 </head>
 <body  id="post" >
@@ -55,7 +55,7 @@
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+        <a id="logo" href="ashhhi.life/en/" aria-label="Ashhhi">
                 <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
                 <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
                 <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
@@ -80,7 +80,7 @@
     <div id="search" class="on-hull">
         <div role="presentation" class="screening js-cgpn"></div>
     </div>
-    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script src="ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
     <script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
@@ -104,7 +104,7 @@
     <form id="duckduckgo" class="form on-plank"
         name="x" action="//duckduckgo.com/"
         role="search" aria-label="">
-        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="" name="sites"></input>
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
@@ -164,7 +164,7 @@
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
         <li>
-            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            <a href="ashhhi.life/en/post/" aria-current="true">Post
             </a>
         </li>
     <li>
@@ -225,7 +225,7 @@
 <li>奖励：在智能体采取某一个行为之后，会获得奖励，也可以叫做环境给予的反馈。</li>
 </ul>
 <p>拿最经典的网格游戏为例，如图，机器人会在其中一个网格，最终目标是找到一条最优路径去到Target space，其中有障碍物Forbidden。那么这里的最优路径也就是我们要寻找的<code>策略</code>，机器人便是<code>智能体</code>，它每一个时刻所处的格子为他的<code>状态</code>，然后在不同的状态下它可以选择不同的上下左右四种<code>行为</code>，这样就描述了一个完整的任务。</p>
-<p><img src="https://ashhhi.github.io/img/2024-9-23-RL01/1.png" alt=""></p>
+<p><img src="ashhhi.life/img/2024-9-23-RL01/1.png" alt=""></p>
 <p>但是强化学习的过程学习的是什么东西呢？我们都知道在机器学习中，存在一个loss函数，描述了预测值到真实值之间的距离，我们的目标就是使其减少或者是尽可能收敛。但在强化学习中，采用了另一种方式来指导模型自我迭代，那就是<code>奖励</code>，智能体每做一次行为之后都会得到奖励，如果这个奖励是负数的话也可以被叫做惩罚，强化学习的目标就是最大化所获得的奖励。</p>
 <p>除此以外，还有返回（Return）和马尔可夫决策过程（Markov decision processes, MDP），<code>返回</code>指的是一条路径上所获得的奖励之和，<code>马尔可夫决策过程</code>单开一章详细解释。</p>
 <h2 id="马尔可夫决策过程">马尔可夫决策过程</h2>
@@ -262,7 +262,7 @@ $$</li>
         
         <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.github.io/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+            <li><a href="ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
     </ul>
     </nav>
         </footer>
@@ -276,9 +276,9 @@ $$</li>
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="强化学习中的基本概念以及马尔可夫决策"><span>https://ashhhi.github.io/en/post/2024-9-23-rl01/</span></div>
+                <div class="has-aria-label-top" aria-label="强化学习中的基本概念以及马尔可夫决策"><span>ashhhi.life/en/post/2024-9-23-rl01/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-21T00:12:42&#43;08:00">2025-03-21T00:12:42&#43;08:00</time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-21T00:16:27&#43;08:00">2025-03-21T00:16:27&#43;08:00</time></div>
                 
             </div>
         </div>

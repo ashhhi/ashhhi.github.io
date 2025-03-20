@@ -2,66 +2,66 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ashhhi</title>
-    <link>https://ashhhi.github.io/en/tags/</link>
+    <link>ashhhi.life/en/tags/</link>
     <description>Recent Posts in Tags on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:12:43 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Mar 2025 00:16:27 +0800</lastBuildDate>
+    <atom:link href="ashhhi.life/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Reinforcement Learning</title>
-      <link>https://ashhhi.github.io/en/tags/reinforcement-learning/</link>
+      <link>ashhhi.life/en/tags/reinforcement-learning/</link>
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/reinforcement-learning/</guid>
+      <guid>ashhhi.life/en/tags/reinforcement-learning/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>https://ashhhi.github.io/en/tags/deep-learning/</link>
+      <link>ashhhi.life/en/tags/deep-learning/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/deep-learning/</guid>
+      <guid>ashhhi.life/en/tags/deep-learning/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Pytorch</title>
-      <link>https://ashhhi.github.io/en/tags/pytorch/</link>
+      <link>ashhhi.life/en/tags/pytorch/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/pytorch/</guid>
+      <guid>ashhhi.life/en/tags/pytorch/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Computer Vision</title>
-      <link>https://ashhhi.github.io/en/tags/computer-vision/</link>
+      <link>ashhhi.life/en/tags/computer-vision/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/computer-vision/</guid>
+      <guid>ashhhi.life/en/tags/computer-vision/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Git</title>
-      <link>https://ashhhi.github.io/en/tags/git/</link>
+      <link>ashhhi.life/en/tags/git/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/git/</guid>
+      <guid>ashhhi.life/en/tags/git/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Docker</title>
-      <link>https://ashhhi.github.io/en/tags/docker/</link>
+      <link>ashhhi.life/en/tags/docker/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/tags/docker/</guid>
+      <guid>ashhhi.life/en/tags/docker/</guid>
       <description></description>
       
     </item>
