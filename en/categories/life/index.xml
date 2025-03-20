@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Life on Ashhhi</title>
-    <link>ashhhi.life/en/categories/life/</link>
+    <link>https://ashhhi.github.io/en/categories/life/</link>
     <description>Recent Posts in Life on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:25:49 +0800</lastBuildDate>
-    <atom:link href="ashhhi.life/en/categories/life/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Mar 2025 00:28:05 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/en/categories/life/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>「明天是复杂的漫游」</title>
-      <link>ashhhi.life/en/post/2024-03-13-wanqing/</link>
+      <link>https://ashhhi.github.io/en/post/2024-03-13-wanqing/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-03-13-wanqing/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-03-13-wanqing/</guid>
       <description></description>
       <enclosure url="/img/2024-3-13-wanqing/header.jpg" length="0" type="image/jpeg" />
     </item>

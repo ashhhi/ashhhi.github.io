@@ -2,93 +2,93 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Post on Ashhhi</title>
-    <link>ashhhi.life/en/post/</link>
+    <link>https://ashhhi.github.io/en/post/</link>
     <description>Recent Posts in Post on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:25:49 +0800</lastBuildDate>
-    <atom:link href="ashhhi.life/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Mar 2025 00:28:05 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.github.io/en/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</title>
-      <link>ashhhi.life/en/post/2025-03-20-policy-value-iteration/</link>
+      <link>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</link>
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2025-03-20-policy-value-iteration/</guid>
+      <guid>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</guid>
       <description></description>
       
     </item>
     <item>
       <title>PyTorch中的gather函数详解</title>
-      <link>ashhhi.life/en/post/2025-02-18-gather/</link>
+      <link>https://ashhhi.github.io/en/post/2025-02-18-gather/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2025-02-18-gather/</guid>
+      <guid>https://ashhhi.github.io/en/post/2025-02-18-gather/</guid>
       <description></description>
       
     </item>
     <item>
       <title>败絮其外，金玉其中</title>
-      <link>ashhhi.life/en/post/2025-02-10-hk/</link>
+      <link>https://ashhhi.github.io/en/post/2025-02-10-hk/</link>
       <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2025-02-10-hk/</guid>
+      <guid>https://ashhhi.github.io/en/post/2025-02-10-hk/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Bellman Function详解</title>
-      <link>ashhhi.life/en/post/2024-9-25-rl02/</link>
+      <link>https://ashhhi.github.io/en/post/2024-9-25-rl02/</link>
       <pubDate>Wed, 25 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-9-25-rl02/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-9-25-rl02/</guid>
       <description></description>
       
     </item>
     <item>
       <title>强化学习中的基本概念以及马尔可夫决策</title>
-      <link>ashhhi.life/en/post/2024-9-23-rl01/</link>
+      <link>https://ashhhi.github.io/en/post/2024-9-23-rl01/</link>
       <pubDate>Mon, 23 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-9-23-rl01/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-9-23-rl01/</guid>
       <description></description>
       <enclosure url="/img/2024-9-23-RL01/1.png" length="0" type="image/jpeg" />
     </item>
     <item>
       <title>如何用DETR官方代码训练自己的数据集</title>
-      <link>ashhhi.life/en/post/2024-09-06-detr/</link>
+      <link>https://ashhhi.github.io/en/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-09-06-detr/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-09-06-detr/</guid>
       <description></description>
       <enclosure url="/img/2024-09-06-DETR/detr_image.png" length="0" type="image/jpeg" />
     </item>
     <item>
       <title>Git技术</title>
-      <link>ashhhi.life/en/post/2024-03-17-git-basic/</link>
+      <link>https://ashhhi.github.io/en/post/2024-03-17-git-basic/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-03-17-git-basic/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-03-17-git-basic/</guid>
       <description></description>
       
     </item>
     <item>
       <title>「明天是复杂的漫游」</title>
-      <link>ashhhi.life/en/post/2024-03-13-wanqing/</link>
+      <link>https://ashhhi.github.io/en/post/2024-03-13-wanqing/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2024-03-13-wanqing/</guid>
+      <guid>https://ashhhi.github.io/en/post/2024-03-13-wanqing/</guid>
       <description></description>
       <enclosure url="/img/2024-3-13-wanqing/header.jpg" length="0" type="image/jpeg" />
     </item>
     <item>
       <title>Docker 配置监控管理系统</title>
-      <link>ashhhi.life/en/post/2023-02-28-grafana/</link>
+      <link>https://ashhhi.github.io/en/post/2023-02-28-grafana/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>ashhhi.life/en/post/2023-02-28-grafana/</guid>
+      <guid>https://ashhhi.github.io/en/post/2023-02-28-grafana/</guid>
       <description></description>
       <enclosure url="/img/2023-02-28-Grafana/grafana.png" length="0" type="image/jpeg" />
     </item>
