@@ -350,10 +350,10 @@
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> build(image_set, args)
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;dataset </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>dataset_file<span style="color:#e6db74">}</span><span style="color:#e6db74"> not supported&#39;</span>)
 </span></span></code></pre></div><h2 id="23-数据增强部分">2.3 数据增强部分</h2>
-<p>如果你像我之前那样写数据的部分，那这一部分你可以<font color=#ff0000 ><strong>直接跳过不用管</strong></font>，原代码中的数据增强就可以直接使用，但如果你想自己换更多的数据增强方式，这一部分有必要了解一下，因为我自己也踩了不少坑哈哈哈。</p>
-<p>接下来我们了解一下原代码是如何实现数据增强的，重点关注datasets文件夹下的coco.py和transforms.py文件。coco.py中有一个make_coco_transforms函数，用于做数据增强，里面使用了简写T，一般来说第一反应都是T不就是代表的torchvision.transforms库嘛，那好，你被<font color=#ff0000 ><strong>误导</strong></font>了！！</p>
+<p>如果你像我之前那样写数据的部分，那这一部分你可以<!-- raw HTML omitted --><strong>直接跳过不用管</strong><!-- raw HTML omitted -->，原代码中的数据增强就可以直接使用，但如果你想自己换更多的数据增强方式，这一部分有必要了解一下，因为我自己也踩了不少坑哈哈哈。</p>
+<p>接下来我们了解一下原代码是如何实现数据增强的，重点关注datasets文件夹下的coco.py和transforms.py文件。coco.py中有一个make_coco_transforms函数，用于做数据增强，里面使用了简写T，一般来说第一反应都是T不就是代表的torchvision.transforms库嘛，那好，你被<!-- raw HTML omitted --><strong>误导</strong><!-- raw HTML omitted -->了！！</p>
 <p>原作者自己重写了transforms库，在transforms.py文件里面，这个T是“import datasets.transforms as T”而非“import torchvision.transforms as T”。其实也不叫重写，只是添加了对bounding box的数据增强处理，因为torchvision只实现了对图像的增强，但对于图像分割的mask或者目标检测的bbox都没有对应的可以直接拿来用的函数（现在好像有了，但是为了能直接复用原代码，偷懒就不改了），具体怎么实现的你们可以直接去看transforms.py的源码，其实真的真的非常简单。</p>
-<p>要注意的部分只有transforms.py下的Normalize类，这也是让我幡然醒悟的一段代码，从倒数第四行里的“box_xyxy_to_cxcywh”我们可以看出，<font color=#ff0000 >原来它在数据增强之前是(x, y, x, y)的数据格式而不是roboflow自带的(x, y, w, h)啊！！，并且真正喂入网络的格式是(center_x, center_y, w, h)</font>，有点绕，但是必须弄清楚！！不然就会像我之前那样loss飙到2w多。。。</p>
+<p>要注意的部分只有transforms.py下的Normalize类，这也是让我幡然醒悟的一段代码，从倒数第四行里的“box_xyxy_to_cxcywh”我们可以看出，<!-- raw HTML omitted -->原来它在数据增强之前是(x, y, x, y)的数据格式而不是roboflow自带的(x, y, w, h)啊！！，并且真正喂入网络的格式是(center_x, center_y, w, h)<!-- raw HTML omitted -->，有点绕，但是必须弄清楚！！不然就会像我之前那样loss飙到2w多。。。</p>
 <p>并且最后模型预测的输出结果也会是(center_x, center_y, w, h)，如果把图像和目标检测框画出来，得以相反的方式把它还原。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Normalize</span>(object):
 </span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, mean, std):
@@ -428,62 +428,7 @@
 <h2 id="32-加载预训练权重然后微调">3.2 加载预训练权重然后微调</h2>
 <p>这个部分可以跳过，当然我还是更建议大家采用这种做法，因为原代码中已经给出了训练好的权重啦。</p>
 <p>原代码在COCO数据集上训练的权重我们也可以拿来做初始化，但是要注意你下载的权重必须和你的网络结构是一样的，比如你在main.py中设置了backbone为resnet50，你也要下载对应的权重文件，如果你本身就什么也没改的话，就可以直接下载它的第一个权重文件。</p>
-<table>
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>name</th>
-      <th>backbone</th>
-      <th>schedule</th>
-      <th>inf_time</th>
-      <th>box AP</th>
-      <th>url</th>
-      <th>size</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>DETR</td>
-      <td>R50</td>
-      <td>500</td>
-      <td>0.036</td>
-      <td>42.0</td>
-      <td><a href="https://dl.fbaipublicfiles.com/detr/detr-r50-e632da11.pth">model</a>&nbsp;|&nbsp;<a href="https://dl.fbaipublicfiles.com/detr/logs/detr-r50_log.txt">logs</a></td>
-      <td>159Mb</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>DETR-DC5</td>
-      <td>R50</td>
-      <td>500</td>
-      <td>0.083</td>
-      <td>43.3</td>
-      <td><a href="https://dl.fbaipublicfiles.com/detr/detr-r50-dc5-f0fb7ef5.pth">model</a>&nbsp;|&nbsp;<a href="https://dl.fbaipublicfiles.com/detr/logs/detr-r50-dc5_log.txt">logs</a></td>
-      <td>159Mb</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>DETR</td>
-      <td>R101</td>
-      <td>500</td>
-      <td>0.050</td>
-      <td>43.5</td>
-      <td><a href="https://dl.fbaipublicfiles.com/detr/detr-r101-2c7b67e5.pth">model</a>&nbsp;|&nbsp;<a href="https://dl.fbaipublicfiles.com/detr/logs/detr-r101_log.txt">logs</a></td>
-      <td>232Mb</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>DETR-DC5</td>
-      <td>R101</td>
-      <td>500</td>
-      <td>0.097</td>
-      <td>44.9</td>
-      <td><a href="https://dl.fbaipublicfiles.com/detr/detr-r101-dc5-a2e86def.pth">model</a>&nbsp;|&nbsp;<a href="https://dl.fbaipublicfiles.com/detr/logs/detr-r101-dc5_log.txt">logs</a></td>
-      <td>232Mb</td>
-    </tr>
-  </tbody>
-</table>
+<!-- raw HTML omitted -->
 <p>然后把resume设置为你下载好的权重文件路径，==同时也是最重要的一点==，由于我们修改了num_queries以及num_classes，模型的head部分已经不一样了，因此我们需要在main.py里加上几段代码：</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>resume:
 </span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>resume<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;https&#39;</span>):
@@ -594,7 +539,7 @@
             <div class="verbose">
                 <div class="has-aria-label-top" aria-label="如何用DETR官方代码训练自己的数据集"><span>https://ashhhi.github.io/en/post/2024-09-06-detr/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-21T00:28:05&#43;08:00">2025-03-21T00:28:05&#43;08:00</time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-21T00:31:37&#43;08:00">2025-03-21T00:31:37&#43;08:00</time></div>
                 
             </div>
         </div>
@@ -623,9 +568,9 @@
         <footer id="main-footer">
             <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
                         aria-labelledby="footer-1">
-                        <p><strong class="section-title">Ash SHI Junshen<i class="icon copyleft"></i> 2024</strong></p>
+                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2024<!-- raw HTML omitted --></p>
 <p>Some rights reserved.</p>
-<br>
+<!-- raw HTML omitted -->
 
                     </div>
                 <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
