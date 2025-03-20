@@ -3,19 +3,22 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://ashhhi.github.io/</loc>
-    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://ashhhi.github.io/tags/deep-learning/</loc>
-    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ashhhi.github.io/tech/2025-02-27-regression-loss/</loc>
-    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+    <loc>https://ashhhi.github.io/tags/reinforcement-learning/</loc>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/tags/</loc>
-    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/tech/</loc>
-    <lastmod>2025-02-27T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/</loc>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://ashhhi.github.io/tags/deep-learning/</loc>
+    <lastmod>2025-02-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/tags/pytorch/</loc>
     <lastmod>2025-02-18T00:00:00+00:00</lastmod>
@@ -36,9 +39,6 @@
     <lastmod>2025-02-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/tech/2024-9-25-rl02/</loc>
-    <lastmod>2024-09-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://ashhhi.github.io/tags/reinforcement-learning/</loc>
     <lastmod>2024-09-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://ashhhi.github.io/tech/2024-9-23-rl01/</loc>

@@ -8,8 +8,15 @@
     <language>en</language>
     <managingEditor>shijunshen424@gmail.com (Ashhhi)</managingEditor>
     <webMaster>shijunshen424@gmail.com (Ashhhi)</webMaster>
-    <lastBuildDate>Wed, 25 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 20 Mar 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://ashhhi.github.io/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</title>
+      <link>https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/</link>
+      <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate><author>shijunshen424@gmail.com (Ashhhi)</author>
+      <guid>https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/</guid>
+      <description>&lt;p&gt;先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Bellman Function详解</title>
       <link>https://ashhhi.github.io/tech/2024-9-25-rl02/</link>

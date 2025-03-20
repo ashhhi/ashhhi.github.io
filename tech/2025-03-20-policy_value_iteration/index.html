@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 <html lang="en" itemscope itemtype="http://schema.org/WebPage">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
     
 
   <meta charset="utf-8" />
@@ -13,23 +13,23 @@
  
 
 
-      <title>PyTorch中的gather函数详解 - Ashhhi</title>
+      <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration） - Ashhhi</title>
 
-  <meta name="description" content="torch.gather函数笔记">
+  <meta name="description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
     "@type": "WebSite",
     "name": "Ashhhi - 杂记",
     
-    "url": "https:\/\/ashhhi.github.io\/"
+    "url": "http:\/\/localhost:1313\/"
 }
 </script><script type="application/ld+json">
 {
   "@context": "http://schema.org",
   "@type": "Organization",
   "name": "",
-  "url": "https:\/\/ashhhi.github.io\/"
+  "url": "http:\/\/localhost:1313\/"
   
   
   
@@ -44,15 +44,15 @@
         "@type": "ListItem",
         "position": 1,
         "item": {
-          "@id": "https:\/\/ashhhi.github.io\/",
+          "@id": "http:\/\/localhost:1313\/",
           "name": "home"
         }
     },{
         "@type": "ListItem",
         "position": 3,
         "item": {
-          "@id": "https:\/\/ashhhi.github.io\/tech\/2025-02-18-gather\/",
-          "name": "Py torch中的gather函数详解"
+          "@id": "http:\/\/localhost:1313\/tech\/2025-03-20-policy_value_iteration\/",
+          "name": "策略迭代（ policy iteration） vs 值迭代（ value iteration）"
         }
     }]
 }
@@ -63,21 +63,21 @@
   "author": {
     "name" : "Ashhhi"
   },
-  "headline": "PyTorch中的gather函数详解",
-  "description" : "torch.gather函数笔记\n",
+  "headline": "策略迭代（Policy Iteration） vs 值迭代（Value Iteration）",
+  "description" : "先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。\n",
   "inLanguage" : "en",
-  "wordCount":  530 ,
-  "datePublished" : "2025-02-18T00:00:00\u002b00:00",
-  "dateModified" : "2025-02-18T00:00:00\u002b00:00",
-  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
-  "keywords" : [ "Pytorch, Deep Learning" ],
-  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/tech\/2025-02-18-gather\/",
+  "wordCount":  263 ,
+  "datePublished" : "2025-03-20T00:00:00\u002b00:00",
+  "dateModified" : "2025-03-20T00:00:00\u002b00:00",
+  "image" : "http:\/\/localhost:1313\/img\/avatar.jpg",
+  "keywords" : [ "Reinforcement Learning" ],
+  "mainEntityOfPage" : "http:\/\/localhost:1313\/tech\/2025-03-20-policy_value_iteration\/",
   "publisher" : {
     "@type": "Organization",
-    "name" : "https:\/\/ashhhi.github.io\/",
+    "name" : "http:\/\/localhost:1313\/",
     "logo" : {
         "@type" : "ImageObject",
-        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "url" : "http:\/\/localhost:1313\/img\/avatar.jpg",
         "height" :  60 ,
         "width" :  60
     }
@@ -86,16 +86,16 @@
 </script>
 
 
-<meta property="og:title" content="PyTorch中的gather函数详解" />
-<meta property="og:description" content="torch.gather函数笔记">
-<meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
-<meta property="og:url" content="https://ashhhi.github.io/tech/2025-02-18-gather/" />
+<meta property="og:title" content="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" />
+<meta property="og:description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
+<meta property="og:image" content="http://localhost:1313/img/avatar.jpg" />
+<meta property="og:url" content="http://localhost:1313/tech/2025-03-20-policy_value_iteration/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="PyTorch中的gather函数详解" />
-  <meta name="twitter:description" content="torch.gather函数笔记">
-  <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
+  <meta name="twitter:title" content="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" />
+  <meta name="twitter:description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
+  <meta name="twitter:image" content="http://localhost:1313/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
   <link
@@ -104,11 +104,11 @@
   href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🥔</text></svg>"
 />
   <meta name="generator" content="Hugo 0.134.2">
-  <link rel="alternate" href="https://ashhhi.github.io/index.xml" type="application/rss+xml" title="Ashhhi - 杂记"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
+  <link rel="alternate" href="http://localhost:1313/index.xml" type="application/rss+xml" title="Ashhhi - 杂记"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.7/dist/katex.min.css" integrity="sha384-3UiQGuEI4TTMaFmGIZumfRPtfKQ3trwQE2JgosJxCnGmQpL/lJdjpcHkaaFwHlcI" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="https://ashhhi.github.io/css/main-nodark.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous"><link rel="stylesheet" href="http://localhost:1313/css/main-nodark.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
-  <link rel="stylesheet" href="https://ashhhi.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://ashhhi.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://localhost:1313/css/highlight.min.css" /><link rel="stylesheet" href="http://localhost:1313/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
 
 
@@ -130,7 +130,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
+      <a class="navbar-brand" href="http://localhost:1313/">Ashhhi - 杂记</a>
     </div>
 
     <div class="collapse navbar-collapse" id="main-navbar">
@@ -170,8 +170,8 @@
     
       <div class="avatar-container">
         <div class="avatar-img-border">
-          <a title="Ashhhi - 杂记" href="https://ashhhi.github.io/">
-            <img class="avatar-img" src="https://ashhhi.github.io/img/avatar.jpg" alt="Ashhhi - 杂记" />
+          <a title="Ashhhi - 杂记" href="http://localhost:1313/">
+            <img class="avatar-img" src="http://localhost:1313/img/avatar.jpg" alt="Ashhhi - 杂记" />
            
           </a>
         </div>
@@ -251,7 +251,7 @@
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
             <div class="post-heading">
               
-                <h1>PyTorch中的gather函数详解</h1>
+                <h1>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
               
               
               
@@ -259,13 +259,13 @@
                 <span class="post-meta">
   
   
-  <i class="fas fa-calendar"></i>&nbsp;Posted on February 18, 2025
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 20, 2025
   
   
-    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;1&nbsp;minutes
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;530&nbsp;words
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;263&nbsp;words
   
   
 
@@ -298,38 +298,26 @@
 
 
       <article role="main" class="blog-post">
-        <p>torch.gather函数笔记</p>
-<p>在学习PPO网络代码的时候遇到了这样一句话：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">old_log_probs = torch.log(self.actor(states).gather(1, actions)).detach()
-</span></span></code></pre></div><p>其中gather函数令人费解，官方文档以三维数组解释得也晦涩难懂，是这么写的：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">out[i][j][k] = input[index[i][j][k]][j][k]  # if dim == 0
-</span></span><span class="line"><span class="cl">out[i][j][k] = input[i][index[i][j][k]][k]  # if dim == 1
-</span></span><span class="line"><span class="cl">out[i][j][k] = input[i][j][index[i][j][k]]  # if dim == 2
-</span></span><span class="line"><span class="cl">
-</span></span><span class="line"><span class="cl">Parameters:
-</span></span><span class="line"><span class="cl">    input (Tensor) – the source tensor
-</span></span><span class="line"><span class="cl">    dim (int) – the axis along which to index
-</span></span><span class="line"><span class="cl">    index (LongTensor) – the indices of elements to gather
-</span></span></code></pre></div><hr>
-<p>通过具体计算例子记录一下自己的理解：</p>
-<p>比如，input = [[1, 2], [3, 4]]，index = [[0, 0], [1, 0]]，都是二维数组，如果我使用torch.gather(input, dim=1, index)，那么out就会是对input在第二维度上做以下几个操作：</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">out[0][0] = input[0][index[0][0]] = input[0][0] = 1
-</span></span><span class="line"><span class="cl">out[0][1] = input[0][index[0][1]] = input[0][0] = 1
-</span></span><span class="line"><span class="cl">out[1][0] = input[1][index[1][0]] = input[1][1] = 4
-</span></span><span class="line"><span class="cl">out[1][1] = input[1][index[1][1]] = input[1][0] = 3
-</span></span></code></pre></div><p>所以out=[[1, 1], [4, 3]]。</p>
-<p>其实out的形状只和index的形状有关，而与input没有关系，因为等号右边遍历的是index中的值，如果i, j大于index的范围就会报错。</p>
-<p>回到最开头PPO网络代码中，这里的action是一个形状为[19, 1]的0/1数组，而self.actor(states)得到的是一个形状为[19, 2]的数组，在强化学习中代表的是在动作空间中分别选择两个动作的概率值，有19个step。</p>
-<div class="highlight"><pre tabindex="0" class="chroma"><code class="language-fallback" data-lang="fallback"><span class="line"><span class="cl">old_log_probs = torch.log(self.actor(states).gather(1, actions)).detach()
-</span></span></code></pre></div><p>通过这条语句，old_log_probs得到的是每一个step中选择的这19个动作分别的概率值。</p>
+        <p>先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。</p>
+<p>值迭代分为两个步骤：策略更新（Policy update）和值更新（Value update），他们的公式分别为：</p>
+<p>$$
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_k)
+$$</p>
+<p>$$
+v_{k+1} = r_{\pi_{k+1}} + \lambda P_{\pi_{k+1}} v_k
+$$</p>
+<p>而策略迭代分为也两个步骤，策略评估（Policy Evaluation）和策略优化（Policy Improvement），它们的公式分别为：</p>
+<p>$$
+v_{\pi_k} = r_{\pi_k} + \lambda P_{\pi_k} v_{\pi_k}
+$$</p>
+<p>$$
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_{\pi_k})
+$$</p>
         
           <div class="blog-tags">
             
               
-              <a href="https://ashhhi.github.io/tags/pytorch/">Pytorch</a>&nbsp;
-            
-              
-              <a href="https://ashhhi.github.io/tags/deep-learning/">Deep Learning</a>&nbsp;
+              <a href="http://localhost:1313/tags/reinforcement-learning/">Reinforcement Learning</a>&nbsp;
             
           </div>
         
@@ -346,7 +334,9 @@
                   <ul>
                 
                 
-                    <li><a href="/tech/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
+                    <li><a href="/tech/2024-9-25-rl02/">Bellman Function详解</a></li>
+                
+                    <li><a href="/tech/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
                 
               </ul>
 
@@ -358,13 +348,9 @@
         <ul class="pager blog-pager">
           
             <li class="previous">
-              <a href="https://ashhhi.github.io/tech/2024-9-25-rl02/" data-toggle="tooltip" data-placement="top" title="Bellman Function详解">&larr; Previous Post</a>
+              <a href="http://localhost:1313/tech/2025-02-28-batch_and_layernorm/" data-toggle="tooltip" data-placement="top" title="Batch Norm vs Layer Norm">&larr; Previous Post</a>
             </li>
           
-          
-            <li class="next">
-              <a href="https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/" data-toggle="tooltip" data-placement="top" title="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）">Next Post &rarr;</a>
-            </li>
           
         </ul>
       
@@ -459,7 +445,7 @@
 
           
             &nbsp;&bull;&nbsp;
-            <a href="https://ashhhi.github.io/">Ashhhi - 杂记</a>
+            <a href="http://localhost:1313/">Ashhhi - 杂记</a>
           
           
             &nbsp;&bull;&nbsp;
@@ -515,11 +501,11 @@
 <script src="https://code.jquery.com/jquery-3.7.0.slim.min.js" integrity="sha384-w5y/xIeYixWvfM+A1cEbmHPURnvyqmVg5eVENruEdDjcyRLUSNej7512JQGspFUr" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
 
-<script src="https://ashhhi.github.io/js/main.js"></script>
-<script src="https://ashhhi.github.io/js/highlight.min.js"></script>
+<script src="http://localhost:1313/js/main.js"></script>
+<script src="http://localhost:1313/js/highlight.min.js"></script>
 <script> hljs.initHighlightingOnLoad(); </script>
 <script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://ashhhi.github.io/js/load-photoswipe.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="http://localhost:1313/js/load-photoswipe.js"></script>
 
 
 

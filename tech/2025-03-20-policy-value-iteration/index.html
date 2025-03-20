@@ -13,9 +13,9 @@
  
 
 
-      <title>Overview of all pages with the tag #Tags - Ashhhi</title>
+      <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration） - Ashhhi</title>
 
-  <meta name="description" content="Overview of all pages with the tag #Tags, such as: Reinforcement Learning">
+  <meta name="description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
   <meta name="author" content="Ashhhi"/><script type="application/ld+json">
 {
     "@context": "http://schema.org",
@@ -36,14 +36,65 @@
   
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/ashhhi.github.io\/tech\/2025-03-20-policy-value-iteration\/",
+          "name": "策略迭代（ policy iteration） vs 值迭代（ value iteration）"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Ashhhi"
+  },
+  "headline": "策略迭代（Policy Iteration） vs 值迭代（Value Iteration）",
+  "description" : "先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。\n",
+  "inLanguage" : "en",
+  "wordCount":  693 ,
+  "datePublished" : "2025-03-20T00:00:00\u002b00:00",
+  "dateModified" : "2025-03-20T00:00:00\u002b00:00",
+  "image" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+  "keywords" : [ "Reinforcement Learning" ],
+  "mainEntityOfPage" : "https:\/\/ashhhi.github.io\/tech\/2025-03-20-policy-value-iteration\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/ashhhi.github.io\/",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/ashhhi.github.io\/img\/avatar.jpg",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
 
-<meta property="og:title" content="Tags" />
+
+<meta property="og:title" content="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" />
+<meta property="og:description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
 <meta property="og:image" content="https://ashhhi.github.io/img/avatar.jpg" />
-<meta property="og:url" content="https://ashhhi.github.io/tags/" />
+<meta property="og:url" content="https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/" />
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Ashhhi - 杂记" />
 
-  <meta name="twitter:title" content="Tags" />
+  <meta name="twitter:title" content="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" />
+  <meta name="twitter:description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。">
   <meta name="twitter:image" content="https://ashhhi.github.io/img/avatar.jpg" />
   <meta name="twitter:card" content="summary_large_image" />
   
@@ -198,14 +249,31 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-            <div class="tags-heading">
+            <div class="post-heading">
               
-                <h1>Tags</h1>
-              
-              
-                <hr class="small">
+                <h1>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
               
               
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Posted on March 20, 2025
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;2&nbsp;minutes
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;693&nbsp;words
+  
+  
+
+  
+  
+</span>
+
+
               
             </div>
           </div>
@@ -217,234 +285,115 @@
 
 
     
-
-
 <div class="container" role="main">
-  <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-    <article class="post-preview">
-      <div class="panel-group" id="accordion">
+  
+  <div class="row">
+    <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+      
+      
         
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsereinforcement-learning" data-parent="#accordion">
-                <div class="panel-heading" id="headerreinforcement-learning">
-                  <h4 class="panel-title">
-                      reinforcement learning
-                    <span class="badge">3</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsereinforcement-learning" class="panel-collapse collapse">
-              <div class="panel-body">
-                
-                <a href="https://ashhhi.github.io/tags/reinforcement-learning/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2025-03-20-policy-value-iteration/" class="list-group-item">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</a>
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-9-25-rl02/" class="list-group-item">Bellman Function详解</a>
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-9-23-rl01/" class="list-group-item">强化学习中的基本概念以及马尔可夫决策</a>
-                  
-                </div>
-              </div>
-            </div>
+          <nav id="TableOfContents"></nav> 
+        
+      
+
+
+      <article role="main" class="blog-post">
+        <p>先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。</p>
+<p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
+<hr>
+<p>值迭代分为两个步骤：策略更新（Policy update）和值更新（Value update），它们的公式分别为：</p>
+<p>\begin{equation}
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_k) \tag{1}
+\end{equation}</p>
+<p>\begin{equation}
+v_{k+1} = r_{\pi_{k+1}} + \lambda P_{\pi_{k+1}} v_k \tag{2}
+\end{equation}</p>
+<p>而策略迭代分为两个步骤，策略评估（Policy Evaluation）和策略优化（Policy Improvement），它们的公式分别为：</p>
+<p>\begin{equation}
+v_{\pi_k} = r_{\pi_k} + \lambda P_{\pi_k} v_{\pi_k} \tag{3}
+\end{equation}</p>
+<p>\begin{equation}
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_{\pi_k}) \tag{4}
+\end{equation}</p>
+<p>可以看到（1）（4）式基本上相同，唯一的不同点在于\(v\)的底标，策略迭代是\(\pi_k\)，而值迭代就是\(k\)，这也意味着策略迭代中算出来的其实是状态值函数，也就是对当前策略下计算出每个状态下的状态值，每个状态下又有不同的action，因此需要很多步运算，甚至是无穷步。而值迭代的更新方式是基于“最大化期望回报”，即它直接在每一步使用新的值来更新自身，而不需要完整地评估某个策略的值函数。</p>
+<p>这张图很好地描述了两种迭代之间的关系：</p>
+<p><img src="/img/2025-03-20-Policy-Value-Iteration/image.png" alt=""></p>
+<p>总而言之：</p>
+<ul>
+<li>值迭代通过不断逼近最优值函数 \(V^*(s)\)，它不依赖于特定策略，而是直接寻找最优策略。</li>
+<li>策略迭代先固定策略计算 该策略下的值函数，然后基于该值函数改进策略，如此反复，最终收敛到最优策略。</li>
+<li>计算量比较：策略迭代的策略评估部分需要多次迭代（但可以提前终止），值迭代在每一步执行一次更新，因此策略迭代可能需要更多计算量，但更稳定，而值迭代通常更快收敛，但可能振荡。</li>
+</ul>
+        
+          <div class="blog-tags">
+            
+              
+              <a href="https://ashhhi.github.io/tags/reinforcement-learning/">Reinforcement Learning</a>&nbsp;
+            
           </div>
         
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsedeep-learning" data-parent="#accordion">
-                <div class="panel-heading" id="headerdeep-learning">
-                  <h4 class="panel-title">
-                      deep learning
-                    <span class="badge">2</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsedeep-learning" class="panel-collapse collapse">
-              <div class="panel-body">
-                
-                <a href="https://ashhhi.github.io/tags/deep-learning/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2025-02-18-gather/" class="list-group-item">PyTorch中的gather函数详解</a>
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-09-06-detr/" class="list-group-item">如何用DETR官方代码训练自己的数据集</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+
         
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapseexperience" data-parent="#accordion">
-                <div class="panel-heading" id="headerexperience">
-                  <h4 class="panel-title">
-                      experience
-                    <span class="badge">2</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapseexperience" class="panel-collapse collapse">
-              <div class="panel-body">
-                
-                <a href="https://ashhhi.github.io/tags/experience/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/life/2025-02-10-hk/" class="list-group-item">败絮其外，金玉其中</a>
-                  
-                    <a href="https://ashhhi.github.io/life/2024-03-13-wanqing/" class="list-group-item">「明天是复杂的漫游」</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+
         
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsecomputer-vision" data-parent="#accordion">
-                <div class="panel-heading" id="headercomputer-vision">
-                  <h4 class="panel-title">
-                      computer vision
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsecomputer-vision" class="panel-collapse collapse">
-              <div class="panel-body">
+          
+            
+          
+
+          
+                  <h4 class="see-also">See also</h4>
+                  <ul>
                 
-                <a href="https://ashhhi.github.io/tags/computer-vision/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-09-06-detr/" class="list-group-item">如何用DETR官方代码训练自己的数据集</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsedocker" data-parent="#accordion">
-                <div class="panel-heading" id="headerdocker">
-                  <h4 class="panel-title">
-                      docker
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsedocker" class="panel-collapse collapse">
-              <div class="panel-body">
                 
-                <a href="https://ashhhi.github.io/tags/docker/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-02-28-grafana/" class="list-group-item">Docker 配置监控管理系统</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapseemotion" data-parent="#accordion">
-                <div class="panel-heading" id="headeremotion">
-                  <h4 class="panel-title">
-                      emotion
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapseemotion" class="panel-collapse collapse">
-              <div class="panel-body">
+                    <li><a href="/tech/2024-9-25-rl02/">Bellman Function详解</a></li>
                 
-                <a href="https://ashhhi.github.io/tags/emotion/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/life/2025-02-10-hk/" class="list-group-item">败絮其外，金玉其中</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsegit" data-parent="#accordion">
-                <div class="panel-heading" id="headergit">
-                  <h4 class="panel-title">
-                      git
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsegit" class="panel-collapse collapse">
-              <div class="panel-body">
+                    <li><a href="/tech/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
                 
-                <a href="https://ashhhi.github.io/tags/git/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2024-03-17-git-basic/" class="list-group-item">Git技术</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
+              </ul>
+
+          
         
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsemusic" data-parent="#accordion">
-                <div class="panel-heading" id="headermusic">
-                  <h4 class="panel-title">
-                      music
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsemusic" class="panel-collapse collapse">
-              <div class="panel-body">
-                
-                <a href="https://ashhhi.github.io/tags/music/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/life/2024-03-13-wanqing/" class="list-group-item">「明天是复杂的漫游」</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        
-          <div class="panel panel-default">
-            <a class="collapsed" role="button" data-toggle="collapse" data-target="#collapsepytorch" data-parent="#accordion">
-                <div class="panel-heading" id="headerpytorch">
-                  <h4 class="panel-title">
-                      pytorch
-                    <span class="badge">1</span>
-                  </h4>
-                </div>
-            </a>
-            <div id="collapsepytorch" class="panel-collapse collapse">
-              <div class="panel-body">
-                
-                <a href="https://ashhhi.github.io/tags/pytorch/" class="list-group-item view-all">
-                View all</a>
-                <div class="list-group">
-                  
-                    <a href="https://ashhhi.github.io/tech/2025-02-18-gather/" class="list-group-item">PyTorch中的gather函数详解</a>
-                  
-                </div>
-              </div>
-            </div>
-          </div>
-        
-      </div>
-    </article>
+      </article>
+
+      
+        <ul class="pager blog-pager">
+          
+            <li class="previous">
+              <a href="https://ashhhi.github.io/tech/2025-02-18-gather/" data-toggle="tooltip" data-placement="top" title="PyTorch中的gather函数详解">&larr; Previous Post</a>
+            </li>
+          
+          
+        </ul>
+      
+
+
+      
+      
+      
+      
+      
+      
+        <script src="https://giscus.app/client.js"
+        data-repo="ashhhi/hugoblogtalks"
+        data-repo-id="R_kgDOLgjUJw"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOLgjUJ84CimSM"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="gruvbox_light"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+        </script>
+      
+
+    </div>
   </div>
 </div>
-
-
 
       <footer>
   <div class="container">
