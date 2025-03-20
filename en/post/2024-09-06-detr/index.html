@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- head.html --><!-- meta.html -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>如何用DETR官方代码训练自己的数据集 | Ashhhi</title>
+<meta name="author" content="[Ash]">
+<meta name="description" content="DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：" >
+<meta name="keywords" content="Deep Learning,Computer Vision">
+<link rel="canonical" href="https://ashhhi.github.io/en/post/2024-09-06-detr/">
+
+
+
+    <link rel="me" href="https://example.com/@username">
+<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+            integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
+            defer></script><!-- css.html -->
+        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+    <!-- css/inline.html -->
+    <style>
+         
+        body {max-width: 786px; margin: auto; padding: 2rem;}
+        img {max-width: 86vw;}
+    </style>
+    
+    
+        <meta name="fediverse:creator" content="@username@example.com">
+    
+        <!-- katex.html -->
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" rel="stylesheet"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"
+        defer></script>
+    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
+                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top">
+            <!-- menu.html -->
+            <!-- search.html -->
+<details id="has-search" class="presentation js-details" name="on-deck">
+    <summary class="on-deck" accesskey="q" aria-keyshortcuts="q">
+        <span class="t t2">Search</span>
+    </summary>
+    
+        <!-- pagefind.html -->
+    <div id="search" class="on-hull">
+        <div role="presentation" class="screening js-cgpn"></div>
+    </div>
+    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+        let pageFindInitialized = false;
+        const initPageFind = function(event) {
+            if (!pageFindInitialized) {
+                new PagefindUI({
+                    element: "#search",
+                    showImages: false,
+                    translations: {
+                        placeholder: "Search"
+                    }
+                });
+                pageFindInitialized = true;
+                document.removeEventListener('DOMContentLoaded', initPageFind);
+            }
+        };
+        document.addEventListener('DOMContentLoaded', initPageFind);
+    </script>
+        <noscript id="has-search-fallback" class="on-hull">
+                
+    <!-- duckduckgo.html -->
+    <form id="duckduckgo" class="form on-plank"
+        name="x" action="//duckduckgo.com/"
+        role="search" aria-label="">
+        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="1" name="kh"></input>
+        <input type="hidden" value="1" name="kn"></input>
+        <input type="hidden" value="1" name="kac"></input>
+        <input class="ldots form__input" type="search" placeholder="Search" name="q"></input>
+        <button class="form__button" type="submit" aria-label="Search">
+            <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
+        </button>
+    </form>
+    <div role="presentation" class="screening js-cgpn"></div>
+        </noscript>
+    
+</details>
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy URL" role="button" aria-label="Copy URL">
+                <span id="copy" class="t" role="tooltip">Copy URL</span>
+                <span id="isCopying" style="display: none;">Copying...</span>
+                <span id="copyText" style="display: none;">Copy URL</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
+        <span class="t" role="tooltip">Go Back</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">如何用DETR官方代码训练自己的数据集
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >如何用DETR官方代码训练自己的数据集</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author"><span>[Ash]</span>
+            </div>
+            <!-- timestamp.html-->
+    <div class="date-has-label">
+        <time class="doc-publish-date" datetime="2024-09-06T00:00:00&#43;00:00" data-time-label="Published on">September 6, 2024</time>
+            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <p>​
+论文地址：<a href="https://arxiv.org/abs/2005.12872">https://arxiv.org/abs/2005.12872</a></p>
+<p>Github地址：<a href="https://github.com/facebookresearch/detr">https://github.com/facebookresearch/detr</a></p>
+<p>关于模型原理网上已经有各个大佬的讲解了，这里放上我觉得讲的最清晰的：
+<a href="https://blog.csdn.net/baidu_36913330/article/details/120495817">深度学习之目标检测（十一）&ndash;DETR详解</a></p>
+<hr>
+<p><code>提示：仅供参考，具体命令行或代码按需执行</code></p>
+<h1 id="1-代码结构">1. 代码结构</h1>
+<p>首先我们需要先Clone下来代码，代码的结构并不复杂，只有几个文件夹：</p>
+<ul>
+<li>datasets：源码是使用<a href="http://cocodataset.org">COCO2017</a>作为基础数据集的，因此这里面包含有COCO的Dataset类以及用于数据增强的transforms.py文件。</li>
+<li>models：该文件夹下存储了DETR模型的基础结构，包括Transformer模块和主干网络等等，我们都可以不用去修改它。</li>
+<li>utils：该文件夹下存储的都是一些杂七杂八的工具类，也不用去修改它。</li>
+</ul>
+<p>重点我们只需要关注以下几个文件：</p>
+<ul>
+<li>main.py：这是整个程序的入口文件，我们需要运行这个文件来设置各种超参数以及进入训练，验证的入口，也就是engine.py。</li>
+<li>engine.py：这是“引擎”文件，说白了就是从main文件会调用里面的函数去进行训练和验证。</li>
+<li>datasets/transforms.py：这是数据增强的部分，有很长时间我一直没有训练出好的结果，在看了这里的代码才知道是自己的数据格式出了问题，因此后面也会讲一下。</li>
+</ul>
+<h1 id="2-构建自己的数据集">2. 构建自己的数据集</h1>
+<p>COCO数据集可以直接采用官方的实现方法，在Github里也有对应的Tutorial，这里我们讲一下如何使用自己的数据集进行训练。</p>
+<h2 id="21-roboflow标注">2.1 Roboflow标注</h2>
+<p>首先是数据标注部分，我采用的是<a href="https://roboflow.com/">Roboflow</a>平台进行标注，标注完成后选择导出格式为COCO数据集格式，选择“Download zip to computer”，然后在自己电脑上进行压缩，我们可以得到这样格式的文件，分了train，valid，test文件夹，每个文件夹下存储了对应的图片还有一个json文件，json文件里包含了所有标签的信息。
+<img src="https://ashhhi.github.io/img/2024-09-06-DETR/detr_dataset.png" alt=""></p>
+<h2 id="22-自定义dataset类pytorch">2.2 自定义Dataset类（PyTorch）</h2>
+<p>接下来我们要把数据喂入神经网络，官方代码是用PyTorch实现的，因此我们要自己实现自己数据集的Dataset类，创建一个新的py文件，放在datasets文件夹下面。这里放上我的代码，很基础的继承torch.utils.data.Dataset类的写法，也比较好理解，重要的部分我已经注释出来了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmartFarm</span>(Dataset):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, path, image_set<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;train&#39;</span>, transform<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, n_cls<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> image_set <span style="color:#f92672">in</span> [<span style="color:#e6db74">&#39;train&#39;</span>, <span style="color:#e6db74">&#39;val&#39;</span>, <span style="color:#e6db74">&#39;test&#39;</span>], <span style="color:#e6db74">&#39;set must be one of train, valid, test&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		官方原代码里是用的val代表valid，但是roboflow生成的文件夹叫valid，可以改直接改文件名，我这样写是为了方便复用
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> image_set <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;val&#39;</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(path, <span style="color:#e6db74">&#39;valid&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(path, image_set)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>json_path <span style="color:#f92672">=</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(self<span style="color:#f92672">.</span>path, <span style="color:#e6db74">&#39;_annotations.coco.json&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>transform <span style="color:#f92672">=</span> transform
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>n_cls <span style="color:#f92672">=</span> n_cls <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>              <span style="color:#75715e"># 背景也算一个单独的类别</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>ids <span style="color:#f92672">=</span> list(self<span style="color:#f92672">.</span>image2id()<span style="color:#f92672">.</span>keys())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __len__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(self<span style="color:#f92672">.</span>json_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            image_mapping <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>image2id()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(image_mapping)
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getitem__(self, index):
+</span></span><span style="display:flex;"><span>        idx <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>ids[index]
+</span></span><span style="display:flex;"><span>        img, target <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>read_json(self<span style="color:#f92672">.</span>json_path, idx)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>transform <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            img, target <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>transform(img, target)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> img, target
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	对应每一个类和类id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		Return: {1:&#39;flower&#39;, 2:&#39;leaf&#39;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">label2id</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(self<span style="color:#f92672">.</span>json_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            mapping <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>                mapping[item[<span style="color:#e6db74">&#39;id&#39;</span>]] <span style="color:#f92672">=</span> item[<span style="color:#e6db74">&#39;name&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mapping
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	对应每一张图片的名字和对应id
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		Return: {1:&#39;7711724741884_-pic_jpg.rf.b4bfcd10c478314fbeb7f136a5c33c46.jpg&#39;}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">image2id</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(self<span style="color:#f92672">.</span>json_path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            mapping <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> item <span style="color:#f92672">in</span> data[<span style="color:#e6db74">&#39;images&#39;</span>]:
+</span></span><span style="display:flex;"><span>                mapping[item[<span style="color:#e6db74">&#39;id&#39;</span>]] <span style="color:#f92672">=</span> item[<span style="color:#e6db74">&#39;file_name&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> mapping
+</span></span><span style="display:flex;"><span>	
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	读取Json文件，这一部分可以参考一下官方源码的datasets/coco.py中的ConvertCocoPolysToMask类
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	最终返回的target的格式应该是一个字典，像这样：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">		{&#34;boxes&#34;:[], &#34;labels&#34;:[], &#34;area&#34;:[], &#34;iscrowd&#34;:[], &#34;orig_size&#34;:[], &#34;size&#34;:[]}
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	因为roboflow生成的json文件只有一个，然而__getiten__中一次只返回一张图和标签，因此我们需要把各个部分都拆解开来
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">	&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">read_json</span>(self, path, idx):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> open(path, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> json<span style="color:#f92672">.</span>load(f)
+</span></span><span style="display:flex;"><span>            image_mapping <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>image2id()
+</span></span><span style="display:flex;"><span>            target <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>            bboxes, classes, image_files, area, iscrowd <span style="color:#f92672">=</span> [], [], [], [], []
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> ann <span style="color:#f92672">in</span> data[<span style="color:#e6db74">&#39;annotations&#39;</span>]:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> ann[<span style="color:#e6db74">&#39;image_id&#39;</span>] <span style="color:#f92672">==</span> idx:
+</span></span><span style="display:flex;"><span>                    image_files<span style="color:#f92672">.</span>append(image_mapping[ann[<span style="color:#e6db74">&#39;image_id&#39;</span>]])
+</span></span><span style="display:flex;"><span>                    bboxes<span style="color:#f92672">.</span>append(ann[<span style="color:#e6db74">&#39;bbox&#39;</span>])
+</span></span><span style="display:flex;"><span>                    classes<span style="color:#f92672">.</span>append(ann[<span style="color:#e6db74">&#39;category_id&#39;</span>])
+</span></span><span style="display:flex;"><span>                    area<span style="color:#f92672">.</span>append(ann[<span style="color:#e6db74">&#39;area&#39;</span>])
+</span></span><span style="display:flex;"><span>                    iscrowd<span style="color:#f92672">.</span>append(ann[<span style="color:#e6db74">&#39;iscrowd&#39;</span>])
+</span></span><span style="display:flex;"><span>            bboxes <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor(bboxes, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># =====================================</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 这里需要注意，roboflow生成的是（x, y, w, h）格式的box，xy为左上角的坐标</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># 但是官方源码的输入需要的是左上右下两个点的坐标</span>
+</span></span><span style="display:flex;"><span>            tmp <span style="color:#f92672">=</span> bboxes<span style="color:#f92672">.</span>reshape(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            left_corner <span style="color:#f92672">=</span> tmp[:, <span style="color:#ae81ff">0</span>]			
+</span></span><span style="display:flex;"><span>            right_corner <span style="color:#f92672">=</span> tmp[:, <span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> tmp[:, <span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>            bboxes <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat((left_corner, right_corner), dim<span style="color:#f92672">=-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># =====================================</span>
+</span></span><span style="display:flex;"><span>            classes <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor(classes, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>int64)
+</span></span><span style="display:flex;"><span>            area <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor(area, dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>            iscrowd <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor(iscrowd)
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;boxes&#34;</span>] <span style="color:#f92672">=</span> bboxes
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;labels&#34;</span>] <span style="color:#f92672">=</span> classes
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;image_id&#34;</span>] <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor(idx)
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;area&#34;</span>] <span style="color:#f92672">=</span> area
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;iscrowd&#34;</span>] <span style="color:#f92672">=</span> iscrowd
+</span></span><span style="display:flex;"><span>            image <span style="color:#f92672">=</span> Image<span style="color:#f92672">.</span>open(os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(self<span style="color:#f92672">.</span>path, image_files[<span style="color:#ae81ff">0</span>]))
+</span></span><span style="display:flex;"><span>            w, h <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>size
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;orig_size&#34;</span>] <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor([int(h), int(w)])
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;size&#34;</span>] <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>as_tensor([int(h), int(w)])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> image, target
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">调用数据集的入口函数，也是参考的原代码中datasets/coco.py的写法
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build</span>(image_set, args):
+</span></span><span style="display:flex;"><span>    path <span style="color:#f92672">=</span> Path(args<span style="color:#f92672">.</span>other_dataset_path)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> path<span style="color:#f92672">.</span>exists(), <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;provided SF path </span><span style="color:#e6db74">{</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74"> does not exist&#39;</span>
+</span></span><span style="display:flex;"><span>    dataset <span style="color:#f92672">=</span> SmartFarm(path, image_set, transform<span style="color:#f92672">=</span>make_coco_transforms(image_set))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dataset
+</span></span></code></pre></div><p>写好Dataset类之后，要怎么去调用呢？来到datasets/__init__.py文件里，这个文件是用来选择数据集的，我们加上自己的数据集选择器，不用修改原有的代码，只用加一个if判断即可：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">build_dataset</span>(image_set, args):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>dataset_file <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;coco&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> build_coco(image_set, args)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>dataset_file <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;coco_panoptic&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># to avoid making panopticapi required for coco</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">from</span> .coco_panoptic <span style="color:#f92672">import</span> build <span style="color:#66d9ef">as</span> build_coco_panoptic
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> build_coco_panoptic(image_set, args)
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    我的数据集名字叫sf，当我传入这个参数的时候它会自动调用上面创建好的build入口函数创建SmartFarm的数据类：
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>dataset_file <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;sf&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">from</span> .sf <span style="color:#f92672">import</span> build
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> build(image_set, args)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;dataset </span><span style="color:#e6db74">{</span>args<span style="color:#f92672">.</span>dataset_file<span style="color:#e6db74">}</span><span style="color:#e6db74"> not supported&#39;</span>)
+</span></span></code></pre></div><h2 id="23-数据增强部分">2.3 数据增强部分</h2>
+<p>如果你像我之前那样写数据的部分，那这一部分你可以<!-- raw HTML omitted --><strong>直接跳过不用管</strong><!-- raw HTML omitted -->，原代码中的数据增强就可以直接使用，但如果你想自己换更多的数据增强方式，这一部分有必要了解一下，因为我自己也踩了不少坑哈哈哈。</p>
+<p>接下来我们了解一下原代码是如何实现数据增强的，重点关注datasets文件夹下的coco.py和transforms.py文件。coco.py中有一个make_coco_transforms函数，用于做数据增强，里面使用了简写T，一般来说第一反应都是T不就是代表的torchvision.transforms库嘛，那好，你被<!-- raw HTML omitted --><strong>误导</strong><!-- raw HTML omitted -->了！！</p>
+<p>原作者自己重写了transforms库，在transforms.py文件里面，这个T是“import datasets.transforms as T”而非“import torchvision.transforms as T”。其实也不叫重写，只是添加了对bounding box的数据增强处理，因为torchvision只实现了对图像的增强，但对于图像分割的mask或者目标检测的bbox都没有对应的可以直接拿来用的函数（现在好像有了，但是为了能直接复用原代码，偷懒就不改了），具体怎么实现的你们可以直接去看transforms.py的源码，其实真的真的非常简单。</p>
+<p>要注意的部分只有transforms.py下的Normalize类，这也是让我幡然醒悟的一段代码，从倒数第四行里的“box_xyxy_to_cxcywh”我们可以看出，<!-- raw HTML omitted -->原来它在数据增强之前是(x, y, x, y)的数据格式而不是roboflow自带的(x, y, w, h)啊！！，并且真正喂入网络的格式是(center_x, center_y, w, h)<!-- raw HTML omitted -->，有点绕，但是必须弄清楚！！不然就会像我之前那样loss飙到2w多。。。</p>
+<p>并且最后模型预测的输出结果也会是(center_x, center_y, w, h)，如果把图像和目标检测框画出来，得以相反的方式把它还原。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Normalize</span>(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, mean, std):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mean <span style="color:#f92672">=</span> mean
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>std <span style="color:#f92672">=</span> std
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __call__(self, image, target<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        image <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>normalize(image, mean<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>mean, std<span style="color:#f92672">=</span>self<span style="color:#f92672">.</span>std)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> target <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> image, <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        target <span style="color:#f92672">=</span> target<span style="color:#f92672">.</span>copy()
+</span></span><span style="display:flex;"><span>        h, w <span style="color:#f92672">=</span> image<span style="color:#f92672">.</span>shape[<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>:]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;boxes&#34;</span> <span style="color:#f92672">in</span> target:
+</span></span><span style="display:flex;"><span>            boxes <span style="color:#f92672">=</span> target[<span style="color:#e6db74">&#34;boxes&#34;</span>]
+</span></span><span style="display:flex;"><span>            boxes <span style="color:#f92672">=</span> box_xyxy_to_cxcywh(boxes)
+</span></span><span style="display:flex;"><span>            boxes <span style="color:#f92672">=</span> boxes <span style="color:#f92672">/</span> torch<span style="color:#f92672">.</span>tensor([w, h, w, h], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>            target[<span style="color:#e6db74">&#34;boxes&#34;</span>] <span style="color:#f92672">=</span> boxes
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> image, target
+</span></span></code></pre></div><h1 id="3-开始训练">3. 开始训练</h1>
+<h2 id="31-模型参数设置">3.1 模型参数设置</h2>
+<p>综上我们完成了数据的处理部分，接下来关注到main.py文件，开始进行模型的训练部分。同大多数源码一样，代码是在服务器上跑的因此采用了命令行启动的方式，具体来说就是它定义了很多参数，我们需要从命令行里发送给它，像这样：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python -m torch.distributed.launch --nproc_per_node<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span> --use_env main.py --coco_path /path/to/coco  --coco_panoptic_path /path/to/coco_panoptic --dataset_file coco_panoptic --output_dir /output/path/box_model
+</span></span></code></pre></div><p>但由于我是在本地Pycharm上跑的，为了能方便调试，我把该有的参数都定义在了代码里面，比如下面几个比较重要的参数：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_args_parser</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># 设置训练超参数</span>
+</span></span><span style="display:flex;"><span>	parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(<span style="color:#e6db74">&#39;Set transformer detector&#39;</span>, add_help<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--lr&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-4</span>, type<span style="color:#f92672">=</span>float)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--lr_backbone&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-5</span>, type<span style="color:#f92672">=</span>float)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--batch_size&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">8</span>, type<span style="color:#f92672">=</span>int)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--weight_decay&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">1e-4</span>, type<span style="color:#f92672">=</span>float)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--epochs&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">300</span>, type<span style="color:#f92672">=</span>int)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--lr_drop&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, type<span style="color:#f92672">=</span>int)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--clip_max_norm&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">0.1</span>, type<span style="color:#f92672">=</span>float,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;gradient clipping max norm&#39;</span>)
+</span></span><span style="display:flex;"><span>                        
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 数据集选择器，这个参数会在datasets/__init__.py中的build_dataset函数中调用，选择我们自己的自定义Dataset类</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--dataset_file&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;sf&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 这个是我自己新加的一个参数，原代码只提供了coco_path，这样写的话可以在不改变原代码的基础上选择我们自己的数据集路径</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--other_dataset_path&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/Users/shijunshen/Documents/Code/dataset/Smart_Farm_Detection.v1i.coco&#39;</span>, type<span style="color:#f92672">=</span>str)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 选择你的output文件夹，这里会存储checkpoint和log文件</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--output_dir&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./output&#39;</span>,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;path where to save, empty for no saving&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 选择cpu或者cuda，因为我是MacOS，所以我使用的是苹果的硬件加速mps</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--device&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;mps&#39;</span>,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;device to use for training / testing&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 原代码中定义的是100，因为采用的coco数据集，这里的数值对应的是模型会预测出来多少个预测框，由于在我的数据集里大概一张图有十几个目标，因此我定的20。</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--num_queries&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>, type<span style="color:#f92672">=</span>int,
+</span></span><span style="display:flex;"><span>                        help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Number of query slots&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 这个参数会调用之前训练好的checkpoint文件，你可以直接下载官网预训练好的文件</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--resume&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./output/checkpoint0599.pth&#39;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;resume from checkpoint&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 原代码只有eval一个参数，predict是我自己加上的，这两个参数在train的时候不用管它，在测试和模型预测的时候可以在后面直接加上default=True，不加True就没有用，这个和在命令行里加上--eval这个参数作用是一样的</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--eval&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--predict&#39;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># ====================================================================</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 多线程，我的cpu有10个核我就填了10，影响不大</span>
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--num_workers&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, type<span style="color:#f92672">=</span>int)
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> parser
+</span></span></code></pre></div><p>其它的代码也很常规，很容易看懂，还有一个部分就是engine.py，我们需要修改一段代码，在它的evaluate函数里面，把coco_evaluator置为None，不然它就会调用COCO的评估代码里去了。训练的时候每一轮都会调用这个函数去进行打印，这也是我觉得作者写的还不够好的一点，就是只能用他的原生代码去训练COCO数据集，没有给一个完善的接口让我们拿来即用，必须得自己来改改。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>coco_evaluator <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># coco_evaluator = CocoEvaluator(base_ds, iou_types)</span>
+</span></span></code></pre></div><p>同时我们还要找到models/detr.py下的build函数，把它的num_classes改为你自己的类别数量，这一段其实可以采用传参的模式传到模型中来，我也不知道为什么作者留在这里只能单独来设置。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>dataset_file <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;coco&#39;</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">91</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>dataset_file <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;coco_panoptic&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># for panoptic, we just add a num_classes that is large enough to hold</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># max_obj_id + 1, but the exact value doesn&#39;t really matter</span>
+</span></span><span style="display:flex;"><span>    num_classes <span style="color:#f92672">=</span> <span style="color:#ae81ff">250</span>
+</span></span></code></pre></div><p>接下来只需要直接点击运行按钮就可以开始训练模型啦！记得&ndash;eval，和&ndash;predict不要设置为True喔。</p>
+<h2 id="32-加载预训练权重然后微调">3.2 加载预训练权重然后微调</h2>
+<p>这个部分可以跳过，当然我还是更建议大家采用这种做法，因为原代码中已经给出了训练好的权重啦。</p>
+<p>原代码在COCO数据集上训练的权重我们也可以拿来做初始化，但是要注意你下载的权重必须和你的网络结构是一样的，比如你在main.py中设置了backbone为resnet50，你也要下载对应的权重文件，如果你本身就什么也没改的话，就可以直接下载它的第一个权重文件。</p>
+<!-- raw HTML omitted -->
+<p>然后把resume设置为你下载好的权重文件路径，==同时也是最重要的一点==，由于我们修改了num_queries以及num_classes，模型的head部分已经不一样了，因此我们需要在main.py里加上几段代码：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>resume:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>resume<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;https&#39;</span>):
+</span></span><span style="display:flex;"><span>            checkpoint <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>hub<span style="color:#f92672">.</span>load_state_dict_from_url(
+</span></span><span style="display:flex;"><span>                args<span style="color:#f92672">.</span>resume, map_location<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cpu&#39;</span>, check_hash<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            checkpoint <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>load(args<span style="color:#f92672">.</span>resume, map_location<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cpu&#39;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ==============================================================</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 这一段是修改了的，去除多余的参数，并将load_state_dict设置为strict=False，这样它便会只加载模型结构相同部分的预训练参数</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">del</span> checkpoint[<span style="color:#e6db74">&#34;model&#34;</span>][<span style="color:#e6db74">&#34;class_embed.weight&#34;</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">del</span> checkpoint[<span style="color:#e6db74">&#34;model&#34;</span>][<span style="color:#e6db74">&#34;class_embed.bias&#34;</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">del</span> checkpoint[<span style="color:#e6db74">&#34;model&#34;</span>][<span style="color:#e6db74">&#34;query_embed.weight&#34;</span>]
+</span></span><span style="display:flex;"><span>        model_without_ddp<span style="color:#f92672">.</span>load_state_dict(checkpoint[<span style="color:#e6db74">&#39;model&#39;</span>], strict<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># ==============================================================</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> args<span style="color:#f92672">.</span>eval <span style="color:#f92672">and</span> <span style="color:#e6db74">&#39;optimizer&#39;</span> <span style="color:#f92672">in</span> checkpoint <span style="color:#f92672">and</span> <span style="color:#e6db74">&#39;lr_scheduler&#39;</span> <span style="color:#f92672">in</span> checkpoint <span style="color:#f92672">and</span> <span style="color:#e6db74">&#39;epoch&#39;</span> <span style="color:#f92672">in</span> checkpoint:
+</span></span><span style="display:flex;"><span>            optimizer<span style="color:#f92672">.</span>load_state_dict(checkpoint[<span style="color:#e6db74">&#39;optimizer&#39;</span>])
+</span></span><span style="display:flex;"><span>            lr_scheduler<span style="color:#f92672">.</span>load_state_dict(checkpoint[<span style="color:#e6db74">&#39;lr_scheduler&#39;</span>])
+</span></span><span style="display:flex;"><span>            args<span style="color:#f92672">.</span>start_epoch <span style="color:#f92672">=</span> checkpoint[<span style="color:#e6db74">&#39;epoch&#39;</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><h1 id="4-可视化测试结果">4. 可视化测试结果</h1>
+<p>训练之后我们肯定想把结果直观地显示出来，不然怎么去给老板交差🤡，源码没有实现这个，因此我添加了上面所说的predict参数，并且在main.py和engine.py里分别加入了这两段：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">main.py
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>eval:
+</span></span><span style="display:flex;"><span>       test_stats, coco_evaluator <span style="color:#f92672">=</span> evaluate(model, criterion, postprocessors,
+</span></span><span style="display:flex;"><span>                                             data_loader_val, base_ds, device, args<span style="color:#f92672">.</span>output_dir)
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e"># if args.output_dir:</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#75715e">#     utils.save_on_master(coco_evaluator.coco_eval[&#34;bbox&#34;].eval, output_dir / &#34;eval.pth&#34;)</span>
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 这一段是我加的</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>predict:
+</span></span><span style="display:flex;"><span>    predict(model, criterion, postprocessors,
+</span></span><span style="display:flex;"><span>                                          data_loader_val, base_ds, device, args<span style="color:#f92672">.</span>output_dir)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">engine.py
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">这个只是我用来做测试用的，因此写得不是很完善，只可视化了第一张图像
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">但是其中对box的还原你们可以参考一下
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@torch.no_grad</span>()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">predict</span>(model, criterion, postprocessors, data_loader, base_ds, device, output_dir):
+</span></span><span style="display:flex;"><span>    model<span style="color:#f92672">.</span>eval()
+</span></span><span style="display:flex;"><span>    criterion<span style="color:#f92672">.</span>eval()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> samples, targets <span style="color:#f92672">in</span> data_loader:
+</span></span><span style="display:flex;"><span>        samples <span style="color:#f92672">=</span> samples<span style="color:#f92672">.</span>to(device)
+</span></span><span style="display:flex;"><span>        targets <span style="color:#f92672">=</span> [{k: v<span style="color:#f92672">.</span>to(device) <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> t<span style="color:#f92672">.</span>items()} <span style="color:#66d9ef">for</span> t <span style="color:#f92672">in</span> targets]
+</span></span><span style="display:flex;"><span>        outputs <span style="color:#f92672">=</span> model(samples)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i, tensor <span style="color:#f92672">in</span> enumerate(samples<span style="color:#f92672">.</span>tensors):
+</span></span><span style="display:flex;"><span>            img <span style="color:#f92672">=</span> tensor
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># 反Normalization，这个mean和std是ImageNet数据集上做pretrain时候的常用参数，原代码也用了这两个值，可以在数据增强那部分看到</span>
+</span></span><span style="display:flex;"><span>        mean <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.485</span>, <span style="color:#ae81ff">0.456</span>, <span style="color:#ae81ff">0.406</span>]
+</span></span><span style="display:flex;"><span>        std <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0.229</span>, <span style="color:#ae81ff">0.224</span>, <span style="color:#ae81ff">0.225</span>]
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> img<span style="color:#f92672">.</span>cpu()<span style="color:#f92672">.</span>clone()<span style="color:#f92672">.</span>detach()<span style="color:#f92672">.</span>numpy()
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>transpose(img, (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">0</span>))
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> img <span style="color:#f92672">*</span> np<span style="color:#f92672">.</span>array(std) <span style="color:#f92672">+</span> np<span style="color:#f92672">.</span>array(mean)
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> np<span style="color:#f92672">.</span>clip(img, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        img <span style="color:#f92672">=</span> (img <span style="color:#f92672">*</span> <span style="color:#ae81ff">255</span>)<span style="color:#f92672">.</span>astype(np<span style="color:#f92672">.</span>uint8)
+</span></span><span style="display:flex;"><span>        img_cv2 <span style="color:#f92672">=</span> cv2<span style="color:#f92672">.</span>cvtColor(img, cv2<span style="color:#f92672">.</span>COLOR_RGB2BGR)  <span style="color:#75715e"># 将NumPy数组转换为OpenCV的Mat对象</span>
+</span></span><span style="display:flex;"><span>        bbox <span style="color:#f92672">=</span> outputs[<span style="color:#e6db74">&#39;pred_boxes&#39;</span>]<span style="color:#f92672">.</span>cpu()<span style="color:#f92672">.</span>detach()<span style="color:#f92672">.</span>numpy()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># bbox = targets[0][&#39;boxes&#39;].cpu().numpy()</span>
+</span></span><span style="display:flex;"><span>        img_height, img_width, _ <span style="color:#f92672">=</span> img_cv2<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span>        [h, w] <span style="color:#f92672">=</span> targets[<span style="color:#ae81ff">0</span>][<span style="color:#e6db74">&#39;size&#39;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># 把（center_x, center_y, w, h）的格式转换为左上角和右下角两个点的坐标，用cv2.rectangle把它们画出来</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> box <span style="color:#f92672">in</span> bbox:
+</span></span><span style="display:flex;"><span>            print(box)
+</span></span><span style="display:flex;"><span>            cx <span style="color:#f92672">=</span> int(box[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> w)
+</span></span><span style="display:flex;"><span>            cy <span style="color:#f92672">=</span> int(box[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">*</span> h)
+</span></span><span style="display:flex;"><span>            w_ <span style="color:#f92672">=</span> int(box[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">*</span> w)
+</span></span><span style="display:flex;"><span>            h_ <span style="color:#f92672">=</span> int(box[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">*</span> h)
+</span></span><span style="display:flex;"><span>            xmin <span style="color:#f92672">=</span> int(cx <span style="color:#f92672">-</span> w_ <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            ymin <span style="color:#f92672">=</span> int(cy <span style="color:#f92672">-</span> h_ <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            xmax <span style="color:#f92672">=</span> int(cx <span style="color:#f92672">+</span> w_ <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            ymax <span style="color:#f92672">=</span> int(cy <span style="color:#f92672">+</span> h_ <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>            print(xmin, ymin, xmax, ymax)
+</span></span><span style="display:flex;"><span>            cv2<span style="color:#f92672">.</span>rectangle(img_cv2, (xmin, ymin), (xmax, ymax), (<span style="color:#ae81ff">255</span>, <span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>), <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;test&#39;</span>, img_cv2)
+</span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>waitKey()
+</span></span></code></pre></div><p>在我的项目中，最终的结果是这样的，因为我在num_queries中设置了20，所以模型一共预测了20个bounding box，后面你们也可以做处理，比如只显示预测概率最高的前几个框，在模型预测结果的字典中不仅有‘pred_boxes’，也有‘pred_logits’，可以过滤出最高概率的几个框，不过这样已经可以看出，结果还是不错的啦。</p>
+<p><img src="https://ashhhi.github.io/img/2024-09-06-DETR/detr_image.png" alt="在这里插入图片描述"></p>
+<h1 id="5-总结">5. 总结</h1>
+<p>总的来说，DETR训练的效率还是蛮高的，我只用了15张标注好的图片进行训练，并且下载了原代码中在COCO数据集上预训练好的模型然后在自己的数据集上进行训练，用Colab上的L4 GPU训练了十分钟左右，600个epoch便达到了这样的效果。</p>
+<p>欢迎大家提问以及指正！</p>
+
+        </section>
+        <footer>
+            
+    <nav id="keywords" aria-label="Tags">
+        <span>Tags:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="delimiter" role="presentation">
+            <li><a href="https://ashhhi.github.io/en/tags/deep-learning/">Deep Learning</a></li>
+            <li><a href="https://ashhhi.github.io/en/tags/computer-vision/">Computer Vision</a></li>
+    </ul>
+    </nav>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+            <!-- related.html -->
+            <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Colophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="如何用DETR官方代码训练自己的数据集"><span>https://ashhhi.github.io/en/post/2024-09-06-detr/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-21T00:10:57&#43;08:00">2025-03-21T00:10:57&#43;08:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+            <!-- history.html -->
+        <div id="has-timeline">
+            <strong class="section-title">Redaction History</strong>
+            <ol aria-label="Redaction History">
+                <li>
+                    <time datetime="2024-09-06T00:00:00&#43;00:00">September 6, 2024</time>
+                    <span>(Published)</span>
+                </li>
+                <li>
+                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
+                    <span>(Modified)</span>
+                </li>
+            </ol>
+            <p>Some information might changes over time, we keep redaction up to date.</p>
+        </div>
+        
+    </div>
+    <div class="pagewidth">
+        </div>
+        <!-- main/footer.html -->
+    <hr class="hide">
+        <footer id="main-footer">
+            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
+                        aria-labelledby="footer-1">
+                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2025<!-- raw HTML omitted --></p>
+<p>Some rights reserved.</p>
+<!-- raw HTML omitted -->
+
+                    </div>
+                <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
+                    <!-- menu.html -->
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- focusMode.html -->
+    <div id="focusMode" class="hide">
+        <input
+            id="defocusAuxElement"
+            accesskey="d" type="checkbox"
+            onclick="focusMode()"
+            aria-keyshortcuts="d"
+            aria-label="Focus Mode"
+            >
+            <label id="focusModeButton" for="defocusAuxElement" aria-label="Focus Mode">
+                ⦿ <span class="t" role="tooltip">Focus Mode</span>
+            </label>
+    </div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key" aria-hidden="true">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        >
+        <label for="lightSwitch">
+            <div class="has-aria-label off" role="status" aria-label="Light"></div>
+            <div class="has-aria-label on" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()" aria-label="Color Palette">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key" aria-hidden="true">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="Bypass">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key" aria-hidden="true">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

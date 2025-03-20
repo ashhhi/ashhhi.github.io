@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- head.html --><!-- meta.html -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration） | Ashhhi</title>
+<meta name="author" content="[Ash]">
+<meta name="description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
+" >
+<meta name="keywords" content="Reinforcement Learning">
+<link rel="canonical" href="https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/">
+
+
+
+    <link rel="me" href="https://example.com/@username">
+<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+            integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
+            defer></script><!-- css.html -->
+        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+    <!-- css/inline.html -->
+    <style>
+         
+        body {max-width: 786px; margin: auto; padding: 2rem;}
+        img {max-width: 86vw;}
+    </style>
+    
+    
+        <meta name="fediverse:creator" content="@username@example.com">
+    
+        <!-- katex.html -->
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" rel="stylesheet"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"
+        defer></script>
+    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
+                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top">
+            <!-- menu.html -->
+            <!-- search.html -->
+<details id="has-search" class="presentation js-details" name="on-deck">
+    <summary class="on-deck" accesskey="q" aria-keyshortcuts="q">
+        <span class="t t2">Search</span>
+    </summary>
+    
+        <!-- pagefind.html -->
+    <div id="search" class="on-hull">
+        <div role="presentation" class="screening js-cgpn"></div>
+    </div>
+    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+        let pageFindInitialized = false;
+        const initPageFind = function(event) {
+            if (!pageFindInitialized) {
+                new PagefindUI({
+                    element: "#search",
+                    showImages: false,
+                    translations: {
+                        placeholder: "Search"
+                    }
+                });
+                pageFindInitialized = true;
+                document.removeEventListener('DOMContentLoaded', initPageFind);
+            }
+        };
+        document.addEventListener('DOMContentLoaded', initPageFind);
+    </script>
+        <noscript id="has-search-fallback" class="on-hull">
+                
+    <!-- duckduckgo.html -->
+    <form id="duckduckgo" class="form on-plank"
+        name="x" action="//duckduckgo.com/"
+        role="search" aria-label="">
+        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="1" name="kh"></input>
+        <input type="hidden" value="1" name="kn"></input>
+        <input type="hidden" value="1" name="kac"></input>
+        <input class="ldots form__input" type="search" placeholder="Search" name="q"></input>
+        <button class="form__button" type="submit" aria-label="Search">
+            <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
+        </button>
+    </form>
+    <div role="presentation" class="screening js-cgpn"></div>
+        </noscript>
+    
+</details>
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy URL" role="button" aria-label="Copy URL">
+                <span id="copy" class="t" role="tooltip">Copy URL</span>
+                <span id="isCopying" style="display: none;">Copying...</span>
+                <span id="copyText" style="display: none;">Copy URL</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
+        <span class="t" role="tooltip">Go Back</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <h1 id="title"
+                data-pagefind-meta="title"
+            data-bionRead-safe
+            >策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
+            <div id="doc-author" class="textsw author"><span>[Ash]</span>
+            </div>
+            <!-- timestamp.html-->
+    <div class="date-has-label">
+        <time class="doc-publish-date" datetime="2025-03-20T00:00:00&#43;00:00" data-time-label="Published on">March 20, 2025</time>
+            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <p>先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。</p>
+<p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
+<hr>
+<p>值迭代分为两个步骤：策略更新（Policy update）和值更新（Value update），它们的公式分别为：</p>
+<p>$$
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_k) \tag{1}
+$$</p>
+<p>$$
+v_{k+1} = r_{\pi_{k+1}} + \lambda P_{\pi_{k+1}} v_k \tag{2}
+$$</p>
+<p>而策略迭代分为两个步骤，策略评估（Policy Evaluation）和策略优化（Policy Improvement），它们的公式分别为：</p>
+<p>$$
+v_{\pi_k} = r_{\pi_k} + \lambda P_{\pi_k} v_{\pi_k} \tag{3}
+$$</p>
+<p>$$
+\pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_{\pi_k}) \tag{4}
+$$</p>
+<p>可以看到（1）（4）式基本上相同，唯一的不同点在于\(v\)的底标，策略迭代是\(\pi_k\)，而值迭代就是\(k\)，这也意味着策略迭代中算出来的其实是状态值函数，也就是对当前策略下计算出每个状态下的状态值，每个状态下又有不同的action，因此需要很多步运算，甚至是无穷步。而值迭代的更新方式是基于“最大化期望回报”，即它直接在每一步使用新的值来更新自身，而不需要完整地评估某个策略的值函数。</p>
+<p>这张图很好地描述了两种迭代之间的关系：</p>
+<p><img src="https://ashhhi.github.io/img/2025-03-20-Policy-Value-Iteration/image.png" alt=""></p>
+<p>总而言之：</p>
+<ul>
+<li>值迭代通过不断逼近最优值函数 \(V^*(s)\)，它不依赖于特定策略，而是直接寻找最优策略。</li>
+<li>策略迭代先固定策略计算 该策略下的值函数，然后基于该值函数改进策略，如此反复，最终收敛到最优策略。</li>
+<li>计算量比较：策略迭代的策略评估部分需要多次迭代（但可以提前终止），值迭代在每一步执行一次更新，因此策略迭代可能需要更多计算量，但更稳定，而值迭代通常更快收敛，但可能振荡。</li>
+</ul>
+        </section>
+        <footer>
+            
+    <nav id="keywords" aria-label="Tags">
+        <span>Tag:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="https://ashhhi.github.io/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+    </ul>
+    </nav>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+            <!-- related.html -->
+    <nav id="related" aria-label="You might also like">
+        <strong class="section-title">You might also like</strong><ol>
+                    <li><a href="https://ashhhi.github.io/en/post/2024-9-25-rl02/">Bellman Function详解</a></li>
+                    <li><a href="https://ashhhi.github.io/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
+                </ol>
+    </nav>
+            <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Colophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）"><span>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-21T00:10:57&#43;08:00">2025-03-21T00:10:57&#43;08:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+            <!-- history.html -->
+        <div id="has-timeline">
+            <strong class="section-title">Redaction History</strong>
+            <ol aria-label="Redaction History">
+                <li>
+                    <time datetime="2025-03-20T00:00:00&#43;00:00">March 20, 2025</time>
+                    <span>(Published)</span>
+                </li>
+                <li>
+                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
+                    <span>(Modified)</span>
+                </li>
+            </ol>
+            <p>Some information might changes over time, we keep redaction up to date.</p>
+        </div>
+        
+    </div>
+    <div class="pagewidth">
+        </div>
+        <!-- main/footer.html -->
+    <hr class="hide">
+        <footer id="main-footer">
+            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
+                        aria-labelledby="footer-1">
+                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2025<!-- raw HTML omitted --></p>
+<p>Some rights reserved.</p>
+<!-- raw HTML omitted -->
+
+                    </div>
+                <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
+                    <!-- menu.html -->
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- focusMode.html -->
+    <div id="focusMode" class="hide">
+        <input
+            id="defocusAuxElement"
+            accesskey="d" type="checkbox"
+            onclick="focusMode()"
+            aria-keyshortcuts="d"
+            aria-label="Focus Mode"
+            >
+            <label id="focusModeButton" for="defocusAuxElement" aria-label="Focus Mode">
+                ⦿ <span class="t" role="tooltip">Focus Mode</span>
+            </label>
+    </div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key" aria-hidden="true">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        >
+        <label for="lightSwitch">
+            <div class="has-aria-label off" role="status" aria-label="Light"></div>
+            <div class="has-aria-label on" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()" aria-label="Color Palette">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key" aria-hidden="true">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="Bypass">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key" aria-hidden="true">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <!-- head.html --><!-- meta.html -->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bellman Function详解 | Ashhhi</title>
+<meta name="author" content="[Ash]">
+<meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。" >
+<meta name="keywords" content="Reinforcement Learning">
+<link rel="canonical" href="https://ashhhi.github.io/en/post/2024-9-25-rl02/">
+
+
+
+    <link rel="me" href="https://example.com/@username">
+<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+            integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
+            defer></script><!-- css.html -->
+        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+    <!-- css/inline.html -->
+    <style>
+         
+        body {max-width: 786px; margin: auto; padding: 2rem;}
+        img {max-width: 86vw;}
+    </style>
+    
+    
+        <meta name="fediverse:creator" content="@username@example.com">
+    
+        <!-- katex.html -->
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" rel="stylesheet"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"
+        defer></script>
+    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    
+</head>
+<body  id="post" >
+    <!-- header.html -->
+<header class="pagewidth">
+    <div id="background-header" class="background" aria-hidden="true"></div>
+    
+    <nav aria-label="Bypass">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+            <span>Skip to Main Content</span>
+            <kbd class="key" aria-hidden="true">c</kbd>
+            <span class="screening" aria-hidden="true"></span>
+        </a>
+    </nav>
+    
+        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
+                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+            <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
+        </svg>
+        </a>
+    
+    <details class="presentation" id="top-nav">
+        <summary class="on-deck">
+            <span class="t t2">Navigation</span>
+            <span class="menu-icon" role="presentation"></span>
+        </summary>
+        <nav tabindex="-1" aria-label="Top">
+            <!-- menu.html -->
+            <!-- search.html -->
+<details id="has-search" class="presentation js-details" name="on-deck">
+    <summary class="on-deck" accesskey="q" aria-keyshortcuts="q">
+        <span class="t t2">Search</span>
+    </summary>
+    
+        <!-- pagefind.html -->
+    <div id="search" class="on-hull">
+        <div role="presentation" class="screening js-cgpn"></div>
+    </div>
+    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script>
+        let pageFindInitialized = false;
+        const initPageFind = function(event) {
+            if (!pageFindInitialized) {
+                new PagefindUI({
+                    element: "#search",
+                    showImages: false,
+                    translations: {
+                        placeholder: "Search"
+                    }
+                });
+                pageFindInitialized = true;
+                document.removeEventListener('DOMContentLoaded', initPageFind);
+            }
+        };
+        document.addEventListener('DOMContentLoaded', initPageFind);
+    </script>
+        <noscript id="has-search-fallback" class="on-hull">
+                
+    <!-- duckduckgo.html -->
+    <form id="duckduckgo" class="form on-plank"
+        name="x" action="//duckduckgo.com/"
+        role="search" aria-label="">
+        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="1" name="kh"></input>
+        <input type="hidden" value="1" name="kn"></input>
+        <input type="hidden" value="1" name="kac"></input>
+        <input class="ldots form__input" type="search" placeholder="Search" name="q"></input>
+        <button class="form__button" type="submit" aria-label="Search">
+            <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
+        </button>
+    </form>
+    <div role="presentation" class="screening js-cgpn"></div>
+        </noscript>
+    
+</details>
+            <!-- menu.html -->
+            <!-- i18n.html -->
+
+
+        </nav>
+        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+    </details>
+</header>
+    
+    <!-- [main] baseof.html -->
+    <main id="page">
+        <!-- main/header.html -->
+        <header class="pagewidth">
+            
+            <!-- menu.html -->
+    <menu role="presentation">
+        <li>
+            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
+                <span class="t" role="tooltip">Print</span>
+            </a>
+        </li>
+        <li>
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+                <span class="t" role="tooltip">Share</span>
+            </a>
+        </li>
+        <li>
+            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy URL" role="button" aria-label="Copy URL">
+                <span id="copy" class="t" role="tooltip">Copy URL</span>
+                <span id="isCopying" style="display: none;">Copying...</span>
+                <span id="copyText" style="display: none;">Copy URL</span>
+            </a>
+        </li>
+    </menu>
+    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
+        <span class="t" role="tooltip">Go Back</span>
+    </button>
+            
+                <!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
+    <summary id="breadcrumb" tabindex="-1">
+        <span>Breadcrumb</span>
+    </summary>
+        <nav aria-labelledby="breadcrumb">
+            <ul role="presentation" class="breadcrumb">
+                    <!-- breadcrumb.html -->
+        <li>
+            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            </a>
+        </li>
+    <li>
+        <a href="" aria-current="page" tabindex="-1">Bellman Function详解
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+        </header>
+        <div id="top" role="presentation">
+            
+        </div>
+        
+
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >Bellman Function详解</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author"><span>[Ash]</span>
+            </div>
+            <!-- timestamp.html-->
+    <div class="date-has-label">
+        <time class="doc-publish-date" datetime="2024-09-25T00:00:00&#43;00:00" data-time-label="Published on">September 25, 2024</time>
+            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <p>$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*}
+$$</p>
+<p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
+<hr>
+<h1 id="return-和-state-value">Return 和 State value</h1>
+<p>如上一章所讲，强化学习就是学习一个好的<code>Policy</code>的过程，那如何量化这个Policy是不是好的呢，于是引出了<code>Reward</code>的概念。但是Reward只能体现智能体在某一个状态下可以做的行为的好坏，而并不能体现出全局的思想，而策略可以看作一系列行为的集合，包括在每一个状态下怎么去行为。上一章还写到了<code>Return</code>的概念，也就是一条路径上所有奖励的和。</p>
+<p>如何计算Return？还是拿网格游戏举例子，如图定义了一个2x2的地图，初始状态是\(s_1\)，我们需要找到一条道路去到\(s_4\)，我们定义黄色的方格为禁区，如果到达禁区，奖励为-1，到达空白区域奖励为0，到达目的地奖励为1。</p>
+<p><img src="https://ashhhi.github.io/img/2024-9-25-RL02/1.png" alt=""></p>
+<p>我们设定智能体会一直运作下去，到了target space也不停下来。如图定义了三种不同的策略，箭头代表了每一个状态下的行为，那么状态\(s_1\)在前两个策略下的Return为（用\(G\)来表示，利用无穷等比数列的求和公式）：</p>
+<p>$$
+G_1 =
+\begin{cases}
+\begin{align*}
+0 + 1 \cdot \lambda + 1 \cdot \lambda^2 + 1 \cdot \lambda^3 + \ldots &amp;= \frac{\lambda}{1 - \lambda} \\
+-1 + 1 \cdot \lambda + 1 \cdot \lambda^2 + 1 \cdot \lambda^3 + \ldots &amp;= -1 + \frac{\lambda}{1 - \lambda}
+\end{align*}
+\end{cases}, \quad \lambda \in (0,1)
+$$</p>
+<p>Return并不单纯只是路径上所有Reward之和相加，而是加入\(\lambda\)作为权重，目的是为了限制Return不会无休止地膨胀下去，并且我们可以通过控制其大小来控制模型的“远视”或者“近视”，如果\(\lambda\)偏向1，那么模型将会看得更远，如果偏向0，那么权重衰减得将会很快，模型会更看重前面几个状态的抉择。</p>
+<p>但是这是在策略固定的情况下，也就是说我们知道在每一个状态，有且只有一个行为可以选择。</p>
+<p>然而，在真正的学习过程中，策略是不固定的，也就是说每一个状态下都有多个行为可以选择，我们需要求得最优解，即每个状态下走哪一条路的概率最高，于是我们引出了<code>状态值（State value）</code>的概念。很简单，其实状态值就是该状态下可能的所有路径的Return的期望。所以在前两种策略下，\(s_1\)的State value就等于它的Return，而第三种策略下，其状态值为：</p>
+<p>$$
+v_1 = 0.5 * \frac{\lambda}{1-\lambda} + 0.5 * (-1 + \frac{\lambda}{1-\lambda}) = -0.5 + \frac{\lambda}{1-\lambda}
+$$</p>
+<p>通过对比三种策略下\(s_1\)的状态值，我们可以得出第一种是最高的，因此第一种策略是最优策略，直观上我们也可以看出来，因为它避免了智能体进入禁区。因此这也是为什么状态值可以成为量化策略的一个指标。</p>
+<h1 id="贝尔曼方程">贝尔曼方程</h1>
+<h2 id="简单理解">简单理解</h2>
+<p><img src="https://ashhhi.github.io/img/2024-9-25-RL02/2.png" alt=""></p>
+<p>考虑一个特殊的策略，如图形成了一个循环的策略，那么我们可以求得每一个状态下的状态值为：</p>
+<p>$$
+v_1 = r_1 + \lambda r_2 + \lambda^2 r_3 + &hellip; \\
+v_2 = r_2 + \lambda r_3 + \lambda^2 r_4 + &hellip; \\
+v_3 = r_3 + \lambda r_4 + \lambda^2 r_1 + &hellip; \\
+v_4 = r_4 + \lambda r_1 + \lambda^2 r_2 + &hellip; \\
+$$</p>
+<p>进一步简化可以得到：
+$$
+v_1 = r_1 + \lambda v_2 \\
+v_2 = r_2 + \lambda v_3 \\
+v_3 = r_3 + \lambda v_4 \\
+v_4 = r_4 + \lambda v_1 \\
+$$</p>
+<p>四个方程四个未知数（\(r\)看作是已知的），其实是可以把\(v\)解出来的。这里体现出了自举（bootstrapping）的思想，即从自身求自身的值。当我们把这些式子化作一个线性矩阵方程便会很好理解：</p>
+<p>$$
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}=
+\begin{pmatrix}
+r_1 \\ r_2 \\ r_3 \\ r_4
+\end{pmatrix}+
+\lambda
+\begin{pmatrix}
+0 &amp; 1 &amp; 0 &amp; 0 \\ 0 &amp; 0 &amp; 1 &amp; 0  \\ 0 &amp; 0 &amp; 0 &amp; 1  \\ 1 &amp; 0 &amp; 0 &amp; 0
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix} \tag{1}
+$$</p>
+<p>化简得\(\vec{v} = \vec{r} + \lambda P \vec{v} \)， 这其实就是<code>贝尔曼方程</code>在这种简单策略下的的简单表达。</p>
+<h2 id="复杂形式">复杂形式</h2>
+<h3 id="公式推导">公式推导</h3>
+<p>还是先理清几个定义，我们假设在状态\(t\)的路径为：</p>
+<p>$$
+S_t \overset{A_t}{\longrightarrow} S_{t+1}, R_{t+1} \overset{A_{t+1}}{\longrightarrow} S_{t+2}, R_{t+2} &hellip;
+$$</p>
+<ul>
+<li>\(S_t\)：每个状态</li>
+<li>\(A_t\)：从\(S_t\)到\(S_{t+1}\)所需采取的行为</li>
+<li>\(R_{t+1}\)：采取行为\(A_t\)到达状态\(S_{t+1}\)所能得到的奖励</li>
+</ul>
+<p>可以得到这条路径的Return为：</p>
+<p>$$
+G_t = R_{t+1} + \lambda R_{t+2} + \lambda^2 R_{t+3}&hellip; = R_{t+1} + \lambda G_{t+1} \tag{2}
+$$</p>
+<p>那么这个状态的状态值便是在策略\(\pi\)下所有Return的期望，这就是<code>状态值函数</code>，有些地方把V大写：
+$$
+\begin{align*}
+V_\pi(s) = v_\pi(s) &amp;= \mathbb{E}[G_t|S_t=s] \\
+&amp;= \mathbb{E}[R_{t+1} + \lambda G_{t+1}|S_t=s] \\
+&amp;= \mathbb{E}[R_{t+1}|S_t=s] + \lambda \mathbb{E}[G_{t+1}|S_t=s]
+\end{align*}
+$$</p>
+<p>这里有两项，我们分别对这两项进行计算，先定义三个集合：</p>
+<ul>
+<li>\(\mathcal{S}\)：所有的状态</li>
+<li>\(\mathcal{R}\)：所有的奖励</li>
+<li>\(\mathcal{A}\)：所有的动作</li>
+</ul>
+<p>首先是第一项：</p>
+<p>$$
+\begin{align*}
+\mathbb{E}[R_{t+1}|S_t=s] &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)\mathbb{E}[R_{t+1}|S_t=s, A_t=a] \\
+&amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r
+\end{align*}
+$$</p>
+<p>其中\(\pi(a|s)\)为在策略\(\pi\)下，在状态\(s\)，选择行为\(a\)的概率。</p>
+<p>接着来计算第二项，其中第二步用了马尔可夫决策过程的无记忆性的特征：</p>
+<p>$$
+\begin{align*}
+\mathbb{E}[G_{t+1}|S_t=s] &amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_t=s, S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_{t+1}=s&rsquo;]p[s&rsquo;|s] \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}\mathbb{E}[G_{t+1}|S_{t+1}=s&rsquo;]\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s)
+\end{align*}
+$$</p>
+<p>最后把二者合并起来就形成了贝尔曼方程的规范版本：</p>
+<p>$$
+\begin{align*}
+v_\pi(s) &amp;= \sum_{a \in \mathcal{A}} \pi(a|s) \sum_{r \in \mathcal{R}}p(r|s,a)r + \lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)\sum_{a \in \mathcal{A}} p[s&rsquo;|s,a]\pi(a|s) \\
+&amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]]
+\end{align*} \tag{3}
+$$</p>
+<h3 id="example">Example</h3>
+<p>看起来很复杂，其实只是因为这是一个通用的公式，如果举个简单的例子，就很清晰了。还是拿本章最开始的第一个那个例子来说，假设我们选择第一个策略，来求取它的\(v_\pi(s=1)\)，其实就是\(v_1\)。</p>
+<p>这里策略\(\pi\)规定了只能往下走，那么只有\(\pi(a=down|s=1)=1\)，并且向下走只能到状态\(s_3\)，所以只有\(p[s_3|s_1,a=down]=1\)。因此原式等于：</p>
+<p>$$
+\begin{align*}
+v_1 &amp;= \sum_{a \in \mathcal{A}}\pi(a|s)[\sum_{r \in \mathcal{R}}p(r|s,a)r+\lambda \sum_{s&rsquo; \in \mathcal{S}}v_\pi(s&rsquo;)p[s&rsquo;|s,a]] \\
+&amp;= \sum_{r \in \mathcal{R}}p(r|s_1,a=down)r + \lambda v_\pi(s_3) \\
+&amp;= 0 + \lambda v_\pi(s_3)
+\end{align*}
+$$</p>
+<p>就得到了之前的简单情况下的结果。</p>
+<h2 id="矩阵化">矩阵化</h2>
+<p>以上所写的贝尔曼方程形式都是单状态形式的，因此如果我们有\(n\)个状态的话我们就可以有\(n\)个方程，就可以写成一个矩阵形式，还是先把（3）式括号合并化简为：</p>
+<p>$$
+v_\pi(s) = r_\pi(s) + \lambda \sum_{s&rsquo; \in \mathcal(S)} p_\pi(s&rsquo;|s)v_\pi(s&rsquo;)
+$$</p>
+<p>有\(n\)个这样的式子，因此我们可以写成这种形式，其中i=1，2，3，&hellip;，n。
+$$
+v_\pi(s_i) = r_\pi(s_i) + \lambda \sum_{s_j \in \mathcal(S)} p_\pi(s_j|s_i)v_\pi(s_j)
+$$</p>
+<p>进一步我们可以进一步化简，直接用一个矩阵代替，为什么能这么化简呢？这里可以参考（1）式理解：</p>
+<p>$$
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}=
+\begin{pmatrix}
+r_1 \\ r_2 \\ r_3 \\ r_4
+\end{pmatrix}+
+\lambda
+\begin{pmatrix}
+p_\pi(s_1|s_1) &amp; p_\pi(s_2|s_1) &amp; p_\pi(s_3|s_1) &amp; p_\pi(s_4|s_1) \\
+p_\pi(s_1|s_2) &amp; p_\pi(s_2|s_2) &amp; p_\pi(s_3|s_2) &amp; p_\pi(s_4|s_2) \\
+p_\pi(s_1|s_3) &amp; p_\pi(s_2|s_3) &amp; p_\pi(s_3|s_3) &amp; p_\pi(s_4|s_3) \\
+p_\pi(s_1|s_4) &amp; p_\pi(s_2|s_4) &amp; p_\pi(s_3|s_4) &amp; p_\pi(s_4|s_4)
+\end{pmatrix}
+\begin{pmatrix}
+v_1 \\ v_2 \\ v_3 \\ v_4
+\end{pmatrix}
+$$
+$$
+v_\pi = r_\pi + \lambda P_\pi v_\pi \tag{3}
+$$</p>
+<h2 id="求解">求解</h2>
+<p>通过贝尔曼方程我们可以求解到每一个状态的状态值，通过（3）式我们可以很容易得到:
+$$
+v_\pi = (I-\lambda P)^{-1}r_\pi
+$$
+但是当状态空间足够大，\(P\)矩阵的维度将会非常大，对其求逆会消耗大量的计算资源，因此更常用的求解方式是迭代式算法，该算法会生成一个序列 \(v_0,v_1,v_2,&hellip;,v_n\)，\(v_0\)是一个初始化的值，通过这个随机值我们可以根据（2）式以此计算出后面的状态值。</p>
+<p>迭代式算法有一个重要的特征，也就是当\(n\)趋近于无穷的时候，\(v_{n+1}\)和\(v_n\)基本上相同，其原因这里不做交代。</p>
+<h1 id="action-value">Action value</h1>
+<p>很简单，行为值指的就是每一个状态下采取具体的某一个动作能得到的Return, 其实也就是Q-learning中大Q值，也叫<code>动作值函数</code>：</p>
+<p>$$
+Q_\pi(s,a) = q_\pi(s,a) = \mathbb{E}[G_t|S_t=t,A_t=a] \tag{4}
+$$</p>
+<p>通过行为值的比较，我们可以确定该状态下应该选择具体哪一个行为，一个状态下所有的行为值加起来就等于这个状态的状态值。</p>
+<p>根据Return的定义（2）式，我们（4）式展开可以得到：</p>
+<p>$$
+q_\pi(s,a) = \mathbb{E}[r + \lambda G_{t+1}|S_t=t,A_t=a] \tag{5}
+$$</p>
+        </section>
+        <footer>
+            
+    <nav id="keywords" aria-label="Tags">
+        <span>Tag:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="https://ashhhi.github.io/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+    </ul>
+    </nav>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+            <!-- related.html -->
+    <nav id="related" aria-label="You might also like">
+        <strong class="section-title">You might also like</strong><ol>
+                    <li><a href="https://ashhhi.github.io/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
+                </ol>
+    </nav>
+            <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Colophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="Bellman Function详解"><span>https://ashhhi.github.io/en/post/2024-9-25-rl02/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-21T00:10:57&#43;08:00">2025-03-21T00:10:57&#43;08:00</time></div>
+                
+            </div>
+        </div>
+    </div>
+            <!-- history.html -->
+        <div id="has-timeline">
+            <strong class="section-title">Redaction History</strong>
+            <ol aria-label="Redaction History">
+                <li>
+                    <time datetime="2024-09-25T00:00:00&#43;00:00">September 25, 2024</time>
+                    <span>(Published)</span>
+                </li>
+                <li>
+                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
+                    <span>(Modified)</span>
+                </li>
+            </ol>
+            <p>Some information might changes over time, we keep redaction up to date.</p>
+        </div>
+        
+    </div>
+    <div class="pagewidth">
+        </div>
+        <!-- main/footer.html -->
+    <hr class="hide">
+        <footer id="main-footer">
+            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
+                        aria-labelledby="footer-1">
+                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2025<!-- raw HTML omitted --></p>
+<p>Some rights reserved.</p>
+<!-- raw HTML omitted -->
+
+                    </div>
+                <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
+                    <!-- menu.html -->
+                </div>
+            </div>
+        </footer>
+    </main>
+    <!-- footer.html -->
+<footer id="body-footer" class="pagewidth" style="display: none;">
+    <div id="background-footer" class="background" role="presentation"></div>
+    <!-- focusMode.html -->
+    <div id="focusMode" class="hide">
+        <input
+            id="defocusAuxElement"
+            accesskey="d" type="checkbox"
+            onclick="focusMode()"
+            aria-keyshortcuts="d"
+            aria-label="Focus Mode"
+            >
+            <label id="focusModeButton" for="defocusAuxElement" aria-label="Focus Mode">
+                ⦿ <span class="t" role="tooltip">Focus Mode</span>
+            </label>
+    </div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
+        <span>&nbsp;Accessibility</span>
+        <kbd class="key" aria-hidden="true">a</kbd>
+    </summary>
+    <!-- a11y console -->
+    <fieldset id="a11y" role="region" disabled>
+        <!-- brightness & contrast -->
+        <div id="setColorScheme" role="group" aria-label="Color Settings">
+            <!-- darkMode.html -->
+    <input
+        id="lightSwitch"
+        type="checkbox"
+        onclick="setColor()"
+        aria-label="Dark Mode"
+        >
+        <label for="lightSwitch">
+            <div class="has-aria-label off" role="status" aria-label="Light"></div>
+            <div class="has-aria-label on" role="status" aria-label="Dark"></div>
+            <div id="lightSwitchIndicator" aria-hidden="true"></div>
+        </label>
+            <!-- contrast.html -->
+    <fieldset id="setContrast">
+        <legend>Contrast</legend>
+        <input
+            id="lessContrast"
+            type="radio" name="setContrast" value="less"
+            onclick="setColor()"
+            >
+            <label for="lessContrast">
+                <span>Low</span>
+            </label>
+        <input
+            id="defaultContrast"
+            type="radio" name="setContrast" value="default"
+            onclick="setColor()"
+            >
+            <label for="defaultContrast">
+                <span>Default</span>
+            </label>
+        <input
+            id="moreContrast"
+            type="radio" name="setContrast" value="more"
+            onclick="setColor()"
+            >
+            <label for="moreContrast">
+                <span>High</span>
+            </label>
+    </fieldset>
+        </div>
+        <!-- colorPalette.html -->
+    <div id="setColorPalette" style="display:none;">
+        <label for="colorPalette">Color Palette</label>
+        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()" aria-label="Color Palette">
+            <option value="defaultColor">Default</option>
+            <option value="deuteranopia">Deuteranopia</option>
+            <option value="protanopia">Protanopia</option>
+            <option value="tritanopia">Tritanopia</option>
+            <option value="monochrome">Monochrome</option>
+        </select>
+    </div>
+        <!-- fontsize.html -->
+    <div class="has-aria-label-top" aria-label="Font Size">
+        <label class="range" for="fontSize" aria-label="Font Size">
+            <input
+                id="fontSize"
+                type="range" min="8" max="12" step="0.5"
+                oninput="setFontSize()">
+            <output
+                id="fontSizeState"
+                onclick="resetFontSize()"
+                aria-live="polite"
+                >10</output>
+        </label>
+    </div>
+        <!-- baselineStretch.html -->
+    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
+        <label class="range" for="baselineStretch">
+            <input
+                id="baselineStretch"
+                type="range" min="0.8" max="1.2" step="0.05"
+                oninput="setStretch()"
+                >
+            <output
+                id="baselineStretchState"
+                onclick="resetStretch()"
+                aria-live="polite"
+                >1</output>
+        </label>
+    </div>
+        <!-- OpenDyslexic.html -->
+    <div id="setOpenDyslexic">
+        <input
+            id="OpenDyslexic"
+            type="checkbox"
+            onclick="useOpenDyslexic()"
+            aria-label="Use OpenDyslexic Font"
+            >
+            <label
+                class="has-aria-label-top"
+                for="OpenDyslexic"
+                aria-label="Use OpenDyslexic Font"
+                >
+                <span id="OpenDyslexicState" aria-hidden="true">
+                    <span id="OpenDyslexicIndicator"></span>
+                </span>
+            </label>
+    </div>
+        <!-- menu.html -->
+    <menu
+        id="a11y-menu"
+        class="hide"
+        role="toolbar"
+        aria-label="Accessibility Menu Controls"
+        >
+        <button
+            id="saveButton" class="reverse"
+            onclick="saveA11y()"
+            disabled>Save
+        </button>
+        <button
+            id="resetButton" class="has-aria-label"
+            onclick="resetA11y()"
+            aria-label="Reset"
+            disabled>
+        </button>
+        <button
+            id="closeButton" class="has-aria-label"
+            onclick="closeA11yConsole()"
+            aria-label="Close"
+            >
+        </button>
+    </menu>
+        <noscript>
+            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
+        </noscript>
+        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    </fieldset>
+    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
+</details>
+
+
+    <!-- bionread.html -->
+    <div id="useBionRead" class="hide">
+        <input
+            id="bionReadSwitch"
+            accesskey="b" type="checkbox"
+            onclick="bionRead()"
+            aria-keyshortcuts="b"
+            aria-label="BionRead Mode"
+            >
+            <label id="bionReadButton" for="bionReadSwitch">
+                <span><strong>Bion</strong>Read</span>
+                <kbd class="key" aria-hidden="true">b</kbd>
+            </label>
+    </div>
+    <!-- [top] bypass block -->
+    <nav aria-label="Bypass">
+        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <kbd class="key" aria-hidden="true">c</kbd>
+        </a>
+    </nav>
+</footer>
+
+    
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
+    <!-- [background] baseof.html -->
+    <div id="background-body"
+        role="presentation">
+        <div id="grain" hidden></div>
+        <div id="dwclock" hidden>
+            <div id="min">
+                <div class="hand"></div>
+            </div>
+            <div id="hour">
+                <div class="hand"></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
