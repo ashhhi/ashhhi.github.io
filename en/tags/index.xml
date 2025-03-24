@@ -2,75 +2,75 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Ashhhi</title>
-    <link>http://localhost:1313/en/tags/</link>
+    <link>https://ashhhi.life/en/tags/</link>
     <description>Recent Posts in Tags on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 23:03:03 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/en/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 23:07:22 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.life/en/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo</title>
-      <link>http://localhost:1313/en/tags/hugo/</link>
+      <link>https://ashhhi.life/en/tags/hugo/</link>
       <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/hugo/</guid>
+      <guid>https://ashhhi.life/en/tags/hugo/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Reinforcement Learning</title>
-      <link>http://localhost:1313/en/tags/reinforcement-learning/</link>
+      <link>https://ashhhi.life/en/tags/reinforcement-learning/</link>
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/reinforcement-learning/</guid>
+      <guid>https://ashhhi.life/en/tags/reinforcement-learning/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Deep Learning</title>
-      <link>http://localhost:1313/en/tags/deep-learning/</link>
+      <link>https://ashhhi.life/en/tags/deep-learning/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/deep-learning/</guid>
+      <guid>https://ashhhi.life/en/tags/deep-learning/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Pytorch</title>
-      <link>http://localhost:1313/en/tags/pytorch/</link>
+      <link>https://ashhhi.life/en/tags/pytorch/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/pytorch/</guid>
+      <guid>https://ashhhi.life/en/tags/pytorch/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Computer Vision</title>
-      <link>http://localhost:1313/en/tags/computer-vision/</link>
+      <link>https://ashhhi.life/en/tags/computer-vision/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/computer-vision/</guid>
+      <guid>https://ashhhi.life/en/tags/computer-vision/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Git</title>
-      <link>http://localhost:1313/en/tags/git/</link>
+      <link>https://ashhhi.life/en/tags/git/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/git/</guid>
+      <guid>https://ashhhi.life/en/tags/git/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Docker</title>
-      <link>http://localhost:1313/en/tags/docker/</link>
+      <link>https://ashhhi.life/en/tags/docker/</link>
       <pubDate>Tue, 28 Feb 2023 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>http://localhost:1313/en/tags/docker/</guid>
+      <guid>https://ashhhi.life/en/tags/docker/</guid>
       <description></description>
       
     </item>
