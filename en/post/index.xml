@@ -9,7 +9,7 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 23:07:22 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 23:30:41 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Blog Posts Encryption</title>
@@ -17,6 +17,15 @@
       <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
       <guid>https://ashhhi.life/en/post/2025-03-24-postencryption/</guid>
+      <description></description>
+      
+    </item>
+    <item>
+      <title>从Spotify中无损提取专辑封面</title>
+      <link>https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/</link>
+      <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/</guid>
       <description></description>
       
     </item>

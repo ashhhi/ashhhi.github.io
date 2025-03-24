@@ -6,16 +6,15 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>强化学习中的基本概念以及马尔可夫决策 | Ashhhi</title>
-<meta name="author" content="[Ash]">
-<meta name="description" content="本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。" >
-<meta name="keywords" content="Reinforcement Learning">
-<link rel="canonical" href="https://ashhhi.life/en/post/2024-9-23-rl01/">
+<title>Post | Ashhhi</title>
+<meta name="author" content="Ash">
+<link rel="canonical" href="https://ashhhi.life/en/post/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
+<link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/post/index.xml" title="Ashhhi" />
+    <!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
         <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
@@ -25,30 +24,15 @@
         body {max-width: 786px; margin: auto; padding: 2rem;}
         img {max-width: 86vw;}
     </style>
-    
-    
-        <meta name="fediverse:creator" content="@username@example.com">
-    
-        <!-- katex.html -->
-    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" rel="stylesheet"
-        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
-        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"
-        defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
-        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"
-        defer></script>
-    <script src="https://ashhhi.life/js/katex.js" defer></script>
-    
+    <!-- list.html [head] -->
 </head>
-<body  id="post" >
+<body >
     <!-- header.html -->
 <header class="pagewidth">
     <div id="background-header" class="background" aria-hidden="true"></div>
     
     <nav aria-label="Bypass">
-        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
+        <a id="to-content" class="underline" href="#list-posts" aria-label="Skip to Main Content">
             <span>Skip to Main Content</span>
             <kbd class="key" aria-hidden="true">c</kbd>
             <span class="screening" aria-hidden="true"></span>
@@ -127,7 +111,7 @@
 </header>
     
     <!-- [main] baseof.html -->
-    <main id="page">
+    <main id="section">
         <!-- main/header.html -->
         <header class="pagewidth">
             
@@ -139,7 +123,7 @@
             </a>
         </li>
         <li>
-            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
+            <a id="navigatorShare" href="javascript:navigator.share({title: document.title, url: window.location.href})" title="Share" role="button" aria-label="Share">
                 <span class="t" role="tooltip">Share</span>
             </a>
         </li>
@@ -163,12 +147,8 @@
         <nav aria-labelledby="breadcrumb">
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
-        <li>
-            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
-            </a>
-        </li>
     <li>
-        <a href="" aria-current="page" tabindex="-1">强化学习中的基本概念以及马尔可夫决策
+        <a href="" aria-current="page" tabindex="-1">Post
         </a>
     </li>
             </ul>
@@ -179,129 +159,76 @@
             
         </div>
         
-
-    <article id="main-article" class="pagewidth"
-        role="document" aria-labelledby="title"
-            data-pagefind-body>
-        <header class="textwidth" aria-labelledby="title">
-            <!-- title.html -->
-        <hgroup data-bionRead-safe>
-            <h1 id="title"
-                    data-pagefind-meta="title"
-                >强化学习中的基本概念以及马尔可夫决策</h1>
-            <p  class="subtitle"
-                role="doc-subtitle">本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。</p>
-        </hgroup>
-            <div id="doc-author" class="textsw author"><span>[Ash]</span>
-            </div>
-            <!-- timestamp.html-->
+    
+        
+            <section id="list-posts" class="pagewidth">
+                <header  class="section-title">
+                    <strong>All posts- Page 2
+                    </strong>
+                </header>
+                    <div role="feed" aria-busy="false">
+                        <article class="feed-item"
+        aria-posinset="1"
+        aria-setsize="1"
+        aria-labelledby="title-1"
+        aria-describedby="desc-1">
+        <hgroup>
+            <div>
+                <span><span>Ash</span>
+                        <span>in</span>
+                            <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+    </ul>
+                        
+                </span>
+                
+                <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2024-09-23T00:00:00&#43;00:00" data-time-label="Published on">September 23, 2024</time>
+        <time class="doc-publish-date" datetime="2023-02-28T00:00:00&#43;00:00" data-time-label="Published on">February 28, 2023</time>
             <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
-        </header>
-        <!-- audio.html -->
-        <section aria-labelledby="Title" id="content" data-bionRead-safe>
-                <p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
-<hr>
-<h1 id="强化学习">强化学习</h1>
-<p>机器学习（Machine Learning, ML）分为监督学习，非监督学习，以及半监督学习，其中非监督学习里又包含有自监督学习，除去这些以外，强化学习（Reinforcement Learning, RL）也作为机器学习的一种，但是其重点在于学习策略而非结果。</p>
-<p>举个种菜的例子，一般的机器学习都是正向地预测目标，比如这里水，CO2，营养液，风扇速率等各种变量构成了机器学习中的参数，我们需要训练模型，使其通过这些参数去预测出一个最终可能的产量或者重量等结果。但是，对于强化学习来说，它的目标在于如何去找到一个最佳的策略（什么时候加水？加多少水？风扇什么时候开？），使其产量达到最高，因此我们可以说强化学习不是预测结果，而是要去指导每一个阶段的动作。</p>
-<p>目前RL应用于很多领域，包括但不限于：</p>
-<ul>
-<li>游戏</li>
-<li>自动驾驶</li>
-<li>股票金融</li>
-<li>能源管控</li>
-</ul>
-<h1 id="术语概念介绍">术语/概念介绍</h1>
-<h2 id="核心概念">核心概念</h2>
-<p>强化学习中有几个核心概念，分别是智能体（agent），状态（state），行为（action），策略（policy），奖励（reward）。比较书面的解释为：</p>
-<ul>
-<li>智能体：是指能够感知环境并采取行动以实现特定目标的代理体。它通过感知环境中的变化（如通过传感器或数据输入），根据自身学习到的知识和算法进行判断和决策，进而执行动作以影响环境或达到预定的目标。</li>
-<li>状态：描述了智能体在当前环境的一个状态，环境基本上代表了这个情境里里所有的参数。</li>
-<li>行为：智能体可以采取的行为。</li>
-<li>策略：告诉智能体在哪个阶段采取什么样的行为。</li>
-<li>奖励：在智能体采取某一个行为之后，会获得奖励，也可以叫做环境给予的反馈。</li>
-</ul>
-<p>拿最经典的网格游戏为例，如图，机器人会在其中一个网格，最终目标是找到一条最优路径去到Target space，其中有障碍物Forbidden。那么这里的最优路径也就是我们要寻找的<code>策略</code>，机器人便是<code>智能体</code>，它每一个时刻所处的格子为他的<code>状态</code>，然后在不同的状态下它可以选择不同的上下左右四种<code>行为</code>，这样就描述了一个完整的任务。</p>
-<p><img src="https://ashhhi.life/img/2024-9-23-RL01/1.png" alt=""></p>
-<p>但是强化学习的过程学习的是什么东西呢？我们都知道在机器学习中，存在一个loss函数，描述了预测值到真实值之间的距离，我们的目标就是使其减少或者是尽可能收敛。但在强化学习中，采用了另一种方式来指导模型自我迭代，那就是<code>奖励</code>，智能体每做一次行为之后都会得到奖励，如果这个奖励是负数的话也可以被叫做惩罚，强化学习的目标就是最大化所获得的奖励。</p>
-<p>除此以外，还有返回（Return）和马尔可夫决策过程（Markov decision processes, MDP），<code>返回</code>指的是一条路径上所获得的奖励之和，<code>马尔可夫决策过程</code>单开一章详细解释。</p>
-<h2 id="马尔可夫决策过程">马尔可夫决策过程</h2>
-<p><code>以下统一用MDP表示</code></p>
-<p>MDP是一种正式的方式去表示上述描述的所有内容，是离散时间随机控制过程，它提供了一个<code>数学框架</code>：</p>
-<ul>
-<li>集合（Sets）
-<ul>
-<li>状态空间（State space），写作\(\mathcal{S}\)。</li>
-<li>行为空间（Action space），写作\(\mathcal{A}(s)\)，\(s \in \mathcal{S}\)，因为行为与当前状态相关。</li>
-<li>奖励集（Reward set），写作\(\mathcal{R}(s,a)\), 奖励与当前状态和所选行为相关。</li>
-</ul>
-</li>
-<li>模型（Model）
-<ul>
-<li>状态转移概率（State transmission probality）：从一个状态s经过某个行为a转移到另一个状态s&rsquo;的概率\( p(s^&rsquo;|s,a)\) ，其中\( \sum_{s^&rsquo; \in \mathcal{S}}p(s^&rsquo;|s,a) = 1\)。</li>
-<li>奖励概率（Reward probability）：在状态s时，当我们选择行为a，所能获得奖励r的概率为\(p(r|s,a)\)，对于每一个状态和动作都有\(\sum_{r \in \mathcal{R}(s,a)}p(r|s,a)=1\)</li>
-</ul>
-</li>
-<li>策略（Policy）：在状态s中选择某个行为a的概率为\(\pi (a|s)\), 对于每一个状态都有\(\sum_{a \in \mathcal{A}(s)} \pi (a|s)=1\)</li>
-<li>马尔可夫特性（Markov property）：其实就是无记忆性，任何时刻可能采取的行为与之前的所有行为都无关，只与当下有关，记住就行。具体的数学表达式为：
-$$
-p(s_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(s_{t+1}|s_t,a_t)
-$$
-$$
-p(r_{t+1}|s_t,a_t,s_{t-1},a_{t-1},&hellip;,s_0,a_0) = p(r_{t+1}|s_t,a_t)
-$$</li>
-</ul>
+            </div>
+            <a href="https://ashhhi.life/en/post/2023-02-28-grafana/" tabindex="-1">
+                <h1 id="title-1">Docker 配置监控管理系统</h1>
+            </a>
+        </hgroup>
+        <a class="underline" href="https://ashhhi.life/en/post/2023-02-28-grafana/" aria-label="Docker 配置监控管理系统"></a>
+        
+        <section class="has-cover">
+                <img src=https://ashhhi.life/img/2023-02-28-Grafana/grafana.png alt="Featured image: .page.Title" loading="lazy">
+            <div class="par" id="desc-1">本文讲解了使用 Docker 配置 Prometheus+Alertmanager+Grafana+Mysql
+            </div>
         </section>
         <footer>
+            <span class="readingTime">4 min read
+            </span>
             
-    <nav id="keywords" aria-label="Tags">
-        <span>Tag:&nbsp;</span>
-        
-        <!-- terms.html -->
-    <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+                <!-- terms.html -->
+    <ul class="rounded invert ldots" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/docker/">Docker</a></li>
     </ul>
-    </nav>
         </footer>
     </article>
-    <hr class="hide" style="margin: 1in 0;">
-    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
-            <!-- related.html -->
-            <!-- colophon.html -->
-    <div id="colophon" style="display: none;" aria-live="polite">
-        <strong class="section-title">Colophon</strong>
-        <div class="f">
-            <div id="qr" role="img" aria-label="QR code"></div>
-            <div class="verbose">
-                <div class="has-aria-label-top" aria-label="强化学习中的基本概念以及马尔可夫决策"><span>https://ashhhi.life/en/post/2024-9-23-rl01/</span></div>
-                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-24T23:30:41&#43;08:00">2025-03-24T23:30:41&#43;08:00</time></div>
-                
-            </div>
-        </div>
-    </div>
-            <!-- history.html -->
-        <div id="has-timeline">
-            <strong class="section-title">Redaction History</strong>
-            <ol aria-label="Redaction History">
-                <li>
-                    <time datetime="2024-09-23T00:00:00&#43;00:00">September 23, 2024</time>
-                    <span>(Published)</span>
-                </li>
-                <li>
-                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
-                    <span>(Modified)</span>
-                </li>
-            </ol>
-            <p>Some information might changes over time, we keep redaction up to date.</p>
-        </div>
-        
-    </div>
-    <div class="pagewidth">
-        </div>
+                    </div>
+                    
+                        <hr class="hide"><!-- nav.html -->
+<details class="presentation" aria-expanded="true" id="has-pagination" open>
+    <summary id="pagination" tabindex="-1">
+        <span>Pagination</span>
+    </summary>
+        <nav aria-labelledby="pagination">
+            <ul role="presentation" class="pagination">
+                    <!-- paginator.html -->
+    <li class="rfill">
+        <a class="underline" href="https://ashhhi.life/en/post/" rel="prev">
+            <span>Previous</span>
+        </a>
+    </li>
+            </ul>
+        </nav>
+</details>
+            </section>
         <!-- main/footer.html -->
     <hr class="hide">
         <footer id="main-footer">
@@ -499,8 +426,6 @@ $$</li>
 </footer>
 
     
-    <!-- [post] single.html -->
-    <div id="bionReadSnapshot" hidden></div>
     <!-- [background] baseof.html -->
     <div id="background-body"
         role="presentation">
