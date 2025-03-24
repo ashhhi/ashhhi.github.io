@@ -9,7 +9,7 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 23:30:41 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 23:41:15 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/tags/reinforcement-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</title>
