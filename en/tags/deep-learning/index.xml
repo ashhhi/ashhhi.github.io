@@ -2,30 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Deep Learning on Ashhhi</title>
-    <link>https://ashhhi.life/en/tags/deep-learning/</link>
+    <link>http://localhost:1313/en/tags/deep-learning/</link>
     <description>Recent Posts in Deep Learning on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 22:56:19 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.life/en/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 23:03:03 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PyTorch中的gather函数详解</title>
-      <link>https://ashhhi.life/en/post/2025-02-18-gather/</link>
+      <link>http://localhost:1313/en/post/2025-02-18-gather/</link>
       <pubDate>Tue, 18 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.life/en/post/2025-02-18-gather/</guid>
+      <guid>http://localhost:1313/en/post/2025-02-18-gather/</guid>
       <description></description>
       
     </item>
     <item>
       <title>如何用DETR官方代码训练自己的数据集</title>
-      <link>https://ashhhi.life/en/post/2024-09-06-detr/</link>
+      <link>http://localhost:1313/en/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.life/en/post/2024-09-06-detr/</guid>
+      <guid>http://localhost:1313/en/post/2024-09-06-detr/</guid>
       <description></description>
       <enclosure url="/img/2024-09-06-DETR/detr_image.png" length="0" type="image/jpeg" />
     </item>

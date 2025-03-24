@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Hugo on Ashhhi</title>
-    <link>https://ashhhi.life/en/tags/hugo/</link>
+    <link>http://localhost:1313/en/tags/hugo/</link>
     <description>Recent Posts in Hugo on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 22:56:19 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.life/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 23:03:03 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/en/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hugo Blog Posts Encryption</title>
-      <link>https://ashhhi.life/en/post/2025-03-24-postencryption/</link>
+      <link>http://localhost:1313/en/post/2025-03-24-postencryption/</link>
       <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.life/en/post/2025-03-24-postencryption/</guid>
+      <guid>http://localhost:1313/en/post/2025-03-24-postencryption/</guid>
       <description></description>
       
     </item>
