@@ -6,15 +6,16 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Tags | Ashhhi</title>
-<meta name="author" content="Ash">
-<link rel="canonical" href="https://ashhhi.life/en/tags/">
+<title>Hugo Blog Posts Encryption | Ashhhi</title>
+<meta name="author" content="[Ash]">
+<meta name="description" content="对博客文章进行加密" >
+<meta name="keywords" content="Hugo">
+<link rel="canonical" href="https://ashhhi.life/en/post/2025-03-24-postencryption/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/tags/index.xml" title="Ashhhi" />
-    <!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
+<!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
         <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
@@ -24,15 +25,30 @@
         body {max-width: 786px; margin: auto; padding: 2rem;}
         img {max-width: 86vw;}
     </style>
-    <!-- list.html [head] -->
+    
+    
+        <meta name="fediverse:creator" content="@username@example.com">
+    
+        <!-- katex.html -->
+    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.css" rel="stylesheet"
+        integrity="sha384-vKruj+a13U8yHIkAyGgK1J3ArTLzrFGBbBc0tDp4ad/EyewESeXE/Iv67Aj8gKZ0" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/katex.min.js"
+        integrity="sha384-PwRUT/YqbnEjkZO0zZxNqcxACrXe+j766U2amXcgMg5457rve2Y7I6ZJSm2A0mS4" crossorigin="anonymous"
+        defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.4/dist/contrib/auto-render.min.js"
+        integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"
+        defer></script>
+    <script src="https://ashhhi.life/js/katex.js" defer></script>
+    
 </head>
-<body >
+<body  id="post" >
     <!-- header.html -->
 <header class="pagewidth">
     <div id="background-header" class="background" aria-hidden="true"></div>
     
     <nav aria-label="Bypass">
-        <a id="to-content" class="underline" href="#list-posts" aria-label="Skip to Main Content">
+        <a id="to-content" class="underline" href="#content" aria-label="Skip to Main Content">
             <span>Skip to Main Content</span>
             <kbd class="key" aria-hidden="true">c</kbd>
             <span class="screening" aria-hidden="true"></span>
@@ -111,7 +127,7 @@
 </header>
     
     <!-- [main] baseof.html -->
-    <main id="taxonomy">
+    <main id="page">
         <!-- main/header.html -->
         <header class="pagewidth">
             
@@ -123,7 +139,7 @@
             </a>
         </li>
         <li>
-            <a id="navigatorShare" href="javascript:navigator.share({title: document.title, url: window.location.href})" title="Share" role="button" aria-label="Share">
+            <a id="navigatorShare" href="#share" title="Share" role="button" aria-label="Share">
                 <span class="t" role="tooltip">Share</span>
             </a>
         </li>
@@ -147,8 +163,12 @@
         <nav aria-labelledby="breadcrumb">
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
+        <li>
+            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
+            </a>
+        </li>
     <li>
-        <a href="" aria-current="page" tabindex="-1">Tags
+        <a href="" aria-current="page" tabindex="-1">Hugo Blog Posts Encryption
         </a>
     </li>
             </ul>
@@ -159,107 +179,71 @@
             
         </div>
         
-            <aside id="list-tags">
-                <header class="section-title">
-                    <strong>Tags</strong>
-                </header>
-                <!-- taxonomies.html -->
-        <ul class="rounded has-hash" role="presentation">
+
+    <article id="main-article" class="pagewidth"
+        role="document" aria-labelledby="title"
+            data-pagefind-body>
+        <header class="textwidth" aria-labelledby="title">
+            <!-- title.html -->
+        <hgroup data-bionRead-safe>
+            <h1 id="title"
+                    data-pagefind-meta="title"
+                >Hugo Blog Posts Encryption</h1>
+            <p  class="subtitle"
+                role="doc-subtitle">对博客文章进行加密</p>
+        </hgroup>
+            <div id="doc-author" class="textsw author"><span>[Ash]</span>
+            </div>
+            <!-- timestamp.html-->
+    <div >
+        <time class="doc-publish-date" datetime="2025-03-24T00:00:00&#43;00:00" data-time-label="Published on">March 24, 2025</time>
+    </div>
+        </header>
+        <!-- audio.html -->
+        <section aria-labelledby="Title" id="content" data-bionRead-safe>
+                <p>使用：
+<a href="https://github.com/hotjuicew/hugoArticleEncryptor/tree/master">hugoArticleEncryptor</a></p>
+<p>具体Mac命令行：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 代替“hugo”命令行用于生成public文件</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">./</span>hugoArticleEncryptor<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>arm64  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 代替“hugo server”用于本地测试</span>
+</span></span><span style="display:flex;"><span>python3 <span style="color:#f92672">-</span>m http<span style="color:#f92672">.</span>server <span style="color:#f92672">-</span>b <span style="color:#ae81ff">0.0.0.0</span> <span style="color:#f92672">-</span>d public <span style="color:#ae81ff">1313</span>
+</span></span></code></pre></div>
+        </section>
+        <footer>
             
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/reinforcement-learning/"
-                            aria-label="Tag:Reinforcement Learning"
-                            data-post-counter="3"
-                            >
-                            <span>Reinforcement Learning</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/deep-learning/"
-                            aria-label="Tag:Deep Learning"
-                            data-post-counter="2"
-                            >
-                            <span>Deep Learning</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/computer-vision/"
-                            aria-label="Tag:Computer Vision"
-                            data-post-counter="1"
-                            >
-                            <span>Computer Vision</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/docker/"
-                            aria-label="Tag:Docker"
-                            data-post-counter="1"
-                            >
-                            <span>Docker</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/git/"
-                            aria-label="Tag:Git"
-                            data-post-counter="1"
-                            >
-                            <span>Git</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/hugo/"
-                            aria-label="Tag:Hugo"
-                            data-post-counter="1"
-                            >
-                            <span>Hugo</span>
-                        </a>
-                    </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/pytorch/"
-                            aria-label="Tag:Pytorch"
-                            data-post-counter="1"
-                            >
-                            <span>Pytorch</span>
-                        </a>
-                    </li>
-        </ul>
-            </aside>
-    
-            <section class="pagewidth">
-                    <!-- listing.html -->
-                    <!-- listing.html -->
-        <div id="list-categories" class="carousel">
-            <header class="section-title">Categories</header>
-            <!-- taxonomies.html -->
-        <ul class="carousel__viewport" role="presentation">
-            
-                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/12.svg);">
-                        <a href="https://ashhhi.life/en/categories/technology/"
-                            aria-label="Category:Technology"
-                            data-post-counter="8"
-                            >
-                            <span>Technology</span>
-                        </a>
-                    </li>
-                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg);">
-                        <a href="https://ashhhi.life/en/categories/life/"
-                            aria-label="Category:Life"
-                            data-post-counter="1"
-                            >
-                            <span>Life</span>
-                        </a>
-                    </li>
-                    <li  style="background-image:url(https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/12.svg);">
-                        <a href="https://ashhhi.life/en/categories/thinking/"
-                            aria-label="Category:Thinking"
-                            data-post-counter="1"
-                            >
-                            <span>Thinking</span>
-                        </a>
-                    </li>
-        </ul>
+    <nav id="keywords" aria-label="Tags">
+        <span>Tag:&nbsp;</span>
+        
+        <!-- terms.html -->
+    <ul class="inline" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/hugo/">Hugo</a></li>
+    </ul>
+    </nav>
+        </footer>
+    </article>
+    <hr class="hide" style="margin: 1in 0;">
+    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
+            <!-- related.html -->
+            <!-- colophon.html -->
+    <div id="colophon" style="display: none;" aria-live="polite">
+        <strong class="section-title">Colophon</strong>
+        <div class="f">
+            <div id="qr" role="img" aria-label="QR code"></div>
+            <div class="verbose">
+                <div class="has-aria-label-top" aria-label="Hugo Blog Posts Encryption"><span>https://ashhhi.life/en/post/2025-03-24-postencryption/</span></div>
+                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-24T22:56:19&#43;08:00">2025-03-24T22:56:19&#43;08:00</time></div>
+                
+            </div>
         </div>
-            </section>
+    </div>
+            <!-- history.html -->
+        
+    </div>
+    <div class="pagewidth">
+        </div>
         <!-- main/footer.html -->
     <hr class="hide">
         <footer id="main-footer">
@@ -457,6 +441,8 @@
 </footer>
 
     
+    <!-- [post] single.html -->
+    <div id="bionReadSnapshot" hidden></div>
     <!-- [background] baseof.html -->
     <div id="background-body"
         role="presentation">

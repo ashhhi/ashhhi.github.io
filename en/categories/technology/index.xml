@@ -9,8 +9,17 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Mon, 24 Mar 2025 10:23:33 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 24 Mar 2025 22:56:19 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/categories/technology/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo Blog Posts Encryption</title>
+      <link>https://ashhhi.life/en/post/2025-03-24-postencryption/</link>
+      <pubDate>Mon, 24 Mar 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-03-24-postencryption/</guid>
+      <description></description>
+      
+    </item>
     <item>
       <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</title>
       <link>https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/</link>
