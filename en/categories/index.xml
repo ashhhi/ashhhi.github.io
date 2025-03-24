@@ -2,39 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Ashhhi</title>
-    <link>https://ashhhi.github.io/en/categories/</link>
+    <link>https://ashhhi.life/en/categories/</link>
     <description>Recent Posts in Categories on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:36:20 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/en/categories/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 10:23:33 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.life/en/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Technology</title>
-      <link>https://ashhhi.github.io/en/categories/technology/</link>
+      <link>https://ashhhi.life/en/categories/technology/</link>
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/categories/technology/</guid>
+      <guid>https://ashhhi.life/en/categories/technology/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Thinking</title>
-      <link>https://ashhhi.github.io/en/categories/thinking/</link>
+      <link>https://ashhhi.life/en/categories/thinking/</link>
       <pubDate>Mon, 10 Feb 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/categories/thinking/</guid>
+      <guid>https://ashhhi.life/en/categories/thinking/</guid>
       <description></description>
       
     </item>
     <item>
       <title>Life</title>
-      <link>https://ashhhi.github.io/en/categories/life/</link>
+      <link>https://ashhhi.life/en/categories/life/</link>
       <pubDate>Wed, 13 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/categories/life/</guid>
+      <guid>https://ashhhi.life/en/categories/life/</guid>
       <description></description>
       
     </item>

@@ -11,15 +11,15 @@
 <meta name="description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
 " >
 <meta name="keywords" content="Reinforcement Learning">
-<link rel="canonical" href="https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/">
+<link rel="canonical" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+<!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
     <!-- css/inline.html -->
     <style>
          
@@ -40,7 +40,7 @@
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"
         defer></script>
-    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    <script src="https://ashhhi.life/js/katex.js" defer></script>
     
 </head>
 <body  id="post" >
@@ -56,7 +56,7 @@
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi">
                 <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
                 <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
                 <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
@@ -81,7 +81,7 @@
     <div id="search" class="on-hull">
         <div role="presentation" class="screening js-cgpn"></div>
     </div>
-    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script src="https://ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
     <script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
@@ -105,7 +105,7 @@
     <form id="duckduckgo" class="form on-plank"
         name="x" action="//duckduckgo.com/"
         role="search" aria-label="">
-        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="ashhhi.life" name="sites"></input>
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
@@ -165,7 +165,7 @@
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
         <li>
-            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
             </a>
         </li>
     <li>
@@ -219,7 +219,7 @@ $$</p>
 $$</p>
 <p>可以看到（1）（4）式基本上相同，唯一的不同点在于\(v\)的底标，策略迭代是\(\pi_k\)，而值迭代就是\(k\)，这也意味着策略迭代中算出来的其实是状态值函数，也就是对当前策略下计算出每个状态下的状态值，每个状态下又有不同的action，因此需要很多步运算，甚至是无穷步。而值迭代的更新方式是基于“最大化期望回报”，即它直接在每一步使用新的值来更新自身，而不需要完整地评估某个策略的值函数。</p>
 <p>这张图很好地描述了两种迭代之间的关系：</p>
-<p><img src="https://ashhhi.github.io/img/2025-03-20-Policy-Value-Iteration/image.png" alt=""></p>
+<p><img src="https://ashhhi.life/img/2025-03-20-Policy-Value-Iteration/image.png" alt=""></p>
 <p>总而言之：</p>
 <ul>
 <li>值迭代通过不断逼近最优值函数 \(V^*(s)\)，它不依赖于特定策略，而是直接寻找最优策略。</li>
@@ -234,7 +234,7 @@ $$</p>
         
         <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.github.io/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
     </ul>
     </nav>
         </footer>
@@ -244,8 +244,8 @@ $$</p>
             <!-- related.html -->
     <nav id="related" aria-label="You might also like">
         <strong class="section-title">You might also like</strong><ol>
-                    <li><a href="https://ashhhi.github.io/en/post/2024-9-25-rl02/">Bellman Function详解</a></li>
-                    <li><a href="https://ashhhi.github.io/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
+                    <li><a href="https://ashhhi.life/en/post/2024-9-25-rl02/">Bellman Function详解</a></li>
+                    <li><a href="https://ashhhi.life/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
                 </ol>
     </nav>
             <!-- colophon.html -->
@@ -254,9 +254,9 @@ $$</p>
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）"><span>https://ashhhi.github.io/en/post/2025-03-20-policy-value-iteration/</span></div>
+                <div class="has-aria-label-top" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）"><span>https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-21T00:36:20&#43;08:00">2025-03-21T00:36:20&#43;08:00</time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-24T10:23:33&#43;08:00">2025-03-24T10:23:33&#43;08:00</time></div>
                 
             </div>
         </div>

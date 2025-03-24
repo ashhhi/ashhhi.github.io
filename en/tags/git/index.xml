@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Git on Ashhhi</title>
-    <link>https://ashhhi.github.io/en/tags/git/</link>
+    <link>https://ashhhi.life/en/tags/git/</link>
     <description>Recent Posts in Git on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:36:20 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/en/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 10:23:33 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.life/en/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Git技术</title>
-      <link>https://ashhhi.github.io/en/post/2024-03-17-git-basic/</link>
+      <link>https://ashhhi.life/en/post/2024-03-17-git-basic/</link>
       <pubDate>Sun, 17 Mar 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/post/2024-03-17-git-basic/</guid>
+      <guid>https://ashhhi.life/en/post/2024-03-17-git-basic/</guid>
       <description></description>
       
     </item>

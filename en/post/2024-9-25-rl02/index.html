@@ -10,15 +10,15 @@
 <meta name="author" content="[Ash]">
 <meta name="description" content="本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。" >
 <meta name="keywords" content="Reinforcement Learning">
-<link rel="canonical" href="https://ashhhi.github.io/en/post/2024-9-25-rl02/">
+<link rel="canonical" href="https://ashhhi.life/en/post/2024-9-25-rl02/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+<!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
     <!-- css/inline.html -->
     <style>
          
@@ -39,7 +39,7 @@
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"
         defer></script>
-    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    <script src="https://ashhhi.life/js/katex.js" defer></script>
     
 </head>
 <body  id="post" >
@@ -55,7 +55,7 @@
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi">
                 <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
                 <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
                 <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
@@ -80,7 +80,7 @@
     <div id="search" class="on-hull">
         <div role="presentation" class="screening js-cgpn"></div>
     </div>
-    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script src="https://ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
     <script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
@@ -104,7 +104,7 @@
     <form id="duckduckgo" class="form on-plank"
         name="x" action="//duckduckgo.com/"
         role="search" aria-label="">
-        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="ashhhi.life" name="sites"></input>
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
@@ -164,7 +164,7 @@
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
         <li>
-            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
             </a>
         </li>
     <li>
@@ -213,7 +213,7 @@ $$</p>
 <h1 id="return-和-state-value">Return 和 State value</h1>
 <p>如上一章所讲，强化学习就是学习一个好的<code>Policy</code>的过程，那如何量化这个Policy是不是好的呢，于是引出了<code>Reward</code>的概念。但是Reward只能体现智能体在某一个状态下可以做的行为的好坏，而并不能体现出全局的思想，而策略可以看作一系列行为的集合，包括在每一个状态下怎么去行为。上一章还写到了<code>Return</code>的概念，也就是一条路径上所有奖励的和。</p>
 <p>如何计算Return？还是拿网格游戏举例子，如图定义了一个2x2的地图，初始状态是\(s_1\)，我们需要找到一条道路去到\(s_4\)，我们定义黄色的方格为禁区，如果到达禁区，奖励为-1，到达空白区域奖励为0，到达目的地奖励为1。</p>
-<p><img src="https://ashhhi.github.io/img/2024-9-25-RL02/1.png" alt=""></p>
+<p><img src="https://ashhhi.life/img/2024-9-25-RL02/1.png" alt=""></p>
 <p>我们设定智能体会一直运作下去，到了target space也不停下来。如图定义了三种不同的策略，箭头代表了每一个状态下的行为，那么状态\(s_1\)在前两个策略下的Return为（用\(G\)来表示，利用无穷等比数列的求和公式）：</p>
 <p>$$
 G_1 =
@@ -233,7 +233,7 @@ $$</p>
 <p>通过对比三种策略下\(s_1\)的状态值，我们可以得出第一种是最高的，因此第一种策略是最优策略，直观上我们也可以看出来，因为它避免了智能体进入禁区。因此这也是为什么状态值可以成为量化策略的一个指标。</p>
 <h1 id="贝尔曼方程">贝尔曼方程</h1>
 <h2 id="简单理解">简单理解</h2>
-<p><img src="https://ashhhi.github.io/img/2024-9-25-RL02/2.png" alt=""></p>
+<p><img src="https://ashhhi.life/img/2024-9-25-RL02/2.png" alt=""></p>
 <p>考虑一个特殊的策略，如图形成了一个循环的策略，那么我们可以求得每一个状态下的状态值为：</p>
 <p>$$
 v_1 = r_1 + \lambda r_2 + \lambda^2 r_3 + &hellip; \\
@@ -385,7 +385,7 @@ $$</p>
         
         <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.github.io/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
     </ul>
     </nav>
         </footer>
@@ -395,7 +395,7 @@ $$</p>
             <!-- related.html -->
     <nav id="related" aria-label="You might also like">
         <strong class="section-title">You might also like</strong><ol>
-                    <li><a href="https://ashhhi.github.io/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
+                    <li><a href="https://ashhhi.life/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
                 </ol>
     </nav>
             <!-- colophon.html -->
@@ -404,9 +404,9 @@ $$</p>
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="Bellman Function详解"><span>https://ashhhi.github.io/en/post/2024-9-25-rl02/</span></div>
+                <div class="has-aria-label-top" aria-label="Bellman Function详解"><span>https://ashhhi.life/en/post/2024-9-25-rl02/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-21T00:36:20&#43;08:00">2025-03-21T00:36:20&#43;08:00</time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-24T10:23:33&#43;08:00">2025-03-24T10:23:33&#43;08:00</time></div>
                 
             </div>
         </div>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Computer Vision on Ashhhi</title>
-    <link>https://ashhhi.github.io/en/tags/computer-vision/</link>
+    <link>https://ashhhi.life/en/tags/computer-vision/</link>
     <description>Recent Posts in Computer Vision on Ashhhi</description>
     <generator>Hugo 0.145.0</generator>
     <language>en</language>
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Fri, 21 Mar 2025 00:36:20 +0800</lastBuildDate>
-    <atom:link href="https://ashhhi.github.io/en/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 24 Mar 2025 10:23:33 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.life/en/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>如何用DETR官方代码训练自己的数据集</title>
-      <link>https://ashhhi.github.io/en/post/2024-09-06-detr/</link>
+      <link>https://ashhhi.life/en/post/2024-09-06-detr/</link>
       <pubDate>Fri, 06 Sep 2024 00:00:00 +0000</pubDate>
       <author>Ash</author>
-      <guid>https://ashhhi.github.io/en/post/2024-09-06-detr/</guid>
+      <guid>https://ashhhi.life/en/post/2024-09-06-detr/</guid>
       <description></description>
       <enclosure url="/img/2024-09-06-DETR/detr_image.png" length="0" type="image/jpeg" />
     </item>

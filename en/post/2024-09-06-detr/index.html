@@ -10,15 +10,15 @@
 <meta name="author" content="[Ash]">
 <meta name="description" content="DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：" >
 <meta name="keywords" content="Deep Learning,Computer Vision">
-<link rel="canonical" href="https://ashhhi.github.io/en/post/2024-09-06-detr/">
+<link rel="canonical" href="https://ashhhi.life/en/post/2024-09-06-detr/">
 
 
 
     <link rel="me" href="https://example.com/@username">
-<!-- js.html --><script src="https://ashhhi.github.io/js/hugo-brewm.min.js"
+<!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
             integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.github.io/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
     <!-- css/inline.html -->
     <style>
          
@@ -39,7 +39,7 @@
         integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"
         defer></script>
-    <script src="https://ashhhi.github.io/js/katex.js" defer></script>
+    <script src="https://ashhhi.life/js/katex.js" defer></script>
     
 </head>
 <body  id="post" >
@@ -55,7 +55,7 @@
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.github.io/en/" aria-label="Ashhhi">
+        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi">
                 <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
                 <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
                 <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
@@ -80,7 +80,7 @@
     <div id="search" class="on-hull">
         <div role="presentation" class="screening js-cgpn"></div>
     </div>
-    <script src="https://ashhhi.github.io/pagefind/pagefind-ui.js" type="text/javascript"></script>
+    <script src="https://ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
     <script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
@@ -104,7 +104,7 @@
     <form id="duckduckgo" class="form on-plank"
         name="x" action="//duckduckgo.com/"
         role="search" aria-label="">
-        <input type="hidden" value="ashhhi.github.io" name="sites"></input>
+        <input type="hidden" value="ashhhi.life" name="sites"></input>
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
@@ -164,7 +164,7 @@
             <ul role="presentation" class="breadcrumb">
                     <!-- breadcrumb.html -->
         <li>
-            <a href="https://ashhhi.github.io/en/post/" aria-current="true">Post
+            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
             </a>
         </li>
     <li>
@@ -226,7 +226,7 @@
 <p>COCO数据集可以直接采用官方的实现方法，在Github里也有对应的Tutorial，这里我们讲一下如何使用自己的数据集进行训练。</p>
 <h2 id="21-roboflow标注">2.1 Roboflow标注</h2>
 <p>首先是数据标注部分，我采用的是<a href="https://roboflow.com/">Roboflow</a>平台进行标注，标注完成后选择导出格式为COCO数据集格式，选择“Download zip to computer”，然后在自己电脑上进行压缩，我们可以得到这样格式的文件，分了train，valid，test文件夹，每个文件夹下存储了对应的图片还有一个json文件，json文件里包含了所有标签的信息。
-<img src="https://ashhhi.github.io/img/2024-09-06-DETR/detr_dataset.png" alt=""></p>
+<img src="https://ashhhi.life/img/2024-09-06-DETR/detr_dataset.png" alt=""></p>
 <h2 id="22-自定义dataset类pytorch">2.2 自定义Dataset类（PyTorch）</h2>
 <p>接下来我们要把数据喂入神经网络，官方代码是用PyTorch实现的，因此我们要自己实现自己数据集的Dataset类，创建一个新的py文件，放在datasets文件夹下面。这里放上我的代码，很基础的继承torch.utils.data.Dataset类的写法，也比较好理解，重要的部分我已经注释出来了。</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SmartFarm</span>(Dataset):
@@ -509,7 +509,7 @@
 </span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>imshow(<span style="color:#e6db74">&#39;test&#39;</span>, img_cv2)
 </span></span><span style="display:flex;"><span>        cv2<span style="color:#f92672">.</span>waitKey()
 </span></span></code></pre></div><p>在我的项目中，最终的结果是这样的，因为我在num_queries中设置了20，所以模型一共预测了20个bounding box，后面你们也可以做处理，比如只显示预测概率最高的前几个框，在模型预测结果的字典中不仅有‘pred_boxes’，也有‘pred_logits’，可以过滤出最高概率的几个框，不过这样已经可以看出，结果还是不错的啦。</p>
-<p><img src="https://ashhhi.github.io/img/2024-09-06-DETR/detr_image.png" alt="在这里插入图片描述"></p>
+<p><img src="https://ashhhi.life/img/2024-09-06-DETR/detr_image.png" alt="在这里插入图片描述"></p>
 <h1 id="5-总结">5. 总结</h1>
 <p>总的来说，DETR训练的效率还是蛮高的，我只用了15张标注好的图片进行训练，并且下载了原代码中在COCO数据集上预训练好的模型然后在自己的数据集上进行训练，用Colab上的L4 GPU训练了十分钟左右，600个epoch便达到了这样的效果。</p>
 <p>欢迎大家提问以及指正！</p>
@@ -522,8 +522,8 @@
         
         <!-- terms.html -->
     <ul class="delimiter" role="presentation">
-            <li><a href="https://ashhhi.github.io/en/tags/deep-learning/">Deep Learning</a></li>
-            <li><a href="https://ashhhi.github.io/en/tags/computer-vision/">Computer Vision</a></li>
+            <li><a href="https://ashhhi.life/en/tags/deep-learning/">Deep Learning</a></li>
+            <li><a href="https://ashhhi.life/en/tags/computer-vision/">Computer Vision</a></li>
     </ul>
     </nav>
         </footer>
@@ -537,9 +537,9 @@
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="如何用DETR官方代码训练自己的数据集"><span>https://ashhhi.github.io/en/post/2024-09-06-detr/</span></div>
+                <div class="has-aria-label-top" aria-label="如何用DETR官方代码训练自己的数据集"><span>https://ashhhi.life/en/post/2024-09-06-detr/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
-                <div><span>This page is built on: </span><time datetime="2025-03-21T00:36:20&#43;08:00">2025-03-21T00:36:20&#43;08:00</time></div>
+                <div><span>This page is built on: </span><time datetime="2025-03-24T10:23:33&#43;08:00">2025-03-24T10:23:33&#43;08:00</time></div>
                 
             </div>
         </div>
