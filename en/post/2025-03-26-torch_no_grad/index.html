@@ -6,11 +6,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hugo Blog Posts Encryption | Ashhhi</title>
+<title>torch.no_grad()函数的理解以及反向传播计算 | Ashhhi</title>
 <meta name="author" content="[Ash]">
-<meta name="description" content="对博客文章进行加密" >
-<meta name="keywords" content="Hugo">
-<link rel="canonical" href="https://ashhhi.life/en/post/2025-03-24-postencryption/">
+<meta name="description" content=" " >
+<meta name="keywords" content="PYTORCH">
+<link rel="canonical" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/">
 
 
 
@@ -168,7 +168,7 @@
             </a>
         </li>
     <li>
-        <a href="" aria-current="page" tabindex="-1">Hugo Blog Posts Encryption
+        <a href="" aria-current="page" tabindex="-1">torch.no_grad()函数的理解以及反向传播计算
         </a>
     </li>
             </ul>
@@ -188,28 +188,149 @@
         <hgroup data-bionRead-safe>
             <h1 id="title"
                     data-pagefind-meta="title"
-                >Hugo Blog Posts Encryption</h1>
+                >torch.no_grad()函数的理解以及反向传播计算</h1>
             <p  class="subtitle"
-                role="doc-subtitle">对博客文章进行加密</p>
+                role="doc-subtitle"> </p>
         </hgroup>
             <div id="doc-author" class="textsw author"><span>[Ash]</span>
             </div>
             <!-- timestamp.html-->
     <div >
-        <time class="doc-publish-date" datetime="2025-03-24T00:00:00&#43;00:00" data-time-label="Published on">March 24, 2025</time>
+        <time class="doc-publish-date" datetime="2025-03-26T00:00:00&#43;00:00" data-time-label="Published on">March 26, 2025</time>
     </div>
         </header>
         <!-- audio.html -->
         <section aria-labelledby="Title" id="content" data-bionRead-safe>
-                <p>使用：
-<a href="https://github.com/hotjuicew/hugoArticleEncryptor/tree/master">hugoArticleEncryptor</a></p>
-<p>具体Mac命令行：</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># 代替“hugo”命令行用于生成public文件</span>
-</span></span><span style="display:flex;"><span><span style="color:#f92672">./</span>hugoArticleEncryptor<span style="color:#f92672">-</span>darwin<span style="color:#f92672">-</span>arm64  
+                <p>torch.no_grad() 是 PyTorch 中的一个上下文管理器，主要用于在前向传播时禁用梯度计算。它的作用是</p>
+<ul>
+<li>停止自动求导机制的跟踪，使得计算图不会被创建，从而节省内存和计算资源。</li>
+</ul>
+<p>使用场景：</p>
+<ul>
+<li>推理/测试： 当你在推理或测试模型时，不需要计算梯度，使用 torch.no_grad() 可以提高效率并节省内存。</li>
+<li>冻结模型参数： 如果你只关心前向传播的结果而不进行梯度更新，可以将模型的某些部分设置为不需要梯度。例如，当你冻结一部分网络（只进行前向传播）时，使用 torch.no_grad() 是非常有用的。</li>
+<li>不参与梯度更新的中间计算： 如果某些计算只是为了获取中间变量，而不影响模型的梯度更新，可以将这些计算包裹在 torch.no_grad() 中。</li>
+</ul>
+<hr>
+<p>举个例子</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
 </span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># 代替“hugo server”用于本地测试</span>
-</span></span><span style="display:flex;"><span>python3 <span style="color:#f92672">-</span>m http<span style="color:#f92672">.</span>server <span style="color:#f92672">-</span>b <span style="color:#ae81ff">0.0.0.0</span> <span style="color:#f92672">-</span>d public <span style="color:#ae81ff">1313</span>
-</span></span></code></pre></div>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建输入张量，并设置 requires_grad=True 以计算梯度</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">2.0</span>], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32, requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 修改形状为 (1,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">*</span> a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>b<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出梯度</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;输入 a 的梯度:&#34;</span>, a<span style="color:#f92672">.</span>grad)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">=</span> a <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;输入 a 的梯度:&#34;</span>, a<span style="color:#f92672">.</span>grad)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-------------</span>
+</span></span><span style="display:flex;"><span>a 的梯度: tensor([<span style="color:#ae81ff">2.</span>])
+</span></span><span style="display:flex;"><span>a 的梯度: <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>在with no_grad()中，a用 =+ 的方式被变成了另外一个新的变量，因此a没有了之前的梯度信息，变为None，但是当我们使用 += 的方式进行操作，却可以计算出它的梯度了，因为在上下文管理器中只修改了tensor的data，而没有修改属性。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>    a <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;a 的梯度:&#34;</span>, a<span style="color:#f92672">.</span>grad)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-------------</span>
+</span></span><span style="display:flex;"><span>a 的梯度: tensor([<span style="color:#ae81ff">2.</span>])
+</span></span></code></pre></div><hr>
+<p>在具体的神经网络中，反向传播的计算：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> torch.nn <span style="color:#66d9ef">as</span> nn
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">NN</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        super(NN, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>w1 <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>w2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>w1 <span style="color:#f92672">*</span> x <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>w2 <span style="color:#f92672">*</span> x<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 创建输入张量，并设置 requires_grad=True 以计算梯度</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">2.0</span>], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32, requires_grad<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)  <span style="color:#75715e"># 修改形状为 (1,)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 保持a作为叶子张量</span>
+</span></span><span style="display:flex;"><span>a<span style="color:#f92672">.</span>retain_grad()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 实例化模型</span>
+</span></span><span style="display:flex;"><span>net <span style="color:#f92672">=</span> NN()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前向传播</span>
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> net(a)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 设定目标值（假设希望 y 变成 10）</span>
+</span></span><span style="display:flex;"><span>target <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">10.0</span>], dtype<span style="color:#f92672">=</span>torch<span style="color:#f92672">.</span>float32)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 定义损失函数 (均方误差 MSE Loss)</span>
+</span></span><span style="display:flex;"><span>loss_fn <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>MSELoss()
+</span></span><span style="display:flex;"><span>loss <span style="color:#f92672">=</span> loss_fn(y, target)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 反向传播计算梯度</span>
+</span></span><span style="display:flex;"><span>loss<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 输出梯度</span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#34;输入 a 的梯度:&#34;</span>, a<span style="color:#f92672">.</span>grad)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-------------</span>
+</span></span><span style="display:flex;"><span>输入 a 的梯度: <span style="color:#ae81ff">88</span>
+</span></span></code></pre></div><h3 id="the-forward-pass-is-given-by">The forward pass is given by:</h3>
+<p>[
+y = w_1 \cdot x + w_2 \cdot x^2
+]</p>
+<p>where ( w_1 = 3 ), ( w_2 = 2 ), and ( x = 2 ). Substituting the values:</p>
+<p>[
+y = 3 \cdot 2 + 2 \cdot 2^2 = 6 + 8 = 14
+]</p>
+<h3 id="loss-function">Loss Function:</h3>
+<p>The loss function (mean squared error) is:</p>
+<p>[
+\text{loss} = \frac{1}{2} (y - 10)^2
+]</p>
+<p>Substituting ( y = 14 ):</p>
+<p>[
+\text{loss} = \frac{1}{2} (14 - 10)^2 = \frac{1}{2} \times 16 = 8
+]</p>
+<h3 id="gradient-calculation">Gradient Calculation:</h3>
+<ol>
+<li>Compute the derivative of ( y ) with respect to ( x ):</li>
+</ol>
+<p>[
+\frac{dy}{dx} = \frac{d}{dx} \left( 3x + 2x^2 \right) = 3 + 4x
+]</p>
+<p>Substitute ( x = 2 ):</p>
+<p>[
+\frac{dy}{dx} = 3 + 4 \cdot 2 = 3 + 8 = 11
+]</p>
+<ol start="2">
+<li>Compute the derivative of the loss with respect to ( y ):</li>
+</ol>
+<p>[
+\frac{d\text{loss}}{dy} = \frac{d}{dy} \left( \frac{1}{1} (y - 10)^2 \right) = 2\cdot(y - 10)
+]</p>
+<p>Substitute ( y = 14 ):</p>
+<p>[
+\frac{d\text{loss}}{dy} = 2\cdot(14 - 10) = 8
+]</p>
+<ol start="3">
+<li>Use the chain rule to compute the gradient of the loss with respect to ( x ):</li>
+</ol>
+<p>[
+\frac{d\text{loss}}{dx} = \frac{d\text{loss}}{dy} \cdot \frac{dy}{dx} = 8 \times 11 = 88
+]</p>
+<p>Thus, the final gradient is ( \frac{d\text{loss}}{dx} = 88 ).</p>
+
         </section>
         <footer>
             
@@ -218,7 +339,7 @@
         
         <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/hugo/">Hugo</a></li>
+            <li><a href="https://ashhhi.life/en/tags/pytorch/">Pytorch</a></li>
     </ul>
     </nav>
         </footer>
@@ -228,7 +349,7 @@
             <!-- related.html -->
     <nav id="related" aria-label="You might also like">
         <strong class="section-title">You might also like</strong><ol>
-                    <li><a href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/">从Spotify中无损提取专辑封面</a></li>
+                    <li><a href="https://ashhhi.life/en/post/2025-02-18-gather/">PyTorch中的gather函数详解</a></li>
                 </ol>
     </nav>
             <!-- colophon.html -->
@@ -237,7 +358,7 @@
         <div class="f">
             <div id="qr" role="img" aria-label="QR code"></div>
             <div class="verbose">
-                <div class="has-aria-label-top" aria-label="Hugo Blog Posts Encryption"><span>https://ashhhi.life/en/post/2025-03-24-postencryption/</span></div>
+                <div class="has-aria-label-top" aria-label="torch.no_grad()函数的理解以及反向传播计算"><span>https://ashhhi.life/en/post/2025-03-26-torch_no_grad/</span></div>
                 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div>
                 <div><span>This page is built on: </span><time datetime="2025-03-26T14:19:35&#43;08:00">2025-03-26T14:19:35&#43;08:00</time></div>
                 
