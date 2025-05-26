@@ -9,8 +9,17 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Wed, 26 Mar 2025 14:19:35 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 26 May 2025 22:46:45 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【月记】充实复杂的四月，迎来了生活的新篇章</title>
+      <link>https://ashhhi.life/en/post/2025-05-25-2025apr/</link>
+      <pubDate>Sun, 25 May 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-05-25-2025apr/</guid>
+      <description></description>
+      
+    </item>
     <item>
       <title>torch.no_grad()函数的理解以及反向传播计算</title>
       <link>https://ashhhi.life/en/post/2025-03-26-torch_no_grad/</link>

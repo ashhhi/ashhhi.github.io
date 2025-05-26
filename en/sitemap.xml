@@ -2,28 +2,38 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://ashhhi.life/en/post/2025-05-25-2025apr/</loc>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
     <loc>https://ashhhi.life/en/categories/</loc>
-    <lastmod>2025-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/categories/life/</loc>
+    <lastmod>2025-05-25T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
     <loc>https://ashhhi.life/en/tags/pytorch/</loc>
-    <lastmod>2025-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
     <loc>https://ashhhi.life/en/tags/</loc>
-    <lastmod>2025-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
     <loc>https://ashhhi.life/en/categories/technology/</loc>
-    <lastmod>2025-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
     <loc>https://ashhhi.life/en/post/2025-03-26-torch_no_grad/</loc>
-    <lastmod>2025-03-26T00:00:00+00:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
@@ -53,12 +63,12 @@
     </url>
   <url>
     <loc>https://ashhhi.life/en/tags/deep-learning/</loc>
-    <lastmod>2025-03-21T00:07:13+08:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
     <loc>https://ashhhi.life/en/post/2025-02-18-gather/</loc>
-    <lastmod>2025-03-21T00:07:13+08:00</lastmod>
+    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
@@ -103,11 +113,6 @@
     </url>
   <url>
     <loc>https://ashhhi.life/en/post/2024-03-13-wanqing/</loc>
-    <lastmod>2025-03-24T22:57:32+08:00</lastmod>
-    <changefreq>always</changefreq>
-    </url>
-  <url>
-    <loc>https://ashhhi.life/en/categories/life/</loc>
     <lastmod>2025-03-24T22:57:32+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
