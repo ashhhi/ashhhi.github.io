@@ -12,12 +12,19 @@
 
 
 
-    <link rel="me" href="https://example.com/@username">
-<link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/tags/deep-learning/index.xml" title="Ashhhi" />
-    <!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
-            integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
+        <link rel="me" href="https://example.com/@username">
+    <link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/tags/deep-learning/index.xml" title="Ashhhi" />
+    <!-- js.html -->
+
+<script src="https://ashhhi.life/js/hugo-brewm.min.js"
+            integrity="sha384-d4QeYigDeuSJIVAgWwT2Rb&#43;9lSo4UbGYS2fPnRMy4XUtE0RcB69UCYInyjdDOGGz" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-qxhTSARMhFq9RJGWfX8v7xD44LkrTvuppQBWTUMBsfo=" crossorigin="anonymous">
+
+
+
     <!-- css/inline.html -->
     <style>
          
@@ -26,36 +33,40 @@
     </style>
     <!-- list.html [head] -->
 </head>
-<body >
+<body>
     <!-- header.html -->
 <header class="pagewidth">
-    <div id="background-header" class="background" aria-hidden="true"></div>
+    <div id="background-header" class="background" aria-hidden="true">
+        <div class="grain" hidden></div>
+    </div>
     
     <nav aria-label="Bypass">
-        <a id="to-content" class="underline" href="#list-posts" aria-label="Skip to Main Content">
+        <a id="to-content" href="#list-posts" aria-label="Skip to Main Content">
             <span>Skip to Main Content</span>
             <kbd class="key" aria-hidden="true">c</kbd>
             <span class="screening" aria-hidden="true"></span>
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi">
-                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi" aria-description="Homepage">
+                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
+                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt" aria-label="Ashhhi">
             <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
         </svg>
         </a>
     
     <details class="presentation" id="top-nav">
         <summary class="on-deck">
-            <span class="t t2">Navigation</span>
+            <span class="t">Navigation</span>
             <span class="menu-icon" role="presentation"></span>
         </summary>
         <nav tabindex="-1" aria-label="Top">
             <!-- menu.html -->
             <!-- search.html -->
 <details id="has-search" class="presentation js-details" name="on-deck">
-    <summary class="on-deck" accesskey="q" aria-keyshortcuts="q">
-        <span class="t t2">Search</span>
+    <summary class="on-deck srm" accesskey="q" aria-labelledby="search-label" aria-keyshortcuts="q">
+        <span id="search-label" class="t srt">Search</span>
     </summary>
     
         <!-- pagefind.html -->
@@ -74,6 +85,11 @@
                         placeholder: "Search"
                     }
                 });
+                
+                const pFInput = document.querySelector('.pagefind-ui__search-input');
+                if (pFInput) {
+                    pFInput.setAttribute('aria-label', pFInput.getAttribute('placeholder'));
+                }
                 pageFindInitialized = true;
                 document.removeEventListener('DOMContentLoaded', initPageFind);
             }
@@ -90,7 +106,7 @@
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
-        <input class="ldots form__input" type="search" placeholder="Search" name="q"></input>
+        <input class="ldots form__input" type="search" placeholder="Search" name="q" role="searchbox"></input>
         <button class="form__button" type="submit" aria-label="Search">
             <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
         </button>
@@ -99,9 +115,9 @@
         </noscript>
     
 </details>
+
             <!-- menu.html -->
             <!-- i18n.html -->
-
 
         </nav>
         <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
@@ -112,38 +128,21 @@
     <main id="term">
         <!-- main/header.html -->
         <header class="pagewidth">
-            
-            <!-- menu.html -->
-    <menu role="presentation">
-        <li>
-            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
-                <span class="t" role="tooltip">Print</span>
-            </a>
-        </li>
-        <li>
-            <a id="navigatorShare" href="javascript:navigator.share({title: document.title, url: window.location.href})" title="Share" role="button" aria-label="Share">
-                <span class="t" role="tooltip">Share</span>
-            </a>
-        </li>
-        <li>
-            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy URL" role="button" aria-label="Copy URL">
-                <span id="copy" class="t" role="tooltip">Copy URL</span>
-                <span id="isCopying" style="display: none;">Copying...</span>
-                <span id="copyText" style="display: none;">Copy URL</span>
-            </a>
-        </li>
-    </menu>
-    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
-        <span class="t" role="tooltip">Go Back</span>
+                    <menu class="srm">
+                                <a id="rss-button" href="https://ashhhi.life/en/tags/deep-learning/index.xml" title="Follow with RSS" role="button" aria-label="Follow with RSS">
+                                    <span class="t srt" role="tooltip">Follow with RSS</span>
+                                </a>
+                    </menu>
+                    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
+        <span class="t srt" role="tooltip">Go Back</span>
     </button>
-            
-                <!-- nav.html -->
+            <!-- nav.html -->
 <details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
     <summary id="breadcrumb" tabindex="-1">
         <span>Breadcrumb</span>
     </summary>
         <nav aria-labelledby="breadcrumb">
-            <ul role="presentation" class="breadcrumb">
+            <ul role="presentation" class="breadcrumb ">
                     <!-- breadcrumb.html -->
         <li>
             <a href="https://ashhhi.life/en/tags/" aria-current="true">Tags
@@ -161,25 +160,29 @@
             
         </div>
         
-    
         
-            <section id="list-posts" class="pagewidth">
+            <section id="list-posts" class="pagewidth"  aria-labelledby="list-post-heading">
                 <header id="tag" class="section-title">
-                    <strong>Posts on: <span class="tag">Deep Learning</span>
+                    <strong id="list-post-heading">Posts on: <span class="tag">Deep Learning</span>
                     </strong>
                 </header>
                     
-    <div class="list-year " role="listitem" aria-labelledby="2025">
+    <div class="list-year textwidth " role="listitem" aria-labelledby="2025">
         <strong id="2025" class="section-title" role="heading" aria-level="1">2025</strong>
         <div role="list" aria-label="2025">
             <div role="listitem" aria-labelledby="y2025-February">
                 <details aria-expanded="true" class="list-month" open>
                     <summary class="has-post section-title" id="y2025-February"
-                        role="heading" aria-level="2" aria-description="(1 Post)">February
+                        role="heading" aria-level="2" aria-label="February" aria-description="(2 Posts)">February
                     </summary>
                     <ul class="list-day" role="presentation">
                         <li>
-                            <a class="has-pre" href="https://ashhhi.life/en/post/2025-02-18-gather/" aria-description="18 Feb ">
+                            <a class="has-pre" href="https://ashhhi.life/en/post/regression-loss/" aria-label="Regression Loss Function Summary" aria-description="27 Feb ">
+                                <span>Regression Loss Function Summary</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a class="has-pre" href="https://ashhhi.life/en/post/2025-02-18-gather/" aria-label="PyTorch中的gather函数详解" aria-description="18 Feb ">
                                 <span>PyTorch中的gather函数详解</span>
                             </a>
                         </li>
@@ -188,17 +191,17 @@
             </div>
         </div>
     </div>
-    <div class="list-year " role="listitem" aria-labelledby="2024">
+    <div class="list-year textwidth " role="listitem" aria-labelledby="2024">
         <strong id="2024" class="section-title" role="heading" aria-level="1">2024</strong>
         <div role="list" aria-label="2024">
             <div role="listitem" aria-labelledby="y2024-September">
                 <details aria-expanded="true" class="list-month" open>
                     <summary class="has-post section-title" id="y2024-September"
-                        role="heading" aria-level="2" aria-description="(1 Post)">September
+                        role="heading" aria-level="2" aria-label="September" aria-description="(1 Post)">September
                     </summary>
                     <ul class="list-day" role="presentation">
                         <li>
-                            <a class="has-pre" href="https://ashhhi.life/en/post/2024-09-06-detr/" aria-description="6 Sep ">
+                            <a class="has-pre" href="https://ashhhi.life/en/post/2024-09-06-detr/" aria-label="如何用DETR官方代码训练自己的数据集" aria-description="6 Sep ">
                                 <span>如何用DETR官方代码训练自己的数据集</span>
                             </a>
                         </li>
@@ -209,214 +212,61 @@
     </div>
             </section>
         <!-- main/footer.html -->
-    <hr class="hide">
-        <footer id="main-footer">
-            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
-                        aria-labelledby="footer-1">
-                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2024<!-- raw HTML omitted --></p>
-<p>Some rights reserved.</p>
-<!-- raw HTML omitted -->
-
-                    </div>
-                <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
-                    <!-- menu.html -->
-                </div>
-            </div>
-        </footer>
     </main>
     <!-- footer.html -->
 <footer id="body-footer" class="pagewidth" style="display: none;">
-    <div id="background-footer" class="background" role="presentation"></div>
-    <!-- focusMode.html -->
-    <div id="focusMode" class="hide">
-        <input
-            id="defocusAuxElement"
-            accesskey="d" type="checkbox"
-            onclick="focusMode()"
-            aria-keyshortcuts="d"
-            aria-label="Focus Mode"
-            >
-            <label id="focusModeButton" for="defocusAuxElement" aria-label="Focus Mode">
-                ⦿ <span class="t" role="tooltip">Focus Mode</span>
-            </label>
+    <div id="background-footer" class="background hide" role="presentation" aria-hidden="true">
+        <div class="grain" hidden></div>
     </div>
-    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <div id="focusMode"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details hide" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
     <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
         <span>&nbsp;Accessibility</span>
         <kbd class="key" aria-hidden="true">a</kbd>
     </summary>
     <!-- a11y console -->
-    <fieldset id="a11y" role="region" disabled>
-        <!-- brightness & contrast -->
-        <div id="setColorScheme" role="group" aria-label="Color Settings">
-            <!-- darkMode.html -->
-    <input
-        id="lightSwitch"
-        type="checkbox"
-        onclick="setColor()"
-        aria-label="Dark Mode"
-        >
-        <label for="lightSwitch">
-            <div class="has-aria-label off" role="status" aria-label="Light"></div>
-            <div class="has-aria-label on" role="status" aria-label="Dark"></div>
-            <div id="lightSwitchIndicator" aria-hidden="true"></div>
-        </label>
-            <!-- contrast.html -->
-    <fieldset id="setContrast">
-        <legend>Contrast</legend>
-        <input
-            id="lessContrast"
-            type="radio" name="setContrast" value="less"
-            onclick="setColor()"
-            >
-            <label for="lessContrast">
-                <span>Low</span>
-            </label>
-        <input
-            id="defaultContrast"
-            type="radio" name="setContrast" value="default"
-            onclick="setColor()"
-            >
-            <label for="defaultContrast">
-                <span>Default</span>
-            </label>
-        <input
-            id="moreContrast"
-            type="radio" name="setContrast" value="more"
-            onclick="setColor()"
-            >
-            <label for="moreContrast">
-                <span>High</span>
-            </label>
-    </fieldset>
-        </div>
-        <!-- colorPalette.html -->
-    <div id="setColorPalette" style="display:none;">
-        <label for="colorPalette">Color Palette</label>
-        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()" aria-label="Color Palette">
-            <option value="defaultColor">Default</option>
-            <option value="deuteranopia">Deuteranopia</option>
-            <option value="protanopia">Protanopia</option>
-            <option value="tritanopia">Tritanopia</option>
-            <option value="monochrome">Monochrome</option>
-        </select>
-    </div>
-        <!-- fontsize.html -->
-    <div class="has-aria-label-top" aria-label="Font Size">
-        <label class="range" for="fontSize" aria-label="Font Size">
-            <input
-                id="fontSize"
-                type="range" min="8" max="12" step="0.5"
-                oninput="setFontSize()">
-            <output
-                id="fontSizeState"
-                onclick="resetFontSize()"
-                aria-live="polite"
-                >10</output>
-        </label>
-    </div>
-        <!-- baselineStretch.html -->
-    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
-        <label class="range" for="baselineStretch">
-            <input
-                id="baselineStretch"
-                type="range" min="0.8" max="1.2" step="0.05"
-                oninput="setStretch()"
-                >
-            <output
-                id="baselineStretchState"
-                onclick="resetStretch()"
-                aria-live="polite"
-                >1</output>
-        </label>
-    </div>
-        <!-- OpenDyslexic.html -->
-    <div id="setOpenDyslexic">
-        <input
-            id="OpenDyslexic"
-            type="checkbox"
-            onclick="useOpenDyslexic()"
-            aria-label="Use OpenDyslexic Font"
-            >
-            <label
-                class="has-aria-label-top"
-                for="OpenDyslexic"
-                aria-label="Use OpenDyslexic Font"
-                >
-                <span id="OpenDyslexicState" aria-hidden="true">
-                    <span id="OpenDyslexicIndicator"></span>
-                </span>
-            </label>
-    </div>
-        <!-- menu.html -->
-    <menu
-        id="a11y-menu"
-        class="hide"
-        role="toolbar"
-        aria-label="Accessibility Menu Controls"
-        >
-        <button
-            id="saveButton" class="reverse"
-            onclick="saveA11y()"
-            disabled>Save
-        </button>
-        <button
-            id="resetButton" class="has-aria-label"
-            onclick="resetA11y()"
-            aria-label="Reset"
-            disabled>
-        </button>
-        <button
-            id="closeButton" class="has-aria-label"
-            onclick="closeA11yConsole()"
-            aria-label="Close"
-            >
-        </button>
-    </menu>
-        <noscript>
-            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
-        </noscript>
-        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    <fieldset id="a11y" role="region" aria-label="Accessibility"
+        data-i18n-optimizeSR="Screen Reader Optimization"
+        data-i18n-optimizeSRdesc="Optimize display and resources for screen reader users who navigate with a pointer device."
+        data-i18n-colorSettings="Color Settings"
+        data-i18n-darkMode="Dark Mode"
+        data-i18n-light="Light"
+        data-i18n-dark="Dark"
+        data-i18n-contrast="Contrast"
+        data-i18n-lessContrast="Low"
+        data-i18n-moreContrast="High"
+        data-i18n-defaultContrast="Default"
+        data-i18n-colorPalette="Color Palette"
+        data-i18n-defaultColor="Default"
+        data-i18n-deuteranopia="Deuteranopia"
+        data-i18n-protanopia="Protanopia"
+        data-i18n-tritanopia="Tritanopia"
+        data-i18n-monochrome="Monochrome"
+        data-i18n-fontSize="Font Size"
+        data-i18n-baselineStretch="Baseline Stretch"
+        data-i18n-OpenDyslexic="Use OpenDyslexic Font"
+        data-i18n-menuControls="Accessibility Menu Controls"
+        data-i18n-save="Save"
+        data-i18n-reset="Reset"
+        data-i18n-close="Close"
+        data-i18n-bionRead="BionRead Mode"
+        data-i18n-focusMode="Focus Mode"
+        data-i18n-noLocalStorage="LocalStorage is not available in your browser. Settings won&#39;t be saved.">
     </fieldset>
     <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
 </details>
 
 
-    <!-- bionread.html -->
-    <div id="useBionRead" class="hide">
-        <input
-            id="bionReadSwitch"
-            accesskey="b" type="checkbox"
-            onclick="bionRead()"
-            aria-keyshortcuts="b"
-            aria-label="BionRead Mode"
-            >
-            <label id="bionReadButton" for="bionReadSwitch">
-                <span><strong>Bion</strong>Read</span>
-                <kbd class="key" aria-hidden="true">b</kbd>
-            </label>
-    </div>
+    <div id="useBionRead" class="sri"></div>
     <!-- [top] bypass block -->
     <nav aria-label="Bypass">
-        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+        <a id="to-top" class="srm" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <span class="t srt">To Content Top</span>
             <kbd class="key" aria-hidden="true">c</kbd>
         </a>
     </nav>
 </footer>
-
     
     <!-- [background] baseof.html -->
-    <div id="background-body"
-        role="presentation">
-        <div id="grain" hidden></div>
-        <div id="dwclock" hidden>
-            <div id="min">
-                <div class="hand"></div>
-            </div>
-            <div id="hour">
-                <div class="hand"></div>
-            </div>
-        </div>
-    </div>
-</body>
+    <div id="background-body" role="presentation" aria-hidden="true"></div>
 </html>

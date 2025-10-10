@@ -9,7 +9,7 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Tue, 22 Jul 2025 16:14:16 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 10 Oct 2025 20:52:21 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>【月记】2025.5</title>
@@ -53,6 +53,15 @@
       <pubDate>Thu, 20 Mar 2025 00:00:00 +0000</pubDate>
       <author>Ash</author>
       <guid>https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/</guid>
+      <description>&lt;h2 id=&#34;hero-section--greeter&#34;&gt;Hero Section / Greeter&lt;/h2&gt;&#xA;&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手.&lt;/p&gt;&#xA;&lt;p&gt;这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;更新：2025.3.20&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在看&#34;&gt;👓最近在看&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/48353/&#34;&gt;人生切割术 第二季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/27401/&#34;&gt;黄石 第一季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/43269/&#34;&gt;黑袍纠察队 第四季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;已追&#34;&gt;已追：&lt;/h4&gt;&#xA;&lt;p&gt;无耻之徒，汉尼拔（弃剧），浴血黑帮，黄蜂（弃剧），权力的游戏，切尔诺贝利，性爱自修室（弃剧），怪奇物语，风骚律师，亢奋，生活大爆炸，黑道家族，绝命毒师，神探夏洛克，越狱。&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在玩&#34;&gt;🎮最近在玩&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Valorant，世界上最好玩的游戏&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      
+    </item>
+    <item>
+      <title>Regression Loss Function Summary</title>
+      <link>https://ashhhi.life/en/post/regression-loss/</link>
+      <pubDate>Thu, 27 Feb 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/regression-loss/</guid>
       <description>&lt;h2 id=&#34;hero-section--greeter&#34;&gt;Hero Section / Greeter&lt;/h2&gt;&#xA;&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手.&lt;/p&gt;&#xA;&lt;p&gt;这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;更新：2025.3.20&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在看&#34;&gt;👓最近在看&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/48353/&#34;&gt;人生切割术 第二季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/27401/&#34;&gt;黄石 第一季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.cnflix.tv/detail/43269/&#34;&gt;黑袍纠察队 第四季&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;已追&#34;&gt;已追：&lt;/h4&gt;&#xA;&lt;p&gt;无耻之徒，汉尼拔（弃剧），浴血黑帮，黄蜂（弃剧），权力的游戏，切尔诺贝利，性爱自修室（弃剧），怪奇物语，风骚律师，亢奋，生活大爆炸，黑道家族，绝命毒师，神探夏洛克，越狱。&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在玩&#34;&gt;🎮最近在玩&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Valorant，世界上最好玩的游戏&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
       
     </item>

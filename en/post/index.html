@@ -12,12 +12,19 @@
 
 
 
-    <link rel="me" href="https://example.com/@username">
-<link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/post/index.xml" title="Ashhhi" />
-    <!-- js.html --><script src="https://ashhhi.life/js/hugo-brewm.min.js"
-            integrity="sha384-bsftoUF36bp9Zb&#43;qpYd8An301GPFeGsPzm4Rc&#43;ADSroMq3c70pZz6P9jG1sQL0iJ" crossorigin="anonymous"
+        <link rel="me" href="https://example.com/@username">
+    <link rel="alternate" type="application/rss+xml" href="https://ashhhi.life/en/post/index.xml" title="Ashhhi" />
+    <!-- js.html -->
+
+<script src="https://ashhhi.life/js/hugo-brewm.min.js"
+            integrity="sha384-d4QeYigDeuSJIVAgWwT2Rb&#43;9lSo4UbGYS2fPnRMy4XUtE0RcB69UCYInyjdDOGGz" crossorigin="anonymous"
             defer></script><!-- css.html -->
-        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-f&#43;0GGG0ZKr2Uc1j1KV3PMSWaqkmHLHc56JNKUnzZxOA=" crossorigin="anonymous">
+
+
+        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-qxhTSARMhFq9RJGWfX8v7xD44LkrTvuppQBWTUMBsfo=" crossorigin="anonymous">
+
+
+
     <!-- css/inline.html -->
     <style>
          
@@ -26,36 +33,40 @@
     </style>
     <!-- list.html [head] -->
 </head>
-<body >
+<body>
     <!-- header.html -->
 <header class="pagewidth">
-    <div id="background-header" class="background" aria-hidden="true"></div>
+    <div id="background-header" class="background" aria-hidden="true">
+        <div class="grain" hidden></div>
+    </div>
     
     <nav aria-label="Bypass">
-        <a id="to-content" class="underline" href="#list-posts" aria-label="Skip to Main Content">
+        <a id="to-content" href="#list-posts" aria-label="Skip to Main Content">
             <span>Skip to Main Content</span>
             <kbd class="key" aria-hidden="true">c</kbd>
             <span class="screening" aria-hidden="true"></span>
         </a>
     </nav>
     
-        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi">
-                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt">
+        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi" aria-description="Homepage">
+                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
+                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
+                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt" aria-label="Ashhhi">
             <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
         </svg>
         </a>
     
     <details class="presentation" id="top-nav">
         <summary class="on-deck">
-            <span class="t t2">Navigation</span>
+            <span class="t">Navigation</span>
             <span class="menu-icon" role="presentation"></span>
         </summary>
         <nav tabindex="-1" aria-label="Top">
             <!-- menu.html -->
             <!-- search.html -->
 <details id="has-search" class="presentation js-details" name="on-deck">
-    <summary class="on-deck" accesskey="q" aria-keyshortcuts="q">
-        <span class="t t2">Search</span>
+    <summary class="on-deck srm" accesskey="q" aria-labelledby="search-label" aria-keyshortcuts="q">
+        <span id="search-label" class="t srt">Search</span>
     </summary>
     
         <!-- pagefind.html -->
@@ -74,6 +85,11 @@
                         placeholder: "Search"
                     }
                 });
+                
+                const pFInput = document.querySelector('.pagefind-ui__search-input');
+                if (pFInput) {
+                    pFInput.setAttribute('aria-label', pFInput.getAttribute('placeholder'));
+                }
                 pageFindInitialized = true;
                 document.removeEventListener('DOMContentLoaded', initPageFind);
             }
@@ -90,7 +106,7 @@
         <input type="hidden" value="1" name="kh"></input>
         <input type="hidden" value="1" name="kn"></input>
         <input type="hidden" value="1" name="kac"></input>
-        <input class="ldots form__input" type="search" placeholder="Search" name="q"></input>
+        <input class="ldots form__input" type="search" placeholder="Search" name="q" role="searchbox"></input>
         <button class="form__button" type="submit" aria-label="Search">
             <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
         </button>
@@ -99,9 +115,9 @@
         </noscript>
     
 </details>
+
             <!-- menu.html -->
             <!-- i18n.html -->
-
 
         </nav>
         <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
@@ -112,38 +128,21 @@
     <main id="section">
         <!-- main/header.html -->
         <header class="pagewidth">
-            
-            <!-- menu.html -->
-    <menu role="presentation">
-        <li>
-            <a id="print-button" class="hide" href="javascript:window.print()" title="Print" role="button" aria-label="Print">
-                <span class="t" role="tooltip">Print</span>
-            </a>
-        </li>
-        <li>
-            <a id="navigatorShare" href="javascript:navigator.share({title: document.title, url: window.location.href})" title="Share" role="button" aria-label="Share">
-                <span class="t" role="tooltip">Share</span>
-            </a>
-        </li>
-        <li>
-            <a id="copyPermalink" class="hide" href="javascript:navigator.clipboard.writeText(window.location.href)" title="Copy URL" role="button" aria-label="Copy URL">
-                <span id="copy" class="t" role="tooltip">Copy URL</span>
-                <span id="isCopying" style="display: none;">Copying...</span>
-                <span id="copyText" style="display: none;">Copy URL</span>
-            </a>
-        </li>
-    </menu>
-    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
-        <span class="t" role="tooltip">Go Back</span>
+                    <menu class="srm">
+                                <a id="rss-button" href="https://ashhhi.life/en/post/index.xml" title="Follow with RSS" role="button" aria-label="Follow with RSS">
+                                    <span class="t srt" role="tooltip">Follow with RSS</span>
+                                </a>
+                    </menu>
+                    <button id="back" class="hide" type="button" onclick="history.back();" aria-label="Go Back">
+        <span class="t srt" role="tooltip">Go Back</span>
     </button>
-            
-                <!-- nav.html -->
+            <!-- nav.html -->
 <details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
     <summary id="breadcrumb" tabindex="-1">
         <span>Breadcrumb</span>
     </summary>
         <nav aria-labelledby="breadcrumb">
-            <ul role="presentation" class="breadcrumb">
+            <ul role="presentation" class="breadcrumb ">
                     <!-- breadcrumb.html -->
     <li>
         <a href="" aria-current="page" tabindex="-1">Post
@@ -155,85 +154,93 @@
         </header>
         <div id="top" role="presentation">
             
-                <div id="list-subsection" class="carousel">
+                <div id="list-subsection" class="has-crsl">
                     <!-- sections.html -->
 
                 </div>
         </div>
         
-            <aside id="list-tags">
-                <header class="section-title">
-                    <strong>Tags</strong>
-                </header>
-                <!-- taxonomies.html -->
+                <aside id="list-tags">
+                    <header class="section-title">
+                        <strong>Tags</strong>
+                    </header>
+                    <nav aria-label="Tags">
+                        <!-- taxonomies.html -->
         <ul class="rounded has-hash" role="presentation">
             
-                    <li  >
+                    <li >
+                        <a href="https://ashhhi.life/en/tags/deep-learning/"
+                            aria-label="Tag: Deep Learning"
+                            aria-description="3 Posts"
+                            data-post-counter="3"
+                            >
+                            <span>Deep Learning</span>
+                        </a>
+                    </li>
+                    <li >
                         <a href="https://ashhhi.life/en/tags/reinforcement-learning/"
-                            aria-label="Tag:Reinforcement Learning"
+                            aria-label="Tag: Reinforcement Learning"
+                            aria-description="3 Posts"
                             data-post-counter="3"
                             >
                             <span>Reinforcement Learning</span>
                         </a>
                     </li>
-                    <li  >
-                        <a href="https://ashhhi.life/en/tags/deep-learning/"
-                            aria-label="Tag:Deep Learning"
-                            data-post-counter="2"
-                            >
-                            <span>Deep Learning</span>
-                        </a>
-                    </li>
-                    <li  >
+                    <li >
                         <a href="https://ashhhi.life/en/tags/hugo/"
-                            aria-label="Tag:Hugo"
+                            aria-label="Tag: Hugo"
+                            aria-description="2 Posts"
                             data-post-counter="2"
                             >
                             <span>Hugo</span>
                         </a>
                     </li>
-                    <li  >
+                    <li >
                         <a href="https://ashhhi.life/en/tags/pytorch/"
-                            aria-label="Tag:PYTORCH"
+                            aria-label="Tag: PYTORCH"
+                            aria-description="2 Posts"
                             data-post-counter="2"
                             >
-                            <span>Pytorch</span>
+                            <span>PYTORCH</span>
                         </a>
                     </li>
-                    <li  >
+                    <li >
                         <a href="https://ashhhi.life/en/tags/computer-vision/"
-                            aria-label="Tag:Computer Vision"
+                            aria-label="Tag: Computer Vision"
+                            aria-description="1 Post"
                             data-post-counter="1"
                             >
                             <span>Computer Vision</span>
                         </a>
                     </li>
-                    <li  >
+                    <li >
                         <a href="https://ashhhi.life/en/tags/docker/"
-                            aria-label="Tag:Docker"
+                            aria-label="Tag: Docker"
+                            aria-description="1 Post"
                             data-post-counter="1"
                             >
                             <span>Docker</span>
                         </a>
                     </li>
-                    <li  >
+                    <li >
                         <a href="https://ashhhi.life/en/tags/git/"
-                            aria-label="Tag:Git"
+                            aria-label="Tag: Git"
+                            aria-description="1 Post"
                             data-post-counter="1"
                             >
                             <span>Git</span>
                         </a>
                     </li>
         </ul>
-            </aside>
-    
+                    </nav>
+                </aside>
         
-            <section id="list-posts" class="pagewidth">
+            <section id="list-posts" class="pagewidth"  aria-labelledby="list-post-heading">
                 <header  class="section-title">
-                    <strong>All posts
+                    <strong id="list-post-heading">All posts
                     </strong>
                 </header>
-                    <div role="feed" aria-busy="false">
+                    <div role="feed" aria-busy="false" aria-labelledby="list-post-heading">
                         <article class="feed-item"
         aria-posinset="1"
         aria-setsize="10"
@@ -243,26 +250,26 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/life/">Life</a></li>
+            <li><a href="https://ashhhi.life/en/categories/life/" tabindex="-1">Life</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
-    <div >
-        <time class="doc-publish-date" datetime="2025-05-25T00:00:00&#43;00:00" data-time-label="Published on">May 25, 2025</time>
+    <div class="date-has-label">
+        <time class="doc-publish-date" datetime="2025-05-25T00:00:00&#43;00:00" data-time-label="Published on">May 25, 2025</time><time class="doc-lastmod-date" datetime="2025-09-10T10:20:56&#43;08:00" data-time-label="Modified on">September 10, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-05-25-2025apr/" tabindex="-1">
+            <a href="https://ashhhi.life/en/post/2025-05-25-2025apr/" class="sr0" tabindex="-1" aria-describedby="desc-1">
                 <h1 id="title-1">【月记】2025.5</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-05-25-2025apr/" aria-label="【月记】2025.5"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-05-25-2025apr/" aria-label="【月记】2025.5" aria-describedby="desc-1"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/21.svg" alt="" style="object-position: 13% 35%" loading="lazy">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" alt="" style="object-position: 19% 55%" loading="lazy">
             <div class="par" id="desc-1"> 
             </div>
         </section>
@@ -282,11 +289,11 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
@@ -294,14 +301,14 @@
         <time class="doc-publish-date" datetime="2025-03-26T00:00:00&#43;00:00" data-time-label="Published on">March 26, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" tabindex="-1">
+            <a href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" class="sr0" tabindex="-1" aria-describedby="desc-2">
                 <h1 id="title-2">torch.no_grad()函数的理解以及反向传播计算</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" aria-label="torch.no_grad()函数的理解以及反向传播计算"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" aria-label="torch.no_grad()函数的理解以及反向传播计算" aria-describedby="desc-2"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" alt="" style="object-position: 38% 7%" loading="lazy">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" alt="" style="object-position: 71% 70%" loading="lazy">
             <div class="par" id="desc-2"> 
             </div>
         </section>
@@ -309,9 +316,9 @@
             <span class="readingTime">2 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/pytorch/">Pytorch</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/pytorch/" tabindex="-1">PYTORCH</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -324,11 +331,11 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
@@ -336,14 +343,14 @@
         <time class="doc-publish-date" datetime="2025-03-24T00:00:00&#43;00:00" data-time-label="Published on">March 24, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-03-24-postencryption/" tabindex="-1">
+            <a href="https://ashhhi.life/en/post/2025-03-24-postencryption/" class="sr0" tabindex="-1" aria-describedby="desc-3">
                 <h1 id="title-3">Hugo Blog Posts Encryption</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-03-24-postencryption/" aria-label="Hugo Blog Posts Encryption"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-03-24-postencryption/" aria-label="Hugo Blog Posts Encryption" aria-describedby="desc-3"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" alt="" style="object-position: 21% 33%" loading="lazy">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg" alt="" style="object-position: 34% 54%" loading="lazy">
             <div class="par" id="desc-3">对博客文章进行加密
             </div>
         </section>
@@ -351,9 +358,9 @@
             <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/hugo/">Hugo</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/hugo/" tabindex="-1">Hugo</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -366,11 +373,11 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
@@ -378,14 +385,14 @@
         <time class="doc-publish-date" datetime="2025-03-24T00:00:00&#43;00:00" data-time-label="Published on">March 24, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" tabindex="-1">
+            <a href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" class="sr0" tabindex="-1" aria-describedby="desc-4">
                 <h1 id="title-4">从Spotify中无损提取专辑封面</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" aria-label="从Spotify中无损提取专辑封面"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" aria-label="从Spotify中无损提取专辑封面" aria-describedby="desc-4"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/1.svg" alt="" style="object-position: 51% 62%" loading="lazy">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/2.svg" alt="" style="object-position: 64% 73%" loading="lazy">
             <div class="par" id="desc-4"> 
             </div>
         </section>
@@ -393,9 +400,9 @@
             <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/hugo/">Hugo</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/hugo/" tabindex="-1">Hugo</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -408,27 +415,26 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2025-03-20T00:00:00&#43;00:00" data-time-label="Published on">March 20, 2025</time>
-            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+        <time class="doc-publish-date" datetime="2025-03-20T00:00:00&#43;00:00" data-time-label="Published on">March 20, 2025</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" tabindex="-1">
+            <a href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" class="sr0" tabindex="-1" aria-describedby="desc-5">
                 <h1 id="title-5">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" aria-describedby="desc-5"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/7.svg" alt="" style="object-position: 25% 12%" loading="lazy">
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" alt="" style="object-position: 46% 33%" loading="lazy">
             <div class="par" id="desc-5">先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
 
             </div>
@@ -437,9 +443,9 @@
             <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/" tabindex="-1">Reinforcement Learning</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -450,40 +456,33 @@
         aria-describedby="desc-6">
         <hgroup>
             <div>
-                <span><span>[Ash]</span>
-                        <span>in</span>
-                            <!-- terms.html -->
-    <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
-    </ul>
-                        
+                <span><span>Ash</span>
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2025-02-18T00:00:00&#43;00:00" data-time-label="Published on">February 18, 2025</time>
-            <time class="doc-lastmod-date" datetime="2025-03-26T14:19:52&#43;08:00" data-time-label="Modified on">March 26, 2025</time>
+        <time class="doc-publish-date" datetime="2025-02-27T00:00:00&#43;00:00" data-time-label="Published on">February 27, 2025</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-02-18-gather/" tabindex="-1">
-                <h1 id="title-6">PyTorch中的gather函数详解</h1>
+            <a href="https://ashhhi.life/en/post/regression-loss/" class="sr0" tabindex="-1" aria-describedby="desc-6">
+                <h1 id="title-6">Regression Loss Function Summary</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-02-18-gather/" aria-label="PyTorch中的gather函数详解"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/regression-loss/" aria-label="Regression Loss Function Summary" aria-describedby="desc-6"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg" alt="" style="object-position: 70% 17%" loading="lazy">
-            <div class="par" id="desc-6">torch.gather函数笔记
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/20.svg" alt="" style="object-position: 74% 28%" loading="lazy">
+            <div class="par" id="desc-6">在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同。
+
             </div>
         </section>
         <footer>
             <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/pytorch/">Pytorch</a></li>
-            <li><a href="https://ashhhi.life/en/tags/deep-learning/">Deep Learning</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/deep-learning/" tabindex="-1">Deep Learning</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -496,35 +495,38 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/thinking/">Thinking</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2025-02-10T00:00:00&#43;00:00" data-time-label="Published on">February 10, 2025</time>
-            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+        <time class="doc-publish-date" datetime="2025-02-18T00:00:00&#43;00:00" data-time-label="Published on">February 18, 2025</time><time class="doc-lastmod-date" datetime="2025-03-26T14:19:52&#43;08:00" data-time-label="Modified on">March 26, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2025-02-10-hk/" tabindex="-1">
-                <h1 id="title-7">败絮其外，金玉其中</h1>
+            <a href="https://ashhhi.life/en/post/2025-02-18-gather/" class="sr0" tabindex="-1" aria-describedby="desc-7">
+                <h1 id="title-7">PyTorch中的gather函数详解</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2025-02-10-hk/" aria-label="败絮其外，金玉其中"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-02-18-gather/" aria-label="PyTorch中的gather函数详解" aria-describedby="desc-7"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/15.svg" alt="" style="object-position: 41% 27%" loading="lazy">
-            <div class="par" id="desc-7">请停止对于香港的妖魔化...
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/7.svg" alt="" style="object-position: 7% 72%" loading="lazy">
+            <div class="par" id="desc-7">torch.gather函数笔记
             </div>
         </section>
         <footer>
             <span class="readingTime">1 min read
             </span>
             
-                <div class="baselineskip" role="presentation"></div>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/pytorch/" tabindex="-1">PYTORCH</a></li>
+            <li><a href="https://ashhhi.life/en/tags/deep-learning/" tabindex="-1">Deep Learning</a></li>
+    </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
                         <article class="feed-item"
@@ -536,38 +538,34 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/thinking/" tabindex="-1">Thinking</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2024-09-25T00:00:00&#43;00:00" data-time-label="Published on">September 25, 2024</time>
-            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+        <time class="doc-publish-date" datetime="2025-02-10T00:00:00&#43;00:00" data-time-label="Published on">February 10, 2025</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2024-9-25-rl02/" tabindex="-1">
-                <h1 id="title-8">Bellman Function详解</h1>
+            <a href="https://ashhhi.life/en/post/2025-02-10-hk/" class="sr0" tabindex="-1" aria-describedby="desc-8">
+                <h1 id="title-8">败絮其外，金玉其中</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2024-9-25-rl02/" aria-label="Bellman Function详解"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2025-02-10-hk/" aria-label="败絮其外，金玉其中" aria-describedby="desc-8"></a>
         
         <section class="has-cover">
-                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/9.svg" alt="" style="object-position: 53% 54%" loading="lazy">
-            <div class="par" id="desc-8">本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/4.svg" alt="" style="object-position: 38% 52%" loading="lazy">
+            <div class="par" id="desc-8">请停止对于香港的妖魔化...
             </div>
         </section>
         <footer>
-            <span class="readingTime">3 min read
+            <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
-    </ul>
+                <div class="baselineskip" role="presentation"></div>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
                         <article class="feed-item"
@@ -579,37 +577,36 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2024-09-23T00:00:00&#43;00:00" data-time-label="Published on">September 23, 2024</time>
-            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+        <time class="doc-publish-date" datetime="2024-09-25T00:00:00&#43;00:00" data-time-label="Published on">September 25, 2024</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2024-9-23-rl01/" tabindex="-1">
-                <h1 id="title-9">强化学习中的基本概念以及马尔可夫决策</h1>
+            <a href="https://ashhhi.life/en/post/2024-9-25-rl02/" class="sr0" tabindex="-1" aria-describedby="desc-9">
+                <h1 id="title-9">Bellman Function详解</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2024-9-23-rl01/" aria-label="强化学习中的基本概念以及马尔可夫决策"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2024-9-25-rl02/" aria-label="Bellman Function详解" aria-describedby="desc-9"></a>
         
         <section class="has-cover">
-                <img src=https://ashhhi.life/img/2024-9-23-RL01/1.png alt="Featured image: .page.Title" loading="lazy">
-            <div class="par" id="desc-9">本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。
+                <img class="flowlines" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" alt="" style="object-position: 4% 77%" loading="lazy">
+            <div class="par" id="desc-9">本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
             </div>
         </section>
         <footer>
-            <span class="readingTime">1 min read
+            <span class="readingTime">3 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/" tabindex="-1">Reinforcement Learning</a></li>
     </ul>
         </footer>
     </article><hr class="ldots" role="presentation" aria-hidden="true">
@@ -622,38 +619,36 @@
             <div>
                 <span><span>[Ash]</span>
                         <span>in</span>
-                            <!-- terms.html -->
+                                <!-- terms.html -->
     <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/categories/technology/">Technology</a></li>
+            <li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
     </ul>
-                        
+                            
                 </span>
                 
                 <!-- timestamp.html-->
     <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2024-09-06T00:00:00&#43;00:00" data-time-label="Published on">September 6, 2024</time>
-            <time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
+        <time class="doc-publish-date" datetime="2024-09-23T00:00:00&#43;00:00" data-time-label="Published on">September 23, 2024</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
     </div>
             </div>
-            <a href="https://ashhhi.life/en/post/2024-09-06-detr/" tabindex="-1">
-                <h1 id="title-10">如何用DETR官方代码训练自己的数据集</h1>
+            <a href="https://ashhhi.life/en/post/2024-9-23-rl01/" class="sr0" tabindex="-1" aria-describedby="desc-10">
+                <h1 id="title-10">强化学习中的基本概念以及马尔可夫决策</h1>
             </a>
         </hgroup>
-        <a class="underline" href="https://ashhhi.life/en/post/2024-09-06-detr/" aria-label="如何用DETR官方代码训练自己的数据集"></a>
+        <a class="sri" href="https://ashhhi.life/en/post/2024-9-23-rl01/" aria-label="强化学习中的基本概念以及马尔可夫决策" aria-describedby="desc-10"></a>
         
         <section class="has-cover">
-                <img src=https://ashhhi.life/img/2024-09-06-DETR/detr_image.png alt="Featured image: .page.Title" loading="lazy">
-            <div class="par" id="desc-10">DETR作为Transformer在目标检测中的开山之作，影响力自然不必多说，并且官方已经开源了代码，因此最好的学习方式便是利用论文和代码进行实践，论文地址和Github代码链接附上：
+                <img src=https://ashhhi.life/img/2024-9-23-RL01/1.png alt="Featured image: 强化学习中的基本概念以及马尔可夫决策" loading="lazy">
+            <div class="par" id="desc-10">本系列为强化学习的学习笔记，本章讲解对强化学习的个人理解以及名词解释，如state，action，policy，reward，return，以及MDP。
             </div>
         </section>
         <footer>
-            <span class="readingTime">5 min read
+            <span class="readingTime">1 min read
             </span>
             
-                <!-- terms.html -->
-    <ul class="rounded invert ldots" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/deep-learning/">Deep Learning</a></li>
-            <li><a href="https://ashhhi.life/en/tags/computer-vision/">Computer Vision</a></li>
+                    <!-- terms.html -->
+    <ul class="rounded invert" role="presentation">
+            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/" tabindex="-1">Reinforcement Learning</a></li>
     </ul>
         </footer>
     </article>
@@ -665,10 +660,10 @@
         <span>Pagination</span>
     </summary>
         <nav aria-labelledby="pagination">
-            <ul role="presentation" class="pagination">
+            <ul role="presentation" class="pagination ">
                     <!-- paginator.html -->
     <li class="lfill">
-        <a class="underline" href="https://ashhhi.life/en/post/page/2/" rel="next">
+        <a href="https://ashhhi.life/en/post/page/2/" rel="next">
             <span>Next</span>
         </a>
     </li>
@@ -677,214 +672,61 @@
 </details>
             </section>
         <!-- main/footer.html -->
-    <hr class="hide">
-        <footer id="main-footer">
-            <div class="column column--multicols pagewidth" style="--multicols: 2"><div id="main-footer-primary"
-                        aria-labelledby="footer-1">
-                        <p><!-- raw HTML omitted -->Ash SHI Junshen<!-- raw HTML omitted --><!-- raw HTML omitted --> 2024<!-- raw HTML omitted --></p>
-<p>Some rights reserved.</p>
-<!-- raw HTML omitted -->
-
-                    </div>
-                <div id="main-footer-secondary" class="column" style="--col: 15rem">                    
-                    <!-- menu.html -->
-                </div>
-            </div>
-        </footer>
     </main>
     <!-- footer.html -->
 <footer id="body-footer" class="pagewidth" style="display: none;">
-    <div id="background-footer" class="background" role="presentation"></div>
-    <!-- focusMode.html -->
-    <div id="focusMode" class="hide">
-        <input
-            id="defocusAuxElement"
-            accesskey="d" type="checkbox"
-            onclick="focusMode()"
-            aria-keyshortcuts="d"
-            aria-label="Focus Mode"
-            >
-            <label id="focusModeButton" for="defocusAuxElement" aria-label="Focus Mode">
-                ⦿ <span class="t" role="tooltip">Focus Mode</span>
-            </label>
+    <div id="background-footer" class="background hide" role="presentation" aria-hidden="true">
+        <div class="grain" hidden></div>
     </div>
-    <!-- a11y.html --><details id="has-a11y" class="presentation js-details" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
+    <div id="focusMode"></div>
+    <!-- a11y.html --><details id="has-a11y" class="presentation js-details hide" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
     <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
         <span>&nbsp;Accessibility</span>
         <kbd class="key" aria-hidden="true">a</kbd>
     </summary>
     <!-- a11y console -->
-    <fieldset id="a11y" role="region" disabled>
-        <!-- brightness & contrast -->
-        <div id="setColorScheme" role="group" aria-label="Color Settings">
-            <!-- darkMode.html -->
-    <input
-        id="lightSwitch"
-        type="checkbox"
-        onclick="setColor()"
-        aria-label="Dark Mode"
-        >
-        <label for="lightSwitch">
-            <div class="has-aria-label off" role="status" aria-label="Light"></div>
-            <div class="has-aria-label on" role="status" aria-label="Dark"></div>
-            <div id="lightSwitchIndicator" aria-hidden="true"></div>
-        </label>
-            <!-- contrast.html -->
-    <fieldset id="setContrast">
-        <legend>Contrast</legend>
-        <input
-            id="lessContrast"
-            type="radio" name="setContrast" value="less"
-            onclick="setColor()"
-            >
-            <label for="lessContrast">
-                <span>Low</span>
-            </label>
-        <input
-            id="defaultContrast"
-            type="radio" name="setContrast" value="default"
-            onclick="setColor()"
-            >
-            <label for="defaultContrast">
-                <span>Default</span>
-            </label>
-        <input
-            id="moreContrast"
-            type="radio" name="setContrast" value="more"
-            onclick="setColor()"
-            >
-            <label for="moreContrast">
-                <span>High</span>
-            </label>
-    </fieldset>
-        </div>
-        <!-- colorPalette.html -->
-    <div id="setColorPalette" style="display:none;">
-        <label for="colorPalette">Color Palette</label>
-        <select id="colorPalette" name="colorPalette" oninput="setColorPalette()" aria-label="Color Palette">
-            <option value="defaultColor">Default</option>
-            <option value="deuteranopia">Deuteranopia</option>
-            <option value="protanopia">Protanopia</option>
-            <option value="tritanopia">Tritanopia</option>
-            <option value="monochrome">Monochrome</option>
-        </select>
-    </div>
-        <!-- fontsize.html -->
-    <div class="has-aria-label-top" aria-label="Font Size">
-        <label class="range" for="fontSize" aria-label="Font Size">
-            <input
-                id="fontSize"
-                type="range" min="8" max="12" step="0.5"
-                oninput="setFontSize()">
-            <output
-                id="fontSizeState"
-                onclick="resetFontSize()"
-                aria-live="polite"
-                >10</output>
-        </label>
-    </div>
-        <!-- baselineStretch.html -->
-    <div id="setBaselineStretch" class="has-aria-label-top" aria-label="Baseline Stretch">
-        <label class="range" for="baselineStretch">
-            <input
-                id="baselineStretch"
-                type="range" min="0.8" max="1.2" step="0.05"
-                oninput="setStretch()"
-                >
-            <output
-                id="baselineStretchState"
-                onclick="resetStretch()"
-                aria-live="polite"
-                >1</output>
-        </label>
-    </div>
-        <!-- OpenDyslexic.html -->
-    <div id="setOpenDyslexic">
-        <input
-            id="OpenDyslexic"
-            type="checkbox"
-            onclick="useOpenDyslexic()"
-            aria-label="Use OpenDyslexic Font"
-            >
-            <label
-                class="has-aria-label-top"
-                for="OpenDyslexic"
-                aria-label="Use OpenDyslexic Font"
-                >
-                <span id="OpenDyslexicState" aria-hidden="true">
-                    <span id="OpenDyslexicIndicator"></span>
-                </span>
-            </label>
-    </div>
-        <!-- menu.html -->
-    <menu
-        id="a11y-menu"
-        class="hide"
-        role="toolbar"
-        aria-label="Accessibility Menu Controls"
-        >
-        <button
-            id="saveButton" class="reverse"
-            onclick="saveA11y()"
-            disabled>Save
-        </button>
-        <button
-            id="resetButton" class="has-aria-label"
-            onclick="resetA11y()"
-            aria-label="Reset"
-            disabled>
-        </button>
-        <button
-            id="closeButton" class="has-aria-label"
-            onclick="closeA11yConsole()"
-            aria-label="Close"
-            >
-        </button>
-    </menu>
-        <noscript>
-            <center id="noScript" role="alert">Uh-oh... Javascript is disabled!</center>
-        </noscript>
-        <center id="noLocalStorage" class="hide" role="alert">LocalStorage is not available in your browser. Settings won&#39;t be saved.</center>
+    <fieldset id="a11y" role="region" aria-label="Accessibility"
+        data-i18n-optimizeSR="Screen Reader Optimization"
+        data-i18n-optimizeSRdesc="Optimize display and resources for screen reader users who navigate with a pointer device."
+        data-i18n-colorSettings="Color Settings"
+        data-i18n-darkMode="Dark Mode"
+        data-i18n-light="Light"
+        data-i18n-dark="Dark"
+        data-i18n-contrast="Contrast"
+        data-i18n-lessContrast="Low"
+        data-i18n-moreContrast="High"
+        data-i18n-defaultContrast="Default"
+        data-i18n-colorPalette="Color Palette"
+        data-i18n-defaultColor="Default"
+        data-i18n-deuteranopia="Deuteranopia"
+        data-i18n-protanopia="Protanopia"
+        data-i18n-tritanopia="Tritanopia"
+        data-i18n-monochrome="Monochrome"
+        data-i18n-fontSize="Font Size"
+        data-i18n-baselineStretch="Baseline Stretch"
+        data-i18n-OpenDyslexic="Use OpenDyslexic Font"
+        data-i18n-menuControls="Accessibility Menu Controls"
+        data-i18n-save="Save"
+        data-i18n-reset="Reset"
+        data-i18n-close="Close"
+        data-i18n-bionRead="BionRead Mode"
+        data-i18n-focusMode="Focus Mode"
+        data-i18n-noLocalStorage="LocalStorage is not available in your browser. Settings won&#39;t be saved.">
     </fieldset>
     <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
 </details>
 
 
-    <!-- bionread.html -->
-    <div id="useBionRead" class="hide">
-        <input
-            id="bionReadSwitch"
-            accesskey="b" type="checkbox"
-            onclick="bionRead()"
-            aria-keyshortcuts="b"
-            aria-label="BionRead Mode"
-            >
-            <label id="bionReadButton" for="bionReadSwitch">
-                <span><strong>Bion</strong>Read</span>
-                <kbd class="key" aria-hidden="true">b</kbd>
-            </label>
-    </div>
+    <div id="useBionRead" class="sri"></div>
     <!-- [top] bypass block -->
     <nav aria-label="Bypass">
-        <a id="to-top" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+        <a id="to-top" class="srm" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
+            <span class="t srt">To Content Top</span>
             <kbd class="key" aria-hidden="true">c</kbd>
         </a>
     </nav>
 </footer>
-
     
     <!-- [background] baseof.html -->
-    <div id="background-body"
-        role="presentation">
-        <div id="grain" hidden></div>
-        <div id="dwclock" hidden>
-            <div id="min">
-                <div class="hand"></div>
-            </div>
-            <div id="hour">
-                <div class="hand"></div>
-            </div>
-        </div>
-    </div>
-</body>
+    <div id="background-body" role="presentation" aria-hidden="true"></div>
 </html>
