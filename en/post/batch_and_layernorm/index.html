@@ -1,52 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
-<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=60479&amp;path=livereload" data-no-instant defer></script>
-    <!-- head.html --><!-- meta.html -->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html dir="ltr" lang="en">
+<head><script data-no-instant="" defer="" src="/livereload.js?mindelay=10&amp;v=2&amp;port=60479&amp;path=livereload"></script>
+<!-- head.html --><!-- meta.html -->
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>Batch Norm vs Layer Norm | Ashhhi</title>
-<meta name="author" content="Ash">
-<meta name="description" content="Normalization归一化是深度学习中比较重要一项技术，它可以帮助神经网络更快地收敛，它的目的就是使得预处理的数据被限定在一定的范围内（比如[0,1]或者[-1,1]），从而消除奇异样本数据导致的不良影响。
-" >
-<meta name="keywords" content="Deep Learning">
-<link rel="canonical" href="http://localhost:60479/en/post/batch_and_layernorm/">
-
-
-
-        <link rel="me" href="https://example.com/@username">
-    <!-- js.html -->
-
-
-    <script src="http://localhost:60479/js/hugo-brewm.min.js" defer></script><!-- css.html -->
-
-
-    <link rel="stylesheet" href="http://localhost:60479/css/hugo-brewm.min.css">
-
-
-
-    <!-- css/inline.html -->
-    <style>
+<meta content="Ash" name="author"/>
+<meta content="Normalization归一化是深度学习中比较重要一项技术，它可以帮助神经网络更快地收敛，它的目的就是使得预处理的数据被限定在一定的范围内（比如[0,1]或者[-1,1]），从而消除奇异样本数据导致的不良影响。
+" name="description"/>
+<meta content="Deep Learning" name="keywords"/>
+<link href="http://localhost:60479/en/post/batch_and_layernorm/" rel="canonical"/>
+<link href="https://example.com/@username" rel="me"/>
+<!-- js.html -->
+<script defer="" src="http://localhost:60479/js/hugo-brewm.min.js"></script><!-- css.html -->
+<link href="http://localhost:60479/css/hugo-brewm.min.css" rel="stylesheet"/>
+<!-- css/inline.html -->
+<style>
          
         body {max-width: 786px; margin: auto; padding: 2rem;}
         img {max-width: 86vw;}
     </style>
-    
-    
-        <link rel="me" href="https://example.com/@username">
-    
-        <!-- katex.html -->
-    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet"
-        integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
-        integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"
-        defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
-        integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"
-        defer></script>
-    <script>
+<link href="https://example.com/@username" rel="me"/>
+<!-- katex.html -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer="" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" onload="renderMathInElement(document.body);" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script>
         document.addEventListener("DOMContentLoaded", function() {
             renderMathInElement(document.getElementById('main-article'), {
                 delimiters: [
@@ -61,50 +41,45 @@
             });
         });
     </script>
-    
 </head>
 <body>
-    <!-- header.html -->
+<!-- header.html -->
 <header class="pagewidth">
-    <div id="background-header" class="background" aria-hidden="true">
-        <div class="grain" hidden></div>
-    </div>
-    
-    <nav aria-label="Bypass">
-        <a id="to-content" href="#content" aria-label="Skip to Main Content">
-            <span>Skip to Main Content</span>
-            <kbd class="key" aria-hidden="true">c</kbd>
-            <span class="screening" aria-hidden="true"></span>
-        </a>
-    </nav>
-    
-        <a id="logo" href="http://localhost:60479/en/" aria-label="Ashhhi" aria-description="Homepage">
-                <img id="logomark--dark" src="https://example.com/logoMarkDark.svg" alt="Ashhhi" />
-                <img id="logomark" src="https://example.com/logoMark.svg" alt="Ashhhi" />
-                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt" aria-label="Ashhhi">
-            <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
-        </svg>
-        </a>
-    
-    <details class="presentation" id="top-nav">
-        <summary class="on-deck">
-            <span class="t">Navigation</span>
-            <span class="menu-icon" role="presentation"></span>
-        </summary>
-        <nav tabindex="-1" aria-label="Top">
-            <!-- menu.html -->
-            <!-- search.html -->
-<details id="has-search" class="presentation js-details" name="on-deck">
-    <summary class="on-deck srm" accesskey="q" aria-labelledby="search-label" aria-keyshortcuts="q">
-        <span id="search-label" class="t srt">Search</span>
-    </summary>
-    
-        <!-- pagefind.html -->
-    <div id="search" class="on-hull">
-        <div role="presentation" class="screening js-cgpn"></div>
-    </div>
-    <script src="http://localhost:60479/pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <script>
+<div aria-hidden="true" class="background" id="background-header">
+<div class="grain" hidden=""></div>
+</div>
+<nav aria-label="Bypass">
+<a aria-label="Skip to Main Content" href="#content" id="to-content">
+<span>Skip to Main Content</span>
+<kbd aria-hidden="true" class="key">c</kbd>
+<span aria-hidden="true" class="screening"></span>
+</a>
+</nav>
+<a aria-description="Homepage" aria-label="Ashhhi" href="http://localhost:60479/en/" id="logo">
+<img alt="Ashhhi" id="logomark--dark" src="https://example.com/logoMarkDark.svg"/>
+<img alt="Ashhhi" id="logomark" src="https://example.com/logoMark.svg"/>
+<!-- logotype.html --><svg aria-label="Ashhhi" id="logotype" version="1.1" width="168pt" xmlns="http://www.w3.org/2000/svg">
+<text id="logotype__text" x="0" y="19.5pt">Ashhhi</text>
+</svg>
+</a>
+<details class="presentation" id="top-nav">
+<summary class="on-deck">
+<span class="t">Navigation</span>
+<span class="menu-icon" role="presentation"></span>
+</summary>
+<nav aria-label="Top" tabindex="-1">
+<!-- menu.html -->
+<!-- search.html -->
+<details class="presentation js-details" id="has-search" name="on-deck">
+<summary accesskey="q" aria-keyshortcuts="q" aria-labelledby="search-label" class="on-deck srm">
+<span class="t srt" id="search-label">Search</span>
+</summary>
+<!-- pagefind.html -->
+<div class="on-hull" id="search">
+<div class="screening js-cgpn" role="presentation"></div>
+</div>
+<script src="http://localhost:60479/pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
             if (!pageFindInitialized) {
@@ -126,208 +101,160 @@
         };
         document.addEventListener('DOMContentLoaded', initPageFind);
     </script>
-        <noscript id="has-search-fallback" class="on-hull">
-                
-    <!-- duckduckgo.html -->
-    <form id="duckduckgo" class="form on-plank"
-        name="x" action="//duckduckgo.com/"
-        role="search" aria-label="">
-        <input type="hidden" value="localhost:60479" name="sites"></input>
-        <input type="hidden" value="1" name="kh"></input>
-        <input type="hidden" value="1" name="kn"></input>
-        <input type="hidden" value="1" name="kac"></input>
-        <input class="ldots form__input" type="search" placeholder="Search" name="q" role="searchbox"></input>
-        <button class="form__button" type="submit" aria-label="Search">
-            <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
-        </button>
-    </form>
-    <div role="presentation" class="screening js-cgpn"></div>
-        </noscript>
-    
+<noscript class="on-hull" id="has-search-fallback">
+<!-- duckduckgo.html -->
+<form action="//duckduckgo.com/" aria-label="" class="form on-plank" id="duckduckgo" name="x" role="search">
+<input name="sites" type="hidden" value="localhost:60479"/>
+<input name="kh" type="hidden" value="1"/>
+<input name="kn" type="hidden" value="1"/>
+<input name="kac" type="hidden" value="1"/>
+<input class="ldots form__input" name="q" placeholder="Search" role="searchbox" type="search"/>
+<button aria-label="Search" class="form__button" type="submit">
+<img alt="" aria-hidden="true" role="presentation" src="https://duckduckgo.com/assets/logo_header.v109.svg"/>
+</button>
+</form>
+<div class="screening js-cgpn" role="presentation"></div>
+</noscript>
 </details>
-
-            <!-- menu.html -->
-            <!-- i18n.html -->
-
-        </nav>
-        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
-    </details>
+<!-- menu.html -->
+<!-- i18n.html -->
+</nav>
+<div aria-hidden="true" class="screening js-cpn" id="top-nav-screen" role="presentation"></div>
+</details>
 </header>
-    
-    <!-- [main] baseof.html -->
-    <main id="page"class="post"
-        >
-        <!-- main/header.html -->
-        <header class="pagewidth">
-                    <menu class="srm"><button id="print-button" class="hide" onclick="window.print()" aria-label="Print">
-        <span class="t srt" role="tooltip">Print</span>
-    </button>
-    <a id="navigatorShare" href="#share" role="button" aria-label="Share">
-        <span class="t srt" role="tooltip">Share</span>
-    </a>
-    <button id="copyPermalink"  onclick="navigator.clipboard.writeText(window.location.href)" aria-label="Copy URL">
-        <span id="copy" class="t srt" role="tooltip">Copy URL</span>
-        <span id="isCopying" style="display: none;">Copying...</span>
-        <span id="copyText" style="display: none;">Copy URL</span>
-    </button>
-                    </menu>
-            <!-- nav.html -->
-<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
-    <summary id="breadcrumb" tabindex="-1">
-        <span>Breadcrumb</span>
-    </summary>
-        <nav aria-labelledby="breadcrumb">
-            <ul role="presentation" class="breadcrumb ">
-                    <!-- breadcrumb.html -->
-        <li>
-            <a href="http://localhost:60479/en/post/" aria-current="true">Post
+<!-- [main] baseof.html -->
+<main class="post" id="page">
+<!-- main/header.html -->
+<header class="pagewidth">
+<menu class="srm"><button aria-label="Print" class="hide" id="print-button" onclick="window.print()">
+<span class="t srt" role="tooltip">Print</span>
+</button>
+<a aria-label="Share" href="#share" id="navigatorShare" role="button">
+<span class="t srt" role="tooltip">Share</span>
+</a>
+<button aria-label="Copy URL" id="copyPermalink" onclick="navigator.clipboard.writeText(window.location.href)">
+<span class="t srt" id="copy" role="tooltip">Copy URL</span>
+<span id="isCopying" style="display: none;">Copying...</span>
+<span id="copyText" style="display: none;">Copy URL</span>
+</button>
+</menu>
+<!-- nav.html -->
+<details aria-expanded="true" class="presentation" id="has-breadcrumb" open="">
+<summary id="breadcrumb" tabindex="-1">
+<span>Breadcrumb</span>
+</summary>
+<nav aria-labelledby="breadcrumb">
+<ul class="breadcrumb" role="presentation">
+<!-- breadcrumb.html -->
+<li>
+<a aria-current="true" href="http://localhost:60479/en/post/">Post
             </a>
-        </li>
-    <li>
-        <a href="" aria-current="page" tabindex="-1">Batch Norm vs Layer Norm
+</li>
+<li>
+<a aria-current="page" href="" tabindex="-1">Batch Norm vs Layer Norm
         </a>
-    </li>
-            </ul>
-        </nav>
+</li>
+</ul>
+</nav>
 </details>
-        </header>
-        <div id="top" role="presentation">
-            
-        </div>
-        
-
-    <article id="main-article" class="pagewidth"
-        role="document" aria-labelledby="title"
-            data-pagefind-body>
-        <header class="textwidth" aria-labelledby="title">
-            <!-- title.html -->
-        <h1 id="title"
-                data-pagefind-meta="title"
-            data-bionRead-safe
-            >Batch Norm vs Layer Norm</h1>
-            <div id="doc-author" class="textsw author"><span>Ash</span>
-            </div>
-            <!-- timestamp.html-->
-    <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2025-02-28T00:00:00&#43;00:00" data-time-label="Published on">February 28, 2025</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
-    </div>
-        </header>
-        <!-- audio.html -->
-        <section aria-labelledby="Title" id="content" data-bionRead-safe>
-                <p>Normalization归一化是深度学习中比较重要一项技术，它可以帮助神经网络更快地收敛，它的目的就是使得预处理的数据被限定在一定的范围内（比如[0,1]或者[-1,1]），从而消除奇异样本数据导致的不良影响。</p>
+</header>
+<div id="top" role="presentation">
+</div>
+<article aria-labelledby="title" class="pagewidth" data-pagefind-body="" id="main-article" role="document">
+<header aria-labelledby="title" class="textwidth">
+<!-- title.html -->
+<h1 data-bionread-safe="" data-pagefind-meta="title" id="title">Batch Norm vs Layer Norm</h1>
+<div class="textsw author" id="doc-author"><span>Ash</span>
+</div>
+<!-- timestamp.html-->
+<div class="date-has-label">
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-02-28T00:00:00+00:00">February 28, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
+</div>
+</header>
+<!-- audio.html -->
+<section aria-labelledby="Title" data-bionread-safe="" id="content">
+<p>Normalization归一化是深度学习中比较重要一项技术，它可以帮助神经网络更快地收敛，它的目的就是使得预处理的数据被限定在一定的范围内（比如[0,1]或者[-1,1]），从而消除奇异样本数据导致的不良影响。</p>
 <p>通过归一化，不同数据之间的量纲可以被消除掉，举个预测房价例子，参数是房子面积以及房间数量，房子面积的量纲可能是30-300平米，而房间数量可能不超过5，两个参数的范围相差比较大，</p>
-        </section>
-        <footer>
-            
-    <nav id="keywords" aria-label="Tags">
-        <span>Tag:&nbsp;</span>
-        
-        <!-- terms.html -->
-    <ul class="inline" role="presentation">
-            <li><a href="http://localhost:60479/en/tags/deep-learning/" >Deep Learning</a></li>
-    </ul>
-    </nav>
-        </footer>
-    </article>
-    <hr class="hide" style="margin: 1in 0;">
-    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
-            <!-- related.html -->
-    <nav id="related" aria-label="You might also like"><strong class="section-title">You might also like</strong>
-                <ol>
-                    <li><a href="http://localhost:60479/en/post/regression-loss/">Regression Loss Function Summary</a></li>
-                    <li><a href="http://localhost:60479/en/post/2025-02-18-gather/">PyTorch中的gather函数详解</a></li>
-                    <li><a href="http://localhost:60479/en/post/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
-                </ol>
-    </nav>
-            <!-- colophon.html -->
-    <div id="colophon" style="display: none;" aria-live="polite">
-        <strong class="section-title">Colophon</strong>
-        <div>
-            <div id="qr" role="img" aria-label="QR code"></div>
-            <div class="verbose">
-                <div class="has-aria-label-top" aria-label="Batch Norm vs Layer Norm"><span>http://localhost:60479/en/post/batch_and_layernorm/</span></div>
-                <div><span>This page is built on: </span><time datetime="2025-10-10T20:55:40&#43;08:00">2025-10-10 20:55</time></div>
-                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div><div><span>Powered by </span><a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <a href="https://github.com/gohugoio/hugo/releases/tag/v0.145.0" aria-label="Hugo 0.145.0" target="_blank" rel="noopener">v0.145.0</a> & <a href="https://github.com/foxihd/hugo-brewm" target="_blank" rel="noopener">hugo-brewm</a>.</div>
-            </div>
-        </div>
-    </div>
-            <!-- history.html -->
-        <div id="has-timeline" >
-            <strong class="section-title">Redaction History</strong>
-            <ol aria-label="Redaction History">
-                <li>
-                    <time datetime="2025-02-28T00:00:00&#43;00:00">February 28, 2025</time>
-                    <span>(Published)</span>
-                </li>
-                <li>
-                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
-                    <span>(Modified)</span>
-                </li>
-            </ol>
-            <p>Some information might changes over time, we keep redaction up to date.</p>
-        </div>
-        
-    </div>
-    <div class="pagewidth">
-        </div>
-        <!-- main/footer.html -->
-    </main>
-    <!-- footer.html -->
-<footer id="body-footer" class="pagewidth" style="display: none;">
-    <div id="background-footer" class="background hide" role="presentation" aria-hidden="true">
-        <div class="grain" hidden></div>
-    </div>
-    <div id="focusMode"></div>
-    <!-- a11y.html --><details id="has-a11y" class="presentation js-details hide" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
-    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
-        <span>&nbsp;Accessibility</span>
-        <kbd class="key" aria-hidden="true">a</kbd>
-    </summary>
-    <!-- a11y console -->
-    <fieldset id="a11y" role="region" aria-label="Accessibility"
-        data-i18n-optimizeSR="Screen Reader Optimization"
-        data-i18n-optimizeSRdesc="Optimize display and resources for screen reader users who navigate with a pointer device."
-        data-i18n-colorSettings="Color Settings"
-        data-i18n-darkMode="Dark Mode"
-        data-i18n-light="Light"
-        data-i18n-dark="Dark"
-        data-i18n-contrast="Contrast"
-        data-i18n-lessContrast="Low"
-        data-i18n-moreContrast="High"
-        data-i18n-defaultContrast="Default"
-        data-i18n-colorPalette="Color Palette"
-        data-i18n-defaultColor="Default"
-        data-i18n-deuteranopia="Deuteranopia"
-        data-i18n-protanopia="Protanopia"
-        data-i18n-tritanopia="Tritanopia"
-        data-i18n-monochrome="Monochrome"
-        data-i18n-fontSize="Font Size"
-        data-i18n-baselineStretch="Baseline Stretch"
-        data-i18n-OpenDyslexic="Use OpenDyslexic Font"
-        data-i18n-menuControls="Accessibility Menu Controls"
-        data-i18n-save="Save"
-        data-i18n-reset="Reset"
-        data-i18n-close="Close"
-        data-i18n-bionRead="BionRead Mode"
-        data-i18n-focusMode="Focus Mode"
-        data-i18n-noLocalStorage="LocalStorage is not available in your browser. Settings won&#39;t be saved.">
-    </fieldset>
-    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
-</details>
-
-
-    <div id="useBionRead" class="sri"></div>
-    <!-- [top] bypass block -->
-    <nav aria-label="Bypass">
-        <a id="to-top" class="srm" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
-            <span class="t srt">To Content Top</span>
-            <kbd class="key" aria-hidden="true">c</kbd>
-        </a>
-    </nav>
+</section>
+<footer>
+<nav aria-label="Tags" id="keywords">
+<span>Tag: </span>
+<!-- terms.html -->
+<ul class="inline" role="presentation">
+<li><a href="http://localhost:60479/en/tags/deep-learning/">Deep Learning</a></li>
+</ul>
+</nav>
 </footer>
-    
-    <!-- [post] single.html -->
-    <div id="bionReadSnapshot" hidden></div>
-    <!-- [background] baseof.html -->
-    <div id="background-body" role="presentation" aria-hidden="true"></div>
-</html>
+</article>
+<hr class="hide" style="margin: 1in 0;"/>
+<div class="pagewidth" data-pagefind-ignore="all" id="contentinfo" role="contentinfo">
+<!-- related.html -->
+<nav aria-label="You might also like" id="related"><strong class="section-title">You might also like</strong>
+<ol>
+<li><a href="http://localhost:60479/en/post/regression-loss/">Regression Loss Function Summary</a></li>
+<li><a href="http://localhost:60479/en/post/2025-02-18-gather/">PyTorch中的gather函数详解</a></li>
+<li><a href="http://localhost:60479/en/post/2024-09-06-detr/">如何用DETR官方代码训练自己的数据集</a></li>
+</ol>
+</nav>
+<!-- colophon.html -->
+<div aria-live="polite" id="colophon" style="display: none;">
+<strong class="section-title">Colophon</strong>
+<div>
+<div aria-label="QR code" id="qr" role="img"></div>
+<div class="verbose">
+<div aria-label="Batch Norm vs Layer Norm" class="has-aria-label-top"><span>http://localhost:60479/en/post/batch_and_layernorm/</span></div>
+<div><span>This page is built on: </span><time datetime="2025-10-10T20:55:40+08:00">2025-10-10 20:55</time></div>
+<div><span>This page is accessed on: </span><time id="time-stamp"></time></div><div><span>Powered by </span><a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> <a aria-label="Hugo 0.145.0" href="https://github.com/gohugoio/hugo/releases/tag/v0.145.0" rel="noopener" target="_blank">v0.145.0</a> &amp; <a href="https://github.com/foxihd/hugo-brewm" rel="noopener" target="_blank">hugo-brewm</a>.</div>
+</div>
+</div>
+</div>
+<!-- history.html -->
+<div id="has-timeline">
+<strong class="section-title">Redaction History</strong>
+<ol aria-label="Redaction History">
+<li>
+<time datetime="2025-02-28T00:00:00+00:00">February 28, 2025</time>
+<span>(Published)</span>
+</li>
+<li>
+<time datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
+<span>(Modified)</span>
+</li>
+</ol>
+<p>Some information might changes over time, we keep redaction up to date.</p>
+</div>
+</div>
+<div class="pagewidth">
+</div>
+<!-- main/footer.html -->
+</main>
+<!-- footer.html -->
+<footer class="pagewidth" id="body-footer" style="display: none;">
+<div aria-hidden="true" class="background hide" id="background-footer" role="presentation">
+<div class="grain" hidden=""></div>
+</div>
+<div id="focusMode"></div>
+<!-- a11y.html --><details aria-haspopup="true" aria-labelledby="has-a11y-summary" class="presentation js-details hide" id="has-a11y" name="on-deck">
+<summary accesskey="a" aria-keyshortcuts="a" id="has-a11y-summary">
+<span> Accessibility</span>
+<kbd aria-hidden="true" class="key">a</kbd>
+</summary>
+<!-- a11y console -->
+<fieldset aria-label="Accessibility" data-i18n-baselinestretch="Baseline Stretch" data-i18n-bionread="BionRead Mode" data-i18n-close="Close" data-i18n-colorpalette="Color Palette" data-i18n-colorsettings="Color Settings" data-i18n-contrast="Contrast" data-i18n-dark="Dark" data-i18n-darkmode="Dark Mode" data-i18n-defaultcolor="Default" data-i18n-defaultcontrast="Default" data-i18n-deuteranopia="Deuteranopia" data-i18n-focusmode="Focus Mode" data-i18n-fontsize="Font Size" data-i18n-lesscontrast="Low" data-i18n-light="Light" data-i18n-menucontrols="Accessibility Menu Controls" data-i18n-monochrome="Monochrome" data-i18n-morecontrast="High" data-i18n-nolocalstorage="LocalStorage is not available in your browser. Settings won't be saved." data-i18n-opendyslexic="Use OpenDyslexic Font" data-i18n-optimizesr="Screen Reader Optimization" data-i18n-optimizesrdesc="Optimize display and resources for screen reader users who navigate with a pointer device." data-i18n-protanopia="Protanopia" data-i18n-reset="Reset" data-i18n-save="Save" data-i18n-tritanopia="Tritanopia" id="a11y" role="region">
+</fieldset>
+<div aria-hidden="true" class="screening js-cpn" role="presentation"></div>
+</details>
+<div class="sri" id="useBionRead"></div>
+<!-- [top] bypass block -->
+<nav aria-label="Bypass">
+<a accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top" class="srm" href="#top" id="to-top" title="To Content Top">
+<span class="t srt">To Content Top</span>
+<kbd aria-hidden="true" class="key">c</kbd>
+</a>
+</nav>
+</footer>
+<!-- [post] single.html -->
+<div hidden="" id="bionReadSnapshot"></div>
+<!-- [background] baseof.html -->
+<div aria-hidden="true" id="background-body" role="presentation"></div>
+</body></html>

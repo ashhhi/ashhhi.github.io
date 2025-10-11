@@ -1,59 +1,34 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html dir="ltr" lang="en">
 <head>
-    <!-- head.html --><!-- meta.html -->
-
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- head.html --><!-- meta.html -->
+<meta charset="utf-8"/>
+<meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 <title>策略迭代（Policy Iteration） vs 值迭代（Value Iteration） | Ashhhi</title>
-<meta name="author" content="[Ash]">
-<meta name="description" content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
-" >
-<meta name="keywords" content="Reinforcement Learning">
-<link rel="canonical" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/">
-
-
-        
-        <link rel="icon" type="image/svg+xml" href="https://ashhhi.life/img/potato-logo.svg" />
-        
-        
-        <meta name="apple-mobile-web-app-title" content="Ashhhi" />
-        
-
-        <link rel="me" href="https://example.com/@username">
-    <!-- js.html -->
-
-<script src="https://ashhhi.life/js/hugo-brewm.min.js"
-            integrity="sha384-d4QeYigDeuSJIVAgWwT2Rb&#43;9lSo4UbGYS2fPnRMy4XUtE0RcB69UCYInyjdDOGGz" crossorigin="anonymous"
-            defer></script><!-- css.html -->
-
-
-        <link rel="stylesheet" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-qxhTSARMhFq9RJGWfX8v7xD44LkrTvuppQBWTUMBsfo=" crossorigin="anonymous">
-
-
-
-    <!-- css/inline.html -->
-    <style>
+<meta content="[Ash]" name="author"/>
+<meta content="先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
+" name="description"/>
+<meta content="Reinforcement Learning" name="keywords"/>
+<link href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" rel="canonical"/>
+<link href="https://ashhhi.life/img/potato-logo.svg" rel="icon" type="image/svg+xml"/>
+<meta content="Ashhhi" name="apple-mobile-web-app-title"/>
+<link href="https://example.com/@username" rel="me"/>
+<!-- js.html -->
+<script crossorigin="anonymous" defer="" integrity="sha384-d4QeYigDeuSJIVAgWwT2Rb+9lSo4UbGYS2fPnRMy4XUtE0RcB69UCYInyjdDOGGz" src="https://ashhhi.life/js/hugo-brewm.min.js"></script><!-- css.html -->
+<link crossorigin="anonymous" href="https://ashhhi.life/css/hugo-brewm.min.css" integrity="sha256-qxhTSARMhFq9RJGWfX8v7xD44LkrTvuppQBWTUMBsfo=" rel="stylesheet"/>
+<!-- css/inline.html -->
+<style>
          
         body {max-width: 786px; margin: auto; padding: 2rem;}
         img {max-width: 86vw;}
     </style>
-    
-    
-        <link rel="me" href="https://example.com/@username">
-    
-        <!-- katex.html -->
-    <link href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" rel="stylesheet"
-        integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"
-        integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" crossorigin="anonymous"
-        defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
-        integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" crossorigin="anonymous"
-        onload="renderMathInElement(document.body);"
-        defer></script>
-    <script>
+<link href="https://example.com/@username" rel="me"/>
+<!-- katex.html -->
+<link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css" integrity="sha384-5TcZemv2l/9On385z///+d7MSYlvIEw9FuZTIdZ14vJLqWphw7e7ZPuOiCHJcFCP" rel="stylesheet"/>
+<script crossorigin="anonymous" defer="" integrity="sha384-cMkvdD8LoxVzGF/RPUKAcvmm49FQ0oxwDF3BGKtDXcEc+T1b2N+teh/OJfpU0jr6" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+<script crossorigin="anonymous" defer="" integrity="sha384-hCXGrW6PitJEwbkoStFjeJxv+fSOOQKOPbJxSfM6G5sWZjAyWhXiTIIAmQqnlLlh" onload="renderMathInElement(document.body);" src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"></script>
+<script>
         document.addEventListener("DOMContentLoaded", function() {
             renderMathInElement(document.getElementById('main-article'), {
                 delimiters: [
@@ -68,50 +43,45 @@
             });
         });
     </script>
-    
 </head>
 <body>
-    <!-- header.html -->
+<!-- header.html -->
 <header class="pagewidth">
-    <div id="background-header" class="background" aria-hidden="true">
-        <div class="grain" hidden></div>
-    </div>
-    
-    <nav aria-label="Bypass">
-        <a id="to-content" href="#content" aria-label="Skip to Main Content">
-            <span>Skip to Main Content</span>
-            <kbd class="key" aria-hidden="true">c</kbd>
-            <span class="screening" aria-hidden="true"></span>
-        </a>
-    </nav>
-    
-        <a id="logo" href="https://ashhhi.life/en/" aria-label="Ashhhi" aria-description="Homepage">
-                <img id="logomark--dark" src="https://ashhhi.life/img/potato-logo.svg" alt="Ashhhi" />
-                <img id="logomark" src="https://ashhhi.life/img/potato-logo.svg" alt="Ashhhi" />
-                <!-- logotype.html --><svg id="logotype" xmlns="http://www.w3.org/2000/svg" version="1.1" width="168pt" aria-label="Ashhhi">
-            <text id="logotype__text" y="19.5pt" x="0">Ashhhi</text>
-        </svg>
-        </a>
-    
-    <details class="presentation" id="top-nav">
-        <summary class="on-deck">
-            <span class="t">Navigation</span>
-            <span class="menu-icon" role="presentation"></span>
-        </summary>
-        <nav tabindex="-1" aria-label="Top">
-            <!-- menu.html -->
-            <!-- search.html -->
-<details id="has-search" class="presentation js-details" name="on-deck">
-    <summary class="on-deck srm" accesskey="q" aria-labelledby="search-label" aria-keyshortcuts="q">
-        <span id="search-label" class="t srt">Search</span>
-    </summary>
-    
-        <!-- pagefind.html -->
-    <div id="search" class="on-hull">
-        <div role="presentation" class="screening js-cgpn"></div>
-    </div>
-    <script src="https://ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
-    <script>
+<div aria-hidden="true" class="background" id="background-header">
+<div class="grain" hidden=""></div>
+</div>
+<nav aria-label="Bypass">
+<a aria-label="Skip to Main Content" href="#content" id="to-content">
+<span>Skip to Main Content</span>
+<kbd aria-hidden="true" class="key">c</kbd>
+<span aria-hidden="true" class="screening"></span>
+</a>
+</nav>
+<a aria-description="Homepage" aria-label="Ashhhi" href="https://ashhhi.life/en/" id="logo">
+<img alt="Ashhhi" id="logomark--dark" src="https://ashhhi.life/img/potato-logo.svg"/>
+<img alt="Ashhhi" id="logomark" src="https://ashhhi.life/img/potato-logo.svg"/>
+<!-- logotype.html --><svg aria-label="Ashhhi" id="logotype" version="1.1" width="168pt" xmlns="http://www.w3.org/2000/svg">
+<text id="logotype__text" x="0" y="19.5pt">Ashhhi</text>
+</svg>
+</a>
+<details class="presentation" id="top-nav">
+<summary class="on-deck">
+<span class="t">Navigation</span>
+<span class="menu-icon" role="presentation"></span>
+</summary>
+<nav aria-label="Top" tabindex="-1">
+<!-- menu.html -->
+<!-- search.html -->
+<details class="presentation js-details" id="has-search" name="on-deck">
+<summary accesskey="q" aria-keyshortcuts="q" aria-labelledby="search-label" class="on-deck srm">
+<span class="t srt" id="search-label">Search</span>
+</summary>
+<!-- pagefind.html -->
+<div class="on-hull" id="search">
+<div class="screening js-cgpn" role="presentation"></div>
+</div>
+<script src="https://ashhhi.life/pagefind/pagefind-ui.js" type="text/javascript"></script>
+<script>
         let pageFindInitialized = false;
         const initPageFind = function(event) {
             if (!pageFindInitialized) {
@@ -133,97 +103,81 @@
         };
         document.addEventListener('DOMContentLoaded', initPageFind);
     </script>
-        <noscript id="has-search-fallback" class="on-hull">
-                
-    <!-- duckduckgo.html -->
-    <form id="duckduckgo" class="form on-plank"
-        name="x" action="//duckduckgo.com/"
-        role="search" aria-label="">
-        <input type="hidden" value="ashhhi.life" name="sites"></input>
-        <input type="hidden" value="1" name="kh"></input>
-        <input type="hidden" value="1" name="kn"></input>
-        <input type="hidden" value="1" name="kac"></input>
-        <input class="ldots form__input" type="search" placeholder="Search" name="q" role="searchbox"></input>
-        <button class="form__button" type="submit" aria-label="Search">
-            <img src="https://duckduckgo.com/assets/logo_header.v109.svg" alt="" role="presentation" aria-hidden="true">
-        </button>
-    </form>
-    <div role="presentation" class="screening js-cgpn"></div>
-        </noscript>
-    
+<noscript class="on-hull" id="has-search-fallback">
+<!-- duckduckgo.html -->
+<form action="//duckduckgo.com/" aria-label="" class="form on-plank" id="duckduckgo" name="x" role="search">
+<input name="sites" type="hidden" value="ashhhi.life"/>
+<input name="kh" type="hidden" value="1"/>
+<input name="kn" type="hidden" value="1"/>
+<input name="kac" type="hidden" value="1"/>
+<input class="ldots form__input" name="q" placeholder="Search" role="searchbox" type="search"/>
+<button aria-label="Search" class="form__button" type="submit">
+<img alt="" aria-hidden="true" role="presentation" src="https://duckduckgo.com/assets/logo_header.v109.svg"/>
+</button>
+</form>
+<div class="screening js-cgpn" role="presentation"></div>
+</noscript>
 </details>
-
-            <!-- menu.html -->
-            <!-- i18n.html -->
-
-        </nav>
-        <div id="top-nav-screen" class="screening js-cpn" role="presentation" aria-hidden="true"></div>
-    </details>
+<!-- menu.html -->
+<!-- i18n.html -->
+</nav>
+<div aria-hidden="true" class="screening js-cpn" id="top-nav-screen" role="presentation"></div>
+</details>
 </header>
-    
-    <!-- [main] baseof.html -->
-    <main id="page"class="post"
-        >
-        <!-- main/header.html -->
-        <header class="pagewidth">
-                    <menu class="srm"><button id="print-button" class="hide" onclick="window.print()" aria-label="Print">
-        <span class="t srt" role="tooltip">Print</span>
-    </button>
-    <a id="navigatorShare" href="#share" role="button" aria-label="Share">
-        <span class="t srt" role="tooltip">Share</span>
-    </a>
-    <button id="copyPermalink" class="hide" onclick="navigator.clipboard.writeText(window.location.href)" aria-label="Copy URL">
-        <span id="copy" class="t srt" role="tooltip">Copy URL</span>
-        <span id="isCopying" style="display: none;">Copying...</span>
-        <span id="copyText" style="display: none;">Copy URL</span>
-    </button>
-                    </menu>
-            <!-- nav.html -->
-<details class="presentation" aria-expanded="true" id="has-breadcrumb" open>
-    <summary id="breadcrumb" tabindex="-1">
-        <span>Breadcrumb</span>
-    </summary>
-        <nav aria-labelledby="breadcrumb">
-            <ul role="presentation" class="breadcrumb ">
-                    <!-- breadcrumb.html -->
-        <li>
-            <a href="https://ashhhi.life/en/post/" aria-current="true">Post
+<!-- [main] baseof.html -->
+<main class="post" id="page">
+<!-- main/header.html -->
+<header class="pagewidth">
+<menu class="srm"><button aria-label="Print" class="hide" id="print-button" onclick="window.print()">
+<span class="t srt" role="tooltip">Print</span>
+</button>
+<a aria-label="Share" href="#share" id="navigatorShare" role="button">
+<span class="t srt" role="tooltip">Share</span>
+</a>
+<button aria-label="Copy URL" class="hide" id="copyPermalink" onclick="navigator.clipboard.writeText(window.location.href)">
+<span class="t srt" id="copy" role="tooltip">Copy URL</span>
+<span id="isCopying" style="display: none;">Copying...</span>
+<span id="copyText" style="display: none;">Copy URL</span>
+</button>
+</menu>
+<!-- nav.html -->
+<details aria-expanded="true" class="presentation" id="has-breadcrumb" open="">
+<summary id="breadcrumb" tabindex="-1">
+<span>Breadcrumb</span>
+</summary>
+<nav aria-labelledby="breadcrumb">
+<ul class="breadcrumb" role="presentation">
+<!-- breadcrumb.html -->
+<li>
+<a aria-current="true" href="https://ashhhi.life/en/post/">Post
             </a>
-        </li>
-    <li>
-        <a href="" aria-current="page" tabindex="-1">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）
+</li>
+<li>
+<a aria-current="page" href="" tabindex="-1">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）
         </a>
-    </li>
-            </ul>
-        </nav>
+</li>
+</ul>
+</nav>
 </details>
-        </header>
-        <div id="top" role="presentation">
-            
-        </div>
-        
-
-    <article id="main-article" class="pagewidth"
-        role="document" aria-labelledby="title"
-            data-pagefind-body>
-        <header class="textwidth" aria-labelledby="title">
-            <!-- title.html -->
-        <h1 id="title"
-                data-pagefind-meta="title"
-            data-bionRead-safe
-            >策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
-            <div id="doc-author" class="textsw author"><span>[Ash]</span>
-            </div>
-            <!-- timestamp.html-->
-    <div class="date-has-label">
-        <time class="doc-publish-date" datetime="2025-03-20T00:00:00&#43;00:00" data-time-label="Published on">March 20, 2025</time><time class="doc-lastmod-date" datetime="2025-03-21T00:07:13&#43;08:00" data-time-label="Modified on">March 21, 2025</time>
-    </div>
-        </header>
-        <!-- audio.html -->
-        <section aria-labelledby="Title" id="content" data-bionRead-safe>
-                <p>先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。</p>
+</header>
+<div id="top" role="presentation">
+</div>
+<article aria-labelledby="title" class="pagewidth" data-pagefind-body="" id="main-article" role="document">
+<header aria-labelledby="title" class="textwidth">
+<!-- title.html -->
+<h1 data-bionread-safe="" data-pagefind-meta="title" id="title">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
+<div class="textsw author" id="doc-author"><span>[Ash]</span>
+</div>
+<!-- timestamp.html-->
+<div class="date-has-label">
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-20T00:00:00+00:00">March 20, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
+</div>
+</header>
+<!-- audio.html -->
+<section aria-labelledby="Title" data-bionread-safe="" id="content">
+<p>先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。</p>
 <p>​参考：<a href="https://www.bilibili.com/video/BV1sd4y167NS?p=1&amp;vd_source=88e57e827a3a63fa6e3de1856178e929">西湖大学赵世钰老师的【强化学习的数学原理】</a></p>
-<hr>
+<hr/>
 <p>值迭代分为两个步骤：策略更新（Policy update）和值更新（Value update），它们的公式分别为：</p>
 <p>$$
 \pi_{k+1} = \arg\max_{\pi} (r_\pi + \lambda P_\pi v_k) \tag{1}
@@ -240,124 +194,92 @@ $$</p>
 $$</p>
 <p>可以看到（1）（4）式基本上相同，唯一的不同点在于\(v\)的底标，策略迭代是\(\pi_k\)，而值迭代就是\(k\)，这也意味着策略迭代中算出来的其实是状态值函数，也就是对当前策略下计算出每个状态下的状态值，每个状态下又有不同的action，因此需要很多步运算，甚至是无穷步。而值迭代的更新方式是基于“最大化期望回报”，即它直接在每一步使用新的值来更新自身，而不需要完整地评估某个策略的值函数。</p>
 <p>这张图很好地描述了两种迭代之间的关系：</p>
-<p><img src="https://ashhhi.life/img/2025-03-20-Policy-Value-Iteration/image.png" alt=""></p>
+<p><img alt="" src="https://ashhhi.life/img/2025-03-20-Policy-Value-Iteration/image.png"/></p>
 <p>总而言之：</p>
 <ul>
 <li>值迭代通过不断逼近最优值函数 \(V^*(s)\)，它不依赖于特定策略，而是直接寻找最优策略。</li>
 <li>策略迭代先固定策略计算 该策略下的值函数，然后基于该值函数改进策略，如此反复，最终收敛到最优策略。</li>
 <li>计算量比较：策略迭代的策略评估部分需要多次迭代（但可以提前终止），值迭代在每一步执行一次更新，因此策略迭代可能需要更多计算量，但更稳定，而值迭代通常更快收敛，但可能振荡。</li>
 </ul>
-        </section>
-        <footer>
-            
-    <nav id="keywords" aria-label="Tags">
-        <span>Tag:&nbsp;</span>
-        
-        <!-- terms.html -->
-    <ul class="inline" role="presentation">
-            <li><a href="https://ashhhi.life/en/tags/reinforcement-learning/" >Reinforcement Learning</a></li>
-    </ul>
-    </nav>
-        </footer>
-    </article>
-    <hr class="hide" style="margin: 1in 0;">
-    <div id="contentinfo" class="pagewidth" role="contentinfo" data-pagefind-ignore="all">
-            <!-- related.html -->
-    <nav id="related" aria-label="You might also like"><strong class="section-title">You might also like</strong>
-                <ol>
-                    <li><a href="https://ashhhi.life/en/post/2024-9-25-rl02/">Bellman Function详解</a></li>
-                    <li><a href="https://ashhhi.life/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
-                </ol>
-    </nav>
-            <!-- colophon.html -->
-    <div id="colophon" style="display: none;" aria-live="polite">
-        <strong class="section-title">Colophon</strong>
-        <div>
-            <div id="qr" role="img" aria-label="QR code"></div>
-            <div class="verbose">
-                <div class="has-aria-label-top" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）"><span>https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/</span></div>
-                <div><span>This page is built on: </span><time datetime="2025-10-10T21:33:49&#43;08:00">2025-10-10 21:33</time></div>
-                <div><span>This page is accessed on: </span><time id="time-stamp"></time></div><div><span>Powered by </span><a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <a href="https://github.com/gohugoio/hugo/releases/tag/v0.145.0" aria-label="Hugo 0.145.0" target="_blank" rel="noopener">v0.145.0</a> & <a href="https://github.com/foxihd/hugo-brewm" target="_blank" rel="noopener">hugo-brewm</a>.</div>
-            </div>
-        </div>
-    </div>
-            <!-- history.html -->
-        <div id="has-timeline" >
-            <strong class="section-title">Redaction History</strong>
-            <ol aria-label="Redaction History">
-                <li>
-                    <time datetime="2025-03-20T00:00:00&#43;00:00">March 20, 2025</time>
-                    <span>(Published)</span>
-                </li>
-                <li>
-                    <time datetime="2025-03-21T00:07:13&#43;08:00">March 21, 2025</time>
-                    <span>(Modified)</span>
-                </li>
-            </ol>
-            <p>Some information might changes over time, we keep redaction up to date.</p>
-        </div>
-        
-    </div>
-    <div class="pagewidth">
-        </div>
-        <!-- main/footer.html -->
-    </main>
-    <!-- footer.html -->
-<footer id="body-footer" class="pagewidth" style="display: none;">
-    <div id="background-footer" class="background hide" role="presentation" aria-hidden="true">
-        <div class="grain" hidden></div>
-    </div>
-    <div id="focusMode"></div>
-    <!-- a11y.html --><details id="has-a11y" class="presentation js-details hide" name="on-deck" aria-haspopup="true" aria-labelledby="has-a11y-summary">
-    <summary id="has-a11y-summary" accesskey="a" aria-keyshortcuts="a">
-        <span>&nbsp;Accessibility</span>
-        <kbd class="key" aria-hidden="true">a</kbd>
-    </summary>
-    <!-- a11y console -->
-    <fieldset id="a11y" role="region" aria-label="Accessibility"
-        data-i18n-optimizeSR="Screen Reader Optimization"
-        data-i18n-optimizeSRdesc="Optimize display and resources for screen reader users who navigate with a pointer device."
-        data-i18n-colorSettings="Color Settings"
-        data-i18n-darkMode="Dark Mode"
-        data-i18n-light="Light"
-        data-i18n-dark="Dark"
-        data-i18n-contrast="Contrast"
-        data-i18n-lessContrast="Low"
-        data-i18n-moreContrast="High"
-        data-i18n-defaultContrast="Default"
-        data-i18n-colorPalette="Color Palette"
-        data-i18n-defaultColor="Default"
-        data-i18n-deuteranopia="Deuteranopia"
-        data-i18n-protanopia="Protanopia"
-        data-i18n-tritanopia="Tritanopia"
-        data-i18n-monochrome="Monochrome"
-        data-i18n-fontSize="Font Size"
-        data-i18n-baselineStretch="Baseline Stretch"
-        data-i18n-OpenDyslexic="Use OpenDyslexic Font"
-        data-i18n-menuControls="Accessibility Menu Controls"
-        data-i18n-save="Save"
-        data-i18n-reset="Reset"
-        data-i18n-close="Close"
-        data-i18n-bionRead="BionRead Mode"
-        data-i18n-focusMode="Focus Mode"
-        data-i18n-noLocalStorage="LocalStorage is not available in your browser. Settings won&#39;t be saved.">
-    </fieldset>
-    <div class="screening js-cpn" role="presentation" aria-hidden="true"></div>
-</details>
-
-
-    <div id="useBionRead" class="sri"></div>
-    <!-- [top] bypass block -->
-    <nav aria-label="Bypass">
-        <a id="to-top" class="srm" href="#top" title="To Content Top" accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top">
-            <span class="t srt">To Content Top</span>
-            <kbd class="key" aria-hidden="true">c</kbd>
-        </a>
-    </nav>
+</section>
+<footer>
+<nav aria-label="Tags" id="keywords">
+<span>Tag: </span>
+<!-- terms.html -->
+<ul class="inline" role="presentation">
+<li><a href="https://ashhhi.life/en/tags/reinforcement-learning/">Reinforcement Learning</a></li>
+</ul>
+</nav>
 </footer>
-    
-    <!-- [post] single.html -->
-    <div id="bionReadSnapshot" hidden></div>
-    <!-- [background] baseof.html -->
-    <div id="background-body" role="presentation" aria-hidden="true"></div>
-</html>
+</article>
+<hr class="hide" style="margin: 1in 0;"/>
+<div class="pagewidth" data-pagefind-ignore="all" id="contentinfo" role="contentinfo">
+<!-- related.html -->
+<nav aria-label="You might also like" id="related"><strong class="section-title">You might also like</strong>
+<ol>
+<li><a href="https://ashhhi.life/en/post/2024-9-25-rl02/">Bellman Function详解</a></li>
+<li><a href="https://ashhhi.life/en/post/2024-9-23-rl01/">强化学习中的基本概念以及马尔可夫决策</a></li>
+</ol>
+</nav>
+<!-- colophon.html -->
+<div aria-live="polite" id="colophon" style="display: none;">
+<strong class="section-title">Colophon</strong>
+<div>
+<div aria-label="QR code" id="qr" role="img"></div>
+<div class="verbose">
+<div aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" class="has-aria-label-top"><span>https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/</span></div>
+<div><span>This page is built on: </span><time datetime="2025-10-11T11:14:06+08:00">2025-10-11 11:14</time></div>
+<div><span>This page is accessed on: </span><time id="time-stamp"></time></div><div><span>Powered by </span><a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> <a aria-label="Hugo 0.145.0" href="https://github.com/gohugoio/hugo/releases/tag/v0.145.0" rel="noopener" target="_blank">v0.145.0</a> &amp; <a href="https://github.com/foxihd/hugo-brewm" rel="noopener" target="_blank">hugo-brewm</a>.</div>
+</div>
+</div>
+</div>
+<!-- history.html -->
+<div id="has-timeline">
+<strong class="section-title">Redaction History</strong>
+<ol aria-label="Redaction History">
+<li>
+<time datetime="2025-03-20T00:00:00+00:00">March 20, 2025</time>
+<span>(Published)</span>
+</li>
+<li>
+<time datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
+<span>(Modified)</span>
+</li>
+</ol>
+<p>Some information might changes over time, we keep redaction up to date.</p>
+</div>
+</div>
+<div class="pagewidth">
+</div>
+<!-- main/footer.html -->
+</main>
+<!-- footer.html -->
+<footer class="pagewidth" id="body-footer" style="display: none;">
+<div aria-hidden="true" class="background hide" id="background-footer" role="presentation">
+<div class="grain" hidden=""></div>
+</div>
+<div id="focusMode"></div>
+<!-- a11y.html --><details aria-haspopup="true" aria-labelledby="has-a11y-summary" class="presentation js-details hide" id="has-a11y" name="on-deck">
+<summary accesskey="a" aria-keyshortcuts="a" id="has-a11y-summary">
+<span> Accessibility</span>
+<kbd aria-hidden="true" class="key">a</kbd>
+</summary>
+<!-- a11y console -->
+<fieldset aria-label="Accessibility" data-i18n-baselinestretch="Baseline Stretch" data-i18n-bionread="BionRead Mode" data-i18n-close="Close" data-i18n-colorpalette="Color Palette" data-i18n-colorsettings="Color Settings" data-i18n-contrast="Contrast" data-i18n-dark="Dark" data-i18n-darkmode="Dark Mode" data-i18n-defaultcolor="Default" data-i18n-defaultcontrast="Default" data-i18n-deuteranopia="Deuteranopia" data-i18n-focusmode="Focus Mode" data-i18n-fontsize="Font Size" data-i18n-lesscontrast="Low" data-i18n-light="Light" data-i18n-menucontrols="Accessibility Menu Controls" data-i18n-monochrome="Monochrome" data-i18n-morecontrast="High" data-i18n-nolocalstorage="LocalStorage is not available in your browser. Settings won't be saved." data-i18n-opendyslexic="Use OpenDyslexic Font" data-i18n-optimizesr="Screen Reader Optimization" data-i18n-optimizesrdesc="Optimize display and resources for screen reader users who navigate with a pointer device." data-i18n-protanopia="Protanopia" data-i18n-reset="Reset" data-i18n-save="Save" data-i18n-tritanopia="Tritanopia" id="a11y" role="region">
+</fieldset>
+<div aria-hidden="true" class="screening js-cpn" role="presentation"></div>
+</details>
+<div class="sri" id="useBionRead"></div>
+<!-- [top] bypass block -->
+<nav aria-label="Bypass">
+<a accesskey="c" aria-keyshortcuts="c" aria-label="To Content Top" class="srm" href="#top" id="to-top" title="To Content Top">
+<span class="t srt">To Content Top</span>
+<kbd aria-hidden="true" class="key">c</kbd>
+</a>
+</nav>
+</footer>
+<!-- [post] single.html -->
+<div hidden="" id="bionReadSnapshot"></div>
+<!-- [background] baseof.html -->
+<div aria-hidden="true" id="background-body" role="presentation"></div>
+</body></html>
