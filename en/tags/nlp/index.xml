@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>NLP on Ashhhi</title>
+    <link>https://ashhhi.life/en/tags/nlp/</link>
+    <description>Recent Posts in NLP on Ashhhi</description>
+    <generator>Hugo 0.145.0</generator>
+    <language>en</language>
+    <managingEditor>Ash</managingEditor>
+    
+      <webMaster>Ash</webMaster>
+    <lastBuildDate>Tue, 14 Oct 2025 16:59:16 +0800</lastBuildDate>
+    <atom:link href="https://ashhhi.life/en/tags/nlp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TF-IDF和BM25词匹配算法</title>
+      <link>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</guid>
+      <description></description>
+      
+    </item>
+  </channel>
+</rss>

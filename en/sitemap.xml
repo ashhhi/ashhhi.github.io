@@ -2,12 +2,37 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://ashhhi.life/en/post/2025-05-25-2025apr/</loc>
-    <lastmod>2025-10-11T11:32:14+08:00</lastmod>
+    <loc>https://ashhhi.life/en/categories/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
     <changefreq>always</changefreq>
     </url>
   <url>
-    <loc>https://ashhhi.life/en/categories/</loc>
+    <loc>https://ashhhi.life/en/tags/nlp/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/tags/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/categories/technology/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/tags/%E8%AF%8D%E5%8C%B9%E9%85%8D/</loc>
+    <lastmod>2025-10-14T00:00:00+00:00</lastmod>
+    <changefreq>always</changefreq>
+    </url>
+  <url>
+    <loc>https://ashhhi.life/en/post/2025-05-25-2025apr/</loc>
     <lastmod>2025-10-11T11:32:14+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>
@@ -18,16 +43,6 @@
     </url>
   <url>
     <loc>https://ashhhi.life/en/tags/pytorch/</loc>
-    <lastmod>2025-03-26T14:19:52+08:00</lastmod>
-    <changefreq>always</changefreq>
-    </url>
-  <url>
-    <loc>https://ashhhi.life/en/tags/</loc>
-    <lastmod>2025-10-10T20:53:07+08:00</lastmod>
-    <changefreq>always</changefreq>
-    </url>
-  <url>
-    <loc>https://ashhhi.life/en/categories/technology/</loc>
     <lastmod>2025-03-26T14:19:52+08:00</lastmod>
     <changefreq>always</changefreq>
     </url>

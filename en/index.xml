@@ -9,8 +9,17 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Sat, 11 Oct 2025 11:49:55 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 14 Oct 2025 16:59:16 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TF-IDF和BM25词匹配算法</title>
+      <link>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</link>
+      <pubDate>Tue, 14 Oct 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</guid>
+      <description>&lt;h2 id=&#34;hero-section--greeter&#34;&gt;Hero Section / Greeter&lt;/h2&gt;&#xA;&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手.&lt;/p&gt;&#xA;&lt;p&gt;这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;更新：2025.3.20&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在看&#34;&gt;👓最近在看&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://www.bilibili.com/video/BV1skJZzBEsB/?spm_id_from=333.337.search-card.all.click&#34;&gt;绝望的主妇&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h4 id=&#34;已追&#34;&gt;已追：&lt;/h4&gt;&#xA;&lt;p&gt;人生切割术（第二季弃），无耻之徒，汉尼拔（弃剧），浴血黑帮，黄蜂（弃剧），权力的游戏，切尔诺贝利，性爱自修室（弃剧），怪奇物语，风骚律师，亢奋，生活大爆炸，黑道家族，绝命毒师，神探夏洛克，越狱。&lt;/p&gt;&#xA;&lt;h2 id=&#34;最近在玩&#34;&gt;🎮最近在玩&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Valorant&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+      
+    </item>
     <item>
       <title>【月记】2025.5</title>
       <link>https://ashhhi.life/en/post/2025-05-25-2025apr/</link>
