@@ -227,15 +227,12 @@
 </hgroup>
 <a aria-describedby="desc-1" aria-label="基于Gestalt Pattern Matching的SequenceMatcher代码详解" class="sri" href="https://ashhhi.life/en/post/2025-10-23-sequencematcher/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/17.svg" style="object-position: 9% 10%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/9.svg" style="object-position: 61% 29%"/>
 <div class="par" id="desc-1">SequenceMatcher是difflib中的一个类，其中包含几个函数：
 初始化函数：初始化函数主要是传入需要做比较的两个sequence，并且利用__chain_b函数对sequence b（通过set_seq2传入）做了索引处理，因此想要1 to many sequence做对比的话，保持b不变，只用set_seq1去修改sequence a效率比较高，因为不用多次做索引。
 init set_seqs set_seq1 set_seq2 __chain_b 主要计算函数：
 find_longest_match：在指定范围内找到最长的连续匹配子序列 get_matching_blocks：返回所有匹配块的列表 ratio：计算序列的相似度 (0到1之间) quick_ratio：快速计算相似度的上界估计 real_quick_ratio：最快速计算相似度的上界估计 其他无关紧要的：
-get_opcodes：返回将序列 a 转换为序列 b 的操作列表 get_grouped_opcodes：将操作码分组，每组包含最多 n 行上下文 原理 核心计算ratio的方法：
-$$ ratio = 2\cdot \frac{matches}{length} $$
-其中：
-match：所有匹配块的字符总数 length：两个序列的总长度(len(a)+len(b)) 核心算法：Gestalt Pattern Matching SequenceMatcher基于Gestalt Pattern Matching算法，这是Ratcliff和Obershelp在1980年代提出的一种模式匹配方法。该算法的核心思想是：
+get_opcodes：返回将序列 a 转换为序列 b 的操作列表 get_grouped_opcodes：将操作码分组，每组包含最多 n 行上下文 原理 核心算法：Gestalt Pattern Matching SequenceMatcher基于Gestalt Pattern Matching算法，这是Ratcliff和Obershelp在1980年代提出的一种模式匹配方法。该算法的核心思想是：
 递归查找最长公共子序列 (LCS) 分而治之：在找到LCS后，递归处理LCS左右两侧的子序列 累积所有匹配块 但是SequenceMatcher是其变体，一些算法有所改变，比如使用队列+循环模拟递归，避免长文本的深度递归问题。
 def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbjunk = self.a, self.b, self.b2j, self.bjunk.__contains__ if ahi is None: ahi = len(a) if bhi is None: bhi = len(b) besti, bestj, bestsize = alo, blo, 0 # !!!!!核心：动态规划!!!!! j2len = {} # j2len[j] = 以序列b的位置j结尾的最长匹配子序列长度 nothing = [] for i in range(alo, ahi): j2lenget = j2len.get # 优化技巧，后面直接使用j2lenget，避免重复引用 newj2len = {} for j in b2j.get(a[i], nothing): # 在 b 里找依次找 a # a[i] matches b[j] if j &lt; blo: # b是有上下界的，可能从中间开始匹配，通过定义blo continue if j &gt;= bhi: break k = newj2len[j] = j2lenget(j-1, 0) + 1 # 动态规划思想，直接取以b[j-1]结尾的最长匹配子序列长度，加上1，与 j2len = newj2len 相互合作 if k &gt; bestsize: besti, bestj, bestsize = i-k+1, j-k+1, k j2len = newj2len # 这句话是重点，j2len并不是往后append，而是直接替换，也就是说只会保留当前阶段的状态，所以每一次通过j2lenget(j-1, 0)得到的都是上一个循环中的状态，保证了字符串的连续性 # !!!!!!!!!!!!!!!!!!!! # 以下是用于扩展垃圾元素（junk）和流行元素（popular，出现频率&gt;1%），这两类都不包含在b2j中，所以不能被以上的逻辑检测到 while besti &gt; alo and bestj &gt; blo and \ not isbjunk(b[bestj-1]) and \ a[besti-1] == b[bestj-1]: besti, bestj, bestsize = besti-1, bestj-1, bestsize+1 while besti+bestsize &lt; ahi and bestj+bestsize &lt; bhi and \ not isbjunk(b[bestj+bestsize]) and \ a[besti+bestsize] == b[bestj+bestsize]: bestsize += 1 while besti &gt; alo and bestj &gt; blo and \ isbjunk(b[bestj-1]) and \ a[besti-1] == b[bestj-1]: besti, bestj, bestsize = besti-1, bestj-1, bestsize+1 while besti+bestsize &lt; ahi and bestj+bestsize &lt; bhi and \ isbjunk(b[bestj+bestsize]) and \ a[besti+bestsize] == b[bestj+bestsize]: bestsize = bestsize + 1 return Match(besti, bestj, bestsize) 从核心代码中可以看出该算法强调LCS的连续性，也就是说比如对于a=“abca”, b=“acba”，得到的LCS是1，而不是3（aca）。
 
@@ -272,7 +269,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-2" aria-label="TF-IDF和BM25词匹配算法" class="sri" href="https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg" style="object-position: 44% 24%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg" style="object-position: 29% 29%"/>
 <div class="par" id="desc-2">
 </div>
 </section>
@@ -307,7 +304,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-3" aria-label="【月记】2025.5" class="sri" href="https://ashhhi.life/en/post/2025-05-25-2025apr/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/10.svg" style="object-position: 67% 52%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/6.svg" style="object-position: 41% 53%"/>
 <div class="par" id="desc-3">
 </div>
 </section>
@@ -338,7 +335,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-4" aria-label="torch.no_grad()函数的理解以及反向传播计算" class="sri" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/8.svg" style="object-position: 44% 53%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/3.svg" style="object-position: 72% 36%"/>
 <div class="par" id="desc-4">
 </div>
 </section>
@@ -372,7 +369,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-5" aria-label="Hugo Blog Posts Encryption" class="sri" href="https://ashhhi.life/en/post/2025-03-24-postencryption/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/21.svg" style="object-position: 30% 66%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/15.svg" style="object-position: 31% 31%"/>
 <div class="par" id="desc-5">对博客文章进行加密
             </div>
 </section>
@@ -406,7 +403,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-6" aria-label="从Spotify中无损提取专辑封面" class="sri" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/4.svg" style="object-position: 8% 4%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/20.svg" style="object-position: 48% 41%"/>
 <div class="par" id="desc-6">
 </div>
 </section>
@@ -440,7 +437,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-7" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" class="sri" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/15.svg" style="object-position: 23% 3%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/17.svg" style="object-position: 21% 78%"/>
 <div class="par" id="desc-7">先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
 
             </div>
@@ -470,7 +467,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-8" aria-label="Regression Loss Function Summary" class="sri" href="https://ashhhi.life/en/post/regression-loss/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/12.svg" style="object-position: 23% 43%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/16.svg" style="object-position: 77% 26%"/>
 <div class="par" id="desc-8">在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同。
 
             </div>
@@ -505,7 +502,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-9" aria-label="PyTorch中的gather函数详解" class="sri" href="https://ashhhi.life/en/post/2025-02-18-gather/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/3.svg" style="object-position: 31% 56%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/20.svg" style="object-position: 20% 17%"/>
 <div class="par" id="desc-9">torch.gather函数笔记
             </div>
 </section>
@@ -540,7 +537,7 @@ def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbju
 </hgroup>
 <a aria-describedby="desc-10" aria-label="败絮其外，金玉其中" class="sri" href="https://ashhhi.life/en/post/2025-02-10-hk/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" style="object-position: 55% 74%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/14.svg" style="object-position: 17% 6%"/>
 <div class="par" id="desc-10">请停止对于香港的妖魔化...
             </div>
 </section>

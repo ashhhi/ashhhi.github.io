@@ -209,15 +209,6 @@
 <li>get_grouped_opcodes：将操作码分组，每组包含最多 n 行上下文</li>
 </ul>
 <h1 id="原理">原理</h1>
-<p>核心计算ratio的方法：</p>
-<p>$$
-ratio = 2\cdot \frac{matches}{length}
-$$</p>
-<p>其中：</p>
-<ul>
-<li>match：所有匹配块的字符总数</li>
-<li>length：两个序列的总长度(len(a)+len(b))</li>
-</ul>
 <h2 id="核心算法gestalt-pattern-matching">核心算法：Gestalt Pattern Matching</h2>
 <p>SequenceMatcher基于Gestalt Pattern Matching算法，这是Ratcliff和Obershelp在1980年代提出的一种模式匹配方法。该算法的核心思想是：</p>
 <ul>
@@ -283,6 +274,29 @@ $$</p>
 <li>智能匹配策略：算法首先忽略垃圾字符找到核心匹配，然后在两端扩展匹配垃圾字符
 这种设计使得算法在处理包含大量重复元素（如代码中的空行、HTML中的标签）的文本时表现出色。</li>
 </ul>
+<h2 id="ratio计算">Ratio计算</h2>
+<p>核心计算ratio的方法：</p>
+<p>$$
+ratio = 2\cdot \frac{matches}{length}
+$$</p>
+<p>其中：</p>
+<ul>
+<li>match：所有匹配块的字符总数</li>
+<li>length：两个序列的总长度(len(a)+len(b))</li>
+</ul>
+<p>代码提供了三种计算ratio的方式：</p>
+<ul>
+<li>ratio：通过get_match_blocks函数得到，经过了完整算法的ratio</li>
+<li>quick_ratio：不考虑顺序，只把两个sequencial当成两个集合取交集</li>
+<li>real_quick_ratio：只是用长度做数学计算，完全不看序列内容</li>
+</ul>
+<pre tabindex="0"><code>比较：
+- 精确性：ratio &gt; quick_ratio &gt; real_quick_ratio（ratio最精确，real_quick_ratio最粗糙）
+
+- 速度：  ratio &lt; quick_ratio &lt; real_quick_ratio（ratio最慢，real_quick_ratio最快）
+
+- 值的大小关系：real_quick_ratio ≥ quick_ratio ≥ ratio（都是上界或精确值，满足单调性）
+</code></pre>
 </section>
 <footer>
 <nav aria-label="Tags" id="keywords">
@@ -310,7 +324,7 @@ $$</p>
 <div aria-label="QR code" id="qr" role="img"></div>
 <div class="verbose">
 <div aria-label="基于Gestalt Pattern Matching的SequenceMatcher代码详解" class="has-aria-label-top"><span>https://ashhhi.life/en/post/2025-10-23-sequencematcher/</span></div>
-<div><span>This page is built on: </span><time datetime="2025-10-23T16:03:11+08:00">2025-10-23 16:03</time></div>
+<div><span>This page is built on: </span><time datetime="2025-10-23T16:18:20+08:00">2025-10-23 16:18</time></div>
 <div><span>This page is accessed on: </span><time id="time-stamp"></time></div><div><span>Powered by </span><a href="https://gohugo.io/" rel="noopener" target="_blank">Hugo</a> <a aria-label="Hugo 0.145.0" href="https://github.com/gohugoio/hugo/releases/tag/v0.145.0" rel="noopener" target="_blank">v0.145.0</a> &amp; <a href="https://github.com/foxihd/hugo-brewm" rel="noopener" target="_blank">hugo-brewm</a>.</div>
 </div>
 </div>
