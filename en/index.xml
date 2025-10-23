@@ -9,8 +9,17 @@
     <managingEditor>Ash</managingEditor>
     
       <webMaster>Ash</webMaster>
-    <lastBuildDate>Wed, 15 Oct 2025 15:30:47 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 23 Oct 2025 16:02:29 +0800</lastBuildDate>
     <atom:link href="https://ashhhi.life/en/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>基于Gestalt Pattern Matching的SequenceMatcher代码详解</title>
+      <link>https://ashhhi.life/en/post/2025-10-23-sequencematcher/</link>
+      <pubDate>Thu, 23 Oct 2025 00:00:00 +0000</pubDate>
+      <author>Ash</author>
+      <guid>https://ashhhi.life/en/post/2025-10-23-sequencematcher/</guid>
+      <description>&lt;h2 id=&#34;hero-section--greeter&#34;&gt;Hero Section / Greeter&lt;/h2&gt;&#xA;&lt;p&gt;Hello 👋，这里是 Ash 的 Blog，一名平平无奇的码农，吉他手.&lt;/p&gt;&#xA;&lt;p&gt;这里主要是一些个人的笔记，生活记录以及分享。&lt;/p&gt;&#xA;&lt;p&gt;Wechat: Ash-Sjs&lt;/p&gt;&#xA;&lt;p&gt;Telegram: ashijs424&lt;/p&gt;&#xA;&lt;p&gt;IG: ashhhijs&lt;/p&gt;&#xA;&lt;p&gt;Email: &lt;a href=&#34;mailto:ash.shijs@outlook.com&#34;&gt;ash.shijs@outlook.com&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Github: &lt;a href=&#34;https://github.com/ashhhi?tab=repositories&#34;&gt;https://github.com/ashhhi?tab=repositories&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Bilibili: &lt;a href=&#34;https://space.bilibili.com/497774849?spm_id_from=333.1007.0.0&#34;&gt;https://space.bilibili.com/497774849?spm_id_from=333.1007.0.0&lt;/a&gt;&lt;/p&gt;</description>
+      
+    </item>
     <item>
       <title>TF-IDF和BM25词匹配算法</title>
       <link>https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/</link>

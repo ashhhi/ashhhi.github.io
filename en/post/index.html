@@ -168,8 +168,18 @@
 </a>
 </li>
 <li>
+<a aria-description="2 Posts" aria-label="Tag: NLP" data-post-counter="2" href="https://ashhhi.life/en/tags/nlp/">
+<span>NLP</span>
+</a>
+</li>
+<li>
 <a aria-description="2 Posts" aria-label="Tag: PYTORCH" data-post-counter="2" href="https://ashhhi.life/en/tags/pytorch/">
 <span>PYTORCH</span>
+</a>
+</li>
+<li>
+<a aria-description="2 Posts" aria-label="Tag: 词匹配" data-post-counter="2" href="https://ashhhi.life/en/tags/%E8%AF%8D%E5%8C%B9%E9%85%8D/">
+<span>词匹配</span>
 </a>
 </li>
 <li>
@@ -185,16 +195,6 @@
 <li>
 <a aria-description="1 Post" aria-label="Tag: Git" data-post-counter="1" href="https://ashhhi.life/en/tags/git/">
 <span>Git</span>
-</a>
-</li>
-<li>
-<a aria-description="1 Post" aria-label="Tag: NLP" data-post-counter="1" href="https://ashhhi.life/en/tags/nlp/">
-<span>NLP</span>
-</a>
-</li>
-<li>
-<a aria-description="1 Post" aria-label="Tag: 词匹配" data-post-counter="1" href="https://ashhhi.life/en/tags/%E8%AF%8D%E5%8C%B9%E9%85%8D/">
-<span>词匹配</span>
 </a>
 </li>
 </ul>
@@ -218,21 +218,31 @@
 </span>
 <!-- timestamp.html-->
 <div>
-<time class="doc-publish-date" data-time-label="Published on" datetime="2025-10-14T00:00:00+00:00">October 14, 2025</time>
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-10-23T00:00:00+00:00">October 23, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-1" class="sr0" href="https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/" tabindex="-1">
-<h1 id="title-1">TF-IDF和BM25词匹配算法</h1>
+<a aria-describedby="desc-1" class="sr0" href="https://ashhhi.life/en/post/2025-10-23-sequencematcher/" tabindex="-1">
+<h1 id="title-1">基于Gestalt Pattern Matching的SequenceMatcher代码详解</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-1" aria-label="TF-IDF和BM25词匹配算法" class="sri" href="https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/"></a>
+<a aria-describedby="desc-1" aria-label="基于Gestalt Pattern Matching的SequenceMatcher代码详解" class="sri" href="https://ashhhi.life/en/post/2025-10-23-sequencematcher/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/5.svg" style="object-position: 28% 77%"/>
-<div class="par" id="desc-1">
-</div>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/11.svg" style="object-position: 71% 66%"/>
+<div class="par" id="desc-1">SequenceMatcher是difflib中的一个类，其中包含几个函数：
+初始化函数：初始化函数主要是传入需要做比较的两个sequence，并且利用__chain_b函数对sequence b（通过set_seq2传入）做了索引处理，因此想要1 to many sequence做对比的话，保持b不变，只用set_seq1去修改sequence a效率比较高，因为不用多次做索引。
+init set_seqs set_seq1 set_seq2 __chain_b 主要计算函数：
+find_longest_match：在指定范围内找到最长的连续匹配子序列 get_matching_blocks：返回所有匹配块的列表 ratio：计算序列的相似度 (0到1之间) quick_ratio：快速计算相似度的上界估计 real_quick_ratio：最快速计算相似度的上界估计 其他无关紧要的：
+get_opcodes：返回将序列 a 转换为序列 b 的操作列表 get_grouped_opcodes：将操作码分组，每组包含最多 n 行上下文 原理 核心计算ratio的方法：
+$$ ratio = 2\cdot \frac{matches}{length} $$
+其中：
+match：所有匹配块的字符总数 length：两个序列的总长度(len(a)+len(b)) 核心算法：Gestalt Pattern Matching SequenceMatcher基于Gestalt Pattern Matching算法，这是Ratcliff和Obershelp在1980年代提出的一种模式匹配方法。该算法的核心思想是：
+递归查找最长公共子序列 (LCS) 分而治之：在找到LCS后，递归处理LCS左右两侧的子序列 累积所有匹配块 但是SequenceMatcher是其变体，一些算法有所改变，比如使用队列+循环模拟递归，避免长文本的深度递归问题。
+def find_longest_match(self, alo=0, ahi=None, blo=0, bhi=None): a, b, b2j, isbjunk = self.a, self.b, self.b2j, self.bjunk.__contains__ if ahi is None: ahi = len(a) if bhi is None: bhi = len(b) besti, bestj, bestsize = alo, blo, 0 # !!!!!核心：动态规划!!!!! j2len = {} # j2len[j] = 以序列b的位置j结尾的最长匹配子序列长度 nothing = [] for i in range(alo, ahi): j2lenget = j2len.get # 优化技巧，后面直接使用j2lenget，避免重复引用 newj2len = {} for j in b2j.get(a[i], nothing): # 在 b 里找依次找 a # a[i] matches b[j] if j &lt; blo: # b是有上下界的，可能从中间开始匹配，通过定义blo continue if j &gt;= bhi: break k = newj2len[j] = j2lenget(j-1, 0) + 1 # 动态规划思想，直接取以b[j-1]结尾的最长匹配子序列长度，加上1，与 j2len = newj2len 相互合作 if k &gt; bestsize: besti, bestj, bestsize = i-k+1, j-k+1, k j2len = newj2len # 这句话是重点，j2len并不是往后append，而是直接替换，也就是说只会保留当前阶段的状态，所以每一次通过j2lenget(j-1, 0)得到的都是上一个循环中的状态，保证了字符串的连续性 # !!!!!!!!!!!!!!!!!!!! # 以下是用于扩展垃圾元素（junk）和流行元素（popular，出现频率&gt;1%），这两类都不包含在b2j中，所以不能被以上的逻辑检测到 while besti &gt; alo and bestj &gt; blo and \ not isbjunk(b[bestj-1]) and \ a[besti-1] == b[bestj-1]: besti, bestj, bestsize = besti-1, bestj-1, bestsize+1 while besti+bestsize &lt; ahi and bestj+bestsize &lt; bhi and \ not isbjunk(b[bestj+bestsize]) and \ a[besti+bestsize] == b[bestj+bestsize]: bestsize += 1 while besti &gt; alo and bestj &gt; blo and \ isbjunk(b[bestj-1]) and \ a[besti-1] == b[bestj-1]: besti, bestj, bestsize = besti-1, bestj-1, bestsize+1 while besti+bestsize &lt; ahi and bestj+bestsize &lt; bhi and \ isbjunk(b[bestj+bestsize]) and \ a[besti+bestsize] == b[bestj+bestsize]: bestsize = bestsize + 1 return Match(besti, bestj, bestsize) 从核心代码中可以看出该算法强调LCS的连续性，也就是说比如对于a=“abca”, b=“acba”，得到的LCS是1，而不是3（aca）。
+
+            </div>
 </section>
 <footer>
-<span class="readingTime">1 min read
+<span class="readingTime">2 min read
             </span>
 <!-- terms.html -->
 <ul class="rounded invert" role="presentation">
@@ -248,28 +258,32 @@
 <span>in</span>
 <!-- terms.html -->
 <ul class="inline" role="presentation">
-<li><a href="https://ashhhi.life/en/categories/life/" tabindex="-1">Life</a></li>
+<li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
 </ul>
 </span>
 <!-- timestamp.html-->
-<div class="date-has-label">
-<time class="doc-publish-date" data-time-label="Published on" datetime="2025-05-25T00:00:00+00:00">May 25, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-10-14T17:01:28+08:00">October 14, 2025</time>
+<div>
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-10-14T00:00:00+00:00">October 14, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-2" class="sr0" href="https://ashhhi.life/en/post/2025-05-25-2025apr/" tabindex="-1">
-<h1 id="title-2">【月记】2025.5</h1>
+<a aria-describedby="desc-2" class="sr0" href="https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/" tabindex="-1">
+<h1 id="title-2">TF-IDF和BM25词匹配算法</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-2" aria-label="【月记】2025.5" class="sri" href="https://ashhhi.life/en/post/2025-05-25-2025apr/"></a>
+<a aria-describedby="desc-2" aria-label="TF-IDF和BM25词匹配算法" class="sri" href="https://ashhhi.life/en/post/2025-10-14-tfidf_bm25/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/9.svg" style="object-position: 62% 28%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/7.svg" style="object-position: 14% 35%"/>
 <div class="par" id="desc-2">
 </div>
 </section>
 <footer>
 <span class="readingTime">1 min read
             </span>
-<div class="baselineskip" role="presentation"></div>
+<!-- terms.html -->
+<ul class="rounded invert" role="presentation">
+<li><a href="https://ashhhi.life/en/tags/nlp/" tabindex="-1">NLP</a></li>
+<li><a href="https://ashhhi.life/en/tags/%E8%AF%8D%E5%8C%B9%E9%85%8D/" tabindex="-1">词匹配</a></li>
+</ul>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
 <article aria-describedby="desc-3" aria-labelledby="title-3" aria-posinset="3" aria-setsize="10" class="feed-item">
@@ -279,31 +293,28 @@
 <span>in</span>
 <!-- terms.html -->
 <ul class="inline" role="presentation">
-<li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
+<li><a href="https://ashhhi.life/en/categories/life/" tabindex="-1">Life</a></li>
 </ul>
 </span>
 <!-- timestamp.html-->
-<div>
-<time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-26T00:00:00+00:00">March 26, 2025</time>
+<div class="date-has-label">
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-05-25T00:00:00+00:00">May 25, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-10-14T17:01:28+08:00">October 14, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-3" class="sr0" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" tabindex="-1">
-<h1 id="title-3">torch.no_grad()函数的理解以及反向传播计算</h1>
+<a aria-describedby="desc-3" class="sr0" href="https://ashhhi.life/en/post/2025-05-25-2025apr/" tabindex="-1">
+<h1 id="title-3">【月记】2025.5</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-3" aria-label="torch.no_grad()函数的理解以及反向传播计算" class="sri" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/"></a>
+<a aria-describedby="desc-3" aria-label="【月记】2025.5" class="sri" href="https://ashhhi.life/en/post/2025-05-25-2025apr/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/18.svg" style="object-position: 37% 47%"/>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/5.svg" style="object-position: 34% 21%"/>
 <div class="par" id="desc-3">
 </div>
 </section>
 <footer>
-<span class="readingTime">2 min read
+<span class="readingTime">1 min read
             </span>
-<!-- terms.html -->
-<ul class="rounded invert" role="presentation">
-<li><a href="https://ashhhi.life/en/tags/pytorch/" tabindex="-1">PYTORCH</a></li>
-</ul>
+<div class="baselineskip" role="presentation"></div>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
 <article aria-describedby="desc-4" aria-labelledby="title-4" aria-posinset="4" aria-setsize="10" class="feed-item">
@@ -318,25 +329,25 @@
 </span>
 <!-- timestamp.html-->
 <div>
-<time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-24T00:00:00+00:00">March 24, 2025</time>
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-26T00:00:00+00:00">March 26, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-4" class="sr0" href="https://ashhhi.life/en/post/2025-03-24-postencryption/" tabindex="-1">
-<h1 id="title-4">Hugo Blog Posts Encryption</h1>
+<a aria-describedby="desc-4" class="sr0" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/" tabindex="-1">
+<h1 id="title-4">torch.no_grad()函数的理解以及反向传播计算</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-4" aria-label="Hugo Blog Posts Encryption" class="sri" href="https://ashhhi.life/en/post/2025-03-24-postencryption/"></a>
+<a aria-describedby="desc-4" aria-label="torch.no_grad()函数的理解以及反向传播计算" class="sri" href="https://ashhhi.life/en/post/2025-03-26-torch_no_grad/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/16.svg" style="object-position: 49% 19%"/>
-<div class="par" id="desc-4">对博客文章进行加密
-            </div>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" style="object-position: 42% 39%"/>
+<div class="par" id="desc-4">
+</div>
 </section>
 <footer>
-<span class="readingTime">1 min read
+<span class="readingTime">2 min read
             </span>
 <!-- terms.html -->
 <ul class="rounded invert" role="presentation">
-<li><a href="https://ashhhi.life/en/tags/hugo/" tabindex="-1">Hugo</a></li>
+<li><a href="https://ashhhi.life/en/tags/pytorch/" tabindex="-1">PYTORCH</a></li>
 </ul>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
@@ -355,15 +366,15 @@
 <time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-24T00:00:00+00:00">March 24, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-5" class="sr0" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" tabindex="-1">
-<h1 id="title-5">从Spotify中无损提取专辑封面</h1>
+<a aria-describedby="desc-5" class="sr0" href="https://ashhhi.life/en/post/2025-03-24-postencryption/" tabindex="-1">
+<h1 id="title-5">Hugo Blog Posts Encryption</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-5" aria-label="从Spotify中无损提取专辑封面" class="sri" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/"></a>
+<a aria-describedby="desc-5" aria-label="Hugo Blog Posts Encryption" class="sri" href="https://ashhhi.life/en/post/2025-03-24-postencryption/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" style="object-position: 25% 24%"/>
-<div class="par" id="desc-5">
-</div>
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/6.svg" style="object-position: 62% 64%"/>
+<div class="par" id="desc-5">对博客文章进行加密
+            </div>
 </section>
 <footer>
 <span class="readingTime">1 min read
@@ -385,18 +396,52 @@
 </ul>
 </span>
 <!-- timestamp.html-->
+<div>
+<time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-24T00:00:00+00:00">March 24, 2025</time>
+</div>
+</div>
+<a aria-describedby="desc-6" class="sr0" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/" tabindex="-1">
+<h1 id="title-6">从Spotify中无损提取专辑封面</h1>
+</a>
+</hgroup>
+<a aria-describedby="desc-6" aria-label="从Spotify中无损提取专辑封面" class="sri" href="https://ashhhi.life/en/post/2025-03-24-spotifyalbumcover/"></a>
+<section class="has-cover">
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/21.svg" style="object-position: 64% 56%"/>
+<div class="par" id="desc-6">
+</div>
+</section>
+<footer>
+<span class="readingTime">1 min read
+            </span>
+<!-- terms.html -->
+<ul class="rounded invert" role="presentation">
+<li><a href="https://ashhhi.life/en/tags/hugo/" tabindex="-1">Hugo</a></li>
+</ul>
+</footer>
+</article><hr aria-hidden="true" class="ldots" role="presentation"/>
+<article aria-describedby="desc-7" aria-labelledby="title-7" aria-posinset="7" aria-setsize="10" class="feed-item">
+<hgroup>
+<div>
+<span><span>[Ash]</span>
+<span>in</span>
+<!-- terms.html -->
+<ul class="inline" role="presentation">
+<li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
+</ul>
+</span>
+<!-- timestamp.html-->
 <div class="date-has-label">
 <time class="doc-publish-date" data-time-label="Published on" datetime="2025-03-20T00:00:00+00:00">March 20, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-6" class="sr0" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" tabindex="-1">
-<h1 id="title-6">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
+<a aria-describedby="desc-7" class="sr0" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/" tabindex="-1">
+<h1 id="title-7">策略迭代（Policy Iteration） vs 值迭代（Value Iteration）</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-6" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" class="sri" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/"></a>
+<a aria-describedby="desc-7" aria-label="策略迭代（Policy Iteration） vs 值迭代（Value Iteration）" class="sri" href="https://ashhhi.life/en/post/2025-03-20-policy-value-iteration/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/10.svg" style="object-position: 33% 39%"/>
-<div class="par" id="desc-6">先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/6.svg" style="object-position: 79% 18%"/>
+<div class="par" id="desc-7">先说个总结：值迭代是策略迭代的内层循环，策略迭代在更新每一个策略的时候，都需要进行一次值迭代的循环，来求这一个策略的v，所以在实际情况下不存在完整的策略迭代，都是Truncated Policy Iteration。
 
             </div>
 </section>
@@ -409,7 +454,7 @@
 </ul>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
-<article aria-describedby="desc-7" aria-labelledby="title-7" aria-posinset="7" aria-setsize="10" class="feed-item">
+<article aria-describedby="desc-8" aria-labelledby="title-8" aria-posinset="8" aria-setsize="10" class="feed-item">
 <hgroup>
 <div>
 <span><span>Ash</span>
@@ -419,14 +464,14 @@
 <time class="doc-publish-date" data-time-label="Published on" datetime="2025-02-27T00:00:00+00:00">February 27, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-10-10T20:53:07+08:00">October 10, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-7" class="sr0" href="https://ashhhi.life/en/post/regression-loss/" tabindex="-1">
-<h1 id="title-7">Regression Loss Function Summary</h1>
+<a aria-describedby="desc-8" class="sr0" href="https://ashhhi.life/en/post/regression-loss/" tabindex="-1">
+<h1 id="title-8">Regression Loss Function Summary</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-7" aria-label="Regression Loss Function Summary" class="sri" href="https://ashhhi.life/en/post/regression-loss/"></a>
+<a aria-describedby="desc-8" aria-label="Regression Loss Function Summary" class="sri" href="https://ashhhi.life/en/post/regression-loss/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/19.svg" style="object-position: 16% 41%"/>
-<div class="par" id="desc-7">在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同。
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/2.svg" style="object-position: 53% 15%"/>
+<div class="par" id="desc-8">在学习TD7算法的时候遇到了Huber Loss，记录一下它与之前我所用的基础的MAE和MSE的不同。
 
             </div>
 </section>
@@ -439,7 +484,7 @@
 </ul>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
-<article aria-describedby="desc-8" aria-labelledby="title-8" aria-posinset="8" aria-setsize="10" class="feed-item">
+<article aria-describedby="desc-9" aria-labelledby="title-9" aria-posinset="9" aria-setsize="10" class="feed-item">
 <hgroup>
 <div>
 <span><span>[Ash]</span>
@@ -454,14 +499,14 @@
 <time class="doc-publish-date" data-time-label="Published on" datetime="2025-02-18T00:00:00+00:00">February 18, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-26T14:19:52+08:00">March 26, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-8" class="sr0" href="https://ashhhi.life/en/post/2025-02-18-gather/" tabindex="-1">
-<h1 id="title-8">PyTorch中的gather函数详解</h1>
+<a aria-describedby="desc-9" class="sr0" href="https://ashhhi.life/en/post/2025-02-18-gather/" tabindex="-1">
+<h1 id="title-9">PyTorch中的gather函数详解</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-8" aria-label="PyTorch中的gather函数详解" class="sri" href="https://ashhhi.life/en/post/2025-02-18-gather/"></a>
+<a aria-describedby="desc-9" aria-label="PyTorch中的gather函数详解" class="sri" href="https://ashhhi.life/en/post/2025-02-18-gather/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/10.svg" style="object-position: 9% 43%"/>
-<div class="par" id="desc-8">torch.gather函数笔记
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/12.svg" style="object-position: 57% 61%"/>
+<div class="par" id="desc-9">torch.gather函数笔记
             </div>
 </section>
 <footer>
@@ -474,7 +519,7 @@
 </ul>
 </footer>
 </article><hr aria-hidden="true" class="ldots" role="presentation"/>
-<article aria-describedby="desc-9" aria-labelledby="title-9" aria-posinset="9" aria-setsize="10" class="feed-item">
+<article aria-describedby="desc-10" aria-labelledby="title-10" aria-posinset="10" aria-setsize="10" class="feed-item">
 <hgroup>
 <div>
 <span><span>[Ash]</span>
@@ -489,54 +534,20 @@
 <time class="doc-publish-date" data-time-label="Published on" datetime="2025-02-10T00:00:00+00:00">February 10, 2025</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
 </div>
 </div>
-<a aria-describedby="desc-9" class="sr0" href="https://ashhhi.life/en/post/2025-02-10-hk/" tabindex="-1">
-<h1 id="title-9">败絮其外，金玉其中</h1>
+<a aria-describedby="desc-10" class="sr0" href="https://ashhhi.life/en/post/2025-02-10-hk/" tabindex="-1">
+<h1 id="title-10">败絮其外，金玉其中</h1>
 </a>
 </hgroup>
-<a aria-describedby="desc-9" aria-label="败絮其外，金玉其中" class="sri" href="https://ashhhi.life/en/post/2025-02-10-hk/"></a>
+<a aria-describedby="desc-10" aria-label="败絮其外，金玉其中" class="sri" href="https://ashhhi.life/en/post/2025-02-10-hk/"></a>
 <section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/17.svg" style="object-position: 26% 33%"/>
-<div class="par" id="desc-9">请停止对于香港的妖魔化...
+<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/13.svg" style="object-position: 36% 5%"/>
+<div class="par" id="desc-10">请停止对于香港的妖魔化...
             </div>
 </section>
 <footer>
 <span class="readingTime">1 min read
             </span>
 <div class="baselineskip" role="presentation"></div>
-</footer>
-</article><hr aria-hidden="true" class="ldots" role="presentation"/>
-<article aria-describedby="desc-10" aria-labelledby="title-10" aria-posinset="10" aria-setsize="10" class="feed-item">
-<hgroup>
-<div>
-<span><span>[Ash]</span>
-<span>in</span>
-<!-- terms.html -->
-<ul class="inline" role="presentation">
-<li><a href="https://ashhhi.life/en/categories/technology/" tabindex="-1">Technology</a></li>
-</ul>
-</span>
-<!-- timestamp.html-->
-<div class="date-has-label">
-<time class="doc-publish-date" data-time-label="Published on" datetime="2024-09-25T00:00:00+00:00">September 25, 2024</time><time class="doc-lastmod-date" data-time-label="Modified on" datetime="2025-03-21T00:07:13+08:00">March 21, 2025</time>
-</div>
-</div>
-<a aria-describedby="desc-10" class="sr0" href="https://ashhhi.life/en/post/2024-9-25-rl02/" tabindex="-1">
-<h1 id="title-10">Bellman Function详解</h1>
-</a>
-</hgroup>
-<a aria-describedby="desc-10" aria-label="Bellman Function详解" class="sri" href="https://ashhhi.life/en/post/2024-9-25-rl02/"></a>
-<section class="has-cover">
-<img alt="" class="flowlines" loading="lazy" src="https://raw.githubusercontent.com/foxihd/hugo-et-hd/master/static/svg/flowlines/9.svg" style="object-position: 15% 68%"/>
-<div class="par" id="desc-10">本系列为强化学习的学习笔记，本章讲解对State value，Bellman equation的理解。
-            </div>
-</section>
-<footer>
-<span class="readingTime">3 min read
-            </span>
-<!-- terms.html -->
-<ul class="rounded invert" role="presentation">
-<li><a href="https://ashhhi.life/en/tags/reinforcement-learning/" tabindex="-1">Reinforcement Learning</a></li>
-</ul>
 </footer>
 </article>
 </div>
